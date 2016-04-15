@@ -1,0 +1,136 @@
+<div class="analytics"><script>var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_XXXXXXXXXX'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3DXXXXXXXXXX%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div><!DOCTYPE html><html lang="zh_CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="php、nginx、mysql、swift、程序员、arduino、硬件、软件"><title>Go语言学习笔记【第一目：变量、类型和关键字，布尔类型，数字类型...】 | 一刻笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Go语言学习笔记【第一目：变量、类型和关键字，布尔类型，数字类型...】</h1><a id="logo" href="/.">一刻笔记</a><p class="description">带着一颗变态的、积极的心走向未来</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/learn/"><i class="fa fa-plug"> 充电</i></a><a href="/life/"><i class="fa fa-life-ring"> 生活</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-hand-peace-o"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Go语言学习笔记【第一目：变量、类型和关键字，布尔类型，数字类型...】</h1><div class="post-meta">Jun 18, 2015<script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><p><strong>变量、类型和关键字</strong></p>
+<p>Go 在语法上有着类 C 的感觉。如果你希望将两个（或更多）语句放在一行书写，它们必须用分号 (’;’) 分隔。<u>一般情况下，你不需要分号。</u></p>
+<p>Go 同其他语言不同的地方在于变量的类型在变量名的后面。</p>
+<p>不是：int a，而是 a int。</p>
+<p>当定义了一个变量，它默认赋值为其类型的 null 值。</p>
+<p>在 var a int后，a 的 值为 0。而 var  s string，意味着 s 被赋值为零长度字符串，也就是 “”。</p>
+<p><strong><em>在</em>**</strong><em> Go </em><strong>**<em>中，声明和赋值是两过程，但是可以连在一起。比较下面作用相同的代码片段。</em></strong></p>
+<p><strong>用**</strong> = <strong>**声明</strong></p>
+<p>`<br>var a int</p>
+<p>var b bool</p>
+<p>a = 15</p>
+<p>b = false`</p>
+<p>&nbsp;</p>
+<p><strong>用**</strong>:= <strong>**声明</strong></p>
+<p>`a := 15</p>
+<p>b := false`</p>
+<p>&nbsp;</p>
+<p>在左边使用了关键字 var 声明变量，然后赋值给它。右边的代码使用了 := 使得在一 步内完成了声明和赋值<strong><u>（这一形式只可用在函数内）</u></strong>。在这种情况下，变量的类型是由值推演出来的。值15表示是int 类型，值false告诉Go 它的类型应当是bool。多个var 声明可以成组；const 和import 同样允许这么做。留意圆括号的使用：</p>
+<p>`var  (</p>
+<p>x int</p>
+<p>b bool</p>
+<p>)`</p>
+<p>有相同类型的多个变量同样可以在一行内完成声明：var x, y int让x和y都是int类型变量。同样可以使用 平行赋值：</p>
+<p><code>a, b := 20, 16</code></p>
+<p>让a和b都是整数变量，并且赋值 20 给 a，16 给 b。</p>
+<p>一个特殊的变量名是_（下划线）。任何赋给它的值都被丢弃。在这个例子中，将35赋值给b，同时丢弃34。</p>
+<p><code>_, b := 34, 35</code></p>
+<p>Go 的编译器对声明却未使用的变量在报错。下面的代码会产生这个错误：声明了i却未使用</p>
+<p>`package   main</p>
+<p>func  main() {</p>
+<p>var  i int</p>
+<p>}<br>`<br>&nbsp;</p>
+<hr>
+<p><strong>布尔类型</strong></p>
+<p>布尔类型表示由预定义的常量 true 和 false 代表的布尔判定值。布尔类型是 bool。</p>
+<p>&nbsp;</p>
+<hr>
+<p><strong>数字类型</strong></p>
+<p>Go有众所周知的类型如int，这个类型根据你的硬件决定适当的长度。意味着在32位硬件上，是32位的；在64位硬件上是64位的。</p>
+<p><del><em>注意：int是32或64位之一，不会定义成其他值。uint情况相同。</em></del></p>
+<p>如果你希望明确其长度，你可以使用int32或者uint32。完整的整数类型列表（符号和无符号）是 int8，int16，int32，int64 和 byte，uint8，uint16，uint32， uint64。byte 是 uint8 的别名。浮点类型的值有 ﬂoat32 和 ﬂoat64 （没有 float 类 型）。64  位的整数和浮点数总是 64 位的，即便是在 32 位的架构上。</p>
+<p>需要留意的是这些类型全部都是独立的，并且混合用这些类型向变量赋值会引起编译 器错误，例如下面的代码：</p>
+<p>`package main</p>
+<p>func main()      {</p>
+<p>var a int           // 通用整数类型</p>
+<p>var b int32      // 32 位整数类型</p>
+<p>a = 15</p>
+<p>b = a+ a           // 混合这些类型是非法的</p>
+<p>b = b+ 5           //5 是一个（未定义类型的）常量，所以这没%问题</p>
+<p>}`</p>
+<p>在b=a+a触发一个赋值错误：</p>
+<p><strong>types.go:7: cannot use a + a (type int) as type int32 in assignment</strong></p>
+<p>赋值可以用八进制、十六进制或科学计数法：077，0xFF，1e3 或者 6.022e23 这些都是合法的。</p>
+<blockquote>
+<p>&nbsp;</p>
+</blockquote>
+<hr>
+<p><strong>常量</strong></p>
+<p>常量在Go中，也就是 constant。它们在编译时被创建，只能是数字、字符串或布尔值；const x = 42 生成x这个常量。可以使用iota生成枚举值。</p>
+<p>`const  (</p>
+<p>a = iota</p>
+<p>b = iota</p>
+<p>)`</p>
+<p>第一个iota 表示为 0，因此a等于0，当iota 再次在新的一行使用时，它的值增加了1，因此b的值是1。</p>
+<p>也可以像下面这样，省略Go重复的= iota：</p>
+<p>`const  (</p>
+<p>a = iota</p>
+<p>b                 // Implicitly b = iota</p>
+<p>)`</p>
+<p>如果需要，可以明确指定常量的类型：</p>
+<p>`const  (</p>
+<p>a = 0                      // Is an int now</p>
+<p>b string  = “0”</p>
+<p>)<br>`<br>&nbsp;</p>
+<hr>
+<p><strong>字符串</strong></p>
+<p>另一个重要的内建类型是string。赋值字符串的例子：</p>
+<blockquote>
+<p>s := “Hello World !”<br>字符串在Go中是UTF-8的由双引号（”）包裹的字符序列。如果你使用单引号（’）则 表示一个字符（UTF-8 编码）——这种在Go中不是string。</p>
+</blockquote>
+<p><strong><u>一旦给变量赋值，字符串就不能修改了：在</u>**</strong><u> Go </u><strong>**<u>中字符串是不可变的。</u></strong>从C来的用户， 下面的情况在Go中是非法的。</p>
+<p>`var s string = “hello”</p>
+<p>s[0] = ‘c’                //修改第一个字符为’c’，这会报错`</p>
+<p>在 Go 中实现这个，需要下面的方法：</p>
+<p>`s := “hello”</p>
+<p>c := []rune(s)</p>
+<p>c[0] = ‘c’</p>
+<p>s2 := string(c)</p>
+<p>fmt.Printf(“%s\n”, s2)`</p>
+<p>2转换 s 为 rune 数组；</p>
+<p>3修改数组的第一个元素；</p>
+<p>4 创建新的字符串 s2 保存修改；</p>
+<p>5 用 fmt.Printf 函数输出字符串。</p>
+<p><strong>多行字符串</strong></p>
+<p>基于分号的置入，你需要小心使用多行字符串。如果这样写：</p>
+<p>`s := “Starting part”</p>
+<ul>
+<li>“Ending part”`</li>
+</ul>
+<p>会被转换为：</p>
+<p>`s := “Starting part” ;</p>
+<ul>
+<li>“Ending part” ;`</li>
+</ul>
+<p>这是错误的语法，应当这样写：</p>
+<p><code>s := &quot;Starting part&quot; + &quot;Ending part&quot;</code></p>
+<p>Go就不会在错误的地方插入分号。另一种方式是使用反引号 ` 作为原始字符串符号：</p>
+<p><code>s :=</code>Starting part Ending part``</p>
+<p>留意最后一个例子s现在也包含换行。不像转义字符串标识 ，原始字符串标识的值 在引号内的字符是不转义的。</p>
+<hr>
+<p>&nbsp;</p>
+<p><strong>rune</strong></p>
+<p>Rune是int32的别名。用UTF-8进行编码。这个类型在什么时候使用呢？例如需要遍 历字符串中的字符。可以循环每个字节（仅在使用 US ASCII 编码字符串时与字符等价， 而它们在 Go 中不存在！）。因此为了获得实际的字符，需要使用 rune 类型。</p>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<p><strong>复数</strong></p>
+<p>Go原生支持复数。它的变量类型是complex128（64位虚数部分）。如果需要小一些的，还有complex64–32位的虚数部分。</p>
+<p>复数写为 re + imi，re是实数部分，im是虚数部分，而i是标记 ’i’  (√−1)。使用复数的一个例子：</p>
+<p><code>var  c complex64  = 5+5i;fmt.Printf(&quot;Value is: %v&quot;, c)</code></p>
+<p>将会打印：(5+5i)</p>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<p><strong>错误</strong></p>
+<p>任何足够大的程序或多或少都会需要使用到错误报告。因此Go有为了错误而存在的内建类型，叫做 error。</p>
+<p>var e error 定义了一个error类型的变量e，其的值是nil。这个error 类型是一个接口。</p>
+<hr>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://www.dyike.com/2015/06/18/go学习笔记1上/" data-id="cin1kkos500006et7nvzvh8u5" class="article-share-link">Aktie</a><div class="tags"><a href="/tags/Golang/">Golang</a></div><div class="post-nav"><a href="/2015/06/19/go学习笔记2/" class="pre">Go语言学习笔记【第二目：运算符、控制结构】</a><a href="/2015/06/06/2015年phpconf/" class="next">PHPCon2015@北京站第一天简要概述</a></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Golang/" style="font-size: 15px;">Golang</a> <a href="/tags/vagrant-virtualbox/" style="font-size: 15px;">vagrant virtualbox</a> <a href="/tags/PHP/" style="font-size: 15px;">PHP</a> <a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/ssh/" style="font-size: 15px;">ssh</a> <a href="/tags/回忆录/" style="font-size: 15px;">回忆录</a> <a href="/tags/PM-创业者-工具-服务-我的收藏/" style="font-size: 15px;">PM 创业者 工具 服务 我的收藏</a> <a href="/tags/支付功能/" style="font-size: 15px;">支付功能</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/虚拟机/" style="font-size: 15px;">虚拟机</a> <a href="/tags/内心OS/" style="font-size: 15px;">内心OS</a> <a href="/tags/数据结构-算法-干货分享/" style="font-size: 15px;">数据结构  算法  干货分享</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/为什么要到hexo上搭建一个blog/">为什么要到hexo上搭建一个blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/08/解决s'sh/">解决ssh的</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/02/php7编译出的错误/">php7编译出现的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/30/2015年总结/">2015年我的总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/22/讨论下redis集群方案以及遇到过的坑/">讨论下redis集群方案以及遇到过的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/20/Vagrant管理虚拟机/">用 Vagrant 管理虚拟机</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/19/记一次错误/">由于自己的疏忽，一个低级的错误</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/16/Centos7下开发环境的配置/">Centos7下配置nginx，mysql，php环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/04/科学上网/">科学上网：用VPS搭建shadowsocks服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/08/2015年8月8日晚记/">2015年8月8日晚小记</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.chenjie.info/" title="陈捷的博客" target="_blank">陈捷的博客</a><ul></ul><a href="http://www.iamle.com/" title="流水理鱼wwek" target="_blank">流水理鱼wwek</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">一刻笔记.</a> ityike <a rel="nofollow" target="_blank" href="http://www.dyike.com"></a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

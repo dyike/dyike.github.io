@@ -1,0 +1,191 @@
+<div class="analytics"><script>var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_XXXXXXXXXX'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3DXXXXXXXXXX%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div><!DOCTYPE html><html lang="zh_CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="php、nginx、mysql、swift、程序员、arduino、硬件、软件"><title>Go语言学习笔记【第二目：运算符、控制结构】 | 一刻笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Go语言学习笔记【第二目：运算符、控制结构】</h1><a id="logo" href="/.">一刻笔记</a><p class="description">带着一颗变态的、积极的心走向未来</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/learn/"><i class="fa fa-plug"> 充电</i></a><a href="/life/"><i class="fa fa-life-ring"> 生活</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-hand-peace-o"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Go语言学习笔记【第二目：运算符、控制结构】</h1><div class="post-meta">Jun 19, 2015<script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a><strong>运算符</strong></h2><p>Go支持普通的数字运算符，下面的表格列出了当前支持的运算符，以及其优先级。它们全部是从左到右结合的。</p>
+<p>Table运算优先级</p>
+<table><br><tbody><br><tr><br><td width="113">Precedence</td><br><td width="236">Operator(s)</td><br></tr><br><tr><br><td rowspan="6" width="113">Highest&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br>Lowest</td><br><td width="236"><em>     /     %    &lt;&lt;  &gt;&gt;  &amp;    &amp;^</em></td><br></tr><br><tr><br><td width="236">+     -      | ^</td><br></tr><br><tr><br><td width="236">==  !=   &lt;     &lt;=  &gt;     &gt;=</td><br></tr><br><tr><br><td width="236">&lt;-</td><br></tr><br><tr><br><td width="236">&amp;&amp;</td><br></tr><br><tr><br><td width="236">||</td><br></tr><br></tbody><br></table><br>+ -  / 和 % 会像你期望的那样工作，&amp; | ^ 和 &amp;^ 分别表示位运算符按位与，按位或，按位异或和位清除。&amp;&amp;和||运算符是逻辑与和逻辑或。表格中没有列出的是逻辑非：!。<br><br>虽然Go不支持运算符重载（或者方法重载），而一些内建运算符却支持重载。例如 + 可以用于整数、浮点数、复数和字符串（字符串相加表示串联它们）。<br><br>&nbsp;<br><br><em> </em> <em><br><br>&nbsp;<br><br>## <em>*Go 关键字</em></em><br><br>Table  Go中的关键字<br><table><br><tbody><br><tr><br><td width="111">break</td><br><td width="111">default</td><br><td width="111">func</td><br><td width="111">interface</td><br><td width="111">select</td><br></tr><br><tr><br><td width="111">case</td><br><td width="111">defer</td><br><td width="111">go</td><br><td width="111">map</td><br><td width="111">struct</td><br></tr><br><tr><br><td width="111">chan</td><br><td width="111">else</td><br><td width="111">goto</td><br><td width="111">package</td><br><td width="111">switch</td><br></tr><br><tr><br><td width="111">const</td><br><td width="111">fallthrough</td><br><td width="111">if</td><br><td width="111">range</td><br><td width="111">type</td><br></tr><br><tr><br><td width="111">continue</td><br><td width="111">for</td><br><td width="111">import</td><br><td width="111">return</td><br><td width="111">var</td><br></tr><br></tbody><br></table>
+
+<ul>
+<li>func 用于定义函数和方法；</li>
+<li>return 用于从函数返回；</li>
+<li>go用于并行；</li>
+<li>select用于选择不同类型的通讯；</li>
+<li>interface；</li>
+<li>struct 用于抽象数据类型；<br>&nbsp;</li>
+</ul>
+<hr>
+<p>&nbsp;</p>
+<h2 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a><strong>控制结构</strong></h2><p>在Go中只有很少的几个控制结构。例如这里没有do或者while循环，只有for。有灵活的switch语句和if，而switch接受像for那样可选的初始化语句。还有叫做<strong>类型选择和多路通讯转接器的**</strong> select<strong>。语法有所不同（同 C 相比）： </strong>无需圆括号，而语句体必须总是包含在大括号内。**</p>
+<p>if-eles</p>
+<p>在 Go 中 if 看起来是这样的：</p>
+<p>`i f   x &gt; 0 {                    //{ 是强制的</p>
+<p>return  y</p>
+<p>}   else  {</p>
+<p>return  x</p>
+<p>}`</p>
+<p>强制大括号鼓励将简单的 if 语句写在多行上。无论如何，这都是一个很好的形式，尤其是语句体中含有控制语句，例return或者break。</p>
+<p>if 和 switch 接受初始化语句，通常用于设置一个（局部）变量。</p>
+<p>`i f err := Chmod(0664) ; err != nil {        ← nil与C的NULL类似</p>
+<p>fmt.Printf(err)        ← err 的作用域被限定在if内</p>
+<p>return  err</p>
+<p>}`</p>
+<p>可以像通常那样使用逻辑运算符：</p>
+<p>`i f  true &amp;&amp; true   {</p>
+<p>fmt.Println(“true”)</p>
+<p>}</p>
+<p>i f  ! false {</p>
+<p>fmt.Println(“true”)</p>
+<p>}`</p>
+<p>在Go库中，你会发现当一个if语句不会进入下一个语句流程–也就是说，语句体结束于 break，continue，goto或者return–不必要的 else会被省略。<br>`<br>f, err := os.Open(name, os.O_RDONLY, 0)</p>
+<p>i f err != nil {</p>
+<p>return  err</p>
+<p>}</p>
+<p>doSomething(f)`</p>
+<p>这个例子通常用于检测可能的错误序列。成功的流程一直执行到底部使代码很好读，当遇到错误的时候就排除它。这样错误的情况结束于 return 语句，这样就无须else语句。</p>
+<p>`f, err := os.Open(name, os.O_RDONLY, 0)</p>
+<p>i f err != nil { return  err</p>
+<p>}</p>
+<p>d, err := f.Stat()</p>
+<p>i f err != nil { return  err</p>
+<p>}`</p>
+<p>doSomething(f, d)</p>
+<blockquote>
+<p>&nbsp;<br>下面的语法在 Go 中是非法的：</p>
+</blockquote>
+<p>`i f   err != nil</p>
+<p>{                          <strong>  **</strong>←<strong><strong>必须同</strong></strong> if <strong>**在同一行</strong></p>
+<p>return  err</p>
+<p>}`</p>
+<hr>
+<hr>
+<h3 id="goto"><a href="#goto" class="headerlink" title="goto"></a><strong>goto</strong></h3><blockquote>
+<p>用 goto 跳转到一定是当前函数内定义的标签。例如假设这样一个循环：<br>`func  myfunc() {</p>
+</blockquote>
+<p>i := 0</p>
+<p>Here:         ← 这行的第一个词，以分号结束作为标签</p>
+<p>println(i) i++</p>
+<p>goto  Here      ← 跳转</p>
+<p>}`</p>
+<p>标签名是大小写敏感的。</p>
+<h3 id="for"><a href="#for" class="headerlink" title="for"></a><strong>for</strong></h3><p>Go 的 for 循环有三种形式，只有其中的一种使用分号。</p>
+<blockquote>
+<p><del><em>for  init ;   condition ;   post {   }      ← 和 C 的 for 一样</em></del></p>
+<p><del><em>for  condition {    }              ← 和 while 一样</em></del></p>
+<p><del><em>for   {   }                 ← 死循环</em></del></p>
+</blockquote>
+<p>短声明使得在循环中声明一个序号变量更加容易。</p>
+<p>`sum := 0</p>
+<p>for  i := 0 ;   i &lt; 10 ;   i++ {</p>
+<p>sum += i              ← sum = sum + i 的简化写法</p>
+<p>}             ← i 实例在循环结束会消失`</p>
+<p>最后，由于Go没有逗号表达式，而 ++ 和–是语句而不是表达式，如果你想在 for 中 执行多个变量，应当使用平行赋值。</p>
+<p>`// Reverse a</p>
+<p>for i, j := 0, len(a)-1 ; i &lt; j ; i, j = i+1, j-1 {</p>
+<p>a[i], a[j] = a[j], a[i]      ← 平行赋值</p>
+<p>}</p>
+<h3 id="break-和-continue"><a href="#break-和-continue" class="headerlink" title="break 和 continue"></a><strong>break 和 continue</strong></h3><p>利用 break 可以提前退出循环，break 终止当前的循环。</p>
+<p>for  i := 0 ;   i &lt; 10 ;   i++ { i f   i &gt; 5 {</p>
+<p>break   ← 终止这个循环，只打印 0 到 5</p>
+<p>}</p>
+<p>println(i)</p>
+<p>}`</p>
+<p>循环嵌套循环时，可以在break后指定标签。用标签决定哪个循环被终止：</p>
+<p>`J:    for j := 0 ;   j &lt; 5 ;   j++ {</p>
+<p>for i := 0 ;   i &lt; 10 ;   i++ {</p>
+<p>i f  i &gt; 5 {</p>
+<p>break  J    ← 现在终止的是 j 循环，而不是 i 的那个</p>
+<p>}</p>
+<p>println(i)</p>
+<p>}</p>
+<p>}`</p>
+<p>利用continue 让循环进入下一个迭代，而略过剩下的所有代码。下面循环打印了0到 5。</p>
+<p>`for i := 0 ;  i &lt; 10 ;   i++ {</p>
+<p>i f  i &gt; 5 {</p>
+<p>continue      ← 跳过循环中所有的代码println(i)`</p>
+<h3 id="range"><a href="#range" class="headerlink" title="range"></a><strong>range</strong></h3><p><strong>关键字**</strong> range <strong>**可用于循环</strong>。它可以在 slice、array、string、map 和 channel。range是个迭代器，当被调用的时候，从它循环的内容中返回一个键值对。基于不同的内容，range返回不同的东西。</p>
+<p>当对slice 或者array做循环时，range 返回序号作为键，这个序号对应的内容作为值。考虑这个代码：</p>
+<p>`list := [] string {“a”, “b”, “c”, “d”, “e”, “f”}</p>
+<p>for  k, v := range  list {</p>
+<p>// 对  k 和  v 做想做的事情</p>
+<p>}`</p>
+<p>1  创建一个字符串的 slice。</p>
+<p>2 用range对其进行循环。每一个迭代，range 将返回 int 类型的序号，string类型的值，以0和“a”开始。</p>
+<p>3  k 的值为 0…5，而v在循环从“a”…“f”。</p>
+<p>也可以在字符串上直接使用range。这样字符串被打散成独立的 Unicode 字符并且 起始位按照 UTF-8 解析。</p>
+<p>【在 UTF-8 世界的字符有时被称作 runes。通常，当人们讨论字符时，多数是指 8 位字符。UTF-8 字符可 能会有 32 位，称作 rune。在这个例子里，char 的类型是 rune。】</p>
+<p>循环：</p>
+<p>`for pos, char := range  “aΦx” {</p>
+<p>fmt.Printf(“character ‘%c’ starts at byte position %d\n”, char, pos)</p>
+<p>}`</p>
+<p>打印</p>
+<p>`character ‘a’ starts at byte position</p>
+<p>character ‘Φ’ starts at byte position</p>
+<p>character ‘x’ starts at byte position      ← Φ took 2 bytes`</p>
+<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a><strong>switch</strong></h3><p>Go的switch非常灵活。表达式不必是常量或整数，执行的过程从上至下，直到找到匹 配项，而如果switch没有表达式，它会匹配true 。这产生一种可能——使用switch编写if-else-if-else判断序列。</p>
+<p>`func unhex(c byte) byte {</p>
+<p>switch  {</p>
+<p>case  ‘0’ &lt;= c &amp;&amp; c &lt;= ‘9’:</p>
+<p>return  c - ‘0’</p>
+<p>case  ‘a’ &lt;= c &amp;&amp; c &lt;= ‘f’:</p>
+<p>return  c - ‘a’ + 10</p>
+<p>case  ‘A’ &lt;= c &amp;&amp; c &lt;= ‘F’:</p>
+<p>return  c - ‘A’ + 10</p>
+<p>}</p>
+<p>return  0</p>
+<p>}`</p>
+<p>它不会匹配失败后自动向下尝试，但是可以使用fallthrough 使其这样做。 没有fallthrough：</p>
+<p>`switch  i {</p>
+<p>case  0:         // 空的  case 体</p>
+<p>case  1:</p>
+<p>f()       // 当  i == 0 时，f 不会被调用！</p>
+<p>}</p>
+<p>而这样：</p>
+<p>switch  i {</p>
+<p>case  0:     fallthrough</p>
+<p>case  1:</p>
+<p>f()     // 当  i == 0 时，f 会被调用！</p>
+<p>}`</p>
+<p>&nbsp;</p>
+<p>用default 可以指定当其他所有分支都不匹配的时候的行为。</p>
+<p>`switch  i {</p>
+<p>case  0:</p>
+<p>case  1:</p>
+<p>f()</p>
+<p>default:</p>
+<p>g()         // 当  i 不等于  0 或  1 时调用</p>
+<p>}`</p>
+<p>分支可以使用逗号分隔的列表。</p>
+<p>`func shouldEscape(c byte) bool {</p>
+<p>switch  c {</p>
+<p>case  ‘ ‘, ‘?’, ‘&amp;’, ‘=’, ‘#’, ‘+’:   ← , as ”or”</p>
+<p>return  true</p>
+<p>}</p>
+<p>return  false</p>
+<p>}`</p>
+<p>这里有一个使用两个 switch 对字节数组进行比较的例子：</p>
+<p>`//0</p>
+<p>func  Compare(a, b []byte) int   {</p>
+<p>for i := 0 ; i &lt; len(a) &amp;&amp; i &lt; len(b) ; i++ {</p>
+<p>switch  {</p>
+<p>case  a[i] &gt; b[i]:</p>
+<p>return  1</p>
+<p>case  a[i] &lt; b[i]:</p>
+<p>return  -1</p>
+<p>}</p>
+<p>}</p>
+<p>switch   {           //1</p>
+<p>case len(a) &lt; len(b):</p>
+<p>return  -1</p>
+<p>case len(a) &gt; len(b):</p>
+<p>return  1</p>
+<p>}</p>
+<p>return  0       //2</p>
+<p>}<br>`<br>0  比较返回两个字节数组字典数序先后的整数。</p>
+<p>如果 a == b 返回 0，如果 a &lt; b 返回 -1，而如果 a &gt; b 返回+1；</p>
+<p>1  长度不同，则不相等；</p>
+<p>2  字符串相等。</p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://www.dyike.com/2015/06/19/go学习笔记2/" data-id="cin1kdpqo0003zzt7vi7yjgpa" class="article-share-link">Aktie</a><div class="tags"><a href="/tags/Golang/">Golang</a></div><div class="post-nav"><a href="/2015/06/19/go学习笔记3/" class="pre">Go语言学习笔记【第三目：内建函数】</a><a href="/2015/06/18/go学习笔记1上/" class="next">Go语言学习笔记【第一目：变量、类型和关键字，布尔类型，数字类型...】</a></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Golang/" style="font-size: 15px;">Golang</a> <a href="/tags/vagrant-virtualbox/" style="font-size: 15px;">vagrant virtualbox</a> <a href="/tags/PHP/" style="font-size: 15px;">PHP</a> <a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/ssh/" style="font-size: 15px;">ssh</a> <a href="/tags/回忆录/" style="font-size: 15px;">回忆录</a> <a href="/tags/PM-创业者-工具-服务-我的收藏/" style="font-size: 15px;">PM 创业者 工具 服务 我的收藏</a> <a href="/tags/支付功能/" style="font-size: 15px;">支付功能</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/虚拟机/" style="font-size: 15px;">虚拟机</a> <a href="/tags/内心OS/" style="font-size: 15px;">内心OS</a> <a href="/tags/数据结构-算法-干货分享/" style="font-size: 15px;">数据结构  算法  干货分享</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/为什么要到hexo上搭建一个blog/">为什么要到hexo上搭建一个blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/08/解决s'sh/">解决ssh的</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/02/php7编译出的错误/">php7编译出现的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/30/2015年总结/">2015年我的总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/22/讨论下redis集群方案以及遇到过的坑/">讨论下redis集群方案以及遇到过的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/20/Vagrant管理虚拟机/">用 Vagrant 管理虚拟机</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/19/记一次错误/">由于自己的疏忽，一个低级的错误</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/16/Centos7下开发环境的配置/">Centos7下配置nginx，mysql，php环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/04/科学上网/">科学上网：用VPS搭建shadowsocks服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/08/2015年8月8日晚记/">2015年8月8日晚小记</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.chenjie.info/" title="陈捷的博客" target="_blank">陈捷的博客</a><ul></ul><a href="http://www.iamle.com/" title="流水理鱼wwek" target="_blank">流水理鱼wwek</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">一刻笔记.</a> ityike <a rel="nofollow" target="_blank" href="http://www.dyike.com"></a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
