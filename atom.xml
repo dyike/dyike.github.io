@@ -35,6 +35,44 @@
   </entry>
   
   <entry>
+    <title>解决ssh的连接中断的问题&quot;&#39;</title>
+    <link href="http://www.dyike.com/2016/03/08/%E8%A7%A3%E5%86%B3ssh%E8%BF%9E%E6%8E%A5%E4%B8%AD%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://www.dyike.com/2016/03/08/解决ssh连接中断的问题/</id>
+    <published>2016-03-08T01:23:41.000Z</published>
+    <updated>2016-04-16T15:11:26.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;strong&gt;问题场景&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;服务器环境：阿里云 Linux CentOS 主机&lt;/p&gt;
+&lt;p&gt;客户端：Mac OSX Terminal&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题现象&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;用 ssh 命令连接服务器之后，如果一段时间不操作，再次进入 Terminal 时会有一段时间没有响应，然后就出现错误提示：&lt;/p&gt;
+&lt;p&gt;Write failed: Broken pipe&lt;/p&gt;
+&lt;p&gt;只能重新用 ssh 命令进行连接。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决方法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;方法一：如果您有多台服务器，不想在每台服务器上设置，只需在客户端的 ~/.ssh/ 文件夹中添加 config 文件，并添加下面的配置：&lt;/p&gt;
+&lt;p&gt;ServerAliveInterval 60&lt;/p&gt;
+&lt;p&gt;方法二：如果您有多个人管理服务器，不想在每个客户端进行设置，只需在服务器的 /etc/ssh/sshd_config 中添加如下的配置：&lt;/p&gt;
+&lt;p&gt;ClientAliveInterval 60&lt;/p&gt;
+&lt;p&gt;方法三：如果您只想让当前的 ssh 保持连接，可以使用以下的命令：&lt;/p&gt;
+&lt;p&gt;$ ssh -o ServerAliveInterval=60 user@sshserver&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;问题场景&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;服务器环境：阿里云 Linux CentOS 主机&lt;/p&gt;
+&lt;p&gt;客户端：Mac OSX Terminal&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题现象&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;用 ssh 命令连接服务器之后，如果
+    
+    </summary>
+    
+    
+      <category term="ssh" scheme="http://www.dyike.com/tags/ssh/"/>
+    
+  </entry>
+  
+  <entry>
     <title>php7编译出现的问题</title>
     <link href="http://www.dyike.com/2016/01/02/php7%E7%BC%96%E8%AF%91%E5%87%BA%E7%9A%84%E9%94%99%E8%AF%AF/"/>
     <id>http://www.dyike.com/2016/01/02/php7编译出的错误/</id>
@@ -1403,74 +1441,6 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
     
     
       <category term="PM 创业者 工具 服务 我的收藏" scheme="http://www.dyike.com/tags/PM-%E5%88%9B%E4%B8%9A%E8%80%85-%E5%B7%A5%E5%85%B7-%E6%9C%8D%E5%8A%A1-%E6%88%91%E7%9A%84%E6%94%B6%E8%97%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>像算法,数据结构在实际开发中使用得多吗?有哪些使用例子?</title>
-    <link href="http://www.dyike.com/2015/05/12/%E5%B9%B2%E6%B4%BB%E5%88%86%E4%BA%AB/"/>
-    <id>http://www.dyike.com/2015/05/12/干活分享/</id>
-    <published>2015-05-12T13:04:45.000Z</published>
-    <updated>2016-04-15T10:02:20.000Z</updated>
-    
-    <content type="html">&lt;p&gt;内容来自【黑夜路人技术讨论群】&lt;/p&gt;
-&lt;p&gt;【今日话题】&lt;/p&gt;
-&lt;p&gt;像算法,数据结构在实际开发中使用得多吗?有哪些使用例子? - young－chen&lt;/p&gt;
-&lt;p&gt;1. 貌似用得不多。基本的排序二分查找倒是用过。 我觉得用得多不多和技术方向有关系 - xiayf&lt;/p&gt;
-&lt;p&gt;2. 处理数据的算法用得多～处理逻辑的算法相对少～数据结构几乎所有的地方都用的到～ - xingxing&lt;/p&gt;
-&lt;p&gt;3. 用过LRU和MRU - darkmi&lt;/p&gt;
-&lt;p&gt;4. lockless的方法不少 - Ragnarok&lt;/p&gt;
-&lt;p&gt;5. 好高级，这些也只能在了解原理的时候去看看。。实际业务中也就是拿来主义 - tywei&lt;/p&gt;
-&lt;p&gt;6. 二分法在排序中用的很多，然后还有Tire树，另外TOP K的应用场景也比较多 - 青衫隐_刘&lt;/p&gt;
-&lt;p&gt;7. Redis里都是数据结构 - 菜包子&lt;/p&gt;
-&lt;p&gt;8. 实际工作里的算法应用挺多的&lt;/p&gt;
-&lt;p&gt;我们天天生活在各种数据结构算法构建好的世界里&lt;/p&gt;
-&lt;p&gt;我们每天用的linux，我们在上面执行各种命令，比如找文件建目录，我们启动各种服务，我们写各种程序来跑。&lt;/p&gt;
-&lt;p&gt;比如创建文件，调用的各种文件系统调用（open/write/read），系统调用下面是VFS(虚拟文件系统)，下面是各种具体的文件系统，比如ext3/xfs/zfs之类，而这些文件系统会通过硬盘驱动访问硬盘，硬盘机械把数据固化在盘片上。&lt;/p&gt;
-&lt;p&gt;文件系统如何管理这些文件在磁盘上，方便建立文件删除文件回收空间等，就需要很多文件系统管理算法。 - 黑夜路人&lt;/p&gt;
-&lt;p&gt;9. 求助：php无限分类，如何查询某个大分类下的所有子分类，&lt;/p&gt;
-&lt;p&gt;场景：a,b,c,d 为一级分类；a1,a2,a3,a4为a下的子分类；a11,a12,a13,a14为a1下的子分类&lt;/p&gt;
-&lt;p&gt;问题：当查询a下所有文章时候，需要对a分类下，所有子分类的id集合，然后sql 用 where in（）；求高效的算法 - 竹子&lt;/p&gt;
-&lt;p&gt;回: php就是递归 - 淘小淘&lt;/p&gt;
-&lt;p&gt;回: 竹子，就是无限递归呗，而且你不是无限的（说是无限），还是能够搞定。 - 黑夜路人&lt;/p&gt;
-&lt;p&gt;10. 我们用的linux还帮我们管理cpu资源，核心就是让哪个进程访问cpu其他的进程等着，这就涉及到进程调度算法，写的坏的算法就杯具了。现在是多核时代，这个管理算法要求又更高。&lt;/p&gt;
-&lt;p&gt;我们自己用linux写一个自己的程序，我们malloc/free自己申请释放内存，涉及到操作系统针对内存管理算法。大块内容管理，内存释放，空闲内存回收等等，很多策略，又诞生了很多内存管理算法。比如著名的glbc自带的ptmalloc，还有流行的 tcmalloc ，jemalloc 等内存管理算法库。&lt;/p&gt;
-&lt;p&gt;在内存管理方向，我们诞生了很多不止是操作系统的管理算法，应用层也出了很多应用，比如我们知道的memcached/redis/aerospike等。memcached内存管理算法就是slab-class机制，redis的内存处理就更丰富一些。 - 黑夜路人&lt;/p&gt;
-&lt;p&gt;11. 除了高大上的操作系统，我们日常程序或者使用的各种工具里很多算法实现。&lt;/p&gt;
-&lt;p&gt;我们用strings查找符号表，用sed/awk使用正则来查找过滤文件字符串等等，都需要常规的字符串算法，比如查找子串，比如状态机，比如词法分析等。 - 黑夜路人&lt;/p&gt;
-&lt;p&gt;12. 除了工具，我们每天接触的常用软件，比如php/nginx/mysql等，哪个都是基本数据结构算法环绕。&lt;/p&gt;
-&lt;p&gt;php引擎内置各种算法，比如zend vm的词法语法分析；数组的内部实现，用的是hashtable+linklist；内存管理垃圾回收机制等。&lt;/p&gt;
-&lt;p&gt;nginx的连接处理分配算法；定时器实现算法；内存管理算法；自己的锁算法等。&lt;/p&gt;
-&lt;p&gt;mysql的查询sql解析；查询优化算法；文件索引存储算法；内存缓存管理算法……&lt;/p&gt;
-&lt;p&gt;凡此种种，我们不是生活在一个基本算法环绕的技术世界。支撑我们每时每刻的技术工作和生活所需：你家的电视跑着安卓，你家的无线路由器跑着openwrt，你的手机跑着安卓/ios，你的洗衣机跑着51单片机，你的冰箱跑着vmworks……&lt;/p&gt;
-&lt;p&gt;算法环绕的世界！ - 黑夜路人&lt;/p&gt;
-&lt;p&gt;13. memcached做集群时候，一致性hash算法，flexihash 这个应该用的比较多 说到memcached，那就要说它的内存分配算法，slab 哈，php，里面也有个hashtable啊 - 星星bigxing&lt;/p&gt;
-&lt;p&gt;14. 我用过的，bloom filter，线段树，后缀数组，树状数组，倒排索引，伸展树 - 廖强&lt;/p&gt;
-&lt;p&gt;15. 布隆过滤器，上面说的数组用过 - BE GEEK&lt;/p&gt;
-&lt;p&gt;16. hyperloglog. map. twin cache 這算設計模式了 - timedcy&lt;/p&gt;
-&lt;p&gt;17. 抽奖算法 用过一次 不过是代码的搬运工 人家写的. php几个常用的概率算法（抽奖、广告首选） &lt;a href=&quot;http://old.idler365.com/blog/PHP/111.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://old.idler365.com/blog/PHP/111.html&lt;/a&gt; - 周渊&lt;/p&gt;
-&lt;p&gt;回: 抽奖算法 是随机过程+排序算法 看随机数落在哪个区间 - 苹果&lt;/p&gt;
-&lt;p&gt;回: 我手游的抽卡系统，我都是算法二 - JoJo&lt;/p&gt;
-&lt;p&gt;【分享链接】&lt;/p&gt;
-&lt;p&gt;1. 大话同步/异步、阻塞/非阻塞 &lt;a href=&quot;http://mp.weixin.qq.com/s?__biz=MzA4MDgxNTM3NA==&amp;amp;mid=205342017&amp;amp;idx=2&amp;amp;sn=c4a035caecd1711df6ff8b0b374401b2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp.weixin.qq.com/s?__biz=MzA4MDgxNTM3NA==&amp;amp;mid=205342017&amp;amp;idx=2&amp;amp;sn=c4a035caecd1711df6ff8b0b374401b2&lt;/a&gt; - @理鱼&lt;/p&gt;
-&lt;p&gt;2. dot 加graphviz 画流程图 &lt;a href=&quot;http://zh.wikipedia.org/zh-cn/DOT%E8%AF%AD%E8%A8%80&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://zh.wikipedia.org/zh-cn/DOT%E8%AF%AD%E8%A8%80&lt;/a&gt; - 弹痕&lt;/p&gt;
-&lt;p&gt;3. 恐怖！全球首款6TB固态硬盘来袭 &lt;a href=&quot;http://mp.weixin.qq.com/s?__biz=MTE3MzE4MTAyMQ==&amp;amp;mid=206391798&amp;amp;idx=3&amp;amp;sn=a94d018ee78a35af55de8000f207367c&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp.weixin.qq.com/s?__biz=MTE3MzE4MTAyMQ==&amp;amp;mid=206391798&amp;amp;idx=3&amp;amp;sn=a94d018ee78a35af55de8000f207367c&lt;/a&gt; - 黑夜路人&lt;/p&gt;
-&lt;p&gt;4. 搭建 ngrok 服务实现内网穿透 &lt;a href=&quot;http://www.tuicool.com/wx/vmERjeI&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.tuicool.com/wx/vmERjeI&lt;/a&gt; - 黑夜路人&lt;/p&gt;
-&lt;p&gt;5. 《我要上头条》第三期：Beego 作者 Asta &lt;a href=&quot;http://mp.weixin.qq.com/s?__biz=MjM5MzA0ODkyMA==&amp;amp;mid=208770698&amp;amp;idx=1&amp;amp;sn=b08ede5d3f58960e3ac4e2d420c3da28&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp.weixin.qq.com/s?__biz=MjM5MzA0ODkyMA==&amp;amp;mid=208770698&amp;amp;idx=1&amp;amp;sn=b08ede5d3f58960e3ac4e2d420c3da28&lt;/a&gt; - Asta Xie&lt;/p&gt;
-&lt;p&gt;6. PHP Hash比较存在缺陷，影响大量Web网站登录认证、忘记密码等关键业务 &lt;a href=&quot;http://mp.weixin.qq.com/s?__biz=MjM5MTA5NjUxMQ==&amp;amp;mid=207079091&amp;amp;idx=1&amp;amp;sn=fbd70cfc628c48ae415b0552d12cba88&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp.weixin.qq.com/s?__biz=MjM5MTA5NjUxMQ==&amp;amp;mid=207079091&amp;amp;idx=1&amp;amp;sn=fbd70cfc628c48ae415b0552d12cba88&lt;/a&gt; - 黑夜路人&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;内容来自【黑夜路人技术讨论群】&lt;/p&gt;
-&lt;p&gt;【今日话题】&lt;/p&gt;
-&lt;p&gt;像算法,数据结构在实际开发中使用得多吗?有哪些使用例子? - young－chen&lt;/p&gt;
-&lt;p&gt;1. 貌似用得不多。基本的排序二分查找倒是用过。 我觉得用得多不多和技术方向有关系 - xiayf&lt;/
-    
-    </summary>
-    
-    
-      <category term="数据结构  算法  干货分享" scheme="http://www.dyike.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AE%97%E6%B3%95-%E5%B9%B2%E8%B4%A7%E5%88%86%E4%BA%AB/"/>
     
   </entry>
   
