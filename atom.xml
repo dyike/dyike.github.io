@@ -637,9 +637,10 @@
     <link href="http://www.dyike.com/2015/07/26/go-note-1-2/"/>
     <id>http://www.dyike.com/2015/07/26/go-note-1-2/</id>
     <published>2015-07-26T09:01:49.000Z</published>
-    <updated>2016-04-28T08:02:34.000Z</updated>
+    <updated>2016-04-28T08:39:58.000Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;Go语言中的字符串&quot;&gt;&lt;a href=&quot;#Go语言中的字符串&quot; class=&quot;headerlink&quot; title=&quot;Go语言中的字符串&quot;&gt;&lt;/a&gt;Go语言中的字符串&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;字符串是用一对双号(“”)或者单引号(‘’)括起来的定义的，它的类型是srting。&lt;/strong&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt; Go语言中的字符串&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;字符串是用一对双号(“”)或者单引号(‘’)括起来的定义的，它的类型是srting。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;值得注意的是，在go语言中字符串是不可变的，有这样一段代码，编译时会报错。&lt;/p&gt;
 &lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;s[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;c&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;但是想要修改怎么办呢？方法如下：&lt;/p&gt;
@@ -653,7 +654,10 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Go语言中的字符串&quot;&gt;&lt;a href=&quot;#Go语言中的字符串&quot; class=&quot;headerlink&quot; title=&quot;Go语言中的字符串&quot;&gt;&lt;/a&gt;Go语言中的字符串&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;字符串是用一对双号(“”)或者单引号(‘’)括起来的定义的，它的类型
+      &lt;p&gt; Go语言中的字符串&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;字符串是用一对双号(“”)或者单引号(‘’)括起来的定义的，它的类型是srting。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;值得注意的是，在go语言中字符串是不可变的，有这样一段代码，编译时会报错。&lt;/p&gt;
+&lt;figure cl
     
     </summary>
     
@@ -1148,9 +1152,10 @@
     <link href="http://www.dyike.com/2015/05/20/share-with-pay-dev/"/>
     <id>http://www.dyike.com/2015/05/20/share-with-pay-dev/</id>
     <published>2015-05-20T13:08:00.000Z</published>
-    <updated>2016-04-15T09:56:21.000Z</updated>
+    <updated>2016-04-28T08:40:18.000Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;来自黑夜路人技术群讨论分享内容。&quot;&gt;&lt;a href=&quot;#来自黑夜路人技术群讨论分享内容。&quot; class=&quot;headerlink&quot; title=&quot;来自黑夜路人技术群讨论分享内容。&quot;&gt;&lt;/a&gt;来自黑夜路人技术群讨论分享内容。&lt;/h1&gt;&lt;p&gt;【今日话题】&lt;/p&gt;
+    <content type="html">&lt;p&gt; 来自黑夜路人技术群讨论分享内容。&lt;/p&gt;
+&lt;p&gt;【今日话题】&lt;/p&gt;
 &lt;p&gt;讨论一下支付系统的功能设计或相关开发经验 - darkmi&lt;/p&gt;
 &lt;p&gt;1. 资金的数据库变更最基础要记得使用事务&lt;/p&gt;
 &lt;p&gt;然后还有是数据锁问题&lt;/p&gt;
@@ -1219,8 +1224,12 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;来自黑夜路人技术群讨论分享内容。&quot;&gt;&lt;a href=&quot;#来自黑夜路人技术群讨论分享内容。&quot; class=&quot;headerlink&quot; title=&quot;来自黑夜路人技术群讨论分享内容。&quot;&gt;&lt;/a&gt;来自黑夜路人技术群讨论分享内容。&lt;/h1&gt;&lt;p&gt;【今日话题】&lt;/p&gt;
-&lt;p&gt;
+      &lt;p&gt; 来自黑夜路人技术群讨论分享内容。&lt;/p&gt;
+&lt;p&gt;【今日话题】&lt;/p&gt;
+&lt;p&gt;讨论一下支付系统的功能设计或相关开发经验 - darkmi&lt;/p&gt;
+&lt;p&gt;1. 资金的数据库变更最基础要记得使用事务&lt;/p&gt;
+&lt;p&gt;然后还有是数据锁问题&lt;/p&gt;
+&lt;p&gt;比如一个逻辑是用户购买东西&lt;
     
     </summary>
     

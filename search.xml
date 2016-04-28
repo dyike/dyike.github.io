@@ -450,7 +450,8 @@
     <entry>
       <title><![CDATA[Go语言学习笔记：【Go中字符串小记】]]></title>
       <url>http://www.dyike.com/2015/07/26/go-note-1-2/</url>
-      <content type="html"><![CDATA[<h1 id="Go语言中的字符串"><a href="#Go语言中的字符串" class="headerlink" title="Go语言中的字符串"></a>Go语言中的字符串</h1><p><strong>字符串是用一对双号(“”)或者单引号(‘’)括起来的定义的，它的类型是srting。</strong></p>
+      <content type="html"><![CDATA[<p> Go语言中的字符串</p>
+<p><strong>字符串是用一对双号(“”)或者单引号(‘’)括起来的定义的，它的类型是srting。</strong></p>
 <p>值得注意的是，在go语言中字符串是不可变的，有这样一段代码，编译时会报错。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s <span class="keyword">string</span> = <span class="string">"hello"</span></span><br><span class="line"></span><br><span class="line">s[<span class="number">0</span>] = <span class="string">'c'</span></span><br></pre></td></tr></table></figure>
 <p>但是想要修改怎么办呢？方法如下：</p>
@@ -858,7 +859,8 @@
     <entry>
       <title><![CDATA[【05-20】讨论一下支付系统的功能设计或相关开发经验]]></title>
       <url>http://www.dyike.com/2015/05/20/share-with-pay-dev/</url>
-      <content type="html"><![CDATA[<h1 id="来自黑夜路人技术群讨论分享内容。"><a href="#来自黑夜路人技术群讨论分享内容。" class="headerlink" title="来自黑夜路人技术群讨论分享内容。"></a>来自黑夜路人技术群讨论分享内容。</h1><p>【今日话题】</p>
+      <content type="html"><![CDATA[<p> 来自黑夜路人技术群讨论分享内容。</p>
+<p>【今日话题】</p>
 <p>讨论一下支付系统的功能设计或相关开发经验 - darkmi</p>
 <p>1. 资金的数据库变更最基础要记得使用事务</p>
 <p>然后还有是数据锁问题</p>
