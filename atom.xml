@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-04-15T07:22:43.000Z</updated>
+  <updated>2016-04-28T07:10:49.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>array-to-string</title>
+    <link href="http://www.dyike.com/2016/04/28/array-to-string/"/>
+    <id>http://www.dyike.com/2016/04/28/array-to-string/</id>
+    <published>2016-04-28T07:08:32.000Z</published>
+    <updated>2016-04-28T07:10:49.000Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;p&gt;##一个简单的方法：将一个二维的数组转换成字符串。&lt;/p&gt;
+&lt;p&gt;function arr2str ($arr)&lt;br&gt;{&lt;br&gt;    foreach ($arr as $v)&lt;br&gt;    {&lt;br&gt;        $v = join(“,”,$v); //可以用implode将一维数组转换为用逗号连接的字符串&lt;br&gt;        $temp[] = $v;&lt;br&gt;    }&lt;br&gt;    $t=””;&lt;br&gt;    foreach($temp as $v){&lt;br&gt;        $t.=”‘“.$v.”‘“.”,”;&lt;br&gt;    }&lt;br&gt;    $t=substr($t,0,-1);&lt;br&gt;    return $t;&lt;br&gt;}&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;##一个简单的方法：将一个二维的数组转换成字符串。&lt;/p&gt;
+&lt;p&gt;function arr2str ($arr)&lt;br&gt;{&lt;br&gt;    foreach ($arr as $v)&lt;br&gt;    {&lt;br&gt;        $v = join(“,”,$v); //可
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>为什么要到hexo上搭建一个blog</title>
@@ -1376,71 +1399,6 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
     
     
       <category term="支付功能" scheme="http://www.dyike.com/tags/%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>实用工具 &amp; 服务</title>
-    <link href="http://www.dyike.com/2015/05/13/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
-    <id>http://www.dyike.com/2015/05/13/实用工具/</id>
-    <published>2015-05-13T13:10:18.000Z</published>
-    <updated>2016-04-15T10:01:25.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;提供给-开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot;&gt;&lt;a href=&quot;#提供给-开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot; class=&quot;headerlink&quot; title=&quot;提供给 开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot;&gt;&lt;/a&gt;提供给 开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&lt;/h3&gt;&lt;p&gt;&lt;div class=&quot;wrapper&quot;&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div class=&quot;site&quot;&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div class=&quot;container&quot;&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div class=&quot;repository-with-sidebar repo-container new-discussion-timeline  &quot;&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div id=&quot;js-repo-pjax-container&quot; class=&quot;repository-content context-loader-container&quot; data-pjax-container=&quot;&quot;&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div class=&quot;file&quot;&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;div id=&quot;readme&quot; class=&quot;blob instapaper_body&quot;&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-www-testin-cn-免费移动App真机云测试平台&quot;&gt;&lt;a href=&quot;#http-www-testin-cn-免费移动App真机云测试平台&quot; class=&quot;headerlink&quot; title=&quot;http://www.testin.cn/ 免费移动App真机云测试平台&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.testin.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.testin.cn/&lt;/a&gt; 免费移动App真机云测试平台&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-www-mikecrm-com-免费的信息收集工具&quot;&gt;&lt;a href=&quot;#http-www-mikecrm-com-免费的信息收集工具&quot; class=&quot;headerlink&quot; title=&quot;http://www.mikecrm.com/ 免费的信息收集工具&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.mikecrm.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.mikecrm.com/&lt;/a&gt; 免费的信息收集工具&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;https-www-jinshuju-net-免费强大的表单设计、数据收集工具&quot;&gt;&lt;a href=&quot;#https-www-jinshuju-net-免费强大的表单设计、数据收集工具&quot; class=&quot;headerlink&quot; title=&quot;https://www.jinshuju.net/ 免费强大的表单设计、数据收集工具&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.jinshuju.net/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.jinshuju.net/&lt;/a&gt; 免费强大的表单设计、数据收集工具&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-mob-com-sms-免费的短信验证码SDK&quot;&gt;&lt;a href=&quot;#http-mob-com-sms-免费的短信验证码SDK&quot; class=&quot;headerlink&quot; title=&quot;http://mob.com/sms 免费的短信验证码SDK&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://mob.com/sms&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mob.com/sms&lt;/a&gt; 免费的短信验证码SDK&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;https-meiqia-com-美恰-实时在线的客户服务工具&quot;&gt;&lt;a href=&quot;#https-meiqia-com-美恰-实时在线的客户服务工具&quot; class=&quot;headerlink&quot; title=&quot;https://meiqia.com/ 美恰 实时在线的客户服务工具&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://meiqia.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://meiqia.com/&lt;/a&gt; 美恰 实时在线的客户服务工具&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-www-jiathis-com-JiaThis-社会化分享平台&quot;&gt;&lt;a href=&quot;#http-www-jiathis-com-JiaThis-社会化分享平台&quot; class=&quot;headerlink&quot; title=&quot;http://www.jiathis.com/ JiaThis 社会化分享平台&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.jiathis.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jiathis.com/&lt;/a&gt; JiaThis 社会化分享平台&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;https-trello-com-Trello-轻量级团队流程协作管理平台&quot;&gt;&lt;a href=&quot;#https-trello-com-Trello-轻量级团队流程协作管理平台&quot; class=&quot;headerlink&quot; title=&quot;https://trello.com/ Trello 轻量级团队流程协作管理平台&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://trello.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://trello.com/&lt;/a&gt; Trello 轻量级团队流程协作管理平台&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;https-modao-io-墨刀-免费在线原型工具&quot;&gt;&lt;a href=&quot;#https-modao-io-墨刀-免费在线原型工具&quot; class=&quot;headerlink&quot; title=&quot;https://modao.io/ 墨刀 免费在线原型工具&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://modao.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://modao.io/&lt;/a&gt; 墨刀 免费在线原型工具&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;https-popapp-in-POP-快速制作可交互纸面原型&quot;&gt;&lt;a href=&quot;#https-popapp-in-POP-快速制作可交互纸面原型&quot; class=&quot;headerlink&quot; title=&quot;https://popapp.in/ POP 快速制作可交互纸面原型&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://popapp.in/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://popapp.in/&lt;/a&gt; POP 快速制作可交互纸面原型&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-www-sojump-com-问卷星-免费调查问卷平台&quot;&gt;&lt;a href=&quot;#http-www-sojump-com-问卷星-免费调查问卷平台&quot; class=&quot;headerlink&quot; title=&quot;http://www.sojump.com/ 问卷星 免费调查问卷平台&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.sojump.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.sojump.com/&lt;/a&gt; 问卷星 免费调查问卷平台&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-fir-im-fir-IM-免费应用发布平台（android、iOS）&quot;&gt;&lt;a href=&quot;#http-fir-im-fir-IM-免费应用发布平台（android、iOS）&quot; class=&quot;headerlink&quot; title=&quot;http://fir.im/ fir.IM 免费应用发布平台（android、iOS）&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://fir.im/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://fir.im/&lt;/a&gt; fir.IM 免费应用发布平台（android、iOS）&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-www-cloud7-com-cn-云起-快速轻应用创建平台（微信公众号、百度直达号）&quot;&gt;&lt;a href=&quot;#http-www-cloud7-com-cn-云起-快速轻应用创建平台（微信公众号、百度直达号）&quot; class=&quot;headerlink&quot; title=&quot;http://www.cloud7.com.cn/ 云起 快速轻应用创建平台（微信公众号、百度直达号）&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.cloud7.com.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cloud7.com.cn/&lt;/a&gt; 云起 快速轻应用创建平台（微信公众号、百度直达号）&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-eqxiu-com-易企秀-免费移动场景应用制作&quot;&gt;&lt;a href=&quot;#http-eqxiu-com-易企秀-免费移动场景应用制作&quot; class=&quot;headerlink&quot; title=&quot;http://eqxiu.com/ 易企秀 免费移动场景应用制作&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://eqxiu.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://eqxiu.com/&lt;/a&gt; 易企秀 免费移动场景应用制作&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-youzan-com-有赞-免费微店、微商城，完整的微店商解决方案&quot;&gt;&lt;a href=&quot;#http-youzan-com-有赞-免费微店、微商城，完整的微店商解决方案&quot; class=&quot;headerlink&quot; title=&quot;http://youzan.com/ 有赞 免费微店、微商城，完整的微店商解决方案&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://youzan.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://youzan.com/&lt;/a&gt; 有赞 免费微店、微商城，完整的微店商解决方案&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-www-eteams-cn-团队、办公协作空间&quot;&gt;&lt;a href=&quot;#http-www-eteams-cn-团队、办公协作空间&quot; class=&quot;headerlink&quot; title=&quot;http://www.eteams.cn/团队、办公协作空间&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.eteams.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.eteams.cn/&lt;/a&gt;团队、办公协作空间&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-www-duiba-com-cn-兑吧-专业的积分兑换服务平台（提现、话费、抽奖、礼品）&quot;&gt;&lt;a href=&quot;#http-www-duiba-com-cn-兑吧-专业的积分兑换服务平台（提现、话费、抽奖、礼品）&quot; class=&quot;headerlink&quot; title=&quot;http://www.duiba.com.cn/ 兑吧 专业的积分兑换服务平台（提现、话费、抽奖、礼品）&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.duiba.com.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.duiba.com.cn/&lt;/a&gt; 兑吧 专业的积分兑换服务平台（提现、话费、抽奖、礼品）&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-www-easemob-com-环信-移动IM解决方案&quot;&gt;&lt;a href=&quot;#http-www-easemob-com-环信-移动IM解决方案&quot; class=&quot;headerlink&quot; title=&quot;http://www.easemob.com/ 环信 移动IM解决方案&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.easemob.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.easemob.com/&lt;/a&gt; 环信 移动IM解决方案&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;https-leancloud-cn-LeanCloud-应用开发一站式解决方案提供商：数据存储、用户管理、消息推送、应用统计、社交分享、实时聊天等服务&quot;&gt;&lt;a href=&quot;#https-leancloud-cn-LeanCloud-应用开发一站式解决方案提供商：数据存储、用户管理、消息推送、应用统计、社交分享、实时聊天等服务&quot; class=&quot;headerlink&quot; title=&quot;https://leancloud.cn/ LeanCloud 应用开发一站式解决方案提供商：数据存储、用户管理、消息推送、应用统计、社交分享、实时聊天等服务&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leancloud.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://leancloud.cn/&lt;/a&gt; LeanCloud 应用开发一站式解决方案提供商：数据存储、用户管理、消息推送、应用统计、社交分享、实时聊天等服务&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-www-rongcloud-cn-融云-专注为开发者提供-IM-云服务&quot;&gt;&lt;a href=&quot;#http-www-rongcloud-cn-融云-专注为开发者提供-IM-云服务&quot; class=&quot;headerlink&quot; title=&quot;http://www.rongcloud.cn/ 融云 专注为开发者提供 IM 云服务&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.rongcloud.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.rongcloud.cn/&lt;/a&gt; 融云 专注为开发者提供 IM 云服务&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-chuye-cloud7-com-cn-初页-微信H5海报创作神器&quot;&gt;&lt;a href=&quot;#http-chuye-cloud7-com-cn-初页-微信H5海报创作神器&quot; class=&quot;headerlink&quot; title=&quot;http://chuye.cloud7.com.cn/ 初页 微信H5海报创作神器&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://chuye.cloud7.com.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://chuye.cloud7.com.cn/&lt;/a&gt; 初页 微信H5海报创作神器&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-weixin-drip-im-水滴-轻巧、智能的微信公众号管理平台&quot;&gt;&lt;a href=&quot;#http-weixin-drip-im-水滴-轻巧、智能的微信公众号管理平台&quot; class=&quot;headerlink&quot; title=&quot;http://weixin.drip.im/ 水滴 轻巧、智能的微信公众号管理平台&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://weixin.drip.im/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://weixin.drip.im/&lt;/a&gt; 水滴 轻巧、智能的微信公众号管理平台&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-xiumi-us-秀米-微信公众号排版利器&quot;&gt;&lt;a href=&quot;#http-xiumi-us-秀米-微信公众号排版利器&quot; class=&quot;headerlink&quot; title=&quot;http://xiumi.us/ 秀米 微信公众号排版利器&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://xiumi.us/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xiumi.us/&lt;/a&gt; 秀米 微信公众号排版利器&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;https-tower-im-网上办公室：管理项目和团队&quot;&gt;&lt;a href=&quot;#https-tower-im-网上办公室：管理项目和团队&quot; class=&quot;headerlink&quot; title=&quot;https://tower.im/ 网上办公室：管理项目和团队&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://tower.im/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://tower.im/&lt;/a&gt; 网上办公室：管理项目和团队&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-next-36kr-com-发现热门APP&quot;&gt;&lt;a href=&quot;#http-next-36kr-com-发现热门APP&quot; class=&quot;headerlink&quot; title=&quot;http://next.36kr.com/ 发现热门APP&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://next.36kr.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://next.36kr.com/&lt;/a&gt; 发现热门APP&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-www-qiniu-com-七牛-提供云存储服务、分发加速、数据处理等服务&quot;&gt;&lt;a href=&quot;#http-www-qiniu-com-七牛-提供云存储服务、分发加速、数据处理等服务&quot; class=&quot;headerlink&quot; title=&quot;http://www.qiniu.com/ 七牛 提供云存储服务、分发加速、数据处理等服务&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.qiniu.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.qiniu.com/&lt;/a&gt; 七牛 提供云存储服务、分发加速、数据处理等服务&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-www-devstore-cn-移动互联网运营解决方案整合平台&quot;&gt;&lt;a href=&quot;#http-www-devstore-cn-移动互联网运营解决方案整合平台&quot; class=&quot;headerlink&quot; title=&quot;http://www.devstore.cn/ 移动互联网运营解决方案整合平台&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.devstore.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.devstore.cn/&lt;/a&gt; 移动互联网运营解决方案整合平台&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;https-www-teambition-com-简单、高效的项目协作工具&quot;&gt;&lt;a href=&quot;#https-www-teambition-com-简单、高效的项目协作工具&quot; class=&quot;headerlink&quot; title=&quot;https://www.teambition.com/ 简单、高效的项目协作工具&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.teambition.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.teambition.com/&lt;/a&gt; 简单、高效的项目协作工具&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-www-apicloud-com-“云端一体”的移动应用云服务提供商&quot;&gt;&lt;a href=&quot;#http-www-apicloud-com-“云端一体”的移动应用云服务提供商&quot; class=&quot;headerlink&quot; title=&quot;http://www.apicloud.com/ “云端一体”的移动应用云服务提供商&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.apicloud.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.apicloud.com/&lt;/a&gt; “云端一体”的移动应用云服务提供商&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-www-getui-com-个推-手机消息推送解决方案提供商&quot;&gt;&lt;a href=&quot;#http-www-getui-com-个推-手机消息推送解决方案提供商&quot; class=&quot;headerlink&quot; title=&quot;http://www.getui.com/ 个推 手机消息推送解决方案提供商&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.getui.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.getui.com/&lt;/a&gt; 个推 手机消息推送解决方案提供商&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;https-pingxx-com-Ping-是为移动端量身打造的下一代支付系统，简单接入，多种支付渠道。&quot;&gt;&lt;a href=&quot;#https-pingxx-com-Ping-是为移动端量身打造的下一代支付系统，简单接入，多种支付渠道。&quot; class=&quot;headerlink&quot; title=&quot;https://pingxx.com/ Ping++是为移动端量身打造的下一代支付系统，简单接入，多种支付渠道。&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://pingxx.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://pingxx.com/&lt;/a&gt; Ping++是为移动端量身打造的下一代支付系统，简单接入，多种支付渠道。&lt;/h3&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-apistore-baidu-com-为开发者提供最全面的API服务&quot;&gt;&lt;a href=&quot;#http-apistore-baidu-com-为开发者提供最全面的API服务&quot; class=&quot;headerlink&quot; title=&quot;http://apistore.baidu.com/ 为开发者提供最全面的API服务&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://apistore.baidu.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://apistore.baidu.com/&lt;/a&gt; 为开发者提供最全面的API服务&lt;/h3&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;###&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;h3 id=&quot;http-samllpdf-com-cn-针对PDF问题解决方案&quot;&gt;&lt;a href=&quot;#http-samllpdf-com-cn-针对PDF问题解决方案&quot; class=&quot;headerlink&quot; title=&quot;http://samllpdf.com/cn/ 针对PDF问题解决方案&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://samllpdf.com/cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://samllpdf.com/cn/&lt;/a&gt; 针对PDF问题解决方案&lt;/h3&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;提供给-开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot;&gt;&lt;a href=&quot;#提供给-开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot; class=&quot;headerlink&quot; title=&quot;提供给 开发
-    
-    </summary>
-    
-    
-      <category term="PM 创业者 工具 服务 我的收藏" scheme="http://www.dyike.com/tags/PM-%E5%88%9B%E4%B8%9A%E8%80%85-%E5%B7%A5%E5%85%B7-%E6%9C%8D%E5%8A%A1-%E6%88%91%E7%9A%84%E6%94%B6%E8%97%8F/"/>
     
   </entry>
   
