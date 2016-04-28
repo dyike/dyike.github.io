@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-04-28T07:13:16.000Z</updated>
+  <updated>2016-04-28T07:29:41.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.dyike.com/2016/04/28/array-to-string/"/>
     <id>http://www.dyike.com/2016/04/28/array-to-string/</id>
     <published>2016-04-28T07:08:32.000Z</published>
-    <updated>2016-04-28T07:13:16.000Z</updated>
+    <updated>2016-04-28T07:29:41.000Z</updated>
     
     <content type="html">&lt;hr&gt;
 &lt;p&gt;##一个简单的方法：将一个二维的数组转换成字符串。&lt;br&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;arr2str&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;($arr)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;foreach&lt;/span&gt; ($arr &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; $v)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        $v = join(&lt;span class=&quot;string&quot;&gt;&quot;,&quot;&lt;/span&gt;,$v); &lt;span class=&quot;comment&quot;&gt;//可以用implode将一维数组转换为用逗号连接的字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        $temp[] = $v;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    $t=&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;foreach&lt;/span&gt;($temp &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; $v)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        $t.=&lt;span class=&quot;string&quot;&gt;&quot;&#39;&quot;&lt;/span&gt;.$v.&lt;span class=&quot;string&quot;&gt;&quot;&#39;&quot;&lt;/span&gt;.&lt;span class=&quot;string&quot;&gt;&quot;,&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    $t=substr($t,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; $t;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -34,24 +34,7 @@
     </summary>
     
     
-  </entry>
-  
-  <entry>
-    <title>为什么要到hexo上搭建一个blog</title>
-    <link href="http://www.dyike.com/2016/04/15/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%B0hexo%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAblog/"/>
-    <id>http://www.dyike.com/2016/04/15/为什么要到hexo上搭建一个blog/</id>
-    <published>2016-04-15T04:07:31.000Z</published>
-    <updated>2016-04-15T07:22:43.000Z</updated>
-    
-    <content type="html">&lt;p&gt;以前的博客主要是用wordpress搭建的，用的服务器还是windows serve的服务器，说起来真的不好用，自从自己接触了开发，就慢慢的告别了windows系统，转向linux，OS X。久而久之就不想用wp来写文章，还有一个原因就是wp过于臃肿，还有很多插件压根就用不上，感觉这是一种资源的浪费，所以就放弃了，今后还是专心博客的内容。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;以前的博客主要是用wordpress搭建的，用的服务器还是windows serve的服务器，说起来真的不好用，自从自己接触了开发，就慢慢的告别了windows系统，转向linux，OS X。久而久之就不想用wp来写文章，还有一个原因就是wp过于臃肿，还有很多插件压根就用不
-    
-    </summary>
-    
+      <category term="-php" scheme="http://www.dyike.com/tags/php/"/>
     
   </entry>
   
@@ -210,38 +193,38 @@
   
   <entry>
     <title>用 Vagrant 管理虚拟机</title>
-    <link href="http://www.dyike.com/2015/09/20/Vagrant%E7%AE%A1%E7%90%86%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
-    <id>http://www.dyike.com/2015/09/20/Vagrant管理虚拟机/</id>
+    <link href="http://www.dyike.com/2015/09/20/manage-virtualbox-by-vagrant/"/>
+    <id>http://www.dyike.com/2015/09/20/manage-virtualbox-by-vagrant/</id>
     <published>2015-09-20T11:28:24.000Z</published>
-    <updated>2016-04-15T10:00:38.000Z</updated>
+    <updated>2016-04-28T07:28:56.000Z</updated>
     
     <content type="html">&lt;p&gt;Vagrant 可以让我们用命令直接从云上下载虚拟机的镜像，你想要什么系统都行，Centos，Ubuntu …   只需要一行命令，然后再用命令去操作虚拟机，启动，暂停，关闭，重启，你可以更方便的管理所有的在本地上电脑上的虚拟机镜像，手工去配置它们，可以再重新打包成新的镜像，方便你跟你的团队在其它的项目上重复使用。&lt;/p&gt;
 &lt;h2 id=&quot;安装-Vagrant&quot;&gt;&lt;a href=&quot;#安装-Vagrant&quot; class=&quot;headerlink&quot; title=&quot;安装 Vagrant&quot;&gt;&lt;/a&gt;安装 Vagrant&lt;/h2&gt;&lt;p&gt;Vagrant 提供了一个虚拟机的管理层，虚拟机本身还是需要用到虚拟机的软件，比如 VMware，Virtualbox 等等，推荐用 Virtualbox 。使用系统的包管理工具去安装软件。&lt;/p&gt;
 &lt;p&gt;###&lt;/p&gt;
-&lt;h3 id=&quot;Mac-上安装-Vagrant&quot;&gt;&lt;a href=&quot;#Mac-上安装-Vagrant&quot; class=&quot;headerlink&quot; title=&quot;Mac 上安装 Vagrant&quot;&gt;&lt;/a&gt;Mac 上安装 Vagrant&lt;/h3&gt;&lt;p&gt;[cce]brew install vagrant[/cce]&lt;/p&gt;
-&lt;h3 id=&quot;Mac-上安装-Virtualbox&quot;&gt;&lt;a href=&quot;#Mac-上安装-Virtualbox&quot; class=&quot;headerlink&quot; title=&quot;Mac 上安装 Virtualbox&quot;&gt;&lt;/a&gt;Mac 上安装 Virtualbox&lt;/h3&gt;&lt;p&gt;[cce]brew install Caskroom/cask/virtualbox[/cce]&lt;/p&gt;
+&lt;h3 id=&quot;Mac-上安装-Vagrant&quot;&gt;&lt;a href=&quot;#Mac-上安装-Vagrant&quot; class=&quot;headerlink&quot; title=&quot;Mac 上安装 Vagrant&quot;&gt;&lt;/a&gt;Mac 上安装 Vagrant&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;install vagrant```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;### Mac 上安装 Virtualbox&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```brew install Caskroom/cask/virtualbox&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;Box&quot;&gt;&lt;a href=&quot;#Box&quot; class=&quot;headerlink&quot; title=&quot;Box&quot;&gt;&lt;/a&gt;Box&lt;/h2&gt;&lt;p&gt;Box ，你可以把它想成是一个箱子，里面装了一些东西。在用 Vagrant 创建虚拟机的时候，需要用到 Box ，它里面会包装操作系统的镜像，不同的 Box 带的操作系统可能是不一样的，比如 CentOS，Ubuntu 等等，你可以基于它们去创建自己版本的 Box，比如在虚拟机上安装一些软件，然后把它重新打包成 Box 。&lt;/p&gt;
 &lt;p&gt;在 Vagrant 提供的云服务（&lt;a href=&quot;https://vagrantcloud.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://vagrantcloud.com/&lt;/a&gt;）上面可以下载到别人做好的 Box，这个云服务现在叫 Atlas，是 hashicorp 公司的一个产品，Vagrant 也是这家公司的项目。打开这个地址以后，可以去搜索想要用的 Box，可以搜索操作系统的名字，也可以搜索特定的软件的名字，比如 Laravel，Drupal …    在搜索结果上面会显示这个 Box 的下载的次数，你可以用来判断这个 Box 是否受欢迎。&lt;/p&gt;
 &lt;p&gt;我们需要一个纯净的 Box，就是只包含操作系统，在系统上没有安装其它的多余的东西。注意不同发行版的 Linux 操作起来是有些区别的，我推荐先用一下 CentOS 这款操作系统。&lt;/p&gt;
-&lt;h3 id=&quot;添加-Box&quot;&gt;&lt;a href=&quot;#添加-Box&quot; class=&quot;headerlink&quot; title=&quot;添加 Box&quot;&gt;&lt;/a&gt;添加 Box&lt;/h3&gt;&lt;p&gt;你要把 Box 下载到本地的电脑上，交给 Vagrant 去管理，这样在创建虚拟机的时候，Vagrant 会复制一份你指定的 Box 到你的项目里面，这样你在这个虚拟机上的操作，就不会影响到其它的项目。先确定你用的电脑上的操作系统的位数，现在一般都是 64 位的操作系统。打开命令行工具以后，执行 vagrant box add 命令去添加 Box 。&lt;br&gt;[cce]vagrant box add 名字[/cce]&lt;br&gt;如果你指定的 Box 在本地电脑上不存在，Vagrant 就会到它的云上去给你下载。执行：&lt;br&gt;[cce]vagrant box add chef/centos-6.5[/cce]&lt;br&gt;上面的 chef/centos-6.5 还有 centos-6.5-i386 就是想要添加的 Box 的名字，最前面的 chef  ，是一个命名空间，一般就是这个 Box 的作者的名字，后面的 centos-6.5 表示这个 Box 的操作系统是 CentOS ，版本是 6.5 ，i386 表示 32 位的系统。&lt;/p&gt;
-&lt;h3 id=&quot;查看本地上的-Box-列表&quot;&gt;&lt;a href=&quot;#查看本地上的-Box-列表&quot; class=&quot;headerlink&quot; title=&quot;查看本地上的 Box 列表&quot;&gt;&lt;/a&gt;查看本地上的 Box 列表&lt;/h3&gt;&lt;p&gt;完成以后，可以查看一下在本地上的 Box 列表。&lt;br&gt;[cce]vagrant box list[/cce]&lt;/p&gt;
-&lt;h3 id=&quot;手工下载并添加-Box-的方法&quot;&gt;&lt;a href=&quot;#手工下载并添加-Box-的方法&quot; class=&quot;headerlink&quot; title=&quot;手工下载并添加 Box 的方法&quot;&gt;&lt;/a&gt;手工下载并添加 Box 的方法&lt;/h3&gt;&lt;p&gt;在执行 Vagrant box add 添加 Box 的时候，Vagrant 会在命令行上显示 Box 的下载地址，下载的速度还有进度，如果你在国内，很可能下载的速度非常慢。你可以复制 Box 的下载地址，然后用下载工具，比如用迅雷去下载。&lt;/p&gt;
-&lt;p&gt;完成以后，找到下载下来的文件，文件名里会包含 .box 这个扩展名，如果不是，你需要手工添加这个扩展名。并且重命名一下文件，比如命名为 centos_6.5.box 。然后把它放到桌面上，其它地方也行。打开命令行，进入到手工下面的 Box 文件所在的位置。比如&lt;br&gt;[cce]cd ~/ityike[/cce]&lt;br&gt;然后查看一下文件列表：&lt;br&gt;[cce]ls[/cce]&lt;br&gt;确定 Box 文件在当前的目录的下面，再执行 vagrant box add 命令去手工添加 Box 。&lt;br&gt;[cce]vagrant box add 名称 路径[/cce]&lt;br&gt;名称就是你想给这个 Box 起的名字，以后我们会用到这个名字去管理这个 Box，路径是 Box 文件所在的位置，如果你要添加的 Box 直接在你当前所在的目录的下面，可以直接使用 Box 文件的名称，像这样：&lt;br&gt;[cce]vagrant box add centos-6.5 centos-6.5.box[/cce]&lt;br&gt;Vagrant 会把 Box 文件复制到系统的某个特定的目录的下面，完成以后，你就可以把桌面上的 Box 文件删除掉了。&lt;br&gt;[cce]rm centos-6.5.box[/cce]&lt;br&gt;再查看一下可用的 Box 列表：&lt;br&gt;[cce]vagrant box list[/cce]&lt;br&gt;在返回的列表里，你应该可以找到自己手工添加的 centos-6.5 这个 Box 。&lt;/p&gt;
-&lt;h3 id=&quot;管理-Box&quot;&gt;&lt;a href=&quot;#管理-Box&quot; class=&quot;headerlink&quot; title=&quot;管理 Box&quot;&gt;&lt;/a&gt;管理 Box&lt;/h3&gt;&lt;p&gt;添加到本地电脑上的 Box 会放到一个特定的目录的下面。跟 Box 相关的命令，可以用 vagrant box 命令查看。使用的方法就是 vagrant box 后面再加上子相应的子命令，接着是对应的参数。常用的就是 add ，list 还有 remove。add 是添加新的 Box ，list 可以查看已有的 Box ，remove 就是从系统中删除掉 Box 。注意在创建虚拟机的时候，Vagrant 会把你指定的 Box 复制一份放到特定的目录的下面。所以，你在使用 remove 命令删除掉添加到系统中的 Box 的时候，不会影响到这些已有的虚拟机。&lt;/p&gt;
-&lt;h2 id=&quot;创建虚拟机&quot;&gt;&lt;a href=&quot;#创建虚拟机&quot; class=&quot;headerlink&quot; title=&quot;创建虚拟机&quot;&gt;&lt;/a&gt;创建虚拟机&lt;/h2&gt;&lt;p&gt;添加了 Box 以后，我们就可以用 Vagrant 基于这个 Box 去创建虚拟机了。先找个地方去创建一个目录，这个目录就是你的项目所在的目录，它会自动跟虚拟机上的某个目录同步，也就是在你电脑上的这个目录里面的文件，你同样可以在虚拟机里的某个目录里面找到。比如我要在桌面上创建一个叫 ninghao-project 的目录，然后再进入到这个目录，在命令行工具下面执行：&lt;br&gt;[cce]&lt;br&gt;cd ~/ityike&lt;br&gt;mkdir ityike-project&lt;br&gt;cd ityike-project&lt;br&gt;[/cce]&lt;/p&gt;
-&lt;h3 id=&quot;初始化&quot;&gt;&lt;a href=&quot;#初始化&quot; class=&quot;headerlink&quot; title=&quot;初始化&quot;&gt;&lt;/a&gt;初始化&lt;/h3&gt;&lt;p&gt;首先要做的就是初始化一下，用 vagrant init ，后面指定一下要使用的 Box 的名字。完成以后，在你的目录下面创建一个叫 Vagrantfile 的文件。&lt;/p&gt;
-&lt;p&gt;先查看一下可用的 Box&lt;br&gt;[cce]vagrant box list[/cce]&lt;br&gt;如果跟着我的步骤来，你应该可以看到一个叫 centos-6.5 的 Box 。下面我们用这个 Box 去初始化一下项目。&lt;br&gt;[cce]vagrant init centos-6.5[/cce]&lt;br&gt;完成以后，查看一下当前目录下面的东西。&lt;br&gt;[cce]ls[/cce]&lt;br&gt;你会看到一个 Vagrantfile 文件，这个文件是配置当前项目的虚拟机用的，以后我们会再回来看一下怎么样使用这个文件。&lt;/p&gt;
-&lt;h3 id=&quot;启动虚拟机&quot;&gt;&lt;a href=&quot;#启动虚拟机&quot; class=&quot;headerlink&quot; title=&quot;启动虚拟机&quot;&gt;&lt;/a&gt;启动虚拟机&lt;/h3&gt;&lt;p&gt;Vagrant 提供了一些命令可以操作虚拟机，比如启动，暂停，关闭或者销毁虚拟机。启动虚拟机，执行：&lt;br&gt;[cce]vagrant up[/cce]&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;span style=&quot;font-family: Georgia, &#39;Times New Roman&#39;, &#39;Bitstream Charter&#39;, Times, serif; line-height: 1.5;&quot;&gt;第一次启动，花的时间会长一些，因为 Vagrant 会把你为项目指定的 Box 复制到一个地方，然后再去启动它。完成以后，你可以用命令再查看一下虚拟机的状态：&lt;/span&gt;&lt;/pre&gt;&lt;br&gt;[cce]vagrant status[/cce]&lt;br&gt;如果返回的是 running ，说明虚拟机启动成功，现在你就可以使用 ssh 连接到虚拟机，去控制它了。&lt;/p&gt;
+&lt;h3 id=&quot;添加-Box&quot;&gt;&lt;a href=&quot;#添加-Box&quot; class=&quot;headerlink&quot; title=&quot;添加 Box&quot;&gt;&lt;/a&gt;添加 Box&lt;/h3&gt;&lt;p&gt;你要把 Box 下载到本地的电脑上，交给 Vagrant 去管理，这样在创建虚拟机的时候，Vagrant 会复制一份你指定的 Box 到你的项目里面，这样你在这个虚拟机上的操作，就不会影响到其它的项目。先确定你用的电脑上的操作系统的位数，现在一般都是 64 位的操作系统。打开命令行工具以后，执行 vagrant box add 命令去添加 Box 。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;box add 名字```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;如果你指定的 Box 在本地电脑上不存在，Vagrant 就会到它的云上去给你下载。执行：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```vagrant box add chef/centos-6.5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;上面的 chef/centos-6.5 还有 centos-6.5-i386 就是想要添加的 Box 的名字，最前面的 chef  ，是一个命名空间，一般就是这个 Box 的作者的名字，后面的 centos-6.5 表示这个 Box 的操作系统是 CentOS ，版本是 6.5 ，i386 表示 32 位的系统。&lt;/p&gt;
+&lt;h3 id=&quot;查看本地上的-Box-列表&quot;&gt;&lt;a href=&quot;#查看本地上的-Box-列表&quot; class=&quot;headerlink&quot; title=&quot;查看本地上的 Box 列表&quot;&gt;&lt;/a&gt;查看本地上的 Box 列表&lt;/h3&gt;&lt;p&gt;完成以后，可以查看一下在本地上的 Box 列表。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;box list```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;### 手工下载并添加 Box 的方法&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;在执行 Vagrant box add 添加 Box 的时候，Vagrant 会在命令行上显示 Box 的下载地址，下载的速度还有进度，如果你在国内，很可能下载的速度非常慢。你可以复制 Box 的下载地址，然后用下载工具，比如用迅雷去下载。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;完成以后，找到下载下来的文件，文件名里会包含 .box 这个扩展名，如果不是，你需要手工添加这个扩展名。并且重命名一下文件，比如命名为 centos_6.5.box 。然后把它放到桌面上，其它地方也行。打开命令行，进入到手工下面的 Box 文件所在的位置。比如&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```cd ~/ityike&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后查看一下文件列表：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;确定 Box 文件在当前的目录的下面，再执行 vagrant box add 命令去手工添加 Box 。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```vagrant box add 名称 路径&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;名称就是你想给这个 Box 起的名字，以后我们会用到这个名字去管理这个 Box，路径是 Box 文件所在的位置，如果你要添加的 Box 直接在你当前所在的目录的下面，可以直接使用 Box 文件的名称，像这样：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;box add centos-6.5 centos-6.5.box```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Vagrant 会把 Box 文件复制到系统的某个特定的目录的下面，完成以后，你就可以把桌面上的 Box 文件删除掉了。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```rm centos-6.5.box&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;再查看一下可用的 Box 列表：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;box list```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;在返回的列表里，你应该可以找到自己手工添加的 centos-6.5 这个 Box 。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;### 管理 Box&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;添加到本地电脑上的 Box 会放到一个特定的目录的下面。跟 Box 相关的命令，可以用 vagrant box 命令查看。使用的方法就是 vagrant box 后面再加上子相应的子命令，接着是对应的参数。常用的就是 add ，list 还有 remove。add 是添加新的 Box ，list 可以查看已有的 Box ，remove 就是从系统中删除掉 Box 。注意在创建虚拟机的时候，Vagrant 会把你指定的 Box 复制一份放到特定的目录的下面。所以，你在使用 remove 命令删除掉添加到系统中的 Box 的时候，不会影响到这些已有的虚拟机。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;## 创建虚拟机&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;添加了 Box 以后，我们就可以用 Vagrant 基于这个 Box 去创建虚拟机了。先找个地方去创建一个目录，这个目录就是你的项目所在的目录，它会自动跟虚拟机上的某个目录同步，也就是在你电脑上的这个目录里面的文件，你同样可以在虚拟机里的某个目录里面找到。比如我要在桌面上创建一个叫 ninghao-project 的目录，然后再进入到这个目录，在命令行工具下面执行：&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;cd ~/ityike&lt;br&gt;mkdir ityike-project&lt;br&gt;cd ityike-project&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;### 初始化&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;首先要做的就是初始化一下，用 vagrant init ，后面指定一下要使用的 Box 的名字。完成以后，在你的目录下面创建一个叫 Vagrantfile 的文件。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;先查看一下可用的 Box&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```vagrant box list&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如果跟着我的步骤来，你应该可以看到一个叫 centos-6.5 的 Box 。下面我们用这个 Box 去初始化一下项目。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;init centos-6.5```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;完成以后，查看一下当前目录下面的东西。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```ls&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;你会看到一个 Vagrantfile 文件，这个文件是配置当前项目的虚拟机用的，以后我们会再回来看一下怎么样使用这个文件。&lt;/p&gt;
+&lt;h3 id=&quot;启动虚拟机&quot;&gt;&lt;a href=&quot;#启动虚拟机&quot; class=&quot;headerlink&quot; title=&quot;启动虚拟机&quot;&gt;&lt;/a&gt;启动虚拟机&lt;/h3&gt;&lt;p&gt;Vagrant 提供了一些命令可以操作虚拟机，比如启动，暂停，关闭或者销毁虚拟机。启动虚拟机，执行：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;up```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;第一次启动，花的时间会长一些，因为 Vagrant 会把你为项目指定的 Box 复制到一个地方，然后再去启动它。完成以后，你可以用命令再查看一下虚拟机的状态：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```vagrant status&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如果返回的是 running ，说明虚拟机启动成功，现在你就可以使用 ssh 连接到虚拟机，去控制它了。&lt;/p&gt;
 &lt;h3 id=&quot;控制虚拟机&quot;&gt;&lt;a href=&quot;#控制虚拟机&quot; class=&quot;headerlink&quot; title=&quot;控制虚拟机&quot;&gt;&lt;/a&gt;控制虚拟机&lt;/h3&gt;&lt;p&gt;想在 Linux 系统的虚拟机上进行操作，你要用 ssh 连接到虚拟机，这跟你远程控制 Linux 的服务器是一样的。&lt;/p&gt;
-&lt;h4 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h4&gt;&lt;p&gt;[cce]vagrant ssh[/cce]&lt;/p&gt;
-&lt;h3 id=&quot;暂停与恢复&quot;&gt;&lt;a href=&quot;#暂停与恢复&quot; class=&quot;headerlink&quot; title=&quot;暂停与恢复&quot;&gt;&lt;/a&gt;暂停与恢复&lt;/h3&gt;&lt;p&gt;虚拟机在运行的时候会消耗你的电脑资源，比如内存，CPU 等等，在不用它的时候，可以关掉或者使用暂停，暂停虚拟机可以保存虚拟机运行时候的状态，暂停以后，除了占点硬盘空间以外，就不会消耗你的其它资源了。&lt;/p&gt;
-&lt;p&gt;进入到项目所在的目录，然后可以用 vagrant status 查看一下当前的虚拟机的状态，如果是 running ，你就可以使用命令去暂停一下：&lt;br&gt;[cce]vagrant suspend[/cce]&lt;br&gt;重新恢复起动，执行命令：&lt;br&gt;[cce]vagrant resume[/cce]&lt;br&gt;想要彻底关掉虚拟机的运行，执行：&lt;br&gt;[cce]vagrant halt[/cce]&lt;br&gt;停止以后，要想再起动虚拟机，要执行：&lt;br&gt;[cce]vagrant up[/cce]&lt;/p&gt;
-&lt;h3 id=&quot;删除虚拟机&quot;&gt;&lt;a href=&quot;#删除虚拟机&quot; class=&quot;headerlink&quot; title=&quot;删除虚拟机&quot;&gt;&lt;/a&gt;删除虚拟机&lt;/h3&gt;&lt;p&gt;不打算再用的虚拟机，可以把它删除掉，直接删除项目的目录是不行的，因为为项目指定的虚拟机并不包含在这个项目的目录下面，需要使用命令去删除虚拟机。进入到项目所在目录，然后执行：&lt;br&gt;[cce]vagrant destroy[/cce]&lt;/p&gt;
+&lt;h4 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;ssh```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;### 暂停与恢复&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;虚拟机在运行的时候会消耗你的电脑资源，比如内存，CPU 等等，在不用它的时候，可以关掉或者使用暂停，暂停虚拟机可以保存虚拟机运行时候的状态，暂停以后，除了占点硬盘空间以外，就不会消耗你的其它资源了。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;进入到项目所在的目录，然后可以用 vagrant status 查看一下当前的虚拟机的状态，如果是 running ，你就可以使用命令去暂停一下：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```vagrant suspend&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;重新恢复起动，执行命令：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;resume```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;想要彻底关掉虚拟机的运行，执行：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```vagrant halt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;停止以后，要想再起动虚拟机，要执行：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;up```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;### 删除虚拟机&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;不打算再用的虚拟机，可以把它删除掉，直接删除项目的目录是不行的，因为为项目指定的虚拟机并不包含在这个项目的目录下面，需要使用命令去删除虚拟机。进入到项目所在目录，然后执行：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```vagrant destroy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&quot;配置共享目录&quot;&gt;&lt;a href=&quot;#配置共享目录&quot; class=&quot;headerlink&quot; title=&quot;配置共享目录&quot;&gt;&lt;/a&gt;配置共享目录&lt;/h3&gt;&lt;p&gt;打开 Vagrantfile ，搜索一下共享目录的配置：&lt;br&gt;[cce]# config.vm.synced_folder[/cce]&lt;br&gt;去掉这行代码前面的 # 符号 。这个配置后面有两个参数，第一个参数是主机上的目录，可以使用绝对的位置，也可以使用相对的位置，如果是相对位置，是相对于项目根目录的位置，也就是相对于 Vagrantfile 这个文件所在的目录的位置。两个参数之间是一个逗号，第二个参数是在虚拟机上的目录，如果你设置的目录在虚拟机上不存在，Vagrant 在启动虚拟机的时候，会自动去创建这个目录。&lt;br&gt;比如：&lt;br&gt;[cce]config.vm.synced_folder “app”, “/vagrant”[/cce]&lt;/p&gt;
-&lt;h2 id=&quot;端口转发&quot;&gt;&lt;a href=&quot;#端口转发&quot; class=&quot;headerlink&quot; title=&quot;端口转发&quot;&gt;&lt;/a&gt;端口转发&lt;/h2&gt;&lt;p&gt;然后搜索：&lt;br&gt;[cce]&lt;/p&gt;
-&lt;h1 id=&quot;config-vm-network-“forwarded-port”-guest-80-host-8080-cce&quot;&gt;&lt;a href=&quot;#config-vm-network-“forwarded-port”-guest-80-host-8080-cce&quot; class=&quot;headerlink&quot; title=&quot;config.vm.network “forwarded_port”, guest: 80, host: 8080[/cce]&quot;&gt;&lt;/a&gt;config.vm.network “forwarded_port”, guest: 80, host: 8080[/cce]&lt;/h1&gt;&lt;p&gt;去掉这行代码最前面的 # 号， 这个配置就是端口转发&lt;/p&gt;
+&lt;h3 id=&quot;配置共享目录&quot;&gt;&lt;a href=&quot;#配置共享目录&quot; class=&quot;headerlink&quot; title=&quot;配置共享目录&quot;&gt;&lt;/a&gt;配置共享目录&lt;/h3&gt;&lt;p&gt;打开 Vagrantfile ，搜索一下共享目录的配置：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;config.vm.synced_folder```&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;去掉这行代码前面的 # 符号 。这个配置后面有两个参数，第一个参数是主机上的目录，可以使用绝对的位置，也可以使用相对的位置，如果是相对位置，是相对于项目根目录的位置，也就是相对于 Vagrantfile 这个文件所在的目录的位置。两个参数之间是一个逗号，第二个参数是在虚拟机上的目录，如果你设置的目录在虚拟机上不存在，Vagrant 在启动虚拟机的时候，会自动去创建这个目录。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;比如：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```config.vm.synced_folder &amp;quot;app&amp;quot;, &amp;quot;/vagrant&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;端口转发&quot;&gt;&lt;a href=&quot;#端口转发&quot; class=&quot;headerlink&quot; title=&quot;端口转发&quot;&gt;&lt;/a&gt;端口转发&lt;/h2&gt;&lt;p&gt;然后搜索：&lt;br&gt;&lt;code&gt;config.vm.network &amp;quot;forwarded_port&amp;quot;, guest: 80, host: 8080&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;去掉这行代码最前面的 # 号， 这个配置就是端口转发&lt;/p&gt;
+&lt;hr&gt;
 </content>
     
     <summary type="html">
@@ -257,102 +240,78 @@
   
   <entry>
     <title>由于自己的疏忽，一个低级的错误</title>
-    <link href="http://www.dyike.com/2015/09/19/%E8%AE%B0%E4%B8%80%E6%AC%A1%E9%94%99%E8%AF%AF/"/>
-    <id>http://www.dyike.com/2015/09/19/记一次错误/</id>
+    <link href="http://www.dyike.com/2015/09/19/about-an-error/"/>
+    <id>http://www.dyike.com/2015/09/19/about-an-error/</id>
     <published>2015-09-19T11:20:17.000Z</published>
-    <updated>2016-04-15T10:00:16.000Z</updated>
+    <updated>2016-04-28T07:29:19.000Z</updated>
     
-    <content type="html">&lt;p&gt;PHP中continue后面的分号，疏忽掉就会出现不一样的情况。&lt;br&gt;看一个简单的例子：&lt;br&gt;&lt;code&gt;&amp;lt;?php
-for ($i = 0; $i &amp;amp;lt; 5; ++$i) {
-if ($i == 2)
-continue;
-print &amp;quot;$i\n&amp;quot;;
-}
-?&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;这种情况输出的结果：&lt;br&gt;&lt;code&gt;0
-1
-3
-4&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;去掉分号后：&lt;br&gt;&lt;code&gt;&amp;lt;?php
-for ($i = 0; $i &amp;amp;lt; 5; ++$i) {
-if ($i == 2)
-continue
-print &amp;quot;$i\n&amp;quot;;
-}
-?&amp;gt;&lt;/code&gt;&lt;br&gt;在php5.4之前的版本输出的结果：&lt;br&gt;&lt;code&gt;2&lt;/code&gt;&lt;br&gt;因为整个 continue print “$i\n”; 被当做单一的表达式而求值，所以 print 函数只有在 $i == 2 为真时才被调用（print 的值被当成了上述的可选数字参数而传递给了 continue）。&lt;/p&gt;
+    <content type="html">&lt;p&gt;PHP中continue后面的分号，疏忽掉就会出现不一样的情况。&lt;br&gt;看一个简单的例子：&lt;br&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;lt;?php&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; ($i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; $i &amp;amp;lt; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;; ++$i) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ($i == &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;continue&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;$i\n&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这种情况输出的结果：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;去掉分号后：&lt;br&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;lt;?php&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; ($i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; $i &amp;amp;lt; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;; ++$i) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ($i == &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;continue&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;$i\n&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;在php5.4之前的版本输出的结果：&lt;br&gt;&lt;code&gt;2&lt;/code&gt;&lt;br&gt;因为整个 continue print “$i\n”; 被当做单一的表达式而求值，所以 print 函数只有在 $i == 2 为真时才被调用（print 的值被当成了上述的可选数字参数而传递给了 continue）。&lt;/p&gt;
 &lt;p&gt;还有重要的，在php5.4版本中，这个情况是不能输出结果的。&lt;br&gt;&lt;code&gt;5.4.0 continue 0; 不再合法。这在之前的版本被解析为 continue 1;。&lt;/code&gt;&lt;br&gt;&lt;code&gt;5.4.0 取消变量作为参数传递（例如 $num = 2; continue $num;）。&lt;/code&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;PHP中continue后面的分号，疏忽掉就会出现不一样的情况。&lt;br&gt;看一个简单的例子：&lt;br&gt;&lt;code&gt;&amp;lt;?php
-for ($i = 0; $i &amp;amp;lt; 5; ++$i) {
-if ($i == 2)
-continue;
-print &amp;quot;$i
+      &lt;p&gt;PHP中continue后面的分号，疏忽掉就会出现不一样的情况。&lt;br&gt;看一个简单的例子：&lt;br&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/s
     
     </summary>
     
     
-      <category term="PHP" scheme="http://www.dyike.com/tags/PHP/"/>
+      <category term="-PHP" scheme="http://www.dyike.com/tags/PHP/"/>
     
   </entry>
   
   <entry>
     <title>Centos7下配置nginx，mysql，php环境</title>
-    <link href="http://www.dyike.com/2015/09/16/Centos7%E4%B8%8B%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE/"/>
-    <id>http://www.dyike.com/2015/09/16/Centos7下开发环境的配置/</id>
+    <link href="http://www.dyike.com/2015/09/16/the-php-dev-in-centos7/"/>
+    <id>http://www.dyike.com/2015/09/16/the-php-dev-in-centos7/</id>
     <published>2015-09-16T12:56:59.000Z</published>
-    <updated>2016-04-15T08:45:13.000Z</updated>
+    <updated>2016-04-28T07:20:53.000Z</updated>
     
     <content type="html">&lt;p&gt;一、概述&lt;/p&gt;
 &lt;p&gt;今天在虚拟机上基于Centos安装配置了服务器运行环境，web服务用 nginx，数据库存储在 mysql（使用MariaDB）,动态脚本语言是 php。&lt;/p&gt;
 &lt;p&gt;二、步骤&lt;/p&gt;
 &lt;p&gt;首页保证 Centos7 已经安装完毕，正常运行。如果没有安装，请到官网下载（&lt;a href=&quot;http://www.centos.org/download/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.centos.org/download/&lt;/a&gt; ）。如何安装就不在这里赘述了。接下来分5步介绍nginx，mysql，php的安装和配置。&lt;/p&gt;
 &lt;p&gt;1.第一步:安装nginx&lt;br&gt;添加centos yum源。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm&lt;/code&gt;&lt;br&gt;安装nginx&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo yum install nginx&lt;/code&gt;&lt;br&gt;启动nginx服务&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo systemctl start nginx.service&lt;/code&gt;&lt;br&gt;访问ip地址，如出现Nginx欢迎页面，则说明nginx已经安装并正常运行。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;安装nginx&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo yum install nginx&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;启动nginx服务&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl start nginx.service&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;访问ip地址，如出现Nginx欢迎页面，则说明nginx已经安装并正常运行。&lt;/p&gt;
 &lt;p&gt;设置开机自动启动Nginx&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo systemctl enable nginx.service&lt;/code&gt;&lt;br&gt;2.第二步：安装mysql（用MariaDB）&lt;br&gt;MariaDB数据库管理系统是MySQL的一个分支，主要由开源社区在维护，采用GPL授权许可 MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl enable nginx.service&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2.第二步：安装mysql（用MariaDB）&lt;br&gt;MariaDB数据库管理系统是MySQL的一个分支，主要由开源社区在维护，采用GPL授权许可 MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。&lt;/p&gt;
 &lt;p&gt;安装MariaDB&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo yum install mariadb-server mariadb&lt;/code&gt;&lt;br&gt;开启MariaDB&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo systemctl start mariadb&lt;/code&gt;&lt;br&gt;在成功启动 MariaDB/MySQL 服务后，执行在 MariaDB/MySQL 服务包中的脚本。这一次的运行会为为数据库服务器进行一些安全强化措施，如设置（非空）的 root 密码、删除匿名用户、锁定远程访问。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo mysql_secure_installation&lt;/code&gt;&lt;br&gt;接下来在命令行会提示设置mysql用户名和密码，全选yes。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo yum install mariadb-server mariadb&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;开启MariaDB&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl start mariadb&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在成功启动 MariaDB/MySQL 服务后，执行在 MariaDB/MySQL 服务包中的脚本。这一次的运行会为为数据库服务器进行一些安全强化措施，如设置（非空）的 root 密码、删除匿名用户、锁定远程访问。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo mysql_secure_installation&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;接下来在命令行会提示设置mysql用户名和密码，全选yes。&lt;/p&gt;
 &lt;p&gt;设置开机自动重启mysql&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo systemctl enable mariadb.service&lt;/code&gt;&lt;br&gt;3.第三步，安装PHP&lt;br&gt;安装Php和php 扩展&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo yum install php php-mysql php-fpm php-mbstring php-gd php-pear php-mcrypt  php-mhash php-eaccelerator  php-cli php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc php-mssql php-snmp php-soap php-tidy php-common php-devel php-pecl-xdebug -y&lt;/code&gt;&lt;br&gt;编辑php配置文件&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo vi /etc/php.ini
-cgi.fix_pathinfo=0&lt;/code&gt;&lt;br&gt;设置php-fpm配置文件&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl enable mariadb.service&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;3.第三步，安装PHP&lt;br&gt;安装Php和php 扩展&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo yum install php php-mysql php-fpm php-mbstring php-gd php-pear php-mcrypt  php-mhash php-eaccelerator  php-cli php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc php-mssql php-snmp php-soap php-tidy php-common php-devel php-pecl-xdebug -y&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;编辑php配置文件&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo vi /etc/php.ini&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cgi.fix_pathinfo=0&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;设置php-fpm配置文件&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;sudo vi /etc/php-fpm.d/www.conf
 listen = /var/run/php-fpm/php-fpm.sock&lt;/code&gt;&lt;br&gt;启动php-fpm服务&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;sudo systemctl start php-fpm&lt;/code&gt;&lt;br&gt;设置开机自动重启php-fpm&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;sudo systemctl enable php-fpm.service&lt;/code&gt;&lt;br&gt;4.第四步：配置nginx站点&lt;br&gt;编辑站点配置文件&lt;/p&gt;
-&lt;p&gt;`sudo vi /etc/nginx/conf.d/default.conf&lt;br&gt;server {&lt;br&gt;    listen       80;&lt;br&gt;    server_name  locaihost;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;root   /opt/data;
-index index.php index.html index.htm;
-
-location / {
-    try_files $uri $uri/ =404;
-}
-error_page 404 /404.html;
-error_page 500 502 503 504 /50x.html;
-location = /50x.html {
-    root /usr/share/nginx/html;
-}
-
-location ~ \.php$ {
-    try_files $uri =404;
-    fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
-    fastcgi_index index.php;
-    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    include fastcgi_params;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;}`&lt;br&gt;重启nginx&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo systemctl restart nginx&lt;/code&gt;&lt;br&gt;5.第五步：测试php脚本web服务&lt;br&gt;编辑测试文件&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo vi /opt/data/info.php&lt;/code&gt;&lt;br&gt;访问页面,能看到php各种配置信息的话说明配置成功。&lt;br&gt;&lt;code&gt;http://192.168.33.10/info.php&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo vi /etc/nginx/conf.d/default.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    listen       80;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server_name  locaihost;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    root   /opt/data;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    index index.php index.html index.htm;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    location / &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        try_files $uri $uri/ =404;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    error_page 404 /404.html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    error_page 500 502 503 504 /50x.html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    location = /50x.html &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        root /usr/share/nginx/html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    location ~ \.php$ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        try_files $uri =404;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        fastcgi_index index.php;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        include fastcgi_params;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;重启nginx&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl restart nginx&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;5.第五步：测试php脚本web服务&lt;br&gt;编辑测试文件&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo vi /opt/data/info.php&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;访问页面,能看到php各种配置信息的话说明配置成功。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;http://192.168.33.10/info.php&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;删除测试文件&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo rm /opt/data/info.php&lt;/code&gt;&lt;br&gt;到此CentOS 7下nginx，mysql，php安装配置全部完成，可以作为web平台的应用环境使用&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo rm /opt/data/info.php&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;到此CentOS 7下nginx，mysql，php安装配置全部完成，可以作为web平台的应用环境使用&lt;/p&gt;
+&lt;hr&gt;
 </content>
     
     <summary type="html">
@@ -478,7 +437,7 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
     <link href="http://www.dyike.com/2015/08/04/%E4%B8%9A%E4%BD%99%E5%AD%A6%E4%B9%A0/"/>
     <id>http://www.dyike.com/2015/08/04/业余学习/</id>
     <published>2015-08-04T13:25:50.000Z</published>
-    <updated>2016-04-15T09:55:39.000Z</updated>
+    <updated>2016-04-28T07:15:22.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;转自2015-08-04-黑夜路人技术&quot;&gt;&lt;a href=&quot;#转自2015-08-04-黑夜路人技术&quot; class=&quot;headerlink&quot; title=&quot;转自2015-08-04 黑夜路人技术&quot;&gt;&lt;/a&gt;&lt;em&gt;转自2015-08-04&lt;/em&gt; 黑夜路人技术&lt;/h2&gt;&lt;p&gt;【今日话题】&lt;/p&gt;
 &lt;p&gt;业余时间大家是怎么充电？技术管理的进阶，有哪些方面的初和中级书籍，工具？技术思想怎么提升和实践？ - 马犇 星星bigxing&lt;/p&gt;
@@ -620,6 +579,8 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
     </summary>
     
     
+      <category term="分享" scheme="http://www.dyike.com/tags/%E5%88%86%E4%BA%AB/"/>
+    
   </entry>
   
   <entry>
@@ -738,7 +699,7 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
     <link href="http://www.dyike.com/2015/06/20/%E8%B0%88%E6%AF%95%E4%B8%9A%E6%84%9F%E6%83%B3/"/>
     <id>http://www.dyike.com/2015/06/20/谈毕业感想/</id>
     <published>2015-06-20T14:31:30.000Z</published>
-    <updated>2016-04-15T10:23:48.000Z</updated>
+    <updated>2016-04-28T07:15:40.000Z</updated>
     
     <content type="html">&lt;p&gt;前天看到一个新闻“2015年的高校毕业生将达到749万，留在一线城市的门槛提高了”，看到这个新闻后，我在想就业压力不能用“相当的大”来形容了，而是相当的严峻相当的严峻相当的严峻。&lt;/p&gt;
 &lt;p&gt;然后又想到了一年后现在的自己可能也会面临这样的问题，必须面临找工作。还记得之前看到过一个规定，就是说留京的应届本科毕业生不能超过24岁，研究生不超过27岁。卧槽，我毕业那年正好24岁，早知道当年不复读了。还记得当时把这个规定分享到微信朋友圈了，然后就有在下面评论说“少年，只要你是一个人才，年龄不是问题，得留住你在北京”。想想自己来到北京求学的这几年，确实看到了一些别人没看到的东西，回去了同学都说我接触的平台、看到的视野跟他们完全不一样。这点我确实也感受到了，每每这样想的时候，自己都很欣慰当年填报志愿的时候选择了北上广。当初对自己的目标就是我读大学就是要走出去看看，看看大城市究竟会有哪些不一样的。大城市，接触的人更多了，什么样的人都有，想要得到成长，需要跟各式各样的三教九流打交道。资源也丰富了，还记得当年刚来北京还办了张首都图书馆的会员卡，虽然没怎么借书，但是觉得只有大城市才会提供这么好的资源。机会相对来说多了，我这里说的是相对，其实竞争压力也是蛮大，因为比我优秀的人太多太多了，说白了自己就算个屁，有的时候连个屁都不算，那你还凭什么去跟别人竞争那一个机会呢？&lt;/p&gt;
@@ -759,6 +720,8 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
     
     </summary>
     
+    
+      <category term="随笔感想" scheme="http://www.dyike.com/tags/%E9%9A%8F%E7%AC%94%E6%84%9F%E6%83%B3/"/>
     
   </entry>
   
@@ -1243,8 +1206,8 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
   
   <entry>
     <title>PHPCon2015@北京站第一天简要概述</title>
-    <link href="http://www.dyike.com/2015/06/06/2015%E5%B9%B4phpconf/"/>
-    <id>http://www.dyike.com/2015/06/06/2015年phpconf/</id>
+    <link href="http://www.dyike.com/2015/06/06/2015-at-phpconf/"/>
+    <id>http://www.dyike.com/2015/06/06/2015-at-phpconf/</id>
     <published>2015-06-06T14:39:57.000Z</published>
     <updated>2016-04-15T08:48:07.000Z</updated>
     
@@ -1397,6 +1360,71 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
     
     
       <category term="支付功能" scheme="http://www.dyike.com/tags/%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>实用工具 &amp; 服务</title>
+    <link href="http://www.dyike.com/2015/05/13/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
+    <id>http://www.dyike.com/2015/05/13/实用工具/</id>
+    <published>2015-05-13T13:10:18.000Z</published>
+    <updated>2016-04-15T10:01:25.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;提供给-开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot;&gt;&lt;a href=&quot;#提供给-开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot; class=&quot;headerlink&quot; title=&quot;提供给 开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot;&gt;&lt;/a&gt;提供给 开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&lt;/h3&gt;&lt;p&gt;&lt;div class=&quot;wrapper&quot;&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div class=&quot;site&quot;&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div class=&quot;container&quot;&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div class=&quot;repository-with-sidebar repo-container new-discussion-timeline  &quot;&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div id=&quot;js-repo-pjax-container&quot; class=&quot;repository-content context-loader-container&quot; data-pjax-container=&quot;&quot;&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div class=&quot;file&quot;&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;div id=&quot;readme&quot; class=&quot;blob instapaper_body&quot;&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-www-testin-cn-免费移动App真机云测试平台&quot;&gt;&lt;a href=&quot;#http-www-testin-cn-免费移动App真机云测试平台&quot; class=&quot;headerlink&quot; title=&quot;http://www.testin.cn/ 免费移动App真机云测试平台&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.testin.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.testin.cn/&lt;/a&gt; 免费移动App真机云测试平台&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-www-mikecrm-com-免费的信息收集工具&quot;&gt;&lt;a href=&quot;#http-www-mikecrm-com-免费的信息收集工具&quot; class=&quot;headerlink&quot; title=&quot;http://www.mikecrm.com/ 免费的信息收集工具&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.mikecrm.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.mikecrm.com/&lt;/a&gt; 免费的信息收集工具&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;https-www-jinshuju-net-免费强大的表单设计、数据收集工具&quot;&gt;&lt;a href=&quot;#https-www-jinshuju-net-免费强大的表单设计、数据收集工具&quot; class=&quot;headerlink&quot; title=&quot;https://www.jinshuju.net/ 免费强大的表单设计、数据收集工具&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.jinshuju.net/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.jinshuju.net/&lt;/a&gt; 免费强大的表单设计、数据收集工具&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-mob-com-sms-免费的短信验证码SDK&quot;&gt;&lt;a href=&quot;#http-mob-com-sms-免费的短信验证码SDK&quot; class=&quot;headerlink&quot; title=&quot;http://mob.com/sms 免费的短信验证码SDK&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://mob.com/sms&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mob.com/sms&lt;/a&gt; 免费的短信验证码SDK&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;https-meiqia-com-美恰-实时在线的客户服务工具&quot;&gt;&lt;a href=&quot;#https-meiqia-com-美恰-实时在线的客户服务工具&quot; class=&quot;headerlink&quot; title=&quot;https://meiqia.com/ 美恰 实时在线的客户服务工具&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://meiqia.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://meiqia.com/&lt;/a&gt; 美恰 实时在线的客户服务工具&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-www-jiathis-com-JiaThis-社会化分享平台&quot;&gt;&lt;a href=&quot;#http-www-jiathis-com-JiaThis-社会化分享平台&quot; class=&quot;headerlink&quot; title=&quot;http://www.jiathis.com/ JiaThis 社会化分享平台&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.jiathis.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jiathis.com/&lt;/a&gt; JiaThis 社会化分享平台&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;https-trello-com-Trello-轻量级团队流程协作管理平台&quot;&gt;&lt;a href=&quot;#https-trello-com-Trello-轻量级团队流程协作管理平台&quot; class=&quot;headerlink&quot; title=&quot;https://trello.com/ Trello 轻量级团队流程协作管理平台&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://trello.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://trello.com/&lt;/a&gt; Trello 轻量级团队流程协作管理平台&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;https-modao-io-墨刀-免费在线原型工具&quot;&gt;&lt;a href=&quot;#https-modao-io-墨刀-免费在线原型工具&quot; class=&quot;headerlink&quot; title=&quot;https://modao.io/ 墨刀 免费在线原型工具&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://modao.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://modao.io/&lt;/a&gt; 墨刀 免费在线原型工具&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;https-popapp-in-POP-快速制作可交互纸面原型&quot;&gt;&lt;a href=&quot;#https-popapp-in-POP-快速制作可交互纸面原型&quot; class=&quot;headerlink&quot; title=&quot;https://popapp.in/ POP 快速制作可交互纸面原型&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://popapp.in/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://popapp.in/&lt;/a&gt; POP 快速制作可交互纸面原型&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-www-sojump-com-问卷星-免费调查问卷平台&quot;&gt;&lt;a href=&quot;#http-www-sojump-com-问卷星-免费调查问卷平台&quot; class=&quot;headerlink&quot; title=&quot;http://www.sojump.com/ 问卷星 免费调查问卷平台&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.sojump.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.sojump.com/&lt;/a&gt; 问卷星 免费调查问卷平台&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-fir-im-fir-IM-免费应用发布平台（android、iOS）&quot;&gt;&lt;a href=&quot;#http-fir-im-fir-IM-免费应用发布平台（android、iOS）&quot; class=&quot;headerlink&quot; title=&quot;http://fir.im/ fir.IM 免费应用发布平台（android、iOS）&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://fir.im/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://fir.im/&lt;/a&gt; fir.IM 免费应用发布平台（android、iOS）&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-www-cloud7-com-cn-云起-快速轻应用创建平台（微信公众号、百度直达号）&quot;&gt;&lt;a href=&quot;#http-www-cloud7-com-cn-云起-快速轻应用创建平台（微信公众号、百度直达号）&quot; class=&quot;headerlink&quot; title=&quot;http://www.cloud7.com.cn/ 云起 快速轻应用创建平台（微信公众号、百度直达号）&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.cloud7.com.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cloud7.com.cn/&lt;/a&gt; 云起 快速轻应用创建平台（微信公众号、百度直达号）&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-eqxiu-com-易企秀-免费移动场景应用制作&quot;&gt;&lt;a href=&quot;#http-eqxiu-com-易企秀-免费移动场景应用制作&quot; class=&quot;headerlink&quot; title=&quot;http://eqxiu.com/ 易企秀 免费移动场景应用制作&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://eqxiu.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://eqxiu.com/&lt;/a&gt; 易企秀 免费移动场景应用制作&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-youzan-com-有赞-免费微店、微商城，完整的微店商解决方案&quot;&gt;&lt;a href=&quot;#http-youzan-com-有赞-免费微店、微商城，完整的微店商解决方案&quot; class=&quot;headerlink&quot; title=&quot;http://youzan.com/ 有赞 免费微店、微商城，完整的微店商解决方案&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://youzan.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://youzan.com/&lt;/a&gt; 有赞 免费微店、微商城，完整的微店商解决方案&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-www-eteams-cn-团队、办公协作空间&quot;&gt;&lt;a href=&quot;#http-www-eteams-cn-团队、办公协作空间&quot; class=&quot;headerlink&quot; title=&quot;http://www.eteams.cn/团队、办公协作空间&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.eteams.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.eteams.cn/&lt;/a&gt;团队、办公协作空间&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-www-duiba-com-cn-兑吧-专业的积分兑换服务平台（提现、话费、抽奖、礼品）&quot;&gt;&lt;a href=&quot;#http-www-duiba-com-cn-兑吧-专业的积分兑换服务平台（提现、话费、抽奖、礼品）&quot; class=&quot;headerlink&quot; title=&quot;http://www.duiba.com.cn/ 兑吧 专业的积分兑换服务平台（提现、话费、抽奖、礼品）&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.duiba.com.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.duiba.com.cn/&lt;/a&gt; 兑吧 专业的积分兑换服务平台（提现、话费、抽奖、礼品）&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-www-easemob-com-环信-移动IM解决方案&quot;&gt;&lt;a href=&quot;#http-www-easemob-com-环信-移动IM解决方案&quot; class=&quot;headerlink&quot; title=&quot;http://www.easemob.com/ 环信 移动IM解决方案&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.easemob.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.easemob.com/&lt;/a&gt; 环信 移动IM解决方案&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;https-leancloud-cn-LeanCloud-应用开发一站式解决方案提供商：数据存储、用户管理、消息推送、应用统计、社交分享、实时聊天等服务&quot;&gt;&lt;a href=&quot;#https-leancloud-cn-LeanCloud-应用开发一站式解决方案提供商：数据存储、用户管理、消息推送、应用统计、社交分享、实时聊天等服务&quot; class=&quot;headerlink&quot; title=&quot;https://leancloud.cn/ LeanCloud 应用开发一站式解决方案提供商：数据存储、用户管理、消息推送、应用统计、社交分享、实时聊天等服务&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leancloud.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://leancloud.cn/&lt;/a&gt; LeanCloud 应用开发一站式解决方案提供商：数据存储、用户管理、消息推送、应用统计、社交分享、实时聊天等服务&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-www-rongcloud-cn-融云-专注为开发者提供-IM-云服务&quot;&gt;&lt;a href=&quot;#http-www-rongcloud-cn-融云-专注为开发者提供-IM-云服务&quot; class=&quot;headerlink&quot; title=&quot;http://www.rongcloud.cn/ 融云 专注为开发者提供 IM 云服务&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.rongcloud.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.rongcloud.cn/&lt;/a&gt; 融云 专注为开发者提供 IM 云服务&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-chuye-cloud7-com-cn-初页-微信H5海报创作神器&quot;&gt;&lt;a href=&quot;#http-chuye-cloud7-com-cn-初页-微信H5海报创作神器&quot; class=&quot;headerlink&quot; title=&quot;http://chuye.cloud7.com.cn/ 初页 微信H5海报创作神器&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://chuye.cloud7.com.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://chuye.cloud7.com.cn/&lt;/a&gt; 初页 微信H5海报创作神器&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-weixin-drip-im-水滴-轻巧、智能的微信公众号管理平台&quot;&gt;&lt;a href=&quot;#http-weixin-drip-im-水滴-轻巧、智能的微信公众号管理平台&quot; class=&quot;headerlink&quot; title=&quot;http://weixin.drip.im/ 水滴 轻巧、智能的微信公众号管理平台&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://weixin.drip.im/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://weixin.drip.im/&lt;/a&gt; 水滴 轻巧、智能的微信公众号管理平台&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-xiumi-us-秀米-微信公众号排版利器&quot;&gt;&lt;a href=&quot;#http-xiumi-us-秀米-微信公众号排版利器&quot; class=&quot;headerlink&quot; title=&quot;http://xiumi.us/ 秀米 微信公众号排版利器&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://xiumi.us/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xiumi.us/&lt;/a&gt; 秀米 微信公众号排版利器&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;https-tower-im-网上办公室：管理项目和团队&quot;&gt;&lt;a href=&quot;#https-tower-im-网上办公室：管理项目和团队&quot; class=&quot;headerlink&quot; title=&quot;https://tower.im/ 网上办公室：管理项目和团队&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://tower.im/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://tower.im/&lt;/a&gt; 网上办公室：管理项目和团队&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-next-36kr-com-发现热门APP&quot;&gt;&lt;a href=&quot;#http-next-36kr-com-发现热门APP&quot; class=&quot;headerlink&quot; title=&quot;http://next.36kr.com/ 发现热门APP&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://next.36kr.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://next.36kr.com/&lt;/a&gt; 发现热门APP&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-www-qiniu-com-七牛-提供云存储服务、分发加速、数据处理等服务&quot;&gt;&lt;a href=&quot;#http-www-qiniu-com-七牛-提供云存储服务、分发加速、数据处理等服务&quot; class=&quot;headerlink&quot; title=&quot;http://www.qiniu.com/ 七牛 提供云存储服务、分发加速、数据处理等服务&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.qiniu.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.qiniu.com/&lt;/a&gt; 七牛 提供云存储服务、分发加速、数据处理等服务&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-www-devstore-cn-移动互联网运营解决方案整合平台&quot;&gt;&lt;a href=&quot;#http-www-devstore-cn-移动互联网运营解决方案整合平台&quot; class=&quot;headerlink&quot; title=&quot;http://www.devstore.cn/ 移动互联网运营解决方案整合平台&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.devstore.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.devstore.cn/&lt;/a&gt; 移动互联网运营解决方案整合平台&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;https-www-teambition-com-简单、高效的项目协作工具&quot;&gt;&lt;a href=&quot;#https-www-teambition-com-简单、高效的项目协作工具&quot; class=&quot;headerlink&quot; title=&quot;https://www.teambition.com/ 简单、高效的项目协作工具&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.teambition.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.teambition.com/&lt;/a&gt; 简单、高效的项目协作工具&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-www-apicloud-com-“云端一体”的移动应用云服务提供商&quot;&gt;&lt;a href=&quot;#http-www-apicloud-com-“云端一体”的移动应用云服务提供商&quot; class=&quot;headerlink&quot; title=&quot;http://www.apicloud.com/ “云端一体”的移动应用云服务提供商&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.apicloud.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.apicloud.com/&lt;/a&gt; “云端一体”的移动应用云服务提供商&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-www-getui-com-个推-手机消息推送解决方案提供商&quot;&gt;&lt;a href=&quot;#http-www-getui-com-个推-手机消息推送解决方案提供商&quot; class=&quot;headerlink&quot; title=&quot;http://www.getui.com/ 个推 手机消息推送解决方案提供商&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.getui.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.getui.com/&lt;/a&gt; 个推 手机消息推送解决方案提供商&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;https-pingxx-com-Ping-是为移动端量身打造的下一代支付系统，简单接入，多种支付渠道。&quot;&gt;&lt;a href=&quot;#https-pingxx-com-Ping-是为移动端量身打造的下一代支付系统，简单接入，多种支付渠道。&quot; class=&quot;headerlink&quot; title=&quot;https://pingxx.com/ Ping++是为移动端量身打造的下一代支付系统，简单接入，多种支付渠道。&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://pingxx.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://pingxx.com/&lt;/a&gt; Ping++是为移动端量身打造的下一代支付系统，简单接入，多种支付渠道。&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-apistore-baidu-com-为开发者提供最全面的API服务&quot;&gt;&lt;a href=&quot;#http-apistore-baidu-com-为开发者提供最全面的API服务&quot; class=&quot;headerlink&quot; title=&quot;http://apistore.baidu.com/ 为开发者提供最全面的API服务&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://apistore.baidu.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://apistore.baidu.com/&lt;/a&gt; 为开发者提供最全面的API服务&lt;/h3&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;###&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-samllpdf-com-cn-针对PDF问题解决方案&quot;&gt;&lt;a href=&quot;#http-samllpdf-com-cn-针对PDF问题解决方案&quot; class=&quot;headerlink&quot; title=&quot;http://samllpdf.com/cn/ 针对PDF问题解决方案&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://samllpdf.com/cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://samllpdf.com/cn/&lt;/a&gt; 针对PDF问题解决方案&lt;/h3&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;提供给-开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot;&gt;&lt;a href=&quot;#提供给-开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot; class=&quot;headerlink&quot; title=&quot;提供给 开发
+    
+    </summary>
+    
+    
+      <category term="PM 创业者 工具 服务 我的收藏" scheme="http://www.dyike.com/tags/PM-%E5%88%9B%E4%B8%9A%E8%80%85-%E5%B7%A5%E5%85%B7-%E6%9C%8D%E5%8A%A1-%E6%88%91%E7%9A%84%E6%94%B6%E8%97%8F/"/>
     
   </entry>
   

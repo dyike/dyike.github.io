@@ -12,13 +12,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[为什么要到hexo上搭建一个blog]]></title>
-      <url>http://www.dyike.com/2016/04/15/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%B0hexo%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAblog/</url>
-      <content type="html"><![CDATA[<p>以前的博客主要是用wordpress搭建的，用的服务器还是windows serve的服务器，说起来真的不好用，自从自己接触了开发，就慢慢的告别了windows系统，转向linux，OS X。久而久之就不想用wp来写文章，还有一个原因就是wp过于臃肿，还有很多插件压根就用不上，感觉这是一种资源的浪费，所以就放弃了，今后还是专心博客的内容。</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[解决ssh的连接中断的问题"']]></title>
       <url>http://www.dyike.com/2016/03/08/%E8%A7%A3%E5%86%B3ssh%E8%BF%9E%E6%8E%A5%E4%B8%AD%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98/</url>
       <content type="html"><![CDATA[<p><strong>问题场景</strong></p>
@@ -110,113 +103,93 @@
     
     <entry>
       <title><![CDATA[用 Vagrant 管理虚拟机]]></title>
-      <url>http://www.dyike.com/2015/09/20/Vagrant%E7%AE%A1%E7%90%86%E8%99%9A%E6%8B%9F%E6%9C%BA/</url>
+      <url>http://www.dyike.com/2015/09/20/manage-virtualbox-by-vagrant/</url>
       <content type="html"><![CDATA[<p>Vagrant 可以让我们用命令直接从云上下载虚拟机的镜像，你想要什么系统都行，Centos，Ubuntu …   只需要一行命令，然后再用命令去操作虚拟机，启动，暂停，关闭，重启，你可以更方便的管理所有的在本地上电脑上的虚拟机镜像，手工去配置它们，可以再重新打包成新的镜像，方便你跟你的团队在其它的项目上重复使用。</p>
 <h2 id="安装-Vagrant"><a href="#安装-Vagrant" class="headerlink" title="安装 Vagrant"></a>安装 Vagrant</h2><p>Vagrant 提供了一个虚拟机的管理层，虚拟机本身还是需要用到虚拟机的软件，比如 VMware，Virtualbox 等等，推荐用 Virtualbox 。使用系统的包管理工具去安装软件。</p>
 <p>###</p>
-<h3 id="Mac-上安装-Vagrant"><a href="#Mac-上安装-Vagrant" class="headerlink" title="Mac 上安装 Vagrant"></a>Mac 上安装 Vagrant</h3><p>[cce]brew install vagrant[/cce]</p>
-<h3 id="Mac-上安装-Virtualbox"><a href="#Mac-上安装-Virtualbox" class="headerlink" title="Mac 上安装 Virtualbox"></a>Mac 上安装 Virtualbox</h3><p>[cce]brew install Caskroom/cask/virtualbox[/cce]</p>
+<h3 id="Mac-上安装-Vagrant"><a href="#Mac-上安装-Vagrant" class="headerlink" title="Mac 上安装 Vagrant"></a>Mac 上安装 Vagrant</h3><figure class="highlight plain"><figcaption><span>install vagrant```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### Mac 上安装 Virtualbox</span><br><span class="line"></span><br><span class="line">```brew install Caskroom/cask/virtualbox</span><br></pre></td></tr></table></figure>
 <h2 id="Box"><a href="#Box" class="headerlink" title="Box"></a>Box</h2><p>Box ，你可以把它想成是一个箱子，里面装了一些东西。在用 Vagrant 创建虚拟机的时候，需要用到 Box ，它里面会包装操作系统的镜像，不同的 Box 带的操作系统可能是不一样的，比如 CentOS，Ubuntu 等等，你可以基于它们去创建自己版本的 Box，比如在虚拟机上安装一些软件，然后把它重新打包成 Box 。</p>
 <p>在 Vagrant 提供的云服务（<a href="https://vagrantcloud.com/" target="_blank" rel="external">https://vagrantcloud.com/</a>）上面可以下载到别人做好的 Box，这个云服务现在叫 Atlas，是 hashicorp 公司的一个产品，Vagrant 也是这家公司的项目。打开这个地址以后，可以去搜索想要用的 Box，可以搜索操作系统的名字，也可以搜索特定的软件的名字，比如 Laravel，Drupal …    在搜索结果上面会显示这个 Box 的下载的次数，你可以用来判断这个 Box 是否受欢迎。</p>
 <p>我们需要一个纯净的 Box，就是只包含操作系统，在系统上没有安装其它的多余的东西。注意不同发行版的 Linux 操作起来是有些区别的，我推荐先用一下 CentOS 这款操作系统。</p>
-<h3 id="添加-Box"><a href="#添加-Box" class="headerlink" title="添加 Box"></a>添加 Box</h3><p>你要把 Box 下载到本地的电脑上，交给 Vagrant 去管理，这样在创建虚拟机的时候，Vagrant 会复制一份你指定的 Box 到你的项目里面，这样你在这个虚拟机上的操作，就不会影响到其它的项目。先确定你用的电脑上的操作系统的位数，现在一般都是 64 位的操作系统。打开命令行工具以后，执行 vagrant box add 命令去添加 Box 。<br>[cce]vagrant box add 名字[/cce]<br>如果你指定的 Box 在本地电脑上不存在，Vagrant 就会到它的云上去给你下载。执行：<br>[cce]vagrant box add chef/centos-6.5[/cce]<br>上面的 chef/centos-6.5 还有 centos-6.5-i386 就是想要添加的 Box 的名字，最前面的 chef  ，是一个命名空间，一般就是这个 Box 的作者的名字，后面的 centos-6.5 表示这个 Box 的操作系统是 CentOS ，版本是 6.5 ，i386 表示 32 位的系统。</p>
-<h3 id="查看本地上的-Box-列表"><a href="#查看本地上的-Box-列表" class="headerlink" title="查看本地上的 Box 列表"></a>查看本地上的 Box 列表</h3><p>完成以后，可以查看一下在本地上的 Box 列表。<br>[cce]vagrant box list[/cce]</p>
-<h3 id="手工下载并添加-Box-的方法"><a href="#手工下载并添加-Box-的方法" class="headerlink" title="手工下载并添加 Box 的方法"></a>手工下载并添加 Box 的方法</h3><p>在执行 Vagrant box add 添加 Box 的时候，Vagrant 会在命令行上显示 Box 的下载地址，下载的速度还有进度，如果你在国内，很可能下载的速度非常慢。你可以复制 Box 的下载地址，然后用下载工具，比如用迅雷去下载。</p>
-<p>完成以后，找到下载下来的文件，文件名里会包含 .box 这个扩展名，如果不是，你需要手工添加这个扩展名。并且重命名一下文件，比如命名为 centos_6.5.box 。然后把它放到桌面上，其它地方也行。打开命令行，进入到手工下面的 Box 文件所在的位置。比如<br>[cce]cd ~/ityike[/cce]<br>然后查看一下文件列表：<br>[cce]ls[/cce]<br>确定 Box 文件在当前的目录的下面，再执行 vagrant box add 命令去手工添加 Box 。<br>[cce]vagrant box add 名称 路径[/cce]<br>名称就是你想给这个 Box 起的名字，以后我们会用到这个名字去管理这个 Box，路径是 Box 文件所在的位置，如果你要添加的 Box 直接在你当前所在的目录的下面，可以直接使用 Box 文件的名称，像这样：<br>[cce]vagrant box add centos-6.5 centos-6.5.box[/cce]<br>Vagrant 会把 Box 文件复制到系统的某个特定的目录的下面，完成以后，你就可以把桌面上的 Box 文件删除掉了。<br>[cce]rm centos-6.5.box[/cce]<br>再查看一下可用的 Box 列表：<br>[cce]vagrant box list[/cce]<br>在返回的列表里，你应该可以找到自己手工添加的 centos-6.5 这个 Box 。</p>
-<h3 id="管理-Box"><a href="#管理-Box" class="headerlink" title="管理 Box"></a>管理 Box</h3><p>添加到本地电脑上的 Box 会放到一个特定的目录的下面。跟 Box 相关的命令，可以用 vagrant box 命令查看。使用的方法就是 vagrant box 后面再加上子相应的子命令，接着是对应的参数。常用的就是 add ，list 还有 remove。add 是添加新的 Box ，list 可以查看已有的 Box ，remove 就是从系统中删除掉 Box 。注意在创建虚拟机的时候，Vagrant 会把你指定的 Box 复制一份放到特定的目录的下面。所以，你在使用 remove 命令删除掉添加到系统中的 Box 的时候，不会影响到这些已有的虚拟机。</p>
-<h2 id="创建虚拟机"><a href="#创建虚拟机" class="headerlink" title="创建虚拟机"></a>创建虚拟机</h2><p>添加了 Box 以后，我们就可以用 Vagrant 基于这个 Box 去创建虚拟机了。先找个地方去创建一个目录，这个目录就是你的项目所在的目录，它会自动跟虚拟机上的某个目录同步，也就是在你电脑上的这个目录里面的文件，你同样可以在虚拟机里的某个目录里面找到。比如我要在桌面上创建一个叫 ninghao-project 的目录，然后再进入到这个目录，在命令行工具下面执行：<br>[cce]<br>cd ~/ityike<br>mkdir ityike-project<br>cd ityike-project<br>[/cce]</p>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>首先要做的就是初始化一下，用 vagrant init ，后面指定一下要使用的 Box 的名字。完成以后，在你的目录下面创建一个叫 Vagrantfile 的文件。</p>
-<p>先查看一下可用的 Box<br>[cce]vagrant box list[/cce]<br>如果跟着我的步骤来，你应该可以看到一个叫 centos-6.5 的 Box 。下面我们用这个 Box 去初始化一下项目。<br>[cce]vagrant init centos-6.5[/cce]<br>完成以后，查看一下当前目录下面的东西。<br>[cce]ls[/cce]<br>你会看到一个 Vagrantfile 文件，这个文件是配置当前项目的虚拟机用的，以后我们会再回来看一下怎么样使用这个文件。</p>
-<h3 id="启动虚拟机"><a href="#启动虚拟机" class="headerlink" title="启动虚拟机"></a>启动虚拟机</h3><p>Vagrant 提供了一些命令可以操作虚拟机，比如启动，暂停，关闭或者销毁虚拟机。启动虚拟机，执行：<br>[cce]vagrant up[/cce]</p>
-<p><pre><span style="font-family: Georgia, 'Times New Roman', 'Bitstream Charter', Times, serif; line-height: 1.5;">第一次启动，花的时间会长一些，因为 Vagrant 会把你为项目指定的 Box 复制到一个地方，然后再去启动它。完成以后，你可以用命令再查看一下虚拟机的状态：</span></pre><br>[cce]vagrant status[/cce]<br>如果返回的是 running ，说明虚拟机启动成功，现在你就可以使用 ssh 连接到虚拟机，去控制它了。</p>
+<h3 id="添加-Box"><a href="#添加-Box" class="headerlink" title="添加 Box"></a>添加 Box</h3><p>你要把 Box 下载到本地的电脑上，交给 Vagrant 去管理，这样在创建虚拟机的时候，Vagrant 会复制一份你指定的 Box 到你的项目里面，这样你在这个虚拟机上的操作，就不会影响到其它的项目。先确定你用的电脑上的操作系统的位数，现在一般都是 64 位的操作系统。打开命令行工具以后，执行 vagrant box add 命令去添加 Box 。<br><figure class="highlight plain"><figcaption><span>box add 名字```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果你指定的 Box 在本地电脑上不存在，Vagrant 就会到它的云上去给你下载。执行：</span><br><span class="line">```vagrant box add chef/centos-6.5</span><br></pre></td></tr></table></figure></p>
+<p>上面的 chef/centos-6.5 还有 centos-6.5-i386 就是想要添加的 Box 的名字，最前面的 chef  ，是一个命名空间，一般就是这个 Box 的作者的名字，后面的 centos-6.5 表示这个 Box 的操作系统是 CentOS ，版本是 6.5 ，i386 表示 32 位的系统。</p>
+<h3 id="查看本地上的-Box-列表"><a href="#查看本地上的-Box-列表" class="headerlink" title="查看本地上的 Box 列表"></a>查看本地上的 Box 列表</h3><p>完成以后，可以查看一下在本地上的 Box 列表。<br><figure class="highlight plain"><figcaption><span>box list```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 手工下载并添加 Box 的方法</span><br><span class="line"></span><br><span class="line">在执行 Vagrant box add 添加 Box 的时候，Vagrant 会在命令行上显示 Box 的下载地址，下载的速度还有进度，如果你在国内，很可能下载的速度非常慢。你可以复制 Box 的下载地址，然后用下载工具，比如用迅雷去下载。</span><br><span class="line"></span><br><span class="line">完成以后，找到下载下来的文件，文件名里会包含 .box 这个扩展名，如果不是，你需要手工添加这个扩展名。并且重命名一下文件，比如命名为 centos_6.5.box 。然后把它放到桌面上，其它地方也行。打开命令行，进入到手工下面的 Box 文件所在的位置。比如</span><br><span class="line">```cd ~/ityike</span><br></pre></td></tr></table></figure></p>
+<p>然后查看一下文件列表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">确定 Box 文件在当前的目录的下面，再执行 vagrant box add 命令去手工添加 Box 。</span><br><span class="line">```vagrant box add 名称 路径</span><br></pre></td></tr></table></figure></p>
+<p>名称就是你想给这个 Box 起的名字，以后我们会用到这个名字去管理这个 Box，路径是 Box 文件所在的位置，如果你要添加的 Box 直接在你当前所在的目录的下面，可以直接使用 Box 文件的名称，像这样：<br><figure class="highlight plain"><figcaption><span>box add centos-6.5 centos-6.5.box```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Vagrant 会把 Box 文件复制到系统的某个特定的目录的下面，完成以后，你就可以把桌面上的 Box 文件删除掉了。</span><br><span class="line">```rm centos-6.5.box</span><br></pre></td></tr></table></figure></p>
+<p>再查看一下可用的 Box 列表：<br><figure class="highlight plain"><figcaption><span>box list```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">在返回的列表里，你应该可以找到自己手工添加的 centos-6.5 这个 Box 。</span><br><span class="line"></span><br><span class="line">### 管理 Box</span><br><span class="line"></span><br><span class="line">添加到本地电脑上的 Box 会放到一个特定的目录的下面。跟 Box 相关的命令，可以用 vagrant box 命令查看。使用的方法就是 vagrant box 后面再加上子相应的子命令，接着是对应的参数。常用的就是 add ，list 还有 remove。add 是添加新的 Box ，list 可以查看已有的 Box ，remove 就是从系统中删除掉 Box 。注意在创建虚拟机的时候，Vagrant 会把你指定的 Box 复制一份放到特定的目录的下面。所以，你在使用 remove 命令删除掉添加到系统中的 Box 的时候，不会影响到这些已有的虚拟机。</span><br><span class="line"></span><br><span class="line">## 创建虚拟机</span><br><span class="line"></span><br><span class="line">添加了 Box 以后，我们就可以用 Vagrant 基于这个 Box 去创建虚拟机了。先找个地方去创建一个目录，这个目录就是你的项目所在的目录，它会自动跟虚拟机上的某个目录同步，也就是在你电脑上的这个目录里面的文件，你同样可以在虚拟机里的某个目录里面找到。比如我要在桌面上创建一个叫 ninghao-project 的目录，然后再进入到这个目录，在命令行工具下面执行：</span><br></pre></td></tr></table></figure></p>
+<p>cd ~/ityike<br>mkdir ityike-project<br>cd ityike-project<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### 初始化</span><br><span class="line"></span><br><span class="line">首先要做的就是初始化一下，用 vagrant init ，后面指定一下要使用的 Box 的名字。完成以后，在你的目录下面创建一个叫 Vagrantfile 的文件。</span><br><span class="line"></span><br><span class="line">先查看一下可用的 Box</span><br><span class="line">```vagrant box list</span><br></pre></td></tr></table></figure></p>
+<p>如果跟着我的步骤来，你应该可以看到一个叫 centos-6.5 的 Box 。下面我们用这个 Box 去初始化一下项目。<br><figure class="highlight plain"><figcaption><span>init centos-6.5```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">完成以后，查看一下当前目录下面的东西。</span><br><span class="line">```ls</span><br></pre></td></tr></table></figure></p>
+<p>你会看到一个 Vagrantfile 文件，这个文件是配置当前项目的虚拟机用的，以后我们会再回来看一下怎么样使用这个文件。</p>
+<h3 id="启动虚拟机"><a href="#启动虚拟机" class="headerlink" title="启动虚拟机"></a>启动虚拟机</h3><p>Vagrant 提供了一些命令可以操作虚拟机，比如启动，暂停，关闭或者销毁虚拟机。启动虚拟机，执行：<br><figure class="highlight plain"><figcaption><span>up```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">第一次启动，花的时间会长一些，因为 Vagrant 会把你为项目指定的 Box 复制到一个地方，然后再去启动它。完成以后，你可以用命令再查看一下虚拟机的状态：</span><br><span class="line"></span><br><span class="line">```vagrant status</span><br></pre></td></tr></table></figure></p>
+<p>如果返回的是 running ，说明虚拟机启动成功，现在你就可以使用 ssh 连接到虚拟机，去控制它了。</p>
 <h3 id="控制虚拟机"><a href="#控制虚拟机" class="headerlink" title="控制虚拟机"></a>控制虚拟机</h3><p>想在 Linux 系统的虚拟机上进行操作，你要用 ssh 连接到虚拟机，这跟你远程控制 Linux 的服务器是一样的。</p>
-<h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><p>[cce]vagrant ssh[/cce]</p>
-<h3 id="暂停与恢复"><a href="#暂停与恢复" class="headerlink" title="暂停与恢复"></a>暂停与恢复</h3><p>虚拟机在运行的时候会消耗你的电脑资源，比如内存，CPU 等等，在不用它的时候，可以关掉或者使用暂停，暂停虚拟机可以保存虚拟机运行时候的状态，暂停以后，除了占点硬盘空间以外，就不会消耗你的其它资源了。</p>
-<p>进入到项目所在的目录，然后可以用 vagrant status 查看一下当前的虚拟机的状态，如果是 running ，你就可以使用命令去暂停一下：<br>[cce]vagrant suspend[/cce]<br>重新恢复起动，执行命令：<br>[cce]vagrant resume[/cce]<br>想要彻底关掉虚拟机的运行，执行：<br>[cce]vagrant halt[/cce]<br>停止以后，要想再起动虚拟机，要执行：<br>[cce]vagrant up[/cce]</p>
-<h3 id="删除虚拟机"><a href="#删除虚拟机" class="headerlink" title="删除虚拟机"></a>删除虚拟机</h3><p>不打算再用的虚拟机，可以把它删除掉，直接删除项目的目录是不行的，因为为项目指定的虚拟机并不包含在这个项目的目录下面，需要使用命令去删除虚拟机。进入到项目所在目录，然后执行：<br>[cce]vagrant destroy[/cce]</p>
+<h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><figure class="highlight plain"><figcaption><span>ssh```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 暂停与恢复</span><br><span class="line"></span><br><span class="line">虚拟机在运行的时候会消耗你的电脑资源，比如内存，CPU 等等，在不用它的时候，可以关掉或者使用暂停，暂停虚拟机可以保存虚拟机运行时候的状态，暂停以后，除了占点硬盘空间以外，就不会消耗你的其它资源了。</span><br><span class="line"></span><br><span class="line">进入到项目所在的目录，然后可以用 vagrant status 查看一下当前的虚拟机的状态，如果是 running ，你就可以使用命令去暂停一下：</span><br><span class="line">```vagrant suspend</span><br></pre></td></tr></table></figure>
+<p>重新恢复起动，执行命令：<br><figure class="highlight plain"><figcaption><span>resume```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">想要彻底关掉虚拟机的运行，执行：</span><br><span class="line">```vagrant halt</span><br></pre></td></tr></table></figure></p>
+<p>停止以后，要想再起动虚拟机，要执行：<br><figure class="highlight plain"><figcaption><span>up```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 删除虚拟机</span><br><span class="line"></span><br><span class="line">不打算再用的虚拟机，可以把它删除掉，直接删除项目的目录是不行的，因为为项目指定的虚拟机并不包含在这个项目的目录下面，需要使用命令去删除虚拟机。进入到项目所在目录，然后执行：</span><br><span class="line">```vagrant destroy</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="配置共享目录"><a href="#配置共享目录" class="headerlink" title="配置共享目录"></a>配置共享目录</h3><p>打开 Vagrantfile ，搜索一下共享目录的配置：<br>[cce]# config.vm.synced_folder[/cce]<br>去掉这行代码前面的 # 符号 。这个配置后面有两个参数，第一个参数是主机上的目录，可以使用绝对的位置，也可以使用相对的位置，如果是相对位置，是相对于项目根目录的位置，也就是相对于 Vagrantfile 这个文件所在的目录的位置。两个参数之间是一个逗号，第二个参数是在虚拟机上的目录，如果你设置的目录在虚拟机上不存在，Vagrant 在启动虚拟机的时候，会自动去创建这个目录。<br>比如：<br>[cce]config.vm.synced_folder “app”, “/vagrant”[/cce]</p>
-<h2 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h2><p>然后搜索：<br>[cce]</p>
-<h1 id="config-vm-network-“forwarded-port”-guest-80-host-8080-cce"><a href="#config-vm-network-“forwarded-port”-guest-80-host-8080-cce" class="headerlink" title="config.vm.network “forwarded_port”, guest: 80, host: 8080[/cce]"></a>config.vm.network “forwarded_port”, guest: 80, host: 8080[/cce]</h1><p>去掉这行代码最前面的 # 号， 这个配置就是端口转发</p>
+<h3 id="配置共享目录"><a href="#配置共享目录" class="headerlink" title="配置共享目录"></a>配置共享目录</h3><p>打开 Vagrantfile ，搜索一下共享目录的配置：<br><figure class="highlight plain"><figcaption><span>config.vm.synced_folder```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">去掉这行代码前面的 # 符号 。这个配置后面有两个参数，第一个参数是主机上的目录，可以使用绝对的位置，也可以使用相对的位置，如果是相对位置，是相对于项目根目录的位置，也就是相对于 Vagrantfile 这个文件所在的目录的位置。两个参数之间是一个逗号，第二个参数是在虚拟机上的目录，如果你设置的目录在虚拟机上不存在，Vagrant 在启动虚拟机的时候，会自动去创建这个目录。</span><br><span class="line">比如：</span><br><span class="line">```config.vm.synced_folder &quot;app&quot;, &quot;/vagrant&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h2><p>然后搜索：<br><code>config.vm.network &quot;forwarded_port&quot;, guest: 80, host: 8080</code></p>
+<p>去掉这行代码最前面的 # 号， 这个配置就是端口转发</p>
+<hr>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[由于自己的疏忽，一个低级的错误]]></title>
-      <url>http://www.dyike.com/2015/09/19/%E8%AE%B0%E4%B8%80%E6%AC%A1%E9%94%99%E8%AF%AF/</url>
-      <content type="html"><![CDATA[<p>PHP中continue后面的分号，疏忽掉就会出现不一样的情况。<br>看一个简单的例子：<br><code>&lt;?php
-for ($i = 0; $i &amp;lt; 5; ++$i) {
-if ($i == 2)
-continue;
-print &quot;$i\n&quot;;
-}
-?&gt;</code></p>
-<p>这种情况输出的结果：<br><code>0
-1
-3
-4</code></p>
-<p>去掉分号后：<br><code>&lt;?php
-for ($i = 0; $i &amp;lt; 5; ++$i) {
-if ($i == 2)
-continue
-print &quot;$i\n&quot;;
-}
-?&gt;</code><br>在php5.4之前的版本输出的结果：<br><code>2</code><br>因为整个 continue print “$i\n”; 被当做单一的表达式而求值，所以 print 函数只有在 $i == 2 为真时才被调用（print 的值被当成了上述的可选数字参数而传递给了 continue）。</p>
+      <url>http://www.dyike.com/2015/09/19/about-an-error/</url>
+      <content type="html"><![CDATA[<p>PHP中continue后面的分号，疏忽掉就会出现不一样的情况。<br>看一个简单的例子：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">for</span> ($i = <span class="number">0</span>; $i &amp;lt; <span class="number">5</span>; ++$i) &#123;</span><br><span class="line"><span class="keyword">if</span> ($i == <span class="number">2</span>)</span><br><span class="line"><span class="keyword">continue</span>;</span><br><span class="line"><span class="keyword">print</span> <span class="string">"$i\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这种情况输出的结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure></p>
+<p>去掉分号后：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">for</span> ($i = <span class="number">0</span>; $i &amp;lt; <span class="number">5</span>; ++$i) &#123;</span><br><span class="line"><span class="keyword">if</span> ($i == <span class="number">2</span>)</span><br><span class="line"><span class="keyword">continue</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"$i\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在php5.4之前的版本输出的结果：<br><code>2</code><br>因为整个 continue print “$i\n”; 被当做单一的表达式而求值，所以 print 函数只有在 $i == 2 为真时才被调用（print 的值被当成了上述的可选数字参数而传递给了 continue）。</p>
 <p>还有重要的，在php5.4版本中，这个情况是不能输出结果的。<br><code>5.4.0 continue 0; 不再合法。这在之前的版本被解析为 continue 1;。</code><br><code>5.4.0 取消变量作为参数传递（例如 $num = 2; continue $num;）。</code></p>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[Centos7下配置nginx，mysql，php环境]]></title>
-      <url>http://www.dyike.com/2015/09/16/Centos7%E4%B8%8B%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
+      <url>http://www.dyike.com/2015/09/16/the-php-dev-in-centos7/</url>
       <content type="html"><![CDATA[<p>一、概述</p>
 <p>今天在虚拟机上基于Centos安装配置了服务器运行环境，web服务用 nginx，数据库存储在 mysql（使用MariaDB）,动态脚本语言是 php。</p>
 <p>二、步骤</p>
 <p>首页保证 Centos7 已经安装完毕，正常运行。如果没有安装，请到官网下载（<a href="http://www.centos.org/download/" target="_blank" rel="external">http://www.centos.org/download/</a> ）。如何安装就不在这里赘述了。接下来分5步介绍nginx，mysql，php的安装和配置。</p>
 <p>1.第一步:安装nginx<br>添加centos yum源。</p>
-<p><code>sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</code><br>安装nginx</p>
-<p><code>sudo yum install nginx</code><br>启动nginx服务</p>
-<p><code>sudo systemctl start nginx.service</code><br>访问ip地址，如出现Nginx欢迎页面，则说明nginx已经安装并正常运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>安装nginx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install nginx</span><br></pre></td></tr></table></figure>
+<p>启动nginx服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start nginx.service</span><br></pre></td></tr></table></figure>
+<p>访问ip地址，如出现Nginx欢迎页面，则说明nginx已经安装并正常运行。</p>
 <p>设置开机自动启动Nginx</p>
-<p><code>sudo systemctl enable nginx.service</code><br>2.第二步：安装mysql（用MariaDB）<br>MariaDB数据库管理系统是MySQL的一个分支，主要由开源社区在维护，采用GPL授权许可 MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable nginx.service</span><br></pre></td></tr></table></figure>
+<p>2.第二步：安装mysql（用MariaDB）<br>MariaDB数据库管理系统是MySQL的一个分支，主要由开源社区在维护，采用GPL授权许可 MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。</p>
 <p>安装MariaDB</p>
-<p><code>sudo yum install mariadb-server mariadb</code><br>开启MariaDB</p>
-<p><code>sudo systemctl start mariadb</code><br>在成功启动 MariaDB/MySQL 服务后，执行在 MariaDB/MySQL 服务包中的脚本。这一次的运行会为为数据库服务器进行一些安全强化措施，如设置（非空）的 root 密码、删除匿名用户、锁定远程访问。</p>
-<p><code>sudo mysql_secure_installation</code><br>接下来在命令行会提示设置mysql用户名和密码，全选yes。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install mariadb-server mariadb</span><br></pre></td></tr></table></figure>
+<p>开启MariaDB</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start mariadb</span><br></pre></td></tr></table></figure>
+<p>在成功启动 MariaDB/MySQL 服务后，执行在 MariaDB/MySQL 服务包中的脚本。这一次的运行会为为数据库服务器进行一些安全强化措施，如设置（非空）的 root 密码、删除匿名用户、锁定远程访问。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<p>接下来在命令行会提示设置mysql用户名和密码，全选yes。</p>
 <p>设置开机自动重启mysql</p>
-<p><code>sudo systemctl enable mariadb.service</code><br>3.第三步，安装PHP<br>安装Php和php 扩展</p>
-<p><code>sudo yum install php php-mysql php-fpm php-mbstring php-gd php-pear php-mcrypt  php-mhash php-eaccelerator  php-cli php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc php-mssql php-snmp php-soap php-tidy php-common php-devel php-pecl-xdebug -y</code><br>编辑php配置文件</p>
-<p><code>sudo vi /etc/php.ini
-cgi.fix_pathinfo=0</code><br>设置php-fpm配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable mariadb.service</span><br></pre></td></tr></table></figure>
+<p>3.第三步，安装PHP<br>安装Php和php 扩展</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install php php-mysql php-fpm php-mbstring php-gd php-pear php-mcrypt  php-mhash php-eaccelerator  php-cli php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc php-mssql php-snmp php-soap php-tidy php-common php-devel php-pecl-xdebug -y</span><br></pre></td></tr></table></figure>
+<p>编辑php配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/php.ini</span><br><span class="line">cgi.fix_pathinfo=0</span><br></pre></td></tr></table></figure>
+<p>设置php-fpm配置文件</p>
 <p><code>sudo vi /etc/php-fpm.d/www.conf
 listen = /var/run/php-fpm/php-fpm.sock</code><br>启动php-fpm服务</p>
 <p><code>sudo systemctl start php-fpm</code><br>设置开机自动重启php-fpm</p>
 <p><code>sudo systemctl enable php-fpm.service</code><br>4.第四步：配置nginx站点<br>编辑站点配置文件</p>
-<p>`sudo vi /etc/nginx/conf.d/default.conf<br>server {<br>    listen       80;<br>    server_name  locaihost;</p>
-<pre><code>root   /opt/data;
-index index.php index.html index.htm;
-
-location / {
-    try_files $uri $uri/ =404;
-}
-error_page 404 /404.html;
-error_page 500 502 503 504 /50x.html;
-location = /50x.html {
-    root /usr/share/nginx/html;
-}
-
-location ~ \.php$ {
-    try_files $uri =404;
-    fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
-    fastcgi_index index.php;
-    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    include fastcgi_params;
-}
-</code></pre><p>}`<br>重启nginx</p>
-<p><code>sudo systemctl restart nginx</code><br>5.第五步：测试php脚本web服务<br>编辑测试文件</p>
-<p><code>sudo vi /opt/data/info.php</code><br>访问页面,能看到php各种配置信息的话说明配置成功。<br><code>http://192.168.33.10/info.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/nginx/conf.d/default.conf</span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  locaihost;</span><br><span class="line"></span><br><span class="line">    root   /opt/data;</span><br><span class="line">    index index.php index.html index.htm;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ =404;</span><br><span class="line">    &#125;</span><br><span class="line">    error_page 404 /404.html;</span><br><span class="line">    error_page 500 502 503 504 /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        try_files $uri =404;</span><br><span class="line">        fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重启nginx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<p>5.第五步：测试php脚本web服务<br>编辑测试文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /opt/data/info.php</span><br></pre></td></tr></table></figure>
+<p>访问页面,能看到php各种配置信息的话说明配置成功。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.33.10/info.php</span><br></pre></td></tr></table></figure></p>
 <p>删除测试文件</p>
-<p><code>sudo rm /opt/data/info.php</code><br>到此CentOS 7下nginx，mysql，php安装配置全部完成，可以作为web平台的应用环境使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /opt/data/info.php</span><br></pre></td></tr></table></figure>
+<p>到此CentOS 7下nginx，mysql，php安装配置全部完成，可以作为web平台的应用环境使用</p>
+<hr>
 ]]></content>
     </entry>
     
@@ -963,7 +936,7 @@ ssserver -c /etc/shadowsocks.json -d stop</code><br>shadowsocks的日志保存�
     
     <entry>
       <title><![CDATA[PHPCon2015@北京站第一天简要概述]]></title>
-      <url>http://www.dyike.com/2015/06/06/2015%E5%B9%B4phpconf/</url>
+      <url>http://www.dyike.com/2015/06/06/2015-at-phpconf/</url>
       <content type="html"><![CDATA[<p>好久好久不写东西了。好像学生都是最怕写文档的，有的时候连邮件都是写得比较粗糙。写文档也算是一个能力吧。</p>
 <p>前些日子在一个群里说这个周末有有一个很牛的技术大会，有空的都要去参与一下。然后我一看确实挺牛的——PHPCon China 2015@Beijing，一看有我熟知的技术大牛是大会的讲师，然后就通过万能的朋友圈求得一张票。既然参加了PHPCon就写的东西总结一下吧，毕竟PHCon在北京也是第一次举办（之前都是在上海办的，今年分了北京站上海站）。</p>
 <p>首先说一下，这个PHPCon真是一个“程序员思维的大会”，为什么这么说呢，第一基本都是程序员在讲计算机语言相关的，第二，也是最主要的，就是这个会的时间把控很准很到位。一切都是按照时间流程表走下来的，以前参加什么发布会没一个不推迟时间。也许这就是程序员工程师做事的严谨性。</p>
