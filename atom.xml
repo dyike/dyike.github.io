@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-04-28T07:10:49.000Z</updated>
+  <updated>2016-04-28T07:13:16.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -20,18 +20,16 @@
     <link href="http://www.dyike.com/2016/04/28/array-to-string/"/>
     <id>http://www.dyike.com/2016/04/28/array-to-string/</id>
     <published>2016-04-28T07:08:32.000Z</published>
-    <updated>2016-04-28T07:10:49.000Z</updated>
+    <updated>2016-04-28T07:13:16.000Z</updated>
     
     <content type="html">&lt;hr&gt;
-&lt;p&gt;##一个简单的方法：将一个二维的数组转换成字符串。&lt;/p&gt;
-&lt;p&gt;function arr2str ($arr)&lt;br&gt;{&lt;br&gt;    foreach ($arr as $v)&lt;br&gt;    {&lt;br&gt;        $v = join(“,”,$v); //可以用implode将一维数组转换为用逗号连接的字符串&lt;br&gt;        $temp[] = $v;&lt;br&gt;    }&lt;br&gt;    $t=””;&lt;br&gt;    foreach($temp as $v){&lt;br&gt;        $t.=”‘“.$v.”‘“.”,”;&lt;br&gt;    }&lt;br&gt;    $t=substr($t,0,-1);&lt;br&gt;    return $t;&lt;br&gt;}&lt;/p&gt;
+&lt;p&gt;##一个简单的方法：将一个二维的数组转换成字符串。&lt;br&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;arr2str&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;($arr)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;foreach&lt;/span&gt; ($arr &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; $v)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        $v = join(&lt;span class=&quot;string&quot;&gt;&quot;,&quot;&lt;/span&gt;,$v); &lt;span class=&quot;comment&quot;&gt;//可以用implode将一维数组转换为用逗号连接的字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        $temp[] = $v;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    $t=&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;foreach&lt;/span&gt;($temp &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; $v)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        $t.=&lt;span class=&quot;string&quot;&gt;&quot;&#39;&quot;&lt;/span&gt;.$v.&lt;span class=&quot;string&quot;&gt;&quot;&#39;&quot;&lt;/span&gt;.&lt;span class=&quot;string&quot;&gt;&quot;,&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    $t=substr($t,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; $t;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;p&gt;##一个简单的方法：将一个二维的数组转换成字符串。&lt;/p&gt;
-&lt;p&gt;function arr2str ($arr)&lt;br&gt;{&lt;br&gt;    foreach ($arr as $v)&lt;br&gt;    {&lt;br&gt;        $v = join(“,”,$v); //可
+&lt;p&gt;##一个简单的方法：将一个二维的数组转换成字符串。&lt;br&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span c
     
     </summary>
     
