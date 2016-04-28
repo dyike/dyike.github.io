@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-04-28T07:29:41.000Z</updated>
+  <updated>2016-04-28T07:44:26.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -16,20 +16,23 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>array-to-string</title>
+    <title>将数组转换成字符串</title>
     <link href="http://www.dyike.com/2016/04/28/array-to-string/"/>
     <id>http://www.dyike.com/2016/04/28/array-to-string/</id>
     <published>2016-04-28T07:08:32.000Z</published>
-    <updated>2016-04-28T07:29:41.000Z</updated>
+    <updated>2016-04-28T07:44:26.000Z</updated>
     
     <content type="html">&lt;hr&gt;
-&lt;p&gt;##一个简单的方法：将一个二维的数组转换成字符串。&lt;br&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;arr2str&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;($arr)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;foreach&lt;/span&gt; ($arr &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; $v)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        $v = join(&lt;span class=&quot;string&quot;&gt;&quot;,&quot;&lt;/span&gt;,$v); &lt;span class=&quot;comment&quot;&gt;//可以用implode将一维数组转换为用逗号连接的字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        $temp[] = $v;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    $t=&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;foreach&lt;/span&gt;($temp &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; $v)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        $t.=&lt;span class=&quot;string&quot;&gt;&quot;&#39;&quot;&lt;/span&gt;.$v.&lt;span class=&quot;string&quot;&gt;&quot;&#39;&quot;&lt;/span&gt;.&lt;span class=&quot;string&quot;&gt;&quot;,&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    $t=substr($t,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; $t;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;##一个简单的方法：将一个二维的数组转换成字符串&lt;/p&gt;
+&lt;p&gt;常常出现这样一种情况，sql语句查询出来的结果是一个二维数组，但是查询的结果还是需要用到下一条查询语句，这个时候可能需要将一个二维数组转换成字符串用于sql语句的查询。&lt;br&gt;下面是一个简单的例子：&lt;/p&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;arr2str&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;($arr)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;foreach&lt;/span&gt; ($arr &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; $v)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        $v = join(&lt;span class=&quot;string&quot;&gt;&quot;,&quot;&lt;/span&gt;,$v); &lt;span class=&quot;comment&quot;&gt;//可以用implode将一维数组转换为用逗号连接的字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        $temp[] = $v;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    $t=&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;foreach&lt;/span&gt;($temp &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; $v)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        $t.=&lt;span class=&quot;string&quot;&gt;&quot;&#39;&quot;&lt;/span&gt;.$v.&lt;span class=&quot;string&quot;&gt;&quot;&#39;&quot;&lt;/span&gt;.&lt;span class=&quot;string&quot;&gt;&quot;,&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    $t=substr($t,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; $t;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 </content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;p&gt;##一个简单的方法：将一个二维的数组转换成字符串。&lt;br&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span c
+&lt;p&gt;##一个简单的方法：将一个二维的数组转换成字符串&lt;/p&gt;
+&lt;p&gt;常常出现这样一种情况，sql语句查询出来的结果是一个二维数组，但是查询的结果还是需要用到下一条查询语句，这个时候可能需要将一个二维数组转换成字符串用于sql语句的查询。&lt;br&gt;下面是一个简单的例子：&lt;
     
     </summary>
     
@@ -40,25 +43,25 @@
   
   <entry>
     <title>解决ssh的连接中断的问题&quot;&#39;</title>
-    <link href="http://www.dyike.com/2016/03/08/%E8%A7%A3%E5%86%B3ssh%E8%BF%9E%E6%8E%A5%E4%B8%AD%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>http://www.dyike.com/2016/03/08/解决ssh连接中断的问题/</id>
+    <link href="http://www.dyike.com/2016/03/08/solve-ssh-broken-connection/"/>
+    <id>http://www.dyike.com/2016/03/08/solve-ssh-broken-connection/</id>
     <published>2016-03-08T01:23:41.000Z</published>
-    <updated>2016-04-16T15:11:26.000Z</updated>
+    <updated>2016-04-28T08:11:29.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;strong&gt;问题场景&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;服务器环境：阿里云 Linux CentOS 主机&lt;/p&gt;
 &lt;p&gt;客户端：Mac OSX Terminal&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;问题现象&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;用 ssh 命令连接服务器之后，如果一段时间不操作，再次进入 Terminal 时会有一段时间没有响应，然后就出现错误提示：&lt;/p&gt;
-&lt;p&gt;Write failed: Broken pipe&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Write failed: Broken pipe&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;只能重新用 ssh 命令进行连接。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;解决方法&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;方法一：如果您有多台服务器，不想在每台服务器上设置，只需在客户端的 ~/.ssh/ 文件夹中添加 config 文件，并添加下面的配置：&lt;/p&gt;
-&lt;p&gt;ServerAliveInterval 60&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ServerAliveInterval 60&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;方法二：如果您有多个人管理服务器，不想在每个客户端进行设置，只需在服务器的 /etc/ssh/sshd_config 中添加如下的配置：&lt;/p&gt;
-&lt;p&gt;ClientAliveInterval 60&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ClientAliveInterval 60&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;方法三：如果您只想让当前的 ssh 保持连接，可以使用以下的命令：&lt;/p&gt;
-&lt;p&gt;$ ssh -o ServerAliveInterval=60 user@sshserver&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ssh -o ServerAliveInterval=60 user@sshserver&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 </content>
     
     <summary type="html">
@@ -78,10 +81,10 @@
   
   <entry>
     <title>php7编译出现的问题</title>
-    <link href="http://www.dyike.com/2016/01/02/php7%E7%BC%96%E8%AF%91%E5%87%BA%E7%9A%84%E9%94%99%E8%AF%AF/"/>
-    <id>http://www.dyike.com/2016/01/02/php7编译出的错误/</id>
+    <link href="http://www.dyike.com/2016/01/02/php7-compile-err/"/>
+    <id>http://www.dyike.com/2016/01/02/php7-compile-err/</id>
     <published>2016-01-02T10:15:13.000Z</published>
-    <updated>2016-04-15T08:47:59.000Z</updated>
+    <updated>2016-04-28T07:45:26.000Z</updated>
     
     <content type="html">&lt;p&gt;在编译安装php7时日志中有如下错误记录：&lt;br&gt;virtual memory exhausted: Cannot allocate memory&lt;br&gt;make: &lt;em&gt;*&lt;/em&gt; [ext/fileinfo/libmagic/apprentice.lo] Error 1&lt;/p&gt;
 &lt;p&gt;开始时的解决方法是先将很多的进程关闭，比如httpd、ftpd、sendmail等等，释放出了一部分内存后，再进行编译，仍然得到同样的编译错误。后来百度谷歌了很久才找到解决问题的方法，而且是在php.net上找到的解决方法，原文链接是：https:  //bugs.php.net/bug.php?id=48809&lt;/p&gt;
@@ -101,10 +104,10 @@
   
   <entry>
     <title>2015年我的总结</title>
-    <link href="http://www.dyike.com/2015/12/30/2015%E5%B9%B4%E6%80%BB%E7%BB%93/"/>
-    <id>http://www.dyike.com/2015/12/30/2015年总结/</id>
+    <link href="http://www.dyike.com/2015/12/30/think-about-2015/"/>
+    <id>http://www.dyike.com/2015/12/30/think-about-2015/</id>
     <published>2015-12-30T13:44:07.000Z</published>
-    <updated>2016-04-15T10:15:03.000Z</updated>
+    <updated>2016-04-28T08:08:03.000Z</updated>
     
     <content type="html">&lt;p&gt;写这个的时候是自己刚刚参加完研究生考试，说实话心里真的是一万个草泥马，这题也太难了，比去年的还要难。后来想想也不对，要难大家一起难嘛。再后来又听说了今年考研有政治英语泄题的事件，心里又开始不平衡了。哎，自己活得太真实……&lt;/p&gt;
 &lt;p&gt;大概从什么时候开始喜欢写年度总结，这样说的话还是在上了大学之后，学了这个专业，好像就有了这个习惯，其实写文章让人记录很多事情，生活、工作、学习等等。就好像年末了这几天我就把自己机器的开发环境升级到php7，之前配置开发环境的时候，就是因为当初懒，没有记录当初踩的坑，这次也遇到了就是想不起上次怎么解决的，所以导致最后还要谷歌，重新再来一遍，这里面真的浪费很多时间。&lt;/p&gt;
@@ -130,12 +133,14 @@
     </summary>
     
     
+      <category term="随笔感想" scheme="http://www.dyike.com/tags/%E9%9A%8F%E7%AC%94%E6%84%9F%E6%83%B3/"/>
+    
   </entry>
   
   <entry>
     <title>讨论下redis集群方案以及遇到过的坑</title>
-    <link href="http://www.dyike.com/2015/10/22/%E8%AE%A8%E8%AE%BA%E4%B8%8Bredis%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E8%BF%87%E7%9A%84%E5%9D%91/"/>
-    <id>http://www.dyike.com/2015/10/22/讨论下redis集群方案以及遇到过的坑/</id>
+    <link href="http://www.dyike.com/2015/10/22/talk-about-redis/"/>
+    <id>http://www.dyike.com/2015/10/22/talk-about-redis/</id>
     <published>2015-10-22T14:10:54.000Z</published>
     <updated>2016-04-15T09:59:31.000Z</updated>
     
@@ -196,11 +201,10 @@
     <link href="http://www.dyike.com/2015/09/20/manage-virtualbox-by-vagrant/"/>
     <id>http://www.dyike.com/2015/09/20/manage-virtualbox-by-vagrant/</id>
     <published>2015-09-20T11:28:24.000Z</published>
-    <updated>2016-04-28T07:38:59.000Z</updated>
+    <updated>2016-04-28T07:40:39.000Z</updated>
     
     <content type="html">&lt;p&gt;Vagrant 可以让我们用命令直接从云上下载虚拟机的镜像，你想要什么系统都行，Centos，Ubuntu …   只需要一行命令，然后再用命令去操作虚拟机，启动，暂停，关闭，重启，你可以更方便的管理所有的在本地上电脑上的虚拟机镜像，手工去配置它们，可以再重新打包成新的镜像，方便你跟你的团队在其它的项目上重复使用。&lt;/p&gt;
 &lt;h2 id=&quot;安装-Vagrant&quot;&gt;&lt;a href=&quot;#安装-Vagrant&quot; class=&quot;headerlink&quot; title=&quot;安装 Vagrant&quot;&gt;&lt;/a&gt;安装 Vagrant&lt;/h2&gt;&lt;p&gt;Vagrant 提供了一个虚拟机的管理层，虚拟机本身还是需要用到虚拟机的软件，比如 VMware，Virtualbox 等等，推荐用 Virtualbox 。使用系统的包管理工具去安装软件。&lt;/p&gt;
-&lt;p&gt;###&lt;/p&gt;
 &lt;h3 id=&quot;Mac-上安装-Vagrant&quot;&gt;&lt;a href=&quot;#Mac-上安装-Vagrant&quot; class=&quot;headerlink&quot; title=&quot;Mac 上安装 Vagrant&quot;&gt;&lt;/a&gt;Mac 上安装 Vagrant&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install vagrant&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;Mac-上安装-Virtualbox&quot;&gt;&lt;a href=&quot;#Mac-上安装-Virtualbox&quot; class=&quot;headerlink&quot; title=&quot;Mac 上安装 Virtualbox&quot;&gt;&lt;/a&gt;Mac 上安装 Virtualbox&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install Caskroom/cask/virtualbox&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;Box&quot;&gt;&lt;a href=&quot;#Box&quot; class=&quot;headerlink&quot; title=&quot;Box&quot;&gt;&lt;/a&gt;Box&lt;/h2&gt;&lt;p&gt;Box ，你可以把它想成是一个箱子，里面装了一些东西。在用 Vagrant 创建虚拟机的时候，需要用到 Box ，它里面会包装操作系统的镜像，不同的 Box 带的操作系统可能是不一样的，比如 CentOS，Ubuntu 等等，你可以基于它们去创建自己版本的 Box，比如在虚拟机上安装一些软件，然后把它重新打包成 Box 。&lt;/p&gt;
@@ -308,7 +312,7 @@
     <link href="http://www.dyike.com/2015/09/16/the-php-dev-in-centos7/"/>
     <id>http://www.dyike.com/2015/09/16/the-php-dev-in-centos7/</id>
     <published>2015-09-16T12:56:59.000Z</published>
-    <updated>2016-04-28T07:20:53.000Z</updated>
+    <updated>2016-04-28T07:41:35.000Z</updated>
     
     <content type="html">&lt;p&gt;一、概述&lt;/p&gt;
 &lt;p&gt;今天在虚拟机上基于Centos安装配置了服务器运行环境，web服务用 nginx，数据库存储在 mysql（使用MariaDB）,动态脚本语言是 php。&lt;/p&gt;
@@ -338,16 +342,19 @@
 &lt;p&gt;编辑php配置文件&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo vi /etc/php.ini&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cgi.fix_pathinfo=0&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;设置php-fpm配置文件&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo vi /etc/php-fpm.d/www.conf
-listen = /var/run/php-fpm/php-fpm.sock&lt;/code&gt;&lt;br&gt;启动php-fpm服务&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo systemctl start php-fpm&lt;/code&gt;&lt;br&gt;设置开机自动重启php-fpm&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo systemctl enable php-fpm.service&lt;/code&gt;&lt;br&gt;4.第四步：配置nginx站点&lt;br&gt;编辑站点配置文件&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo vi /etc/php-fpm.d/www.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;listen = /var/run/php-fpm/php-fpm.sock&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;启动php-fpm服务&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl start php-fpm&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;设置开机自动重启php-fpm&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl enable php-fpm.service&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;4.第四步：配置nginx站点&lt;br&gt;编辑站点配置文件&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo vi /etc/nginx/conf.d/default.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    listen       80;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server_name  locaihost;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    root   /opt/data;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    index index.php index.html index.htm;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    location / &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        try_files $uri $uri/ =404;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    error_page 404 /404.html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    error_page 500 502 503 504 /50x.html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    location = /50x.html &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        root /usr/share/nginx/html;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    location ~ \.php$ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        try_files $uri =404;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        fastcgi_index index.php;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        include fastcgi_params;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;重启nginx&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo systemctl restart nginx&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;5.第五步：测试php脚本web服务&lt;br&gt;编辑测试文件&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo vi /opt/data/info.php&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;访问页面,能看到php各种配置信息的话说明配置成功。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;http://192.168.33.10/info.php&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;访问页面,能看到php各种配置信息的话说明配置成功。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;http://192.168.33.10/info.php&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;删除测试文件&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo rm /opt/data/info.php&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;到此CentOS 7下nginx，mysql，php安装配置全部完成，可以作为web平台的应用环境使用&lt;/p&gt;
@@ -374,10 +381,10 @@ listen = /var/run/php-fpm/php-fpm.sock&lt;/code&gt;&lt;br&gt;启动php-fpm服务
   
   <entry>
     <title>科学上网：用VPS搭建shadowsocks服务器</title>
-    <link href="http://www.dyike.com/2015/09/04/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
-    <id>http://www.dyike.com/2015/09/04/科学上网/</id>
+    <link href="http://www.dyike.com/2015/09/04/how-to-use-google/"/>
+    <id>http://www.dyike.com/2015/09/04/how-to-use-google/</id>
     <published>2015-09-04T13:54:11.000Z</published>
-    <updated>2016-04-15T10:32:49.000Z</updated>
+    <updated>2016-04-28T08:13:57.000Z</updated>
     
     <content type="html">&lt;p&gt;学会 科学上网：用 VPS搭建shadowsocks 服务器&lt;/p&gt;
 &lt;p&gt;目前将shadowsocks部署到25端口似乎还不会被封锁，大家可以尝试。&lt;/p&gt;
@@ -389,30 +396,30 @@ listen = /var/run/php-fpm/php-fpm.sock&lt;/code&gt;&lt;br&gt;启动php-fpm服务
 &lt;/ul&gt;
 &lt;p&gt;一般使用paypal绑定一个visa或mastercard信用卡来付款。注意要用国际paypal帐号，国内的是不能用外币付款的。&lt;/p&gt;
 &lt;p&gt;在bandwagon购买VPS以后会获得一个主机地址和用于ssh登录的root密码。&lt;/p&gt;
-&lt;h2 id=&quot;远程登陆VPS&quot;&gt;&lt;a href=&quot;#远程登陆VPS&quot; class=&quot;headerlink&quot; title=&quot;远程登陆VPS&quot;&gt;&lt;/a&gt;远程登陆VPS&lt;/h2&gt;&lt;p&gt;Mac OS X 或Linux下直接在终端中&lt;br&gt;&lt;code&gt;ssh root@your_vps_ip -p your_ssh_port&lt;/code&gt;&lt;br&gt;即可。&lt;/p&gt;
+&lt;h2 id=&quot;远程登陆VPS&quot;&gt;&lt;a href=&quot;#远程登陆VPS&quot; class=&quot;headerlink&quot; title=&quot;远程登陆VPS&quot;&gt;&lt;/a&gt;远程登陆VPS&lt;/h2&gt;&lt;p&gt;Mac OS X 或Linux下直接在终端中&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ssh root@your_vps_ip -p your_ssh_port&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;即可。&lt;/p&gt;
 &lt;p&gt;在windows系统下需要专门的客户端来SSH登录VPS。在&lt;a href=&quot;http://www.netsarang.com/download/down_form.html?code=522&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;xShell官网&lt;/a&gt; 下载xShell。&lt;/p&gt;
 &lt;p&gt;家庭和学校用户可以免费试用，下载时选择home and school use即可。需要用邮箱注册一下，下载链接会发送到邮箱中。&lt;/p&gt;
 &lt;p&gt;xShell中新建一个连接，会要求输入目标IP地址和端口，以及root密码，按提示操作即可。&lt;/p&gt;
 &lt;h2 id=&quot;安装shadowsocks&quot;&gt;&lt;a href=&quot;#安装shadowsocks&quot; class=&quot;headerlink&quot; title=&quot;安装shadowsocks&quot;&gt;&lt;/a&gt;安装shadowsocks&lt;/h2&gt;&lt;p&gt;打开shell，使用VPS服务商提供的root用户和密码SSH登录VPS。然后执行如下命令：&lt;/p&gt;
-&lt;h3 id=&quot;Debian-Ubuntu&quot;&gt;&lt;a href=&quot;#Debian-Ubuntu&quot; class=&quot;headerlink&quot; title=&quot;Debian/Ubuntu:&quot;&gt;&lt;/a&gt;Debian/Ubuntu:&lt;/h3&gt;&lt;p&gt;&lt;code&gt;apt-get install python-pip
-pip install shadowsocks&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;CentOS&quot;&gt;&lt;a href=&quot;#CentOS&quot; class=&quot;headerlink&quot; title=&quot;CentOS:&quot;&gt;&lt;/a&gt;CentOS:&lt;/h3&gt;&lt;p&gt;&lt;code&gt;yum install python-setuptools &amp;amp;amp;&amp;amp;amp; easy_install pip
-pip install shadowsocks&lt;/code&gt;&lt;br&gt;shadowsocks就安装好了。&lt;/p&gt;
-&lt;p&gt;有时Ubuntu会遇到第一个命令安装python-pip时找不到包的情况。pip官方给出了一个安装脚本，可以自动安装pip。先下载脚本，然后执行即可：&lt;br&gt;&lt;code&gt;wget https://bootstrap.pypa.io/get-pip.py
-python get-pip.py&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Debian-Ubuntu&quot;&gt;&lt;a href=&quot;#Debian-Ubuntu&quot; class=&quot;headerlink&quot; title=&quot;Debian/Ubuntu:&quot;&gt;&lt;/a&gt;Debian/Ubuntu:&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apt-get install python-pip&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pip install shadowsocks&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;CentOS&quot;&gt;&lt;a href=&quot;#CentOS&quot; class=&quot;headerlink&quot; title=&quot;CentOS:&quot;&gt;&lt;/a&gt;CentOS:&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install python-setuptools &amp;amp;amp;&amp;amp;amp; easy_install pip&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pip install shadowsocks&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;shadowsocks就安装好了。&lt;/p&gt;
+&lt;p&gt;有时Ubuntu会遇到第一个命令安装python-pip时找不到包的情况。pip官方给出了一个安装脚本，可以自动安装pip。先下载脚本，然后执行即可：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget https://bootstrap.pypa.io/get-pip.py&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;python get-pip.py&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;编写配置文件&quot;&gt;&lt;a href=&quot;#编写配置文件&quot; class=&quot;headerlink&quot; title=&quot;编写配置文件&quot;&gt;&lt;/a&gt;编写配置文件&lt;/h2&gt;&lt;p&gt;shadowsocks启动时的参数，如服务器端口，代理端口，登录密码等，可以通过启动时的命令行参数来设定，也可以通过json格式的配置文件设定。推荐使用配置文件，方便查看和修改。&lt;/p&gt;
-&lt;p&gt;用vi新建一个配置文件：&lt;br&gt;&lt;code&gt;vi /etc/shadowsocks.json&lt;/code&gt;&lt;br&gt;然后输入如下内容：&lt;br&gt;&lt;code&gt;{
-&amp;quot;server&amp;quot;:&amp;quot;my_server_ip&amp;quot;,
-&amp;quot;server_port&amp;quot;:25,
-&amp;quot;local_address&amp;quot;: &amp;quot;127.0.0.1&amp;quot;,
-&amp;quot;local_port&amp;quot;:1080,
-&amp;quot;password&amp;quot;:&amp;quot;mypassword&amp;quot;,
-&amp;quot;timeout&amp;quot;:300,
-&amp;quot;method&amp;quot;:&amp;quot;aes-256-cfb&amp;quot;,
-&amp;quot;fast_open&amp;quot;: false
-}&lt;/code&gt;&lt;br&gt;保存退出。&lt;/p&gt;
-&lt;h2 id=&quot;启动shadowsocks&quot;&gt;&lt;a href=&quot;#启动shadowsocks&quot; class=&quot;headerlink&quot; title=&quot;启动shadowsocks&quot;&gt;&lt;/a&gt;启动shadowsocks&lt;/h2&gt;&lt;p&gt;如果已经写好了配置文件，启动shadowsocks服务器的命令如下：&lt;br&gt;&lt;code&gt;ssserver -c /etc/shadowsocks.json&lt;/code&gt;&lt;br&gt;后台启动和停止shadowsocks服务器：&lt;br&gt;&lt;code&gt;ssserver -c /etc/shadowsocks.json -d start
-ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的日志保存在&lt;br&gt;&lt;code&gt;/var/log/shadowsocks.log&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;用vi新建一个配置文件：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vi /etc/shadowsocks.json&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;然后输入如下内容：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;server&amp;quot;:&amp;quot;my_server_ip&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;server_port&amp;quot;:25,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;local_address&amp;quot;: &amp;quot;127.0.0.1&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;local_port&amp;quot;:1080,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;password&amp;quot;:&amp;quot;mypassword&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;timeout&amp;quot;:300,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;method&amp;quot;:&amp;quot;aes-256-cfb&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;fast_open&amp;quot;: false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;保存退出。&lt;/p&gt;
+&lt;h2 id=&quot;启动shadowsocks&quot;&gt;&lt;a href=&quot;#启动shadowsocks&quot; class=&quot;headerlink&quot; title=&quot;启动shadowsocks&quot;&gt;&lt;/a&gt;启动shadowsocks&lt;/h2&gt;&lt;p&gt;如果已经写好了配置文件，启动shadowsocks服务器的命令如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ssserver -c /etc/shadowsocks.json&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;后台启动和停止shadowsocks服务器：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ssserver -c /etc/shadowsocks.json -d start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ssserver -c /etc/shadowsocks.json -d stop&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;shadowsocks的日志保存在&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/var/log/shadowsocks.log&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;安装并启动shadowsocks客户端&quot;&gt;&lt;a href=&quot;#安装并启动shadowsocks客户端&quot; class=&quot;headerlink&quot; title=&quot;安装并启动shadowsocks客户端&quot;&gt;&lt;/a&gt;安装并启动shadowsocks客户端&lt;/h2&gt;&lt;p&gt;shadowsocks支持windows、Mac OS X、Linux、Android、iOS等多个平台。不过iOS由于系统对应用后台运行的限制，只能使用客户端内嵌的浏览器科学上网，不能给其他应用代理。&lt;/p&gt;
 &lt;p&gt;shadowsocks项目Github主页：&lt;a href=&quot;https://github.com/shadowsocks/shadowsocks&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/shadowsocks/shadowsocks&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;里面可以找到客户端下载地址。&lt;/p&gt;
@@ -449,10 +456,10 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
   
   <entry>
     <title>2015年8月8日晚小记</title>
-    <link href="http://www.dyike.com/2015/08/08/2015%E5%B9%B48%E6%9C%888%E6%97%A5%E6%99%9A%E8%AE%B0/"/>
-    <id>http://www.dyike.com/2015/08/08/2015年8月8日晚记/</id>
+    <link href="http://www.dyike.com/2015/08/08/2015-8-8/"/>
+    <id>http://www.dyike.com/2015/08/08/2015-8-8/</id>
     <published>2015-08-08T13:59:45.000Z</published>
-    <updated>2016-04-15T08:44:32.000Z</updated>
+    <updated>2016-04-28T08:06:54.000Z</updated>
     
     <content type="html">&lt;p&gt;好久好久没有对自己进行总结了，记得上一次对自己得总结还是2015年初写2014年的总结。2015年都已经走下了一大半了，该总结的总结了。还记得年初的时候在轻单list了一份计划，现在看看，有的实现了，有的今年不能实现了。&lt;/p&gt;
 &lt;p&gt;3月份大三开学，回学校做了一个决定，几乎改变了今年的动向，那个时候觉得自己就是在做梦一样，可是偏偏自己决定了考研。常常对自己说，&lt;strong&gt;&lt;u&gt;自己决定的东西，含着泪也要坚持做完。&lt;/u&gt;&lt;/strong&gt;我一直是反对考研的人，因为考研就意味能找到一个好的工作？身边好多同学都会反驳我不是说考研不好嘛为什么还要考研，我都是说“现在我还是觉得考研并一定是一个最好的选择”。&lt;/p&gt;
@@ -470,14 +477,16 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
     </summary>
     
     
+      <category term="随笔感想" scheme="http://www.dyike.com/tags/%E9%9A%8F%E7%AC%94%E6%84%9F%E6%83%B3/"/>
+    
   </entry>
   
   <entry>
     <title>【08-03】业余时间怎么充电？技术管理的进阶，有哪些初和中级书籍，工具？技术思想怎么提升和实践？</title>
-    <link href="http://www.dyike.com/2015/08/04/%E4%B8%9A%E4%BD%99%E5%AD%A6%E4%B9%A0/"/>
-    <id>http://www.dyike.com/2015/08/04/业余学习/</id>
+    <link href="http://www.dyike.com/2015/08/04/share-with-amateur-learning/"/>
+    <id>http://www.dyike.com/2015/08/04/share-with-amateur-learning/</id>
     <published>2015-08-04T13:25:50.000Z</published>
-    <updated>2016-04-28T07:15:22.000Z</updated>
+    <updated>2016-04-28T08:18:44.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;转自2015-08-04-黑夜路人技术&quot;&gt;&lt;a href=&quot;#转自2015-08-04-黑夜路人技术&quot; class=&quot;headerlink&quot; title=&quot;转自2015-08-04 黑夜路人技术&quot;&gt;&lt;/a&gt;&lt;em&gt;转自2015-08-04&lt;/em&gt; 黑夜路人技术&lt;/h2&gt;&lt;p&gt;【今日话题】&lt;/p&gt;
 &lt;p&gt;业余时间大家是怎么充电？技术管理的进阶，有哪些方面的初和中级书籍，工具？技术思想怎么提升和实践？ - 马犇 星星bigxing&lt;/p&gt;
@@ -625,28 +634,21 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
   
   <entry>
     <title>Go语言学习笔记：【Go中字符串小记】</title>
-    <link href="http://www.dyike.com/2015/07/26/go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/"/>
-    <id>http://www.dyike.com/2015/07/26/go学习笔记1/</id>
+    <link href="http://www.dyike.com/2015/07/26/go-note-1-2/"/>
+    <id>http://www.dyike.com/2015/07/26/go-note-1-2/</id>
     <published>2015-07-26T09:01:49.000Z</published>
-    <updated>2016-04-15T08:47:35.000Z</updated>
+    <updated>2016-04-28T08:02:34.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Go语言中的字符串&quot;&gt;&lt;a href=&quot;#Go语言中的字符串&quot; class=&quot;headerlink&quot; title=&quot;Go语言中的字符串&quot;&gt;&lt;/a&gt;Go语言中的字符串&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;字符串是用一对双号(“”)或者单引号(‘’)括起来的定义的，它的类型是srting。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;值得注意的是，在go语言中字符串是不可变的，有这样一段代码，编译时会报错。&lt;/p&gt;
-&lt;p&gt;`var s string = “hello”&lt;/p&gt;
-&lt;p&gt;s[0] = ‘c’`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; s &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;s[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;c&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;但是想要修改怎么办呢？方法如下：&lt;/p&gt;
-&lt;p&gt;`s := “hello”&lt;/p&gt;
-&lt;p&gt;c := []byte(s) // 将字符串 s转换为 []byte类型&lt;/p&gt;
-&lt;p&gt;c[0] = ‘c’&lt;/p&gt;
-&lt;p&gt;s2 := string(c) // 再转换回 string类型&lt;/p&gt;
-&lt;p&gt;fmt.Printf(“%s\n”, s2)`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;s := &lt;span class=&quot;string&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;c := []&lt;span class=&quot;keyword&quot;&gt;byte&lt;/span&gt;(s) &lt;span class=&quot;comment&quot;&gt;// 将字符串 s转换为 []byte类型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;c[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;c&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;s2 := &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;(c) &lt;span class=&quot;comment&quot;&gt;// 再转换回 string类型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fmt.Printf(&lt;span class=&quot;string&quot;&gt;&quot;%s\n&quot;&lt;/span&gt;, s2)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;修改也可以这样：&lt;/p&gt;
-&lt;p&gt;`s := “hello”&lt;/p&gt;
-&lt;p&gt;s = “c” + s[1:] // 字符串虽不能更改，但可进行切片操作&lt;/p&gt;
-&lt;p&gt;fmt.Printf(“%s\n”, s)`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;s := &lt;span class=&quot;string&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;s = &lt;span class=&quot;string&quot;&gt;&quot;c&quot;&lt;/span&gt; + s[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;:] &lt;span class=&quot;comment&quot;&gt;// 字符串虽不能更改，但可进行切片操作&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fmt.Printf(&lt;span class=&quot;string&quot;&gt;&quot;%s\n&quot;&lt;/span&gt;, s)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;go中也可声明多行字符串，可以通过`来声明：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;m :=&lt;/code&gt;hello&lt;/p&gt;
-&lt;p&gt;world``&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;m := hello&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;world&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
 </content>
     
     <summary type="html">
@@ -662,8 +664,8 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
   
   <entry>
     <title>【转载】06-19怎么学习或者阅读PHP源码？</title>
-    <link href="http://www.dyike.com/2015/06/23/%E5%AD%A6%E4%B9%A0php%E6%BA%90%E7%A0%81/"/>
-    <id>http://www.dyike.com/2015/06/23/学习php源码/</id>
+    <link href="http://www.dyike.com/2015/06/23/learn-php-source-code/"/>
+    <id>http://www.dyike.com/2015/06/23/learn-php-source-code/</id>
     <published>2015-06-23T13:25:09.000Z</published>
     <updated>2016-04-15T08:45:29.000Z</updated>
     
@@ -736,8 +738,8 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
   
   <entry>
     <title>谈谈“高校毕业生将达749万”的一些感想</title>
-    <link href="http://www.dyike.com/2015/06/20/%E8%B0%88%E6%AF%95%E4%B8%9A%E6%84%9F%E6%83%B3/"/>
-    <id>http://www.dyike.com/2015/06/20/谈毕业感想/</id>
+    <link href="http://www.dyike.com/2015/06/20/think-about-graduation/"/>
+    <id>http://www.dyike.com/2015/06/20/think-about-graduation/</id>
     <published>2015-06-20T14:31:30.000Z</published>
     <updated>2016-04-28T07:15:40.000Z</updated>
     
@@ -767,117 +769,77 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
   
   <entry>
     <title>Go语言学习笔记【第三目：内建函数】</title>
-    <link href="http://www.dyike.com/2015/06/19/go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03/"/>
-    <id>http://www.dyike.com/2015/06/19/go学习笔记3/</id>
+    <link href="http://www.dyike.com/2015/06/19/go-note-3/"/>
+    <id>http://www.dyike.com/2015/06/19/go-note-3/</id>
     <published>2015-06-19T14:37:07.000Z</published>
-    <updated>2016-04-15T10:01:38.000Z</updated>
+    <updated>2016-04-28T07:56:50.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;内建函数&quot;&gt;&lt;a href=&quot;#内建函数&quot; class=&quot;headerlink&quot; title=&quot;内建函数&quot;&gt;&lt;/a&gt;&lt;strong&gt;内建函数&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;预定义了少数函数，这意味着无需引用任何包就可以使用它们。下面的表格列出了所有的内建函数。&lt;/p&gt;
 &lt;p&gt;Table Go中的预定义函数&lt;/p&gt;
 &lt;table&gt;&lt;br&gt;&lt;tbody&gt;&lt;br&gt;&lt;tr&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;close&lt;/td&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;new&lt;/td&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;panic&lt;/td&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;complex&lt;/td&gt;&lt;br&gt;&lt;/tr&gt;&lt;br&gt;&lt;tr&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;delete&lt;/td&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;make&lt;/td&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;recover&lt;/td&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;real&lt;/td&gt;&lt;br&gt;&lt;/tr&gt;&lt;br&gt;&lt;tr&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;len&lt;/td&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;append&lt;/td&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;print&lt;/td&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;imag&lt;/td&gt;&lt;br&gt;&lt;/tr&gt;&lt;br&gt;&lt;tr&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;cap copy&lt;/td&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;println&lt;/td&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;&lt;/td&gt;&lt;br&gt;&lt;td width=&quot;138&quot;&gt;&lt;/td&gt;&lt;br&gt;&lt;/tr&gt;&lt;br&gt;&lt;/tbody&gt;&lt;br&gt;&lt;/table&gt;
 
-&lt;p&gt;Close&lt;/p&gt;
+&lt;p&gt;##Close&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;用于 channel 通讯。使用它来关闭 channel
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;p&gt;delete&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;##delete&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;用于在 map 中删除实例
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;p&gt;len 和 cap&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;##len 和 cap&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;可用于不同的类型，len 用于返回字符串、slice 和数组的长度
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;p&gt;new&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;##new&lt;/p&gt;
 &lt;p&gt;用于各种类型的内存分配&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;make&lt;/p&gt;
+&lt;p&gt;##make&lt;/p&gt;
 &lt;p&gt;用于内建类型（map、slice 和 channel）的内存分配&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;copy&lt;/p&gt;
+&lt;p&gt;##copy&lt;/p&gt;
 &lt;p&gt;用于复制 slice&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;append&lt;/p&gt;
+&lt;p&gt;##append&lt;/p&gt;
 &lt;p&gt;用于追加 slice&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;panic 和 recover&lt;/p&gt;
+&lt;p&gt;##panic 和 recover&lt;/p&gt;
 &lt;p&gt;用于异常处理机制&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;print 和 println&lt;/p&gt;
+&lt;p&gt;##print 和 println&lt;/p&gt;
 &lt;p&gt;是底层打印函数，可以在不引入  fmt 包的情况下使用。它们主要用于调试&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;complex、real 和 imag&lt;/p&gt;
+&lt;p&gt;##complex、real 和 imag&lt;/p&gt;
 &lt;p&gt;全部用于处理 复数。有了之前给的简单的例子，不用再进一步讨论复数了&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;array、slices 和 map&lt;/p&gt;
+&lt;p&gt;##array、slices 和 map&lt;/p&gt;
 &lt;p&gt;可以利用 array 在列表中进行多个值的排序，或者使用更加灵活的：slice。字典或哈希 类型同样可以使用，在Go中叫做map&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;array&lt;/p&gt;
+&lt;p&gt;##array&lt;/p&gt;
 &lt;p&gt;array 由 [n]&amp;lt;type&amp;gt; 定义，n 标示 array 的长度，而 &amp;lt;type&amp;gt; 标示希望存储的内容的类 型。对 array 的元素赋值或索引是由方括号完成的：&lt;/p&gt;
-&lt;p&gt;`var arr [10] int&lt;/p&gt;
-&lt;p&gt;arr[0] = 42&lt;/p&gt;
-&lt;p&gt;arr[1] = 13&lt;/p&gt;
-&lt;p&gt;fmt.Printf(“The first element is %d\n”, arr[0])`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; arr [&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;] &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;arr[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;] = &lt;span class=&quot;number&quot;&gt;42&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;arr[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;] = &lt;span class=&quot;number&quot;&gt;13&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fmt.Printf(&lt;span class=&quot;string&quot;&gt;&quot;The first element is %d\n&quot;&lt;/span&gt;, arr[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;])&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;像var arr = [10]int 这样的数组类型有固定的大小。大小是类型的一部分。由于不同的大小是不同的类型，因此不能改变大小。数组同样是值类型的：将一个数组赋值给另一个数组，会复制所有的元素。尤其是当向函数内传递一个数组的时候，它会获 得一个数组的副本，而不是数组的指针。&lt;/p&gt;
 &lt;p&gt;可以像这样声明一个数组：var a [3]int，如果不使用零来初始化它，则用复合声明： a := [3]int{1, 2, 3} 也可以简写为 a := […]int{1, 2, 3}，Go会自动统计元素的个数。&lt;/p&gt;
 &lt;p&gt;注意，所有项目必须都指定。因此，如果你使用多维数组，有一些内容你必须录入：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;a := [3][2] int {  [2] int { 1,2 }, [2] int { 3,4 }, [2] int { 5,6 }  }&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;a := [&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;][&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;] &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &amp;#123;  [&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;] &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &amp;#123; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; &amp;#125;, [&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;] &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &amp;#123; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt; &amp;#125;, [&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;] &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &amp;#123; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &amp;#125;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;类似于：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;a := [3][2] int {  [...] int { 1,2 }, [...] int { 3,4 }, [...] int { 5,6 }  }&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;a := [&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;][&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;] &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &amp;#123;  [...] &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &amp;#123; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; &amp;#125;, [...] &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &amp;#123; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt; &amp;#125;, [...] &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &amp;#123; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &amp;#125;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;声明一个 array 时，你必须在方括号内输入些内容，数字或者三个点 (…)。&lt;/p&gt;
 &lt;p&gt;array、slice 和 map 的复合声明变得更加简单。使用复合声明的 array、slice和 map，元素复合声明的类型与外部一致，则可以省略。&lt;/p&gt;
 &lt;p&gt;这表示上面的例子可以修改为：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;a := [3][2] int {  { 1,2 }, { 3,4 }, { 5,6 }  }&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;a := [&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;][&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;] &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &amp;#123;  &amp;#123; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; &amp;#125;, &amp;#123; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt; &amp;#125;, &amp;#123; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &amp;#125;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;hr&gt;
-&lt;p&gt;slice&lt;/p&gt;
+&lt;p&gt;##slice&lt;/p&gt;
 &lt;p&gt;slice 与 array 接近，但是在新的元素加入的时候可以增加长度。slice 总是指向底层的一个array。slice 是一个指向 array 的指针，这是其与array不同的地方；slice 是引用类型，这意味着当赋值某个 slice 到另外一个变量，两个引用会指向同一个 array。例如，如果一个函数需要一个slice 参数，在其内对slice元素的修改也会体现在函数调用者中，这和传递底层的array指针类似。通过：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sl := make([] int , 10)&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sl := &lt;span class=&quot;built_in&quot;&gt;make&lt;/span&gt;([] &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; , &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;创建了一个保存有10个元素的slice。需要注意的是底层的 array 并无不同。slice 总 是与一个固定长度的 array 成对出现。其影响 slice 的容量和长度。&lt;/p&gt;
 &lt;p&gt;给定一个 array 或者其他 slice，一个新 slice 通过 a[I:J] 的方式创建。这会创建一个 新的 slice，指向变量a，从序号 I 开始，结束在序号 J 之前。长度为 J - I。&lt;/p&gt;
 &lt;p&gt;// array[n:m] 从 array 创建了一个  slice，具有元素  n 到 m-1&lt;/p&gt;
-&lt;p&gt;`a := […] int { 1, 2, 3, 4, 5 }&lt;/p&gt;
-&lt;p&gt;s1 := a[2:4]&lt;/p&gt;
-&lt;p&gt;s2 := a[1:5]&lt;/p&gt;
-&lt;p&gt;s3 := a[:]&lt;/p&gt;
-&lt;p&gt;s4 := a[:4]&lt;/p&gt;
-&lt;p&gt;s5 := s2[:]`&lt;/p&gt;
-&lt;p&gt;2  定义一个 5 个元素的 array，序号从 0 到 4；&lt;/p&gt;
-&lt;p&gt;3  从序号 2 至 3 创建 slice，它包含元素 3, 4；&lt;/p&gt;
-&lt;p&gt;4  从序号 1 至 4 创建，它包含元素 2, 3, 4, 5；&lt;/p&gt;
-&lt;p&gt;5  用 array 中的所有元素创建 slice，这是 a[0:len(a)] 的简化写法；&lt;/p&gt;
-&lt;p&gt;6  从序号 0 至 3 创建，这是 a[0:4] 的简化写法，得到 1, 2, 3, 4；&lt;/p&gt;
-&lt;p&gt;7  从 slice s2 创建 slice，注意 s5 仍然指向 array a。&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;a := [...] &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &amp;#123; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;s1 := a[&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;s2 := a[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;s3 := a[:]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;s4 := a[:&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;s5 := s2[:]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;2  定义一个 5 个元素的 array，序号从 0 到 4；&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3  从序号 2 至 3 创建 slice，它包含元素 3, 4；&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4  从序号 1 至 4 创建，它包含元素 2, 3, 4, 5；&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5  用 array 中的所有元素创建 slice，这是 a[0:len(a)] 的简化写法；&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6  从序号 0 至 3 创建，这是 a[0:4] 的简化写法，得到 1, 2, 3, 4；&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7  从 slice s2 创建 slice，注意 s5 仍然指向 array a。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;函数 append 向 slice s 追加零值或其他 x 值，并且返回追加后的新的、与 s 有相同类型的 slice。如果 s 没有足够的容量存储追加的值，append 分配一 个足够大的、新的 slice 来存放原有 slice 的元素和追加的值。因此，返回 的 slice 可能指向不同的底层 array。&lt;/p&gt;
-&lt;p&gt;`s0 := [] int { 0, 0 }&lt;/p&gt;
-&lt;p&gt;s1 := append(s0, 2) //0&lt;/p&gt;
-&lt;p&gt;s2 := append(s1, 3, 5, 7) //1&lt;/p&gt;
-&lt;p&gt;s3 := append(s2, s0…) //2`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;s0 := [] &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &amp;#123; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;s1 := &lt;span class=&quot;built_in&quot;&gt;append&lt;/span&gt;(s0, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;//0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;s2 := &lt;span class=&quot;built_in&quot;&gt;append&lt;/span&gt;(s1, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;//1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;s3 := &lt;span class=&quot;built_in&quot;&gt;append&lt;/span&gt;(s2, s0...) &lt;span class=&quot;comment&quot;&gt;//2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;hr&gt;
-&lt;p&gt;map&lt;/p&gt;
+&lt;p&gt;##map&lt;/p&gt;
 &lt;p&gt;许多语言都内建了类似的类型， 例如 Perl 有哈希， Python 有字典， 而 C++ 同样也 有map（作为库）。在Go中有 map 类型。map 可以认为是一个用字符串做索引的数 组（在其最简单的形式下）。下面定义了 map 类型，用于将 string （月的缩写）转换 为 int – 那个月的天数。一般定义 map 的方法是：map[&amp;lt;from type&amp;gt;]&amp;lt;to type&amp;gt;&lt;/p&gt;
-&lt;p&gt;`monthdays := map[ string] int {&lt;/p&gt;
-&lt;p&gt;“Jan”: 31, “Feb”:  28, “Mar”: 31,&lt;/p&gt;
-&lt;p&gt;“Apr”:30, “May”: 31, “Jun”:  30,&lt;/p&gt;
-&lt;p&gt;“Jul”:  31, “Aug”: 31, “Sep”:  30,&lt;/p&gt;
-&lt;p&gt;“Oct”:       31, “Nov”: 30, “Dec”:  31,     //逗号是必须的&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;monthdays := &lt;span class=&quot;keyword&quot;&gt;map&lt;/span&gt;[ &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;] &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;Jan&quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;31&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Feb&quot;&lt;/span&gt;:  &lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Mar&quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;31&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;Apr&quot;&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;30&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;May&quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;31&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Jun&quot;&lt;/span&gt;:  &lt;span class=&quot;number&quot;&gt;30&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;Jul&quot;&lt;/span&gt;:  &lt;span class=&quot;number&quot;&gt;31&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Aug&quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;31&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Sep&quot;&lt;/span&gt;:  &lt;span class=&quot;number&quot;&gt;30&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;Oct&quot;&lt;/span&gt;:       &lt;span class=&quot;number&quot;&gt;31&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Nov&quot;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;30&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Dec&quot;&lt;/span&gt;:  &lt;span class=&quot;number&quot;&gt;31&lt;/span&gt;,     &lt;span class=&quot;comment&quot;&gt;//逗号是必须的&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;留意，当只需要声明一个 map 的时候，使用 make 的形式：monthdays := make(map[string]int)&lt;/p&gt;
 &lt;p&gt;当在map中索引（搜索）时，使用方括号。例如打印出 12 月的天数：fmt.Printf(“%d\n”, monthdays[“Dec”])&lt;/p&gt;
 &lt;p&gt;当对 array、slice、string 或者 map 循环遍历的时候，range 会帮助你，每次调用，它都会返回一个键和对应的值。&lt;/p&gt;
-&lt;p&gt;`year := 0&lt;/p&gt;
-&lt;p&gt;for &lt;em&gt; , days := range  monthdays {    //键没有使用，因此用 &lt;/em&gt;, days&lt;/p&gt;
-&lt;p&gt;year += days&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;fmt.Printf(“Numbers of days in a year: %d\n”, year)`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;year := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; _ , days := &lt;span class=&quot;keyword&quot;&gt;range&lt;/span&gt;  monthdays &amp;#123;    &lt;span class=&quot;comment&quot;&gt;//键没有使用，因此用 _, days&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;year += days&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fmt.Printf(&lt;span class=&quot;string&quot;&gt;&quot;Numbers of days in a year: %d\n&quot;&lt;/span&gt;, year)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;向 map 增加元素，可以这样做：&lt;/p&gt;
-&lt;p&gt;`monthdays[“Undecim”] = 30    //添加一个月&lt;/p&gt;
-&lt;p&gt;monthdays[“Feb”]       = 29            // ‰年时重写这个元素`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;monthdays[&lt;span class=&quot;string&quot;&gt;&quot;Undecim&quot;&lt;/span&gt;] = &lt;span class=&quot;number&quot;&gt;30&lt;/span&gt;    &lt;span class=&quot;comment&quot;&gt;//添加一个月&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;monthdays[&lt;span class=&quot;string&quot;&gt;&quot;Feb&quot;&lt;/span&gt;]       = &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;            &lt;span class=&quot;comment&quot;&gt;// ‰年时重写这个元素&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;检查元素是否存在，可以使用下面的方式 ：&lt;/p&gt;
-&lt;p&gt;`var  value int&lt;/p&gt;
-&lt;p&gt;var  present bool&lt;/p&gt;
-&lt;p&gt;value, present = monthdays[“Jan”]    //如果存在，present 则有值 true&lt;/p&gt;
-&lt;p&gt;//或者更接近 Go 的方式&lt;/p&gt;
-&lt;p&gt;v, ok := monthdays[“Jan”]           //“逗号 ok”形式  `&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt;  value &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt;  present &lt;span class=&quot;keyword&quot;&gt;bool&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;value, present = monthdays[&lt;span class=&quot;string&quot;&gt;&quot;Jan&quot;&lt;/span&gt;]    &lt;span class=&quot;comment&quot;&gt;//如果存在，present 则有值 true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//或者更接近 Go 的方式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;v, ok := monthdays[&lt;span class=&quot;string&quot;&gt;&quot;Jan&quot;&lt;/span&gt;]           &lt;span class=&quot;comment&quot;&gt;//“逗号 ok”形式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;也可以从 map 中移除元素：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;delete(monthdays, &amp;quot;Mar&amp;quot;)      //删除”Mar”  吧，总是下雨的月份&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;delete&lt;/span&gt;(monthdays, &lt;span class=&quot;string&quot;&gt;&quot;Mar&quot;&lt;/span&gt;)      &lt;span class=&quot;comment&quot;&gt;//删除”Mar”  吧，总是下雨的月份&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;通常来说语句 delete(m, x) 会删除 map 中由 m[x] 建立的实例。&lt;/p&gt;
+&lt;hr&gt;
 </content>
     
     <summary type="html">
@@ -893,10 +855,10 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
   
   <entry>
     <title>Go语言学习笔记【第二目：运算符、控制结构】</title>
-    <link href="http://www.dyike.com/2015/06/19/go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/"/>
-    <id>http://www.dyike.com/2015/06/19/go学习笔记2/</id>
+    <link href="http://www.dyike.com/2015/06/19/go-note-2/"/>
+    <id>http://www.dyike.com/2015/06/19/go-note-2/</id>
     <published>2015-06-19T14:06:46.000Z</published>
-    <updated>2016-04-15T09:58:04.000Z</updated>
+    <updated>2016-04-28T08:01:17.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;运算符&quot;&gt;&lt;a href=&quot;#运算符&quot; class=&quot;headerlink&quot; title=&quot;运算符&quot;&gt;&lt;/a&gt;&lt;strong&gt;运算符&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Go支持普通的数字运算符，下面的表格列出了当前支持的运算符，以及其优先级。它们全部是从左到右结合的。&lt;/p&gt;
 &lt;p&gt;Table运算优先级&lt;/p&gt;
@@ -915,54 +877,25 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
 &lt;h2 id=&quot;控制结构&quot;&gt;&lt;a href=&quot;#控制结构&quot; class=&quot;headerlink&quot; title=&quot;控制结构&quot;&gt;&lt;/a&gt;&lt;strong&gt;控制结构&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;在Go中只有很少的几个控制结构。例如这里没有do或者while循环，只有for。有灵活的switch语句和if，而switch接受像for那样可选的初始化语句。还有叫做&lt;strong&gt;类型选择和多路通讯转接器的**&lt;/strong&gt; select&lt;strong&gt;。语法有所不同（同 C 相比）： &lt;/strong&gt;无需圆括号，而语句体必须总是包含在大括号内。**&lt;/p&gt;
 &lt;p&gt;if-eles&lt;/p&gt;
 &lt;p&gt;在 Go 中 if 看起来是这样的：&lt;/p&gt;
-&lt;p&gt;`i f   x &amp;gt; 0 {                    //{ 是强制的&lt;/p&gt;
-&lt;p&gt;return  y&lt;/p&gt;
-&lt;p&gt;}   else  {&lt;/p&gt;
-&lt;p&gt;return  x&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;i f   x &amp;amp;gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &amp;#123;                    &lt;span class=&quot;comment&quot;&gt;//&amp;#123; 是强制的&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  y&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;   &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;  &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  x&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;强制大括号鼓励将简单的 if 语句写在多行上。无论如何，这都是一个很好的形式，尤其是语句体中含有控制语句，例return或者break。&lt;/p&gt;
 &lt;p&gt;if 和 switch 接受初始化语句，通常用于设置一个（局部）变量。&lt;/p&gt;
-&lt;p&gt;`i f err := Chmod(0664) ; err != nil {        ← nil与C的NULL类似&lt;/p&gt;
-&lt;p&gt;fmt.Printf(err)        ← err 的作用域被限定在if内&lt;/p&gt;
-&lt;p&gt;return  err&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;i f err := Chmod(&lt;span class=&quot;number&quot;&gt;0664&lt;/span&gt;) ; err != &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt; &amp;#123;        ← &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;与C的NULL类似&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fmt.Printf(err)        ← err 的作用域被限定在&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;内&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  err&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;可以像通常那样使用逻辑运算符：&lt;/p&gt;
-&lt;p&gt;`i f  true &amp;amp;&amp;amp; true   {&lt;/p&gt;
-&lt;p&gt;fmt.Println(“true”)&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;i f  ! false {&lt;/p&gt;
-&lt;p&gt;fmt.Println(“true”)&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
-&lt;p&gt;在Go库中，你会发现当一个if语句不会进入下一个语句流程–也就是说，语句体结束于 break，continue，goto或者return–不必要的 else会被省略。&lt;br&gt;`&lt;br&gt;f, err := os.Open(name, os.O_RDONLY, 0)&lt;/p&gt;
-&lt;p&gt;i f err != nil {&lt;/p&gt;
-&lt;p&gt;return  err&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;doSomething(f)`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;i f  &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt; &amp;amp;amp;&amp;amp;amp; &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;   &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fmt.Println(&lt;span class=&quot;string&quot;&gt;&quot;true&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;i f  ! &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fmt.Println(&lt;span class=&quot;string&quot;&gt;&quot;true&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在Go库中，你会发现当一个if语句不会进入下一个语句流程–也就是说，语句体结束于 break，continue，goto或者return–不必要的 else会被省略。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;f, err := os.Open(name, os.O_RDONLY, 0)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;i f err != nil &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;return  err&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;doSomething(f)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;这个例子通常用于检测可能的错误序列。成功的流程一直执行到底部使代码很好读，当遇到错误的时候就排除它。这样错误的情况结束于 return 语句，这样就无须else语句。&lt;/p&gt;
-&lt;p&gt;`f, err := os.Open(name, os.O_RDONLY, 0)&lt;/p&gt;
-&lt;p&gt;i f err != nil { return  err&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;d, err := f.Stat()&lt;/p&gt;
-&lt;p&gt;i f err != nil { return  err&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;f, err := os.Open(name, os.O_RDONLY, 0)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;i f err != nil &amp;#123; return  err&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;d, err := f.Stat()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;i f err != nil &amp;#123; return  err&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;doSomething(f, d)&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&amp;nbsp;&lt;br&gt;下面的语法在 Go 中是非法的：&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;`i f   err != nil&lt;/p&gt;
-&lt;p&gt;{                          &lt;strong&gt;  **&lt;/strong&gt;←&lt;strong&gt;&lt;strong&gt;必须同&lt;/strong&gt;&lt;/strong&gt; if &lt;strong&gt;**在同一行&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;return  err&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;p&gt;下面的语法在 Go 中是非法的：&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;i f   err != &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;                          &lt;span class=&quot;comment&quot;&gt;//**  ****←****必须同**** if ****在同一行**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  err&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;hr&gt;
 &lt;hr&gt;
 &lt;h3 id=&quot;goto&quot;&gt;&lt;a href=&quot;#goto&quot; class=&quot;headerlink&quot; title=&quot;goto&quot;&gt;&lt;/a&gt;&lt;strong&gt;goto&lt;/strong&gt;&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;用 goto 跳转到一定是当前函数内定义的标签。例如假设这样一个循环：&lt;br&gt;`func  myfunc() {&lt;/p&gt;
+&lt;p&gt;用 goto 跳转到一定是当前函数内定义的标签。例如假设这样一个循环：&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;i := 0&lt;/p&gt;
-&lt;p&gt;Here:         ← 这行的第一个词，以分号结束作为标签&lt;/p&gt;
-&lt;p&gt;println(i) i++&lt;/p&gt;
-&lt;p&gt;goto  Here      ← 跳转&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt;  myfunc() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;i := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Here:         ← 这行的第一个词，以分号结束作为标签&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;println&lt;/span&gt;(i) i++&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;goto&lt;/span&gt;  Here      ← 跳转&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;标签名是大小写敏感的。&lt;/p&gt;
 &lt;h3 id=&quot;for&quot;&gt;&lt;a href=&quot;#for&quot; class=&quot;headerlink&quot; title=&quot;for&quot;&gt;&lt;/a&gt;&lt;strong&gt;for&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;Go 的 for 循环有三种形式，只有其中的一种使用分号。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -971,113 +904,38 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
 &lt;p&gt;&lt;del&gt;&lt;em&gt;for   {   }                 ← 死循环&lt;/em&gt;&lt;/del&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;短声明使得在循环中声明一个序号变量更加容易。&lt;/p&gt;
-&lt;p&gt;`sum := 0&lt;/p&gt;
-&lt;p&gt;for  i := 0 ;   i &amp;lt; 10 ;   i++ {&lt;/p&gt;
-&lt;p&gt;sum += i              ← sum = sum + i 的简化写法&lt;/p&gt;
-&lt;p&gt;}             ← i 实例在循环结束会消失`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sum := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;  i := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; ;   i &amp;amp;lt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; ;   i++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sum += i              ← sum = sum + i 的简化写法&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;             ← i 实例在循环结束会消失&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;最后，由于Go没有逗号表达式，而 ++ 和–是语句而不是表达式，如果你想在 for 中 执行多个变量，应当使用平行赋值。&lt;/p&gt;
-&lt;p&gt;`// Reverse a&lt;/p&gt;
-&lt;p&gt;for i, j := 0, len(a)-1 ; i &amp;lt; j ; i, j = i+1, j-1 {&lt;/p&gt;
-&lt;p&gt;a[i], a[j] = a[j], a[i]      ← 平行赋值&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;h3 id=&quot;break-和-continue&quot;&gt;&lt;a href=&quot;#break-和-continue&quot; class=&quot;headerlink&quot; title=&quot;break 和 continue&quot;&gt;&lt;/a&gt;&lt;strong&gt;break 和 continue&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;利用 break 可以提前退出循环，break 终止当前的循环。&lt;/p&gt;
-&lt;p&gt;for  i := 0 ;   i &amp;lt; 10 ;   i++ { i f   i &amp;gt; 5 {&lt;/p&gt;
-&lt;p&gt;break   ← 终止这个循环，只打印 0 到 5&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;println(i)&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// Reverse a&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i, j := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;len&lt;/span&gt;(a)&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt; ; i &amp;amp;lt; j ; i, j = i+&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, j&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;a[i], a[j] = a[j], a[i]      ← 平行赋值&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;### **&lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt; 和 &lt;span class=&quot;keyword&quot;&gt;continue&lt;/span&gt;**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;利用 &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt; 可以提前退出循环，&lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt; 终止当前的循环。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;  i := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; ;   i &amp;amp;lt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; ;   i++ &amp;#123; i f   i &amp;amp;gt; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;   ← 终止这个循环，只打印 &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; 到 &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;println&lt;/span&gt;(i)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;循环嵌套循环时，可以在break后指定标签。用标签决定哪个循环被终止：&lt;/p&gt;
-&lt;p&gt;`J:    for j := 0 ;   j &amp;lt; 5 ;   j++ {&lt;/p&gt;
-&lt;p&gt;for i := 0 ;   i &amp;lt; 10 ;   i++ {&lt;/p&gt;
-&lt;p&gt;i f  i &amp;gt; 5 {&lt;/p&gt;
-&lt;p&gt;break  J    ← 现在终止的是 j 循环，而不是 i 的那个&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;println(i)&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;J:    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; j := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; ;   j &amp;lt; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt; ;   j++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; ;   i &amp;lt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; ;   i++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;i f  i &amp;gt; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;  J    ← 现在终止的是 j 循环，而不是 i 的那个&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;println&lt;/span&gt;(i)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;利用continue 让循环进入下一个迭代，而略过剩下的所有代码。下面循环打印了0到 5。&lt;/p&gt;
-&lt;p&gt;`for i := 0 ;  i &amp;lt; 10 ;   i++ {&lt;/p&gt;
-&lt;p&gt;i f  i &amp;gt; 5 {&lt;/p&gt;
-&lt;p&gt;continue      ← 跳过循环中所有的代码println(i)`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; ;  i &amp;lt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; ;   i++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;i f  i &amp;gt; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;continue&lt;/span&gt;      ← 跳过循环中所有的代码&lt;span class=&quot;built_in&quot;&gt;println&lt;/span&gt;(i)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;range&quot;&gt;&lt;a href=&quot;#range&quot; class=&quot;headerlink&quot; title=&quot;range&quot;&gt;&lt;/a&gt;&lt;strong&gt;range&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;关键字**&lt;/strong&gt; range &lt;strong&gt;**可用于循环&lt;/strong&gt;。它可以在 slice、array、string、map 和 channel。range是个迭代器，当被调用的时候，从它循环的内容中返回一个键值对。基于不同的内容，range返回不同的东西。&lt;/p&gt;
 &lt;p&gt;当对slice 或者array做循环时，range 返回序号作为键，这个序号对应的内容作为值。考虑这个代码：&lt;/p&gt;
-&lt;p&gt;`list := [] string {“a”, “b”, “c”, “d”, “e”, “f”}&lt;/p&gt;
-&lt;p&gt;for  k, v := range  list {&lt;/p&gt;
-&lt;p&gt;// 对  k 和  v 做想做的事情&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;list := [] &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt; &amp;#123;&lt;span class=&quot;string&quot;&gt;&quot;a&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;b&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;c&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;d&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;e&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;f&quot;&lt;/span&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;  k, v := &lt;span class=&quot;keyword&quot;&gt;range&lt;/span&gt;  list &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 对  k 和  v 做想做的事情&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;1  创建一个字符串的 slice。&lt;/p&gt;
 &lt;p&gt;2 用range对其进行循环。每一个迭代，range 将返回 int 类型的序号，string类型的值，以0和“a”开始。&lt;/p&gt;
 &lt;p&gt;3  k 的值为 0…5，而v在循环从“a”…“f”。&lt;/p&gt;
 &lt;p&gt;也可以在字符串上直接使用range。这样字符串被打散成独立的 Unicode 字符并且 起始位按照 UTF-8 解析。&lt;/p&gt;
 &lt;p&gt;【在 UTF-8 世界的字符有时被称作 runes。通常，当人们讨论字符时，多数是指 8 位字符。UTF-8 字符可 能会有 32 位，称作 rune。在这个例子里，char 的类型是 rune。】&lt;/p&gt;
 &lt;p&gt;循环：&lt;/p&gt;
-&lt;p&gt;`for pos, char := range  “aΦx” {&lt;/p&gt;
-&lt;p&gt;fmt.Printf(“character ‘%c’ starts at byte position %d\n”, char, pos)&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; pos, char := &lt;span class=&quot;keyword&quot;&gt;range&lt;/span&gt;  &lt;span class=&quot;string&quot;&gt;&quot;aΦx&quot;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fmt.Printf(&lt;span class=&quot;string&quot;&gt;&quot;character &#39;%c&#39; starts at byte position %d\n&quot;&lt;/span&gt;, char, pos)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;打印&lt;/p&gt;
-&lt;p&gt;`character ‘a’ starts at byte position&lt;/p&gt;
-&lt;p&gt;character ‘Φ’ starts at byte position&lt;/p&gt;
-&lt;p&gt;character ‘x’ starts at byte position      ← Φ took 2 bytes`&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;character &amp;apos;a&amp;apos; starts at byte position&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;character &amp;apos;Φ&amp;apos; starts at byte position&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;character &amp;apos;x&amp;apos; starts at byte position      ← Φ took 2 bytes&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;switch&quot;&gt;&lt;a href=&quot;#switch&quot; class=&quot;headerlink&quot; title=&quot;switch&quot;&gt;&lt;/a&gt;&lt;strong&gt;switch&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;Go的switch非常灵活。表达式不必是常量或整数，执行的过程从上至下，直到找到匹 配项，而如果switch没有表达式，它会匹配true 。这产生一种可能——使用switch编写if-else-if-else判断序列。&lt;/p&gt;
-&lt;p&gt;`func unhex(c byte) byte {&lt;/p&gt;
-&lt;p&gt;switch  {&lt;/p&gt;
-&lt;p&gt;case  ‘0’ &amp;lt;= c &amp;amp;&amp;amp; c &amp;lt;= ‘9’:&lt;/p&gt;
-&lt;p&gt;return  c - ‘0’&lt;/p&gt;
-&lt;p&gt;case  ‘a’ &amp;lt;= c &amp;amp;&amp;amp; c &amp;lt;= ‘f’:&lt;/p&gt;
-&lt;p&gt;return  c - ‘a’ + 10&lt;/p&gt;
-&lt;p&gt;case  ‘A’ &amp;lt;= c &amp;amp;&amp;amp; c &amp;lt;= ‘F’:&lt;/p&gt;
-&lt;p&gt;return  c - ‘A’ + 10&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;return  0&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; unhex(c &lt;span class=&quot;keyword&quot;&gt;byte&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;byte&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt;  &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt;  &lt;span class=&quot;string&quot;&gt;&#39;0&#39;&lt;/span&gt; &amp;amp;lt;= c &amp;amp;amp;&amp;amp;amp; c &amp;amp;lt;= &lt;span class=&quot;string&quot;&gt;&#39;9&#39;&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  c - &lt;span class=&quot;string&quot;&gt;&#39;0&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt;  &lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt; &amp;amp;lt;= c &amp;amp;amp;&amp;amp;amp; c &amp;amp;lt;= &lt;span class=&quot;string&quot;&gt;&#39;f&#39;&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  c - &lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt; + &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt;  &lt;span class=&quot;string&quot;&gt;&#39;A&#39;&lt;/span&gt; &amp;amp;lt;= c &amp;amp;amp;&amp;amp;amp; c &amp;amp;lt;= &lt;span class=&quot;string&quot;&gt;&#39;F&#39;&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  c - &lt;span class=&quot;string&quot;&gt;&#39;A&#39;&lt;/span&gt; + &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;它不会匹配失败后自动向下尝试，但是可以使用fallthrough 使其这样做。 没有fallthrough：&lt;/p&gt;
-&lt;p&gt;`switch  i {&lt;/p&gt;
-&lt;p&gt;case  0:         // 空的  case 体&lt;/p&gt;
-&lt;p&gt;case  1:&lt;/p&gt;
-&lt;p&gt;f()       // 当  i == 0 时，f 不会被调用！&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;而这样：&lt;/p&gt;
-&lt;p&gt;switch  i {&lt;/p&gt;
-&lt;p&gt;case  0:     fallthrough&lt;/p&gt;
-&lt;p&gt;case  1:&lt;/p&gt;
-&lt;p&gt;f()     // 当  i == 0 时，f 会被调用！&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt;  i &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;:         &lt;span class=&quot;comment&quot;&gt;// 空的  case 体&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;f()       &lt;span class=&quot;comment&quot;&gt;// 当  i == 0 时，f 不会被调用！&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;而这样：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt;  i &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;:     &lt;span class=&quot;keyword&quot;&gt;fallthrough&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;f()     &lt;span class=&quot;comment&quot;&gt;// 当  i == 0 时，f 会被调用！&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
 &lt;p&gt;用default 可以指定当其他所有分支都不匹配的时候的行为。&lt;/p&gt;
-&lt;p&gt;`switch  i {&lt;/p&gt;
-&lt;p&gt;case  0:&lt;/p&gt;
-&lt;p&gt;case  1:&lt;/p&gt;
-&lt;p&gt;f()&lt;/p&gt;
-&lt;p&gt;default:&lt;/p&gt;
-&lt;p&gt;g()         // 当  i 不等于  0 或  1 时调用&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt;  i &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;f()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;g()         &lt;span class=&quot;comment&quot;&gt;// 当  i 不等于  0 或  1 时调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;分支可以使用逗号分隔的列表。&lt;/p&gt;
-&lt;p&gt;`func shouldEscape(c byte) bool {&lt;/p&gt;
-&lt;p&gt;switch  c {&lt;/p&gt;
-&lt;p&gt;case  ‘ ‘, ‘?’, ‘&amp;amp;’, ‘=’, ‘#’, ‘+’:   ← , as ”or”&lt;/p&gt;
-&lt;p&gt;return  true&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;return  false&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;func shouldEscape(c byte) bool &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;switch  c &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;case  &amp;apos; &amp;apos;, &amp;apos;?&amp;apos;, &amp;apos;&amp;amp;amp;&amp;apos;, &amp;apos;=&amp;apos;, &amp;apos;#&amp;apos;, &amp;apos;+&amp;apos;:   ← , as ”or”&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;return  true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;return  false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;这里有一个使用两个 switch 对字节数组进行比较的例子：&lt;/p&gt;
-&lt;p&gt;`//0&lt;/p&gt;
-&lt;p&gt;func  Compare(a, b []byte) int   {&lt;/p&gt;
-&lt;p&gt;for i := 0 ; i &amp;lt; len(a) &amp;amp;&amp;amp; i &amp;lt; len(b) ; i++ {&lt;/p&gt;
-&lt;p&gt;switch  {&lt;/p&gt;
-&lt;p&gt;case  a[i] &amp;gt; b[i]:&lt;/p&gt;
-&lt;p&gt;return  1&lt;/p&gt;
-&lt;p&gt;case  a[i] &amp;lt; b[i]:&lt;/p&gt;
-&lt;p&gt;return  -1&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;switch   {           //1&lt;/p&gt;
-&lt;p&gt;case len(a) &amp;lt; len(b):&lt;/p&gt;
-&lt;p&gt;return  -1&lt;/p&gt;
-&lt;p&gt;case len(a) &amp;gt; len(b):&lt;/p&gt;
-&lt;p&gt;return  1&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;return  0       //2&lt;/p&gt;
-&lt;p&gt;}&lt;br&gt;`&lt;br&gt;0  比较返回两个字节数组字典数序先后的整数。&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt;  Compare(a, b []&lt;span class=&quot;keyword&quot;&gt;byte&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;   &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i := &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; ; i &amp;amp;lt; &lt;span class=&quot;built_in&quot;&gt;len&lt;/span&gt;(a) &amp;amp;amp;&amp;amp;amp; i &amp;amp;lt; &lt;span class=&quot;built_in&quot;&gt;len&lt;/span&gt;(b) ; i++ &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt;  &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt;  a[i] &amp;amp;gt; b[i]:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt;  a[i] &amp;amp;lt; b[i]:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt;   &amp;#123;           &lt;span class=&quot;comment&quot;&gt;//1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;len&lt;/span&gt;(a) &amp;amp;lt; &lt;span class=&quot;built_in&quot;&gt;len&lt;/span&gt;(b):&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;len&lt;/span&gt;(a) &amp;amp;gt; &lt;span class=&quot;built_in&quot;&gt;len&lt;/span&gt;(b):&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;       &lt;span class=&quot;comment&quot;&gt;//2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;p&gt;0  比较返回两个字节数组字典数序先后的整数。&lt;/p&gt;
 &lt;p&gt;如果 a == b 返回 0，如果 a &amp;lt; b 返回 -1，而如果 a &amp;gt; b 返回+1；&lt;/p&gt;
 &lt;p&gt;1  长度不同，则不相等；&lt;/p&gt;
 &lt;p&gt;2  字符串相等。&lt;/p&gt;
@@ -1096,10 +954,10 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
   
   <entry>
     <title>Go语言学习笔记【第一目：变量、类型和关键字，布尔类型，数字类型...】</title>
-    <link href="http://www.dyike.com/2015/06/18/go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%E4%B8%8A/"/>
-    <id>http://www.dyike.com/2015/06/18/go学习笔记1上/</id>
+    <link href="http://www.dyike.com/2015/06/18/go-note-1-1/"/>
+    <id>http://www.dyike.com/2015/06/18/go-note-1-1/</id>
     <published>2015-06-18T14:15:05.000Z</published>
-    <updated>2016-04-15T10:33:11.000Z</updated>
+    <updated>2016-04-28T08:05:46.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;strong&gt;变量、类型和关键字&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Go 在语法上有着类 C 的感觉。如果你希望将两个（或更多）语句放在一行书写，它们必须用分号 (’;’) 分隔。&lt;u&gt;一般情况下，你不需要分号。&lt;/u&gt;&lt;/p&gt;
@@ -1107,74 +965,42 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
 &lt;p&gt;不是：int a，而是 a int。&lt;/p&gt;
 &lt;p&gt;当定义了一个变量，它默认赋值为其类型的 null 值。&lt;/p&gt;
 &lt;p&gt;在 var a int后，a 的 值为 0。而 var  s string，意味着 s 被赋值为零长度字符串，也就是 “”。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;在&lt;/em&gt;**&lt;/strong&gt;&lt;em&gt; Go &lt;/em&gt;&lt;strong&gt;**&lt;em&gt;中，声明和赋值是两过程，但是可以连在一起。比较下面作用相同的代码片段。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;用**&lt;/strong&gt; = &lt;strong&gt;**声明&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;`&lt;br&gt;var a int&lt;/p&gt;
-&lt;p&gt;var b bool&lt;/p&gt;
-&lt;p&gt;a = 15&lt;/p&gt;
-&lt;p&gt;b = false`&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;用**&lt;/strong&gt;:= &lt;strong&gt;**声明&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;`a := 15&lt;/p&gt;
-&lt;p&gt;b := false`&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;在Go中，声明和赋值是两过程，但是可以连在一起。比较下面作用相同的代码片段。&lt;/p&gt;
+&lt;p&gt;用 = 声明&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b &lt;span class=&quot;keyword&quot;&gt;bool&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;a = &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b = &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;用:= 声明&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;a := &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b := &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;在左边使用了关键字 var 声明变量，然后赋值给它。右边的代码使用了 := 使得在一 步内完成了声明和赋值&lt;strong&gt;&lt;u&gt;（这一形式只可用在函数内）&lt;/u&gt;&lt;/strong&gt;。在这种情况下，变量的类型是由值推演出来的。值15表示是int 类型，值false告诉Go 它的类型应当是bool。多个var 声明可以成组；const 和import 同样允许这么做。留意圆括号的使用：&lt;/p&gt;
-&lt;p&gt;`var  (&lt;/p&gt;
-&lt;p&gt;x int&lt;/p&gt;
-&lt;p&gt;b bool&lt;/p&gt;
-&lt;p&gt;)`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt;  (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;x &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b &lt;span class=&quot;keyword&quot;&gt;bool&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;有相同类型的多个变量同样可以在一行内完成声明：var x, y int让x和y都是int类型变量。同样可以使用 平行赋值：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;a, b := 20, 16&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;a, b := &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;让a和b都是整数变量，并且赋值 20 给 a，16 给 b。&lt;/p&gt;
 &lt;p&gt;一个特殊的变量名是_（下划线）。任何赋给它的值都被丢弃。在这个例子中，将35赋值给b，同时丢弃34。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;_, b := 34, 35&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;_, b := &lt;span class=&quot;number&quot;&gt;34&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;35&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;Go 的编译器对声明却未使用的变量在报错。下面的代码会产生这个错误：声明了i却未使用&lt;/p&gt;
-&lt;p&gt;`package   main&lt;/p&gt;
-&lt;p&gt;func  main() {&lt;/p&gt;
-&lt;p&gt;var  i int&lt;/p&gt;
-&lt;p&gt;}&lt;br&gt;`&lt;br&gt;&amp;nbsp;&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt;   main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt;  main() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt;  i &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;布尔类型&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;布尔类型表示由预定义的常量 true 和 false 代表的布尔判定值。布尔类型是 bool。&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;数字类型&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Go有众所周知的类型如int，这个类型根据你的硬件决定适当的长度。意味着在32位硬件上，是32位的；在64位硬件上是64位的。&lt;/p&gt;
-&lt;p&gt;&lt;del&gt;&lt;em&gt;注意：int是32或64位之一，不会定义成其他值。uint情况相同。&lt;/em&gt;&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;注意：int是32或64位之一，不会定义成其他值。uint情况相同。&lt;/p&gt;
 &lt;p&gt;如果你希望明确其长度，你可以使用int32或者uint32。完整的整数类型列表（符号和无符号）是 int8，int16，int32，int64 和 byte，uint8，uint16，uint32， uint64。byte 是 uint8 的别名。浮点类型的值有 ﬂoat32 和 ﬂoat64 （没有 float 类 型）。64  位的整数和浮点数总是 64 位的，即便是在 32 位的架构上。&lt;/p&gt;
 &lt;p&gt;需要留意的是这些类型全部都是独立的，并且混合用这些类型向变量赋值会引起编译 器错误，例如下面的代码：&lt;/p&gt;
-&lt;p&gt;`package main&lt;/p&gt;
-&lt;p&gt;func main()      {&lt;/p&gt;
-&lt;p&gt;var a int           // 通用整数类型&lt;/p&gt;
-&lt;p&gt;var b int32      // 32 位整数类型&lt;/p&gt;
-&lt;p&gt;a = 15&lt;/p&gt;
-&lt;p&gt;b = a+ a           // 混合这些类型是非法的&lt;/p&gt;
-&lt;p&gt;b = b+ 5           //5 是一个（未定义类型的）常量，所以这没%问题&lt;/p&gt;
-&lt;p&gt;}`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; main()      &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;           &lt;span class=&quot;comment&quot;&gt;// 通用整数类型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b &lt;span class=&quot;keyword&quot;&gt;int32&lt;/span&gt;      &lt;span class=&quot;comment&quot;&gt;// 32 位整数类型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;a = &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b = a+ a           &lt;span class=&quot;comment&quot;&gt;// 混合这些类型是非法的&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b = b+ &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;           &lt;span class=&quot;comment&quot;&gt;//5 是一个（未定义类型的）常量，所以这没%问题&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;在b=a+a触发一个赋值错误：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;types.go:7: cannot use a + a (type int) as type int32 in assignment&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;赋值可以用八进制、十六进制或科学计数法：077，0xFF，1e3 或者 6.022e23 这些都是合法的。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;常量&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;常量在Go中，也就是 constant。它们在编译时被创建，只能是数字、字符串或布尔值；const x = 42 生成x这个常量。可以使用iota生成枚举值。&lt;/p&gt;
-&lt;p&gt;`const  (&lt;/p&gt;
-&lt;p&gt;a = iota&lt;/p&gt;
-&lt;p&gt;b = iota&lt;/p&gt;
-&lt;p&gt;)`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt;  (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;a = &lt;span class=&quot;literal&quot;&gt;iota&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b = &lt;span class=&quot;literal&quot;&gt;iota&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;第一个iota 表示为 0，因此a等于0，当iota 再次在新的一行使用时，它的值增加了1，因此b的值是1。&lt;/p&gt;
 &lt;p&gt;也可以像下面这样，省略Go重复的= iota：&lt;/p&gt;
-&lt;p&gt;`const  (&lt;/p&gt;
-&lt;p&gt;a = iota&lt;/p&gt;
-&lt;p&gt;b                 // Implicitly b = iota&lt;/p&gt;
-&lt;p&gt;)`&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt;  (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;a = &lt;span class=&quot;literal&quot;&gt;iota&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b                 &lt;span class=&quot;comment&quot;&gt;// Implicitly b = iota&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;如果需要，可以明确指定常量的类型：&lt;/p&gt;
-&lt;p&gt;`const  (&lt;/p&gt;
-&lt;p&gt;a = 0                      // Is an int now&lt;/p&gt;
-&lt;p&gt;b string  = “0”&lt;/p&gt;
-&lt;p&gt;)&lt;br&gt;`&lt;br&gt;&amp;nbsp;&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt;  (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;a = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;                      &lt;span class=&quot;comment&quot;&gt;// Is an int now&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;  = &lt;span class=&quot;string&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;字符串&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;另一个重要的内建类型是string。赋值字符串的例子：&lt;/p&gt;
@@ -1319,8 +1145,8 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
   
   <entry>
     <title>【05-20】讨论一下支付系统的功能设计或相关开发经验</title>
-    <link href="http://www.dyike.com/2015/05/20/%E6%94%AF%E4%BB%98%E5%BC%80%E5%8F%91%E7%9A%84%E5%88%86%E4%BA%AB/"/>
-    <id>http://www.dyike.com/2015/05/20/支付开发的分享/</id>
+    <link href="http://www.dyike.com/2015/05/20/share-with-pay-dev/"/>
+    <id>http://www.dyike.com/2015/05/20/share-with-pay-dev/</id>
     <published>2015-05-20T13:08:00.000Z</published>
     <updated>2016-04-15T09:56:21.000Z</updated>
     
@@ -1405,20 +1231,12 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
   
   <entry>
     <title>实用工具 &amp; 服务</title>
-    <link href="http://www.dyike.com/2015/05/13/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
-    <id>http://www.dyike.com/2015/05/13/实用工具/</id>
+    <link href="http://www.dyike.com/2015/05/13/practical-tools/"/>
+    <id>http://www.dyike.com/2015/05/13/practical-tools/</id>
     <published>2015-05-13T13:10:18.000Z</published>
-    <updated>2016-04-15T10:01:25.000Z</updated>
+    <updated>2016-04-28T08:16:01.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;提供给-开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot;&gt;&lt;a href=&quot;#提供给-开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot; class=&quot;headerlink&quot; title=&quot;提供给 开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot;&gt;&lt;/a&gt;提供给 开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&lt;/h3&gt;&lt;p&gt;&lt;div class=&quot;wrapper&quot;&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div class=&quot;site&quot;&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div class=&quot;container&quot;&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div class=&quot;repository-with-sidebar repo-container new-discussion-timeline  &quot;&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div id=&quot;js-repo-pjax-container&quot; class=&quot;repository-content context-loader-container&quot; data-pjax-container=&quot;&quot;&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div class=&quot;file&quot;&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;div id=&quot;readme&quot; class=&quot;blob instapaper_body&quot;&gt;
-
-&lt;ol&gt;
+    <content type="html">&lt;h3 id=&quot;提供给-开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot;&gt;&lt;a href=&quot;#提供给-开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot; class=&quot;headerlink&quot; title=&quot;提供给 开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&quot;&gt;&lt;/a&gt;提供给 开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;h3 id=&quot;http-www-testin-cn-免费移动App真机云测试平台&quot;&gt;&lt;a href=&quot;#http-www-testin-cn-免费移动App真机云测试平台&quot; class=&quot;headerlink&quot; title=&quot;http://www.testin.cn/ 免费移动App真机云测试平台&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.testin.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.testin.cn/&lt;/a&gt; 免费移动App真机云测试平台&lt;/h3&gt;&lt;/li&gt;
 &lt;li&gt;&lt;h3 id=&quot;http-www-mikecrm-com-免费的信息收集工具&quot;&gt;&lt;a href=&quot;#http-www-mikecrm-com-免费的信息收集工具&quot; class=&quot;headerlink&quot; title=&quot;http://www.mikecrm.com/ 免费的信息收集工具&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.mikecrm.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.mikecrm.com/&lt;/a&gt; 免费的信息收集工具&lt;/h3&gt;&lt;/li&gt;
 &lt;li&gt;&lt;h3 id=&quot;https-www-jinshuju-net-免费强大的表单设计、数据收集工具&quot;&gt;&lt;a href=&quot;#https-www-jinshuju-net-免费强大的表单设计、数据收集工具&quot; class=&quot;headerlink&quot; title=&quot;https://www.jinshuju.net/ 免费强大的表单设计、数据收集工具&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.jinshuju.net/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.jinshuju.net/&lt;/a&gt; 免费强大的表单设计、数据收集工具&lt;/h3&gt;&lt;/li&gt;
@@ -1450,12 +1268,9 @@ ssserver -c /etc/shadowsocks.json -d stop&lt;/code&gt;&lt;br&gt;shadowsocks的�
 &lt;li&gt;&lt;h3 id=&quot;http-www-getui-com-个推-手机消息推送解决方案提供商&quot;&gt;&lt;a href=&quot;#http-www-getui-com-个推-手机消息推送解决方案提供商&quot; class=&quot;headerlink&quot; title=&quot;http://www.getui.com/ 个推 手机消息推送解决方案提供商&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.getui.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.getui.com/&lt;/a&gt; 个推 手机消息推送解决方案提供商&lt;/h3&gt;&lt;/li&gt;
 &lt;li&gt;&lt;h3 id=&quot;https-pingxx-com-Ping-是为移动端量身打造的下一代支付系统，简单接入，多种支付渠道。&quot;&gt;&lt;a href=&quot;#https-pingxx-com-Ping-是为移动端量身打造的下一代支付系统，简单接入，多种支付渠道。&quot; class=&quot;headerlink&quot; title=&quot;https://pingxx.com/ Ping++是为移动端量身打造的下一代支付系统，简单接入，多种支付渠道。&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://pingxx.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://pingxx.com/&lt;/a&gt; Ping++是为移动端量身打造的下一代支付系统，简单接入，多种支付渠道。&lt;/h3&gt;&lt;/li&gt;
 &lt;li&gt;&lt;h3 id=&quot;http-apistore-baidu-com-为开发者提供最全面的API服务&quot;&gt;&lt;a href=&quot;#http-apistore-baidu-com-为开发者提供最全面的API服务&quot; class=&quot;headerlink&quot; title=&quot;http://apistore.baidu.com/ 为开发者提供最全面的API服务&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://apistore.baidu.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://apistore.baidu.com/&lt;/a&gt; 为开发者提供最全面的API服务&lt;/h3&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;###&lt;/p&gt;
-&lt;ol&gt;
 &lt;li&gt;&lt;h3 id=&quot;http-samllpdf-com-cn-针对PDF问题解决方案&quot;&gt;&lt;a href=&quot;#http-samllpdf-com-cn-针对PDF问题解决方案&quot; class=&quot;headerlink&quot; title=&quot;http://samllpdf.com/cn/ 针对PDF问题解决方案&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://samllpdf.com/cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://samllpdf.com/cn/&lt;/a&gt; 针对PDF问题解决方案&lt;/h3&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</content>
+</content>
     
     <summary type="html">
     
