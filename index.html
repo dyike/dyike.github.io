@@ -1,7 +1,1922 @@
-<!DOCTYPE html><html lang="zh_CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="php、nginx、mysql、swift、程序员、arduino、硬件、软件"><title>一刻笔记 | 带着一颗变态的、积极的心走向未来</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">一刻笔记</h1><a id="logo" href="/.">一刻笔记</a><p class="description">带着一颗变态的、积极的心走向未来</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/learn/"><i class="fa fa-plug"> 充电</i></a><a href="/life/"><i class="fa fa-life-ring"> 生活</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-hand-peace-o"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h2 class="post-title"><a href="/2016/04/28/array-to-string/">将数组转换成字符串</a></h2><div class="post-meta">2016-04-28</div><div class="post-content"><hr></div><p class="readmore"><a href="/2016/04/28/array-to-string/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/03/08/solve-ssh-broken-connection/">解决ssh的连接中断的问题&quot;'</a></h2><div class="post-meta">2016-03-08</div><div class="post-content"><p><strong>问题场景</strong></p></div><p class="readmore"><a href="/2016/03/08/solve-ssh-broken-connection/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/01/02/php7-compile-err/">php7编译出现的问题</a></h2><div class="post-meta">2016-01-02</div><div class="post-content"><p>在编译安装php7时日志中有如下错误记录：<br>virtual memory exhausted: Cannot allocate memory<br>make: <em>*</em> [ext/fileinfo/libmagic/apprentice.lo] Error 1</p></div><p class="readmore"><a href="/2016/01/02/php7-compile-err/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2015/12/30/think-about-2015/">2015年我的总结</a></h2><div class="post-meta">2015-12-30</div><div class="post-content"><p>写这个的时候是自己刚刚参加完研究生考试，说实话心里真的是一万个草泥马，这题也太难了，比去年的还要难。后来想想也不对，要难大家一起难嘛。再后来又听说了今年考研有政治英语泄题的事件，心里又开始不平衡了。哎，自己活得太真实……</p></div><p class="readmore"><a href="/2015/12/30/think-about-2015/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2015/10/22/talk-about-redis/">讨论下redis集群方案以及遇到过的坑</a></h2><div class="post-meta">2015-10-22</div><div class="post-content"><p>【今日话题】</p></div><p class="readmore"><a href="/2015/10/22/talk-about-redis/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2015/09/20/manage-virtualbox-by-vagrant/">用 Vagrant 管理虚拟机</a></h2><div class="post-meta">2015-09-20</div><div class="post-content"><p>Vagrant 可以让我们用命令直接从云上下载虚拟机的镜像，你想要什么系统都行，Centos，Ubuntu …   只需要一行命令，然后再用命令去操作虚拟机，启动，暂停，关闭，重启，你可以更方便的管理所有的在本地上电脑上的虚拟机镜像，手工去配置它们，可以再重新打包成新的镜像，方便你跟你的团队在其它的项目上重复使用。</p></div><p class="readmore"><a href="/2015/09/20/manage-virtualbox-by-vagrant/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2015/09/19/about-an-error/">由于自己的疏忽，一个低级的错误</a></h2><div class="post-meta">2015-09-19</div><div class="post-content"><p>PHP中continue后面的分号，疏忽掉就会出现不一样的情况。<br>看一个简单的例子：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">for</span> ($i = <span class="number">0</span>; $i &amp;lt; <span class="number">5</span>; ++$i) &#123;</span><br><span class="line"><span class="keyword">if</span> ($i == <span class="number">2</span>)</span><br><span class="line"><span class="keyword">continue</span>;</span><br><span class="line"><span class="keyword">print</span> <span class="string">"$i\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p></div><p class="readmore"><a href="/2015/09/19/about-an-error/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2015/09/16/the-php-dev-in-ubuntu/">ubuntu下配置nginx，mysql，php环境</a></h2><div class="post-meta">2015-09-16</div><div class="post-content"><p>###一、概述###</p></div><p class="readmore"><a href="/2015/09/16/the-php-dev-in-ubuntu/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2015/09/04/how-to-use-google/">科学上网：用VPS搭建shadowsocks服务器</a></h2><div class="post-meta">2015-09-04</div><div class="post-content"><p>学会 科学上网：用 VPS搭建shadowsocks 服务器</p></div><p class="readmore"><a href="/2015/09/04/how-to-use-google/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2015/08/08/2015-8-8/">2015年8月8日晚小记</a></h2><div class="post-meta">2015-08-08</div><div class="post-content"><p>好久好久没有对自己进行总结了，记得上一次对自己得总结还是2015年初写2014年的总结。2015年都已经走下了一大半了，该总结的总结了。还记得年初的时候在轻单list了一份计划，现在看看，有的实现了，有的今年不能实现了。</p></div><p class="readmore"><a href="/2015/08/08/2015-8-8/">阅读更多</a></p></div><nav class="page-navigator"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a></nav></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/PM-创业者-工具-服务-我的收藏/" style="font-size: 15px;">PM 创业者 工具 服务 我的收藏</a> <a href="/tags/随笔感想/" style="font-size: 15px;">随笔感想</a> <a href="/tags/回忆录/" style="font-size: 15px;">回忆录</a> <a href="/tags/php/" style="font-size: 15px;">-php</a> <a href="/tags/Golang/" style="font-size: 15px;">Golang</a> <a href="/tags/内心OS/" style="font-size: 15px;">内心OS</a> <a href="/tags/PHP/" style="font-size: 15px;">PHP</a> <a href="/tags/vagrant-virtualbox/" style="font-size: 15px;">vagrant virtualbox</a> <a href="/tags/PHP/" style="font-size: 15px;">-PHP</a> <a href="/tags/数据结构-算法-干货分享/" style="font-size: 15px;">数据结构  算法  干货分享</a> <a href="/tags/分享/" style="font-size: 15px;">分享</a> <a href="/tags/支付功能/" style="font-size: 15px;">支付功能</a> <a href="/tags/ssh/" style="font-size: 15px;">ssh</a> <a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/虚拟机/" style="font-size: 15px;">虚拟机</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/array-to-string/">将数组转换成字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/08/solve-ssh-broken-connection/">解决ssh的连接中断的问题"'</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/02/php7-compile-err/">php7编译出现的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/30/think-about-2015/">2015年我的总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/22/talk-about-redis/">讨论下redis集群方案以及遇到过的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/20/manage-virtualbox-by-vagrant/">用 Vagrant 管理虚拟机</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/19/about-an-error/">由于自己的疏忽，一个低级的错误</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/16/the-php-dev-in-ubuntu/">ubuntu下配置nginx，mysql，php环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/04/how-to-use-google/">科学上网：用VPS搭建shadowsocks服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/08/2015-8-8/">2015年8月8日晚小记</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.chenjie.info/" title="陈捷的博客" target="_blank">陈捷的博客</a><ul></ul><a href="http://www.iamle.com/" title="流水理鱼wwek" target="_blank">流水理鱼wwek</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">一刻笔记.</a> ityike <a rel="nofollow" target="_blank" href="http://www.dyike.com"></a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
-if (search_path.length == 0) {
-   search_path = 'search.xml';
-}
-var path = '/' + search_path;
-searchFunc(path, 'local-search-input', 'local-search-result');
-</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="一刻笔记" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="一刻笔记" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="php、swift、程序员、arduino、设计">
+<meta property="og:type" content="website">
+<meta property="og:title" content="一刻笔记">
+<meta property="og:url" content="http://www.dyike.com/index.html">
+<meta property="og:site_name" content="一刻笔记">
+<meta property="og:description" content="php、swift、程序员、arduino、设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一刻笔记">
+<meta name="twitter:description" content="php、swift、程序员、arduino、设计">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 一刻笔记 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一刻笔记</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">带着一颗变态的、积极的心走向未来</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/首页" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-learn">
+          <a href="/充电" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            menu.learn
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/生活" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            menu.life
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/归档" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/关于" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/搜索" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/公益404" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/28/array-to-string/" itemprop="url">
+                  将数组转换成字符串
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-28T15:08:32+08:00" content="2016-04-28">
+              2016-04-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/28/array-to-string/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/28/array-to-string/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>##一个简单的方法：将一个二维的数组转换成字符串</p>
+<p>常常出现这样一种情况，sql语句查询出来的结果是一个二维数组，但是查询的结果还是需要用到下一条查询语句，这个时候可能需要将一个二维数组转换成字符串用于sql语句的查询。<br>下面是一个简单的例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">arr2str</span> <span class="params">($arr)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $v)</span><br><span class="line">    &#123;</span><br><span class="line">        $v = join(<span class="string">","</span>,$v); <span class="comment">//可以用implode将一维数组转换为用逗号连接的字符串</span></span><br><span class="line">        $temp[] = $v;</span><br><span class="line">    &#125;</span><br><span class="line">    $t=<span class="string">""</span>;</span><br><span class="line">    <span class="keyword">foreach</span>($temp <span class="keyword">as</span> $v)&#123;</span><br><span class="line">        $t.=<span class="string">"'"</span>.$v.<span class="string">"'"</span>.<span class="string">","</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    $t=substr($t,<span class="number">0</span>,<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">return</span> $t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/08/solve-ssh-broken-connection/" itemprop="url">
+                  解决ssh的连接中断的问题"'
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-08T09:23:41+08:00" content="2016-03-08">
+              2016-03-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/08/solve-ssh-broken-connection/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/08/solve-ssh-broken-connection/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>问题场景</strong></p>
+<p>服务器环境：阿里云 Linux CentOS 主机</p>
+<p>客户端：Mac OSX Terminal</p>
+<p><strong>问题现象</strong></p>
+<p>用 ssh 命令连接服务器之后，如果一段时间不操作，再次进入 Terminal 时会有一段时间没有响应，然后就出现错误提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Write failed: Broken pipe</span><br></pre></td></tr></table></figure>
+<p>只能重新用 ssh 命令进行连接。</p>
+<p><strong>解决方法</strong></p>
+<p>方法一：如果您有多台服务器，不想在每台服务器上设置，只需在客户端的 ~/.ssh/ 文件夹中添加 config 文件，并添加下面的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ServerAliveInterval 60</span><br></pre></td></tr></table></figure>
+<p>方法二：如果您有多个人管理服务器，不想在每个客户端进行设置，只需在服务器的 /etc/ssh/sshd_config 中添加如下的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClientAliveInterval 60</span><br></pre></td></tr></table></figure>
+<p>方法三：如果您只想让当前的 ssh 保持连接，可以使用以下的命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -o ServerAliveInterval=60 user@sshserver</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/02/php7-compile-err/" itemprop="url">
+                  php7编译出现的问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-02T18:15:13+08:00" content="2016-01-02">
+              2016-01-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/02/php7-compile-err/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/02/php7-compile-err/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在编译安装php7时日志中有如下错误记录：<br>virtual memory exhausted: Cannot allocate memory<br>make: <em>*</em> [ext/fileinfo/libmagic/apprentice.lo] Error 1</p>
+<p>开始时的解决方法是先将很多的进程关闭，比如httpd、ftpd、sendmail等等，释放出了一部分内存后，再进行编译，仍然得到同样的编译错误。后来百度谷歌了很久才找到解决问题的方法，而且是在php.net上找到的解决方法，原文链接是：https:  //bugs.php.net/bug.php?id=48809</p>
+<p>根据这个文章的方法将php安装配置文件中加了引号中的配置（不包括引号）“- -disable-fileinfo”后终于编译通过。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/30/think-about-2015/" itemprop="url">
+                  2015年我的总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-30T21:44:07+08:00" content="2015-12-30">
+              2015-12-30
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/30/think-about-2015/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/30/think-about-2015/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>写这个的时候是自己刚刚参加完研究生考试，说实话心里真的是一万个草泥马，这题也太难了，比去年的还要难。后来想想也不对，要难大家一起难嘛。再后来又听说了今年考研有政治英语泄题的事件，心里又开始不平衡了。哎，自己活得太真实……</p>
+<p>大概从什么时候开始喜欢写年度总结，这样说的话还是在上了大学之后，学了这个专业，好像就有了这个习惯，其实写文章让人记录很多事情，生活、工作、学习等等。就好像年末了这几天我就把自己机器的开发环境升级到php7，之前配置开发环境的时候，就是因为当初懒，没有记录当初踩的坑，这次也遇到了就是想不起上次怎么解决的，所以导致最后还要谷歌，重新再来一遍，这里面真的浪费很多时间。</p>
+<p>准确的说我是从什么时候有这个时间概念的，还是大二的时候，那时认识了一个名叫勾英达的小鲜肉，有一次一起在中关村那里吃饭，回去的路上，他一直计算着时间，说出来走到北大校门需要五分钟……其实这个算是一个小小的细节吧，后来我也意识到自己平时也不太注意时间这个概念，久而久之就能看出自己有拖延症的毛病。拖泥带水差不多就是这样形成。</p>
+<p>谈起2015年的计划，我打开的轻单账户，看到自己在2015年年初的写过一个list，也就只列了8条，现在对比起来一个都没有做成，想想是不是很可怕呢？也未必，这一年真的不一样，那个时候还没有做出一个决定——考研。所以导致年初的制定的计划后面六条一个都没有做成【前两个做了，没有做成功】想想都要流泪。这一年跨度大三大四，这种感觉真的不一样，感觉自己在变化，在成长。年初开学的时候，回到学校，发现了很多很多人在说考研这个事，以为他们是说着玩，当初自己也就是随口说了一嘴“我也要考”，好像记得当初学校做了一个调查，我当时还填了一个“工作”的意愿。没有过多少天发现他们不是说着玩的，后来自己也就落实了自己所说的上面，言出必行嘛【其实我一直是不看好考研这个，更何况自己是想干互联网的，所以好多需要到实践中积累，后来很多人问我“你不是不看好考研的嘛你为嘛还要考研，如果你还这样问的吧，你就自己揣摩吧，答案就在这里】。</p>
+<h2 id="关于学习"><a href="#关于学习" class="headerlink" title="关于学习"></a><strong>关于学习</strong></h2><p>这一年学习应该是最有好多想说的了，从决定考研的时候，应该可以说每天坚持学习，至于学习的效率，我真对自己有点呵呵了，发现学习最大的干扰就是手机了，后来临近考试的时候，自己也意识到这个问题，所以每天强迫自己不带手机就去图书馆，这样也确实看到了效果，至少在图书馆的时间能够充分利用到90%，这样一算的话，一天从早上八点考试学习，到晚上九点半，一共13.5小时，再除去中午晚上吃法加休息的3个小时，一天怎么也会有十个小时。哎，早知道这样坚持的话，应该肯定能考上了。说多了都是泪。</p>
+<p>学习还是要制定个一个计划，有的时候真的需要逼自己一把，只有自己逼自己，别人逼的话都是虚无缥缈的东西。还记得，四月份的时候，自己想要学习那个php开发一个电商网站，当初就只想用一个月的时间，把慕课网上的视频教程看完，给自己制定了一个计划：每天坚持一个小时学习视频，对着视频教程撸码，后来发现，真正投入的时候，自己花费上面的时间远远超过一个小时，一个月下来自己的收获真是满满的。有计划的学习，算是我的一个学习方法，后来我也用考研过程中数学和专业课的复习，虽然真的很难，用这样的方法去学习，至少不会让自己变的内心后怕，因为这样做会使得自己有条不紊地进行。</p>
+<p>其次就是学习技巧了，你每天有大把大把的时间逛各种社交网站，刷微博刷朋友圈，刷微博刷朋友圈确实能让自己得到稍微的放松，缓解自己的压力。朋友圈有各种这样的文章的分享，平时看到是鸡汤的文章我都是99.9%的跳过，自己就是自己的灵魂工程师，还需要看鸡汤，嘿嘿。对于分享的技术的文章，能看懂的当然看完，看不懂的文章会收藏起来【好的文章更要收藏了】，同时加上标签，以便以后看到查找。【注：这些功能都是微信最基本的功能，善于用起来对自己真的很有帮助】微博里也是差不多这样，现在微博里基本都是关注对自己有用的同行业的人，对他们同样进行了分组，更好的管理他们输出的价值，看到好的技术文章同样会star收藏。还有就是善于使用微博的搜索功能，虽然做得不是很好，至少这个东西能让你精准找到你遇到“坑”的原因，一般情况微博搜索能让我找到答案。【这个功能微信里面也有，关键字搜索能查到自己想要的东西。】还有微博的微盘也是很不错的，反正能找到对我有用的东西。最后想说的，<strong>其他东西，真的不要百度不要百度不要百度！！！谷歌哟谷歌哟谷歌哟！！！</strong></p>
+<p>最后，多写博客，这一年自己没有怎么写博客，个人觉得写博客能让自己有提升，因为自己学习的时候喜欢看别人的博客，或许我能绕开别人踩过的坑。嘿嘿。自己有所思有所想的时候就应该记录下来。反正这样对自己没有什么坏处。还有写博客算是一种价值输出吧，可能你踩过的坑对别人来说就是一点帮助吧。</p>
+<h2 id="关于身体锻炼"><a href="#关于身体锻炼" class="headerlink" title="关于身体锻炼"></a><strong>关于身体锻炼</strong></h2><p>身体是自己的，自己要懂得珍惜，锻炼身体更需坚持。这一年，自己做得不够好，坚持锻炼也就4月份坚持了整整一个月的跑步，后来都断断续续的了。不要给自己找借口，锻炼身体都能坚持得下来。</p>
+<h2 id="关于坚持和专注"><a href="#关于坚持和专注" class="headerlink" title="关于坚持和专注"></a><strong>关于坚持和专注</strong></h2><p>以前常被人说我是一个没有专注的人，做事没有三分钟的热度。今年这一年考研坐冷板凳的磨练，让我更懂得什么是坚持，什么叫专注。我坚持了到最后，我坚持从每天早上7点起床到后来6点半起床再到6点起床学习到，晚上也从9点回寝到9点回寝再到10点半回寝，我能做了这些，这些并不算心酸，至少我能坚持下来，其实别人也能坚持下来。其实这个没有神么，就是在于自己的实践，不是嘴皮子功夫，落实到行动才是关键。</p>
+<p>至于专注，怎么说，如果能找到自己的兴趣点，自己自然会去专注。像谈恋爱也应该要这样吧，专注的人才是更加迷人。真正知道专注我也是在大三的时候知道自己将来毕业了想在哪个行业混准备做什么。大学四年快要结束了，现在想来唯一的遗憾：在这样艺术气息浓厚的校园，我没有用大一大二大三的时间折腾点设计方面的东西，现在意识到这一点，或许有点晚，或许一点也不晚。</p>
+<hr>
+<p>2015年的小失败：在9月份的时候参加腾讯的校招，当初笔试真的很糟糕。清晰地记得吃了算法的亏。后来连百度的校招都没有敢参加，真的没有那个勇气了。希望2016年能够拾起算法，对自己的技术学习有所帮助。</p>
+<h2 id="对2016年展望"><a href="#对2016年展望" class="headerlink" title="对2016年展望"></a><strong>对2016年展望</strong></h2><p>再也不用在年初制定一年的计划了，而是应该将实践目标阶段化，细节化。同时不要underestimate my capability and overestimate the difficulties。即enough！！！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/22/talk-about-redis/" itemprop="url">
+                  讨论下redis集群方案以及遇到过的坑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-10-22T22:10:54+08:00" content="2015-10-22">
+              2015-10-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/22/talk-about-redis/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/22/talk-about-redis/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>【今日话题】</p>
+<p>讨论下redis集群方案以及遇到过的坑 - 阿牛哥</p>
+<p>1. twemproxy，codis，未来的redis-cluster</p>
+<p>codis的作者出来创业了，但是一直很活跃 - hello</p>
+<p>2. Redis cluster 以后的趋势 - 如末</p>
+<p>3. 胡兰tv已经用redis cluster了 - sky</p>
+<p>4. codis组件太多了</p>
+<p>但是周边工具很配套 - hello</p>
+<p>5. 目前在用Twemproxy做集群 git上这个已经很久不更新了， Twemproxy支持的命令也有限， - hey</p>
+<p>6. 市面上最多的估计据就是它了 官方的cluster还不成熟稳定 Codis 其实也不算成熟 - 如末</p>
+<p>7. 目前的redis基于2.6自己定制的…… - tiyee</p>
+<p>8. redis集群 我自己之前的操作方法是直接利用redis_sentinel 一主多从 故障之后 选举出新的master 多个master之间利用一致性hash做分配 - lawlielt</p>
+<p>9. 偷偷抛个小炸弹：</p>
+<p>主redis做数据变更，从做数据查询，但从会产生临时中间计算器数据，这样子大家认为对主从同步是否有影响？为啥[偷笑] - 乔楚</p>
+<p>回: 万一全部同步的话 中间数据岂不是被覆盖了？</p>
+<p>如果是命令同步 竟然同步必然会涉及到一个类似于什么命令缓存偏移的问题吧 更新操作 会不会影响从库的同步点的问题</p>
+<p>主从也要考虑很多问题的 类似于故障迁移 扩展之类的 - lawlielt</p>
+<p>10. 其实很想知道有将red is cluster 官方版那个用起来的吗？</p>
+<p>我之前收到试用过几次，还挺好用。就是phpredis 扩展缺乏支持 - 如末</p>
+<p>11. 我有用过，不过被phpredis坑死了</p>
+<p>估计没有proxy不行 - Huangsir</p>
+<p>12. 确实phpredis 对集群用起来很蛋疼。昨天看了下</p>
+<p>Predis 这个代码扩展。倒是用起来很好用。但是估计效率差点 - 如末</p>
+<p>13. 豌豆荚分布式Redis的设计与实现 <a href="http://www.infoq.com/cn/presentations/design-and-implementation-of-wandoujia-distributed-redis" target="_blank" rel="external">http://www.infoq.com/cn/presentations/design-and-implementation-of-wandoujia-distributed-redis</a> - 昱北</p>
+<p>【分享链接】</p>
+<p>1. 多人开发的 Git 流程 <a href="http://gold.xitu.io/entry/56263cfd00b0023ca69de5ec" target="_blank" rel="external">http://gold.xitu.io/entry/56263cfd00b0023ca69de5ec</a> - ShiverySea</p>
+<p>2. 维护一个大型开源项目是怎样的体验？ <a href="http://www.zhihu.com/question/36292298/answer/67049956" target="_blank" rel="external">http://www.zhihu.com/question/36292298/answer/67049956</a> - 猿蜗</p>
+<p>3. MariaDB 10.1 每秒可处理一百万查询 <a href="http://mp.weixin.qq.com/s?__biz=MzA5ODM5MDU3MA==&amp;mid=400055734&amp;idx=1&amp;sn=d04822306c80e5bf00203cecda1dfdaf" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MzA5ODM5MDU3MA==&amp;mid=400055734&amp;idx=1&amp;sn=d04822306c80e5bf00203cecda1dfdaf</a> - tony</p>
+<p>4. 无线APP日志上报优化实践 <a href="http://mp.weixin.qq.com/s?__biz=MjM5ODYxMDA5OQ==&amp;mid=400110965&amp;idx=1&amp;sn=d105f59c78bfaaab943e0e0bde925d99" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MjM5ODYxMDA5OQ==&amp;mid=400110965&amp;idx=1&amp;sn=d105f59c78bfaaab943e0e0bde925d99</a> - 朱政国</p>
+<p>5. 西部数据宣布190亿美元收购闪迪SanDisk <a href="http://mp.weixin.qq.com/s?__biz=MjM5MzM3NjM4MA==&amp;mid=400599228&amp;idx=1&amp;sn=43287d40a9c8421214fcf608861e90c9" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MjM5MzM3NjM4MA==&amp;mid=400599228&amp;idx=1&amp;sn=43287d40a9c8421214fcf608861e90c9</a> - @理鱼</p>
+<p>6. 微服务年度总结，看完这个你应该知道如何回答别人的问题了。 <a href="http://mp.weixin.qq.com/s?__biz=MzA5ODM0NjA3NA==&amp;mid=400146790&amp;idx=1&amp;sn=5cba6e9f90db52dc6d9010c3237c1902" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MzA5ODM0NjA3NA==&amp;mid=400146790&amp;idx=1&amp;sn=5cba6e9f90db52dc6d9010c3237c1902</a> - @理鱼</p>
+<p>7. PHP 性能优化 <a href="http://mp.weixin.qq.com/s?__biz=MzAwNjMxMTA5Mw==&amp;mid=400058189&amp;idx=1&amp;sn=bada7be26e1d33071af23e6765ef8a51" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MzAwNjMxMTA5Mw==&amp;mid=400058189&amp;idx=1&amp;sn=bada7be26e1d33071af23e6765ef8a51</a> - 黑夜路人</p>
+<p>8. Redis数据结构与存储 <a href="http://shift-alt-ctrl.iteye.com/blog/1874693" target="_blank" rel="external">http://shift-alt-ctrl.iteye.com/blog/1874693</a> - 程序员朋</p>
+<p>9. Nginx image processing server with OpenResty and Lua <a href="http://leafo.net/posts/creating_an_image_server.html" target="_blank" rel="external">http://leafo.net/posts/creating_an_image_server.html</a> - 姚文强</p>
+<p>10. 构建高性能web之路——mysql读写分离实战 <a href="http://blog.csdn.net/cutesource/article/details/5710645" target="_blank" rel="external">http://blog.csdn.net/cutesource/article/details/5710645</a> - 黑夜路人</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/09/20/manage-virtualbox-by-vagrant/" itemprop="url">
+                  用 Vagrant 管理虚拟机
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-20T19:28:24+08:00" content="2015-09-20">
+              2015-09-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/20/manage-virtualbox-by-vagrant/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/20/manage-virtualbox-by-vagrant/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Vagrant 可以让我们用命令直接从云上下载虚拟机的镜像，你想要什么系统都行，Centos，Ubuntu …   只需要一行命令，然后再用命令去操作虚拟机，启动，暂停，关闭，重启，你可以更方便的管理所有的在本地上电脑上的虚拟机镜像，手工去配置它们，可以再重新打包成新的镜像，方便你跟你的团队在其它的项目上重复使用。</p>
+<h2 id="安装-Vagrant"><a href="#安装-Vagrant" class="headerlink" title="安装 Vagrant"></a>安装 Vagrant</h2><p>Vagrant 提供了一个虚拟机的管理层，虚拟机本身还是需要用到虚拟机的软件，比如 VMware，Virtualbox 等等，推荐用 Virtualbox 。使用系统的包管理工具去安装软件。</p>
+<h3 id="Mac-上安装-Vagrant"><a href="#Mac-上安装-Vagrant" class="headerlink" title="Mac 上安装 Vagrant"></a>Mac 上安装 Vagrant</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install vagrant</span><br></pre></td></tr></table></figure>
+<h3 id="Mac-上安装-Virtualbox"><a href="#Mac-上安装-Virtualbox" class="headerlink" title="Mac 上安装 Virtualbox"></a>Mac 上安装 Virtualbox</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install Caskroom/cask/virtualbox</span><br></pre></td></tr></table></figure>
+<h2 id="Box"><a href="#Box" class="headerlink" title="Box"></a>Box</h2><p>Box ，你可以把它想成是一个箱子，里面装了一些东西。在用 Vagrant 创建虚拟机的时候，需要用到 Box ，它里面会包装操作系统的镜像，不同的 Box 带的操作系统可能是不一样的，比如 CentOS，Ubuntu 等等，你可以基于它们去创建自己版本的 Box，比如在虚拟机上安装一些软件，然后把它重新打包成 Box 。</p>
+<p>在 Vagrant 提供的云服务（<a href="https://vagrantcloud.com/" target="_blank" rel="external">https://vagrantcloud.com/</a>）上面可以下载到别人做好的 Box，这个云服务现在叫 Atlas，是 hashicorp 公司的一个产品，Vagrant 也是这家公司的项目。打开这个地址以后，可以去搜索想要用的 Box，可以搜索操作系统的名字，也可以搜索特定的软件的名字，比如 Laravel，Drupal …    在搜索结果上面会显示这个 Box 的下载的次数，你可以用来判断这个 Box 是否受欢迎。</p>
+<p>我们需要一个纯净的 Box，就是只包含操作系统，在系统上没有安装其它的多余的东西。注意不同发行版的 Linux 操作起来是有些区别的，我推荐先用一下 CentOS 这款操作系统。</p>
+<h3 id="添加-Box"><a href="#添加-Box" class="headerlink" title="添加 Box"></a>添加 Box</h3><p>你要把 Box 下载到本地的电脑上，交给 Vagrant 去管理，这样在创建虚拟机的时候，Vagrant 会复制一份你指定的 Box 到你的项目里面，这样你在这个虚拟机上的操作，就不会影响到其它的项目。先确定你用的电脑上的操作系统的位数，现在一般都是 64 位的操作系统。打开命令行工具以后，执行 vagrant box add 命令去添加 Box 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant box add 名字</span><br></pre></td></tr></table></figure>
+<p>如果你指定的 Box 在本地电脑上不存在，Vagrant 就会到它的云上去给你下载。执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant box add chef/centos-6.5</span><br></pre></td></tr></table></figure>
+<p>上面的 chef/centos-6.5 还有 centos-6.5-i386 就是想要添加的 Box 的名字，最前面的 chef  ，是一个命名空间，一般就是这个 Box 的作者的名字，后面的 centos-6.5 表示这个 Box 的操作系统是 CentOS ，版本是 6.5 ，i386 表示 32 位的系统。</p>
+<h3 id="查看本地上的-Box-列表"><a href="#查看本地上的-Box-列表" class="headerlink" title="查看本地上的 Box 列表"></a>查看本地上的 Box 列表</h3><p>完成以后，可以查看一下在本地上的 Box 列表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant box list</span><br></pre></td></tr></table></figure>
+<h3 id="手工下载并添加-Box-的方法"><a href="#手工下载并添加-Box-的方法" class="headerlink" title="手工下载并添加 Box 的方法"></a>手工下载并添加 Box 的方法</h3><p>在执行 Vagrant box add 添加 Box 的时候，Vagrant 会在命令行上显示 Box 的下载地址，下载的速度还有进度，如果你在国内，很可能下载的速度非常慢。你可以复制 Box 的下载地址，然后用下载工具，比如用迅雷去下载。</p>
+<p>完成以后，找到下载下来的文件，文件名里会包含 .box 这个扩展名，如果不是，你需要手工添加这个扩展名。并且重命名一下文件，比如命名为 centos_6.5.box 。然后把它放到桌面上，其它地方也行。打开命令行，进入到手工下面的 Box 文件所在的位置。比如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/ityike</span><br></pre></td></tr></table></figure>
+<p>然后查看一下文件列表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
+<p>确定 Box 文件在当前的目录的下面，再执行 vagrant box add 命令去手工添加 Box 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant box add 名称 路径</span><br></pre></td></tr></table></figure>
+<p>名称就是你想给这个 Box 起的名字，以后我们会用到这个名字去管理这个 Box，路径是 Box 文件所在的位置，如果你要添加的 Box 直接在你当前所在的目录的下面，可以直接使用 Box 文件的名称，像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant box add centos-6.5 centos-6.5.box</span><br></pre></td></tr></table></figure>
+<p>Vagrant 会把 Box 文件复制到系统的某个特定的目录的下面，完成以后，你就可以把桌面上的 Box 文件删除掉了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm centos-6.5.box</span><br></pre></td></tr></table></figure>
+<p>再查看一下可用的 Box 列表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant box list</span><br></pre></td></tr></table></figure>
+<p>在返回的列表里，你应该可以找到自己手工添加的 centos-6.5 这个 Box 。</p>
+<h3 id="管理-Box"><a href="#管理-Box" class="headerlink" title="管理 Box"></a>管理 Box</h3><p>添加到本地电脑上的 Box 会放到一个特定的目录的下面。跟 Box 相关的命令，可以用 vagrant box 命令查看。使用的方法就是 vagrant box 后面再加上子相应的子命令，接着是对应的参数。常用的就是 add ，list 还有 remove。add 是添加新的 Box ，list 可以查看已有的 Box ，remove 就是从系统中删除掉 Box 。注意在创建虚拟机的时候，Vagrant 会把你指定的 Box 复制一份放到特定的目录的下面。所以，你在使用 remove 命令删除掉添加到系统中的 Box 的时候，不会影响到这些已有的虚拟机。</p>
+<h2 id="创建虚拟机"><a href="#创建虚拟机" class="headerlink" title="创建虚拟机"></a>创建虚拟机</h2><p>添加了 Box 以后，我们就可以用 Vagrant 基于这个 Box 去创建虚拟机了。先找个地方去创建一个目录，这个目录就是你的项目所在的目录，它会自动跟虚拟机上的某个目录同步，也就是在你电脑上的这个目录里面的文件，你同样可以在虚拟机里的某个目录里面找到。比如我要在桌面上创建一个叫 ninghao-project 的目录，然后再进入到这个目录，在命令行工具下面执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~/ityike</span><br><span class="line">mkdir ityike-project</span><br><span class="line">cd ityike-project</span><br></pre></td></tr></table></figure>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>首先要做的就是初始化一下，用 vagrant init ，后面指定一下要使用的 Box 的名字。完成以后，在你的目录下面创建一个叫 Vagrantfile 的文件。</p>
+<p>先查看一下可用的 Box</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant box list</span><br></pre></td></tr></table></figure>
+<p>如果跟着我的步骤来，你应该可以看到一个叫 centos-6.5 的 Box 。下面我们用这个 Box 去初始化一下项目。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant init centos-6.5</span><br></pre></td></tr></table></figure>
+<p>完成以后，查看一下当前目录下面的东西。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
+<p>你会看到一个 Vagrantfile 文件，这个文件是配置当前项目的虚拟机用的，以后我们会再回来看一下怎么样使用这个文件。</p>
+<h3 id="启动虚拟机"><a href="#启动虚拟机" class="headerlink" title="启动虚拟机"></a>启动虚拟机</h3><p>Vagrant 提供了一些命令可以操作虚拟机，比如启动，暂停，关闭或者销毁虚拟机。启动虚拟机，执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant up</span><br></pre></td></tr></table></figure>
+<p>第一次启动，花的时间会长一些，因为 Vagrant 会把你为项目指定的 Box 复制到一个地方，然后再去启动它。完成以后，你可以用命令再查看一下虚拟机的状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant status</span><br></pre></td></tr></table></figure>
+<p>如果返回的是 running ，说明虚拟机启动成功，现在你就可以使用 ssh 连接到虚拟机，去控制它了。</p>
+<h3 id="控制虚拟机"><a href="#控制虚拟机" class="headerlink" title="控制虚拟机"></a>控制虚拟机</h3><p>想在 Linux 系统的虚拟机上进行操作，你要用 ssh 连接到虚拟机，这跟你远程控制 Linux 的服务器是一样的。</p>
+<h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant ssh</span><br></pre></td></tr></table></figure>
+<h3 id="暂停与恢复"><a href="#暂停与恢复" class="headerlink" title="暂停与恢复"></a>暂停与恢复</h3><p>虚拟机在运行的时候会消耗你的电脑资源，比如内存，CPU 等等，在不用它的时候，可以关掉或者使用暂停，暂停虚拟机可以保存虚拟机运行时候的状态，暂停以后，除了占点硬盘空间以外，就不会消耗你的其它资源了。</p>
+<p>进入到项目所在的目录，然后可以用 vagrant status 查看一下当前的虚拟机的状态，如果是 running ，你就可以使用命令去暂停一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant suspend</span><br></pre></td></tr></table></figure>
+<p>重新恢复起动，执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant resume</span><br></pre></td></tr></table></figure>
+<p>想要彻底关掉虚拟机的运行，执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant halt</span><br></pre></td></tr></table></figure>
+<p>停止以后，要想再起动虚拟机，要执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant up</span><br></pre></td></tr></table></figure>
+<h3 id="删除虚拟机"><a href="#删除虚拟机" class="headerlink" title="删除虚拟机"></a>删除虚拟机</h3><p>不打算再用的虚拟机，可以把它删除掉，直接删除项目的目录是不行的，因为为项目指定的虚拟机并不包含在这个项目的目录下面，需要使用命令去删除虚拟机。进入到项目所在目录，然后执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant destroy</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="配置共享目录"><a href="#配置共享目录" class="headerlink" title="配置共享目录"></a>配置共享目录</h3><p>打开 Vagrantfile ，搜索一下共享目录的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># config.vm.synced_folder</span><br></pre></td></tr></table></figure>
+<p>去掉这行代码前面的 # 符号 。这个配置后面有两个参数，第一个参数是主机上的目录，可以使用绝对的位置，也可以使用相对的位置，如果是相对位置，是相对于项目根目录的位置，也就是相对于 Vagrantfile 这个文件所在的目录的位置。两个参数之间是一个逗号，第二个参数是在虚拟机上的目录，如果你设置的目录在虚拟机上不存在，Vagrant 在启动虚拟机的时候，会自动去创建这个目录。<br>比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.synced_folder &quot;app&quot;, &quot;/vagrant&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h2><p>然后搜索：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.network &quot;forwarded_port&quot;, guest: 80, host: 8080</span><br></pre></td></tr></table></figure>
+<p>去掉这行代码最前面的 # 号， 这个配置就是端口转发</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/09/19/about-an-error/" itemprop="url">
+                  由于自己的疏忽，一个低级的错误
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-19T19:20:17+08:00" content="2015-09-19">
+              2015-09-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/19/about-an-error/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/19/about-an-error/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>PHP中continue后面的分号，疏忽掉就会出现不一样的情况。<br>看一个简单的例子：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">for</span> ($i = <span class="number">0</span>; $i &amp;lt; <span class="number">5</span>; ++$i) &#123;</span><br><span class="line"><span class="keyword">if</span> ($i == <span class="number">2</span>)</span><br><span class="line"><span class="keyword">continue</span>;</span><br><span class="line"><span class="keyword">print</span> <span class="string">"$i\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这种情况输出的结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure></p>
+<p>去掉分号后：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">for</span> ($i = <span class="number">0</span>; $i &amp;lt; <span class="number">5</span>; ++$i) &#123;</span><br><span class="line"><span class="keyword">if</span> ($i == <span class="number">2</span>)</span><br><span class="line"><span class="keyword">continue</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"$i\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在php5.4之前的版本输出的结果：<br><code>2</code><br>因为整个 continue print “$i\n”; 被当做单一的表达式而求值，所以 print 函数只有在 $i == 2 为真时才被调用（print 的值被当成了上述的可选数字参数而传递给了 continue）。</p>
+<p>还有重要的，在php5.4版本中，这个情况是不能输出结果的。<br><code>5.4.0 continue 0; 不再合法。这在之前的版本被解析为 continue 1;。</code><br><code>5.4.0 取消变量作为参数传递（例如 $num = 2; continue $num;）。</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/09/16/the-php-dev-in-ubuntu/" itemprop="url">
+                  ubuntu下配置nginx，mysql，php环境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-16T20:56:59+08:00" content="2015-09-16">
+              2015-09-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/16/the-php-dev-in-ubuntu/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/16/the-php-dev-in-ubuntu/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###一、概述###</p>
+<p>今天在虚拟机上基于Ubuntu安装配置了服务器运行环境，web服务用 nginx，数据库存储在 mysql,动态脚本语言是 php。</p>
+<p>###二、步骤###</p>
+<p>####1.安装nginx####</p>
+<p>#####1.1下载并添加nginx_signing.key#####<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/keys/nginx_signing.key</span><br><span class="line">sudo apt-key add nginx_signing.key</span><br></pre></td></tr></table></figure></p>
+<p>#####1.2添加官方源#####<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/sources.list</span><br></pre></td></tr></table></figure></p>
+<p>在末尾加上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://nginx.org/packages/ubuntu/ trusty nginx</span><br><span class="line">deb-src http://nginx.org/packages/ubuntu/ trusty nginx</span><br></pre></td></tr></table></figure>
+<p>然后更新：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>#####1.3安装nginx#####<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx</span><br></pre></td></tr></table></figure></p>
+<p>###2.安装mysql###</p>
+<p>####2.1 下载和安装MySQL APT Repository####<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://dev.mysql.com/get/mysql-apt-config_0.5.3-1_all.deb</span><br><span class="line">sudo dpkg -i mysql-apt-config_0.5.3-1_all.deb</span><br></pre></td></tr></table></figure></p>
+<p>####2.2 确认版本，或者更改版本：####<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure mysql-apt-config</span><br></pre></td></tr></table></figure></p>
+<p>####2.3 更新源并安装mysql-server####<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install mysql-server</span><br></pre></td></tr></table></figure></p>
+<p>###3.安装PHP###</p>
+<p>####3.1下载Php并解压###</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://cn2.php.net/distributions/php-7.0.6.tar.bz2</span><br><span class="line">tar jxf php-7.0.6.tar.bz2</span><br></pre></td></tr></table></figure>
+<p>####3.2安装所需依赖####</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libxml2-dev build-essential openssl libssl-dev make curl libcurl4-gnutls-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline6 libreadline6-dev</span><br></pre></td></tr></table></figure>
+<p>####3.3configure####</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-fpm --with-fpm-user=www --with-fpm-group=www --with-mysqli --with-pdo-mysql --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-mbstring --with-mcrypt --enable-ftp --with-gd --enable-gd-native-ttf --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --disable-fileinfo --enable-maintainer-zts</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>####3.4加入系统变量 ####<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo echo &quot;PATH=$PATH:/usr/local/php/bin&quot;&gt;&gt; /etc/profile</span><br><span class="line">sudo echo &quot;export PATH&quot;&gt;&gt; /etc/profile</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>####3.5一些配置文件的复制####</p>
+<ul>
+<li>编译后，cd到源码跟目录，然后</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp php.ini-production /usr/local/php/lib/php.ini</span><br></pre></td></tr></table></figure>
+<ul>
+<li>cd /usr/local/php/etc ,然后</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp php-fpm.conf.default php-fpm.conf</span><br></pre></td></tr></table></figure>
+<ul>
+<li>cd /usr/local/php/etc/php-fpm.d，然后</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp www.conf.default www.conf</span><br></pre></td></tr></table></figure>
+<p>####3.5设置php-fpm配置文件####</p>
+<ul>
+<li>php-fpm.conf的pid</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/local/php/etc/php-fpm.conf</span><br></pre></td></tr></table></figure>
+<ul>
+<li>启动php-fpm服务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/php/sbin/php-fpm</span><br></pre></td></tr></table></figure>
+<ul>
+<li>新建www用户组：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd www</span><br><span class="line">useradd -g www www</span><br></pre></td></tr></table></figure>
+<ul>
+<li>再次启动</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/php/sbin/php-fpm</span><br></pre></td></tr></table></figure>
+<ul>
+<li>开机启动php-fpm<br>开机启动的配置文件是：/etc/rc.local ，加入 /usr/local/php/sbin/php-fpm 即可</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/rc.local</span><br></pre></td></tr></table></figure>
+<pre><code>#!/bin/sh
+
+# This script will be executed *after* all the other init scripts.
+# You can put your own initialization stuff in here if you don&apos;t
+# want to do the full Sys V style init stuff.
+
+touch /var/lock/subsys/local
+/usr/local/apache/bin/apachectl start
+/usr/local/bin/redis-server /etc/redis.conf
+/usr/local/php/sbin/php-fpm
+</code></pre><h4 id="配置nginx略了"><a href="#配置nginx略了" class="headerlink" title="配置nginx略了"></a>配置nginx略了</h4><hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/09/04/how-to-use-google/" itemprop="url">
+                  科学上网：用VPS搭建shadowsocks服务器
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-04T21:54:11+08:00" content="2015-09-04">
+              2015-09-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/04/how-to-use-google/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/04/how-to-use-google/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>学会 科学上网：用 VPS搭建shadowsocks 服务器</p>
+<p>目前将shadowsocks部署到25端口似乎还不会被封锁，大家可以尝试。</p>
+<h2 id="购买VPS服务器"><a href="#购买VPS服务器" class="headerlink" title="购买VPS服务器"></a>购买VPS服务器</h2><p>主流的VPS（虚拟主机）服务器提供商有三家：</p>
+<ul>
+<li>linode</li>
+<li>digital ocean</li>
+<li>bandwagon<br>下面的比上面的便宜。如果只是自用，bandwagon足够。</li>
+</ul>
+<p>一般使用paypal绑定一个visa或mastercard信用卡来付款。注意要用国际paypal帐号，国内的是不能用外币付款的。</p>
+<p>在bandwagon购买VPS以后会获得一个主机地址和用于ssh登录的root密码。</p>
+<h2 id="远程登陆VPS"><a href="#远程登陆VPS" class="headerlink" title="远程登陆VPS"></a>远程登陆VPS</h2><p>Mac OS X 或Linux下直接在终端中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@your_vps_ip -p your_ssh_port</span><br></pre></td></tr></table></figure>
+<p>即可。</p>
+<p>在windows系统下需要专门的客户端来SSH登录VPS。在<a href="http://www.netsarang.com/download/down_form.html?code=522" target="_blank" rel="external">xShell官网</a> 下载xShell。</p>
+<p>家庭和学校用户可以免费试用，下载时选择home and school use即可。需要用邮箱注册一下，下载链接会发送到邮箱中。</p>
+<p>xShell中新建一个连接，会要求输入目标IP地址和端口，以及root密码，按提示操作即可。</p>
+<h2 id="安装shadowsocks"><a href="#安装shadowsocks" class="headerlink" title="安装shadowsocks"></a>安装shadowsocks</h2><p>打开shell，使用VPS服务商提供的root用户和密码SSH登录VPS。然后执行如下命令：</p>
+<h3 id="Debian-Ubuntu"><a href="#Debian-Ubuntu" class="headerlink" title="Debian/Ubuntu:"></a>Debian/Ubuntu:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install python-pip</span><br><span class="line">pip install shadowsocks</span><br></pre></td></tr></table></figure>
+<h3 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS:"></a>CentOS:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install python-setuptools &amp;amp;&amp;amp; easy_install pip</span><br><span class="line">pip install shadowsocks</span><br></pre></td></tr></table></figure>
+<p>shadowsocks就安装好了。</p>
+<p>有时Ubuntu会遇到第一个命令安装python-pip时找不到包的情况。pip官方给出了一个安装脚本，可以自动安装pip。先下载脚本，然后执行即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://bootstrap.pypa.io/get-pip.py</span><br><span class="line">python get-pip.py</span><br></pre></td></tr></table></figure>
+<h2 id="编写配置文件"><a href="#编写配置文件" class="headerlink" title="编写配置文件"></a>编写配置文件</h2><p>shadowsocks启动时的参数，如服务器端口，代理端口，登录密码等，可以通过启动时的命令行参数来设定，也可以通过json格式的配置文件设定。推荐使用配置文件，方便查看和修改。</p>
+<p>用vi新建一个配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/shadowsocks.json</span><br></pre></td></tr></table></figure>
+<p>然后输入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&quot;server&quot;:&quot;my_server_ip&quot;,</span><br><span class="line">&quot;server_port&quot;:25,</span><br><span class="line">&quot;local_address&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">&quot;local_port&quot;:1080,</span><br><span class="line">&quot;password&quot;:&quot;mypassword&quot;,</span><br><span class="line">&quot;timeout&quot;:300,</span><br><span class="line">&quot;method&quot;:&quot;aes-256-cfb&quot;,</span><br><span class="line">&quot;fast_open&quot;: false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>保存退出。</p>
+<h2 id="启动shadowsocks"><a href="#启动shadowsocks" class="headerlink" title="启动shadowsocks"></a>启动shadowsocks</h2><p>如果已经写好了配置文件，启动shadowsocks服务器的命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json</span><br></pre></td></tr></table></figure>
+<p>后台启动和停止shadowsocks服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json -d start</span><br><span class="line">ssserver -c /etc/shadowsocks.json -d stop</span><br></pre></td></tr></table></figure>
+<p>shadowsocks的日志保存在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/log/shadowsocks.log</span><br></pre></td></tr></table></figure>
+<h2 id="安装并启动shadowsocks客户端"><a href="#安装并启动shadowsocks客户端" class="headerlink" title="安装并启动shadowsocks客户端"></a>安装并启动shadowsocks客户端</h2><p>shadowsocks支持windows、Mac OS X、Linux、Android、iOS等多个平台。不过iOS由于系统对应用后台运行的限制，只能使用客户端内嵌的浏览器科学上网，不能给其他应用代理。</p>
+<p>shadowsocks项目Github主页：<a href="https://github.com/shadowsocks/shadowsocks" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks</a></p>
+<p>里面可以找到客户端下载地址。</p>
+<p>下载安装客户端以后，只需按服务器的配置填写IP地址、服务器端口、本地端口（如果没有本地端口选项，就是默认的1080）、密码、加密方式等参数，启动就可以了。</p>
+<p>客户端支持全局代理和PAC代理两种方式，后者会使用一个脚本来自动检查一个网站是否在需要代理的网站列表中，自动选择直接连接或代理连接。</p>
+<p>PAC列表可以在线更新，但是难免有收录不全的情况。这时可以选择关闭shadowsocks代理（实际上是取消对系统代理的配置，shadowsocks客户端仍然保持工作），然后使用支持自定义规则的代理管理插件来实现自动切换代理，比如switchyOmega。</p>
+<h2 id="使用switchyOmega实现自动切换代理"><a href="#使用switchyOmega实现自动切换代理" class="headerlink" title="使用switchyOmega实现自动切换代理"></a>使用switchyOmega实现自动切换代理</h2><p>switchyOmega是chrome浏览器上一个很好用的代理管理插件。它的前身switchySharp更有名。</p>
+<p>chrome应用商店本身需要翻墙才能访问，因此需要先在shadowsocks启动代理模式下下载安装，再关闭shadowsocks代理。</p>
+<p>安装完毕后，右击switchyOmega图标，选择选项，进入switchOmega配置界面。</p>
+<h3 id="创建shadowsocks情景模式"><a href="#创建shadowsocks情景模式" class="headerlink" title="创建shadowsocks情景模式"></a>创建shadowsocks情景模式</h3><p>新建一个情景模式，比如叫SS，代理协议选择socks5，代理地址为127.0.0.1，端口1080。</p>
+<p>现在切换到SS情景模式就可以通过shadowsocks科学上网了。后面获取自动切换规则列表</p>
+<h3 id="设置自动切换模式"><a href="#设置自动切换模式" class="headerlink" title="设置自动切换模式"></a>设置自动切换模式</h3><p>在设置界面选择自动切换模式，在“切换规则”中勾选“规则列表规则”，对应的情景模式选择刚刚新建的SS。</p>
+<p>然后在下面的规则列表地址中填写</p>
+<p><a href="https://autoproxy-gfwlist.googlecode.com/svn/trunk/gfwlist.txt" target="_blank" rel="external">https://autoproxy-gfwlist.googlecode.com/svn/trunk/gfwlist.txt</a></p>
+<p>规则列表格式选择AutoProxy。</p>
+<p>然后点击立即更新情景模式， 更新完成后会有提示。</p>
+<p>点击左侧的“应用选项”。然后单击switchyOmega图标，选择自动切换，就可以在访问“不存在的网站”时自动切换到shadowsocks代理了。</p>
+<h3 id="添加自定义规则"><a href="#添加自定义规则" class="headerlink" title="添加自定义规则"></a>添加自定义规则</h3><p>如果遇到某个国外网站无法直接连接或速度太慢时，可以单击switchyOmega图标，选择“添加条件”，情景模式选择SS，就可以了。</p>
+<p>这时打开switchyOmega选项，在自动切换模式的切换规则中就可以看到刚刚添加的规则。可以在这里管理自定义的规则。</p>
+<h3 id="导入和导出switchyOmega设置"><a href="#导入和导出switchyOmega设置" class="headerlink" title="导入和导出switchyOmega设置"></a>导入和导出switchyOmega设置</h3><p>如果换了一台电脑，重新设置一遍switchyOmega就太麻烦了。可以在设置好的switchyOmega中导出设置文件，在另一个chrome浏览器中导入，就可以直接复制原来的设置了。</p>
+<p>在switchyOmega选项的左侧点击“导入/导出”，点击“生成备份文件”即可生成switchyOmega设置备份。点击“从备份文件恢复”可以导入备份文件。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/08/2015-8-8/" itemprop="url">
+                  2015年8月8日晚小记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-08T21:59:45+08:00" content="2015-08-08">
+              2015-08-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/08/2015-8-8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/08/2015-8-8/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>好久好久没有对自己进行总结了，记得上一次对自己得总结还是2015年初写2014年的总结。2015年都已经走下了一大半了，该总结的总结了。还记得年初的时候在轻单list了一份计划，现在看看，有的实现了，有的今年不能实现了。</p>
+<p>3月份大三开学，回学校做了一个决定，几乎改变了今年的动向，那个时候觉得自己就是在做梦一样，可是偏偏自己决定了考研。常常对自己说，<strong><u>自己决定的东西，含着泪也要坚持做完。</u></strong>我一直是反对考研的人，因为考研就意味能找到一个好的工作？身边好多同学都会反驳我不是说考研不好嘛为什么还要考研，我都是说“现在我还是觉得考研并一定是一个最好的选择”。</p>
+<p>在决定的过程中，自己犹豫过，不知道自己选择考什么专业，毕竟如今的互联网技术发展太快了，人们喜欢学习新的知识。也犹豫是不是要留北京，总之太多的犹豫，不过最后还是爽快地决定了。离考研的日子越来越近了，这个过程确实有很多的感受，自己吊儿郎当过，也任性过。有时候想放弃，学习真的太痛苦了，自己已经不是以前的自己，已经不太适合学习。。。可人都是被逼出来的，在学校的时候，把高数翻了一遍，英语单词也过完一遍，也复习了数据结构，学习了计算机网络。</p>
+<p>暑假，也是人生中的最后一个暑假，还是选择一放假就回来了，回来跟父母在一起。回来重要的任务还是学习迎考。但是在家的学习效率还是很低很低的。现在做数学全书题目【做到积分】，每天对着考点复习计算机组成原理，英语词汇在过第二遍……虽然在家已经习惯每天早上六点起床，但每天有很多的松懈的时候，感觉自己还不处于饱和的状态。【此文也是在提醒自己】</p>
+<p>说了这么多学习，还要说点其他的。四月份坚持跑步一个月，原本把这个事坚持下去，最后还是没有坚持得下去，那一个月最充实，每天还坚持写代码，哪怕只写一个函数调用……美好的事情总是短暂的，原因还是我自己的问题。</p>
+<p>哦，还有一个事就是大三下学期没有挂科，这个有记录的意义。其他我没有写的事应该都是鸡毛蒜皮的事了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="ityike" />
+          <p class="site-author-name" itemprop="name">ityike</p>
+          <p class="site-description motion-element" itemprop="description">php、swift、程序员、arduino、设计</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/归档">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.iamle.com/" title="流水理鱼wwek" target="_blank">流水理鱼wwek</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.chenjie.info/" title="陈捷的博客" target="_blank">陈捷的博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ityike</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"diyike"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>
