@@ -89,7 +89,7 @@
 <meta name="description" content="php、swift、程序员、arduino、设计">
 <meta property="og:type" content="website">
 <meta property="og:title" content="一刻笔记">
-<meta property="og:url" content="http://www.dyike.com/tags/PHP/index.html">
+<meta property="og:url" content="http://www.dyike.com/tags/php/index.html">
 <meta property="og:site_name" content="一刻笔记">
 <meta property="og:description" content="php、swift、程序员、arduino、设计">
 <meta name="twitter:card" content="summary">
@@ -112,7 +112,7 @@
   };
 </script>
 
-  <title> 标签: PHP | 一刻笔记 </title>
+  <title> 标签: -php | 一刻笔记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -178,9 +178,9 @@
         <li class="menu-item menu-item-learn">
           <a href="/learn" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-menu-item-booklist"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-<i class="fa fa-battery-full" aria-hidden="true"></i>"></i> <br />
             
-            menu.learn
+            充电
           </a>
         </li>
       
@@ -188,9 +188,9 @@
         <li class="menu-item menu-item-life">
           <a href="/life" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-menu-item-life"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-<i class="fa fa-coffee" aria-hidden="true"></i>"></i> <br />
             
-            menu.life
+            生活
           </a>
         </li>
       
@@ -257,7 +257,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        PHP
+        -php
         <small>标签</small>
       </h2>
     </div>
@@ -270,37 +270,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/01/02/php7-compile-err/" itemprop="url">
+            <a class="post-title-link" href="/2016/04/28/array-to-string/" itemprop="url">
               
-                <span itemprop="name">php7编译出现的问题</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-01-02T18:15:13+08:00"
-              content="2016-01-02" >
-          01-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/09/16/the-php-dev-in-ubuntu/" itemprop="url">
-              
-                <span itemprop="name">ubuntu下配置nginx，mysql，php环境</span>
+                <span itemprop="name">将数组转换成字符串</span>
               
             </a>
         
@@ -308,37 +280,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2015-09-16T20:56:59+08:00"
-              content="2015-09-16" >
-          09-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/06/23/learn-php-source-code/" itemprop="url">
-              
-                <span itemprop="name">【转载】06-19怎么学习或者阅读PHP源码？</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-06-23T21:25:09+08:00"
-              content="2015-06-23" >
-          06-23
+              datetime="2016-04-28T15:08:32+08:00"
+              content="2016-04-28" >
+          04-28
         </time>
       </div>
 
@@ -697,6 +641,54 @@
                             var match_content = content.substring(start, end);
                             // highlight all keywords
                             keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>
+rd){
                                 var regS = new RegExp(keyword, "gi");
                                 match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
                             });
