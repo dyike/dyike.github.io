@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-06-08T09:02:33.000Z</updated>
+  <updated>2016-06-23T15:47:59.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在这三个月里，我学到的那些事</title>
+    <link href="http://www.dyike.com/2016/06/23/write-after-practice/"/>
+    <id>http://www.dyike.com/2016/06/23/write-after-practice/</id>
+    <published>2016-06-23T14:32:59.000Z</published>
+    <updated>2016-06-23T15:47:59.000Z</updated>
+    
+    <content type="html">&lt;p&gt;三个月的时间过得真的很快，还记得过完年，在家过完寒假来北京第一件事就是面试，记得当初面试完的感觉真的很差，确实很差，知道自己是多么的差劲。那天下午去中关村面试，当初在理想国际八层的大厅，面我的是那个郝明，一个高高的哥儿，一听话音就是东北人了。面试整个过程也比较简单粗暴，没有想象中那样先做题，然后再问你一些乱七八糟的事情。还记得面试的前一天晚上，我还把之前自己的笔记翻了翻，看了看一些关于数据库的东西，偏偏没有面试的时候没触及到。面试就问了三个问题，也就是问那种考问题解决思路的，在我看来这就是考逻辑的东西。&lt;/p&gt;
+&lt;p&gt;后来，我认识的大牛，现在也算是我的师哥，过来问了我一些简单的问题，问了我常见的网络请求都有哪些？当初我也就知道get、post，还有啥也就不知道了。结果师哥一口气说了七八个，我一听那叫一脸的懵逼。&lt;/p&gt;
+&lt;p&gt;那天晚上回来了，我跟胡大大说了两句：“感觉今天的面试很糟糕”。后来也没说啥，只是回复了两句“你先来实习吧”、“年轻人要有信心”差不多就是这样的。等了半个月，终于在三个月前的今天，来到了sina weibo实习了，开启了我的实习生活。&lt;/p&gt;
+&lt;p&gt;刚来的那会儿，真的是啥也不会，都是从别人的代码中学习，第一天先被安排有人带。人带这事，其实就是让你迁出项目的代码，然后自己看看代码，有啥不懂的就问。顶多开始的时候交代一下怎么看代码。差不多这样看了两个礼拜，也就给你两礼拜，那个时候还是有点压力的，如果真的两个礼拜之后还是啥都不会的话，这张脸真的没地方放啊！这个时候也只能靠自己勤问，多动手！在大公司有一个好处就是，遇到问题可以随便问各种人，前期真的是没人觉得你是最笨的，大家都乐于帮助你，所以这个时候的脸皮真的不能薄。现在想想，脸皮厚起来，差不多就是从这个时候开始的吧。&lt;/p&gt;
+&lt;p&gt;说几点吧：&lt;br&gt;第一：我实习呆的组，版本控制用的svn，之前自己折腾的时候是git，自己也有一点git的基础，当用svn的，各种不习惯，感觉这个东西怎么这么难用，甚至有想法“为什么现在还用svn这个东西，难道就不能换git吗？”第一天就直说了，没接触过svn了。没一会儿功夫，带我的weiwei就找一篇blog链接给我，让我先学习，认认真真看完顶多一个小时，再稍微理解一下操作一下，差不多两个小时，后来发现这个东西不是很难，而且跟git也有很多相似的，所以说用起来更不是什么难事。就一个感想：稍微耐点心，认真一下，没有什么很难的。&lt;br&gt;第二：关于工具的使用，选择一个适合自己的工具真的特别重要，常说工欲善其事必先利其器，差不多就是这个道理吧，之前没有什么实战的项目，即便有点，也都是野路子，可以说不规范，从这个时候我也逐渐开始规范自己。比如编辑器的配置使用、网络请求的调试工具等等，有了前人的知道，这些都让我在今后的开发之路少走了一些弯路。成长或许就是这样一点一点地积累起来的。&lt;/p&gt;
+&lt;p&gt;实习完全是看自己，因为这段时间有很多时间是属于自己。差不多实习快一个月的时候，需求不是很多，确实有很多时间是空闲，这个时候就开始忙于自己的毕设。毕设的项目就是基于laravel开发的在线学习的平台。之前也没有接触过laravel框架，可能环境配置，安装laravel就让我卡住了一段时间。虽然有师哥，但师哥好像还挺严厉的，每每咨询的时候，都会先说“你的问题是什么”然后再抛出一句“请看文档”。现在毕设都已经做完，回想这些事，都是非常在理的。说实话，自己的毕设做了差不多有两个礼拜吧，那段时间里，自己文档真的看得不是很仔细，为什么这么说呢？因为我的问题在文档里都有过解释说明。后来我总结的原因是，看文档的时候一定要动手试试里面的例子。这个很重要，有的东西过一遍大脑，过两天就可能忘了。反正在毕设的路上，师哥帮忙解决了几个坑，其次就是跟我苦口婆心的说了n遍的“看文档”。【写到这里，万一师哥看到了，会怎样呢？】&lt;/p&gt;
+&lt;p&gt;接触最重要的一个项目就是项目sla了，这个我最熟练的应该是前台部分，后台的那个现在还不是很熟练。这个环节，搞得最多的就是写接口了。然后是前端用js处理渲染，这里，这里，这里，我有一个硬伤，这个过程写js真的写很痛苦，主要是自己的真的还不是很熟悉js，自己写的那点东西，我自己都看不下去了。现如今一直在补，还有关于php代码的事，这里有一个我自己不知道是好还是不好的东西：由于项目比较庞大，有一些业务处理是相似的，然后我在我开发的过程中总结了一部分，就一言不合封装函数。后来也发一个问题，过了两个周自己再去看的时候似乎又有点看不懂自己当初是怎么写的，不知道我这样是好还是不好。关于php数组处理的，我还特地整理了一篇文章，今后需要多消化学习。&lt;/p&gt;
+&lt;p&gt;今后要做的事，以及对自己的规划：&lt;br&gt;第一：学习跟产品沟通好，首先知道是干什么的，需要把话想清楚说清楚，这样跟产品沟通起来才会顺利。这是今后工作中必不可少的一关。&lt;br&gt;第二：继续巩固php的基础知识，常用的两百多个函数一定要做到滚瓜烂熟，知道参数的意义。【听说有的时候面试，就奇葩的问，某某函数的第二个参数是干嘛的，能不能去掉】、【还有有的时候参数的顺序不同，然后出现的结果就不一样了，自己还找不出原因】&lt;br&gt;第三：学好C语言吧，基础！&lt;br&gt;第四：查漏补缺，比如js的学习，http协议、tcp/Ip协议的详解，还有就是linux的操作&lt;br&gt;第五：有事没事多学习，多写blog，然后专注撩(专)妹！！！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;三个月的时间过得真的很快，还记得过完年，在家过完寒假来北京第一件事就是面试，记得当初面试完的感觉真的很差，确实很差，知道自己是多么的差劲。那天下午去中关村面试，当初在理想国际八层的大厅，面我的是那个郝明，一个高高的哥儿，一听话音就是东北人了。面试整个过程也比较简单粗暴，没有
+    
+    </summary>
+    
+    
+      <category term="实习" scheme="http://www.dyike.com/tags/%E5%AE%9E%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>PHP数组的“合并相加”</title>
@@ -1219,97 +1247,6 @@ touch /var/lock/subsys/local
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>【05-20】讨论一下支付系统的功能设计或相关开发经验</title>
-    <link href="http://www.dyike.com/2015/05/20/share-with-pay-dev/"/>
-    <id>http://www.dyike.com/2015/05/20/share-with-pay-dev/</id>
-    <published>2015-05-20T13:08:00.000Z</published>
-    <updated>2016-04-28T08:40:18.000Z</updated>
-    
-    <content type="html">&lt;p&gt; 来自黑夜路人技术群讨论分享内容。&lt;/p&gt;
-&lt;p&gt;【今日话题】&lt;/p&gt;
-&lt;p&gt;讨论一下支付系统的功能设计或相关开发经验 - darkmi&lt;/p&gt;
-&lt;p&gt;1. 资金的数据库变更最基础要记得使用事务&lt;/p&gt;
-&lt;p&gt;然后还有是数据锁问题&lt;/p&gt;
-&lt;p&gt;比如一个逻辑是用户购买东西&lt;/p&gt;
-&lt;p&gt;先判断用户余额够不够东西价格，如果够就购买，不够就返回错误&lt;/p&gt;
-&lt;p&gt;这个时候获取用户余额的时候就要记得对这个用户的资金进行读写锁&lt;/p&gt;
-&lt;p&gt;然后整个事务结束后解锁&lt;/p&gt;
-&lt;p&gt;这样才不会有脏数据和重复消费 - 轩脉刃&lt;/p&gt;
-&lt;p&gt;2. &amp;#x1f633; 性能很差吧 - diwayou@高朋&lt;/p&gt;
-&lt;p&gt;回: 不会，又不是锁所有用户账户 - 轩脉刃&lt;/p&gt;
-&lt;p&gt;回: 当账号是一个商家的账号 就会有性能问题 如果是个人用户不会有问题 - diwayou@高朋&lt;/p&gt;
-&lt;p&gt;回: 好吧，具体场景具体分析了 - 轩脉刃&lt;/p&gt;
-&lt;p&gt;3. 安全问题要保证！日志要记录好 - 若凡&lt;/p&gt;
-&lt;p&gt;4. 用户资金流水一定要记录，记录订单号，交易金额，账户资金快照，等信息。 - 丁靖&lt;/p&gt;
-&lt;p&gt;问: 资金快照是什么？ - lemon…&lt;/p&gt;
-&lt;p&gt;回: 就是这次交易后，用户帐户上的资金余额. 如果不是这种业务场景，就不需要记录了 - 丁靖&lt;/p&gt;
-&lt;p&gt;5. 问: 主要是分布式事务咋实现好？xopen的两阶段性能太差 - 张勇&lt;/p&gt;
-&lt;p&gt;回: 分布式事务不好做啊 如果业务能够接受异步稍微好处理点 如果必需同步 那只能损失性能了&lt;/p&gt;
-&lt;p&gt;如果做异步 可能需要分步消耗 例如 1.冻结 准备资源 2.真正消耗&lt;/p&gt;
-&lt;p&gt;冻结资源如何释放可以发起方通知 也可以接受放自己超时释放 - diwayou@高鹏&lt;/p&gt;
-&lt;p&gt;6. 前一段时间看过支付宝程立之前分享的分布式事务介绍，觉得他们就是自己实现一个事务管理器，事务是业务级别的，每个业务提供tcc操作和提交、回滚。每个数据库都是用的本地事务。&lt;/p&gt;
-&lt;p&gt;也就是说每个业务自己实现回滚操作。&lt;/p&gt;
-&lt;p&gt;都是2阶段的事务，还有infoq的微信红包的一个演讲也使用的自己实现的2阶段提交。 - 张勇&lt;/p&gt;
-&lt;p&gt;7. 自己回滚需要设置好超时时间 最好是主动通知释放 - diwayou@高鹏&lt;/p&gt;
-&lt;p&gt;8. 微信的&lt;a href=&quot;http://www.infoq.com/cn/presentations/mobile-Internet-massive-access-system-design&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.infoq.com/cn/presentations/mobile-Internet-massive-access-system-design&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;微信红包的 - 张勇&lt;/p&gt;
-&lt;p&gt;9. 大规模SOA系统中的分布事务处事_程立 &lt;a href=&quot;http://wenku[&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://wenku[&lt;/a&gt; baidu&lt;img src=&quot;#94081119&quot; alt=&quot;](http://cdncache-a.akamaihd.net/items/it/img/arrow-10x10.png)&quot; title=&quot;Click to Continue &amp;gt; by DealExpress&quot;&gt;.com/link?url=r6DpwDbFeUG93YX_gpLTlegBirLxu0gst50c50yJ6oYYItSqDn7P1DRtKY5JrYTISCCjalBk6DkE4K-wKVm0VBp8qUUvQVuV1ojoZsTJetC - 张勇&lt;/p&gt;
-&lt;p&gt;10. 支付去年我做过，主要是用redis 分布锁+mysql 事务。mysql 分库分表，用户之间隔离，互不影响。&lt;/p&gt;
-&lt;p&gt;每天定时对账，报警。- 天天&lt;/p&gt;
-&lt;p&gt;11. 能详细点儿不？比如手user1在A库，user2在B库，user1给user2转帐，这种事务怎么处理的？还是不处理靠对账来解决？ - 张勇&lt;/p&gt;
-&lt;p&gt;回: 首先，我那个系统不涉及用户间交易。如果用户间，涉及到库事务，这个mysql 暂时做不了。你可以看一下redis 实现的一个简单的分布锁，如果跨库更新失败写日志，标记两个锁定。&lt;/p&gt;
-&lt;p&gt;日志这块也非常重要，恢复，对账大部分靠它。。 - 天天&lt;/p&gt;
-&lt;p&gt;回: 恩。日志、流水是对账的依据，相当于数据库的redo log，比较重要。 - 张勇&lt;/p&gt;
-&lt;p&gt;12. 实时到账还是延迟到账？如果是延迟到账 用一个带事务的queue来做 实时到账 两阶段来 - diwayou@高鹏&lt;/p&gt;
-&lt;p&gt;13. 之前简单问过支付宝的朋友，他们用java 写的分布式事物，很强大。java 也有开源组件。 - 天天&lt;/p&gt;
-&lt;p&gt;14. 开源的好像都是x/open JTA规范实现的，性能不能保证。- 张勇&lt;/p&gt;
-&lt;p&gt;15. 问: 分布式事务的原理是什么 - 陈一回&lt;/p&gt;
-&lt;p&gt;回: 这本书，有试读。&lt;a href=&quot;http://item.jd.com/11622772.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://item.jd.com/11622772.html&lt;/a&gt; 里面讲了一些分布式事务的问题&lt;/p&gt;
-&lt;p&gt;原理的话可以看看两阶段提交和三阶段提交的资料。 - 张勇&lt;/p&gt;
-&lt;p&gt;16. 实际这个就是业务能接受异步的都争取用异步 要不然性能很难保证 - diwayou@高鹏&lt;/p&gt;
-&lt;p&gt;17. 这里还有一篇文章：&lt;a href=&quot;http://coolshell.cn/articles/10910.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://coolshell.cn/articles/10910.html&lt;/a&gt; (注: 分布式系统的事务处理) - 张勇&lt;/p&gt;
-&lt;p&gt;18. 人手少做个很痛苦，幸好我们有收盘锁定期，还能补补，不然，一步错，步步错，会被骂死。&lt;/p&gt;
-&lt;p&gt;做支付老老实实做好测试，别什么敏捷，天天版本的，这不是闹着玩的，我们上线钱前产品临时加了个规则，我们没经验，最后就死在这个规则上。。。 - 天天&lt;/p&gt;
-&lt;p&gt;19. 问个细节点的问题，金额是怎么存储的？一般是按分存储还是按元来存储？ - darkmi&lt;/p&gt;
-&lt;p&gt;回: 分 - diwayou@高鹏&lt;/p&gt;
-&lt;p&gt;回: @diwayou@高鹏  用分是考虑跨项目,跨语言吧. 如果只是php+mysql,mysql用decimal存储,php用bcmath计算小数,结果是正常的 - twin&lt;/p&gt;
-&lt;p&gt;回: 嗯 用分容易些 如果用小数 各个语言计算都需要特殊处理 - @diwayou@高鹏&lt;/p&gt;
-&lt;p&gt;20. 支付宝TCC示例 &lt;a href=&quot;http://www.docin.com/p-866220638.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.docin.com/p-866220638.html&lt;/a&gt; - diwayou@高鹏&lt;/p&gt;
-&lt;p&gt;21. 支付系统的物理架构大概什么样？我看有很多和银行对接的部分，有很多要求，比如有的是win,有的是linux,需要配ftp,有的还要拉专线&lt;/p&gt;
-&lt;p&gt;木有支付行业的？ 很想了解啊 - platoli&lt;/p&gt;
-&lt;p&gt;22. 银行或第三方支付需要与人行对接，人行在两个银行之间，负责资金转发和清算等&lt;/p&gt;
-&lt;p&gt;行内支付系统，负责准备人行接口需要数据，并且处理往账来账，并给核心记账系统提供记账数据&lt;/p&gt;
-&lt;p&gt;与人行对接，需要专门支付前置，专门加密等 - 召阳&lt;/p&gt;
-&lt;p&gt;23. 移动端支付信息一般用oauth加密传输 - 张静小朋友&lt;/p&gt;
-&lt;p&gt;回: oauth加密是啥？ - 唐毅&lt;/p&gt;
-&lt;p&gt;回: OAuth 是授权，协议里面包含秘钥验证， - JoJo&lt;/p&gt;
-&lt;p&gt;【分享链接】&lt;/p&gt;
-&lt;p&gt;1. MySQL索引原理及慢查询优化 &lt;a href=&quot;http://mp.weixin.qq.com/s?__biz=MjM5MDYwMjM3Nw==&amp;amp;mid=203600712&amp;amp;idx=1&amp;amp;sn=055c10be105ee20e564efa067b0f195e&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp.weixin.qq.com/s?__biz=MjM5MDYwMjM3Nw==&amp;amp;mid=203600712&amp;amp;idx=1&amp;amp;sn=055c10be105ee20e564efa067b0f195e&lt;/a&gt; - 黑夜路人&lt;/p&gt;
-&lt;p&gt;2. PHP中实现异步调用多线程程序代码 &lt;a href=&quot;http://mp.weixin.qq.com/s?__biz=MzAwNjMxMTA5Mw==&amp;amp;mid=210157381&amp;amp;idx=1&amp;amp;sn=adb9928e1b9b3ec9c10cb8b064e6ffef&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp.weixin.qq.com/s?__biz=MzAwNjMxMTA5Mw==&amp;amp;mid=210157381&amp;amp;idx=1&amp;amp;sn=adb9928e1b9b3ec9c10cb8b064e6ffef&lt;/a&gt; - 黑夜路人&lt;/p&gt;
-&lt;p&gt;注: 他说的都是基于io复用 和多线程没有关系 - 惠新宸&lt;/p&gt;
-&lt;p&gt;3. Google基础设施副总裁：容器是计算的未来 &lt;a href=&quot;http://mp.weixin.qq.com/s?__biz=MjM5ODM3MzkyNQ==&amp;amp;mid=214930786&amp;amp;idx=1&amp;amp;sn=8806346868f72b590719e456776e029a&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp.weixin.qq.com/s?__biz=MjM5ODM3MzkyNQ==&amp;amp;mid=214930786&amp;amp;idx=1&amp;amp;sn=8806346868f72b590719e456776e029a&lt;/a&gt; - 黑夜路人&lt;/p&gt;
-&lt;p&gt;4. Unique Key Generate Server https:/&lt;a href=&quot;#32285254&quot; title=&quot;Click to Continue &amp;gt; by DealExpress&quot;&gt; github&lt;img src=&quot;http://cdncache-a.akamaihd.net/items/it/img/arrow-10x10.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;.com/liexusong/ukg - 凹凸曼&lt;/p&gt;
-&lt;p&gt;5. PHP unique ID generator https:/&lt;a href=&quot;#11868467&quot; title=&quot;Click to Continue &amp;gt; by DealExpress&quot;&gt; github&lt;img src=&quot;http://cdncache-a.akamaihd.net/items/it/img/arrow-10x10.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;.com/liexusong/ukey - 凹凸曼&lt;/p&gt;
-&lt;p&gt;6. PHP 远程 DoS 漏洞深入分析及防护方案 &lt;a href=&quot;http://www.nsfocus.com.cn/report/php_multipart-form-data_remote_dos_vulnerability_analysis_protection.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.nsfocus.com.cn/report/php_multipart-form-data_remote_dos_vulnerability_analysis_protection.pdf&lt;/a&gt; - 袁峰&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt; 来自黑夜路人技术群讨论分享内容。&lt;/p&gt;
-&lt;p&gt;【今日话题】&lt;/p&gt;
-&lt;p&gt;讨论一下支付系统的功能设计或相关开发经验 - darkmi&lt;/p&gt;
-&lt;p&gt;1. 资金的数据库变更最基础要记得使用事务&lt;/p&gt;
-&lt;p&gt;然后还有是数据锁问题&lt;/p&gt;
-&lt;p&gt;比如一个逻辑是用户购买东西&lt;
-    
-    </summary>
-    
-    
-      <category term="支付功能" scheme="http://www.dyike.com/tags/%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD/"/>
     
   </entry>
   
