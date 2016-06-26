@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.dyike.com/life/index.html</loc>
+    
+    <lastmod>2016-06-26T03:50:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.dyike.com/2016/06/26/the-feelings-of-graduation-2016/</loc>
     
-    <lastmod>2016-06-26T03:47:05.000Z</lastmod>
+    <lastmod>2016-06-26T03:49:57.000Z</lastmod>
     
   </url>
   
@@ -40,13 +47,6 @@
     <loc>http://www.dyike.com/2015/09/16/the-php-dev-in-ubuntu/</loc>
     
     <lastmod>2016-05-27T07:13:48.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.dyike.com/life/index.html</loc>
-    
-    <lastmod>2016-04-28T09:02:34.000Z</lastmod>
     
   </url>
   
