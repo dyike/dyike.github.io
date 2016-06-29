@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-06-26T05:26:06.000Z</updated>
+  <updated>2016-06-29T07:37:51.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>高性能JavaScript的学习笔记——加载和执行</title>
+    <link href="http://www.dyike.com/2016/06/29/learn-loading-and-execution-of-js/"/>
+    <id>http://www.dyike.com/2016/06/29/learn-loading-and-execution-of-js/</id>
+    <published>2016-06-29T04:00:55.000Z</published>
+    <updated>2016-06-29T07:37:51.000Z</updated>
+    
+    <content type="html">&lt;p&gt;作为一个web开发者来说，在开发的过程需要考虑性能的问题。JavaScript在浏览器中的性能，可能就是可用性的问题，这个问题因JavaScript的阻塞特性变得复杂，说白了就是当浏览器在执行JavaScript的时候，浏览器不能同时做其他的事情。js的执行时间越长，浏览器的响应时间就会越长。&lt;script&gt;标签出现的时候，就会让页面等待脚本的解析和执行，不管JavaScript的代码是内嵌还是包含的在外链的文件中，页面的下载和渲染都必须要停下来等待脚本的执行完毕。&lt;/p&gt;
+&lt;h3 id=&quot;脚本的位置&quot;&gt;&lt;a href=&quot;#脚本的位置&quot; class=&quot;headerlink&quot; title=&quot;脚本的位置&quot;&gt;&lt;/a&gt;脚本的位置&lt;/h3&gt;&lt;p&gt;在HTML4规范中指出&lt;script&gt;标签可以放在html文档中head或body的标签中。通常情况是这样的：&lt;script&gt;标签用来加载出现在&lt;head&gt;中外链的js文件，挨着&lt;link&gt;标签用来加载外部的css文件或其他页面元信息。&lt;/p&gt;
+&lt;p&gt;先看下面的一段代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;html&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;head&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;js学习例子&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;file1.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;undefined&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;file2.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;undefined&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;file3.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;undefined&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/css&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;styles.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;head&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;body&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;你好，世界！&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;body&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;html&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;上面的代码需要注意的是：在浏览器解析到&lt;body&gt;标签之前，不会渲染页面的其他的内容。所以说把脚本放在页面的顶部会导致明显的延迟，表现出页面空白，没有内容信息。执行过程差不多就是这样的：&lt;br&gt;&lt;a href=&quot;&quot;&gt;js执行过程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;从上图可以清晰的看到，第一个js文件下载的同时阻塞了页面其他文件的下载，以此类推！&lt;/p&gt;
+&lt;p&gt;面对这样的原因，可以适当的调整js代码的位置是不是更合理呢？&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;html&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;head&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;js学习例子&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/css&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;styles.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;head&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;body&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;你好，世界！&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;file1.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;undefined&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;file2.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;undefined&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;file3.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;undefined&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;body&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;html&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;推荐是将所有的&lt;script&gt;标签尽可能的放在&lt;body&gt;标签的底部，尽量减少对整个页面的影响。记住：优化JavaScript代码的首要规范：将代码放在底部！&lt;/p&gt;
+&lt;p&gt;上面谈到的原因也差不多明白，在组织脚本的时候，我们尽量减少&lt;script&gt;标签的个数，这不仅仅是针对外链，内嵌也是一样的。考虑HTTP请求会带来额外的性能开销，下载一个100kb的文件要比下载4个25kb的文件更快！这样我们就应该考虑文件的合并，可以通过离线打包工具等等，后面继续讲！&lt;/p&gt;
+&lt;p&gt;下面说明两种脚本：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无阻塞的脚本就是，在页面加载完成后才加载JavaScript代码，专业的就是说法就是在window对象的load事件触发后再下载脚本。&lt;/li&gt;
+&lt;li&gt;延迟的脚本就是，在&lt;script&gt;标签中定义了一个扩展属性：defer。致命本元素所含的脚本不会修改DOM，这样代码就会安全的延迟执行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;需要说明的是：目前主流的浏览器已经实现对defer属性的支持，W3C的html5规范，当且仅当src属性声明时生效。&lt;/p&gt;
+&lt;p&gt;还有一种无阻塞加载脚本的方法是使用XMLHttpRequest(XHR)对象获取脚本并注入页面中。先创建一个XHR对象，然后用它去下载JavaScript文件，最后通过创建动态的&lt;script&gt;元素将代码注入到页面中。代码示例：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; xhr = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; XMLHttpRequest();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xhr.open(&lt;span class=&quot;string&quot;&gt;&quot;get&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;file1.js&quot;&lt;/span&gt;,&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xhr.onreadystatechange = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(xhr.readyState == &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(xhr.status &amp;gt;=&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt; &amp;amp;&amp;amp; xhr.status &amp;lt;&lt;span class=&quot;number&quot;&gt;300&lt;/span&gt; || xhr.status == &lt;span class=&quot;number&quot;&gt;304&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; script = &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.createElement(&lt;span class=&quot;string&quot;&gt;&quot;script&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            script.type = &lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            script.text = xhr.responseText;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.body.appendChild(script);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xhr.send(&lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;发送一个GET请求获取file1.js文件。事件处理函数onreadystatechange检查readyState的状态是否为1，同时还要校验http的状态码，如果满足条件，创建一个&lt;script&gt;元素。这样做的好处就是，可以先去下载一个JavaScript代码，但可以先不去执行。但也有局限性：JavaScript文件必须与请求的页面处与相同的域，也就是说不能从CDN上下载JavaScript文件，这种方法不用于大型web应用。&lt;/p&gt;
+&lt;/script&gt;&lt;/p&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;作为一个web开发者来说，在开发的过程需要考虑性能的问题。JavaScript在浏览器中的性能，可能就是可用性的问题，这个问题因JavaScript的阻塞特性变得复杂，说白了就是当浏览器在执行JavaScript的时候，浏览器不能同时做其他的事情。js的执行时间越长，浏览器
+    
+    </summary>
+    
+    
+      <category term="JavaScript，学习笔记" scheme="http://www.dyike.com/tags/JavaScript%EF%BC%8C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>2016年，我的毕业感想</title>
@@ -1085,124 +1124,6 @@ touch /var/lock/subsys/local
     <summary type="html">
     
       &lt;h2 id=&quot;运算符&quot;&gt;&lt;a href=&quot;#运算符&quot; class=&quot;headerlink&quot; title=&quot;运算符&quot;&gt;&lt;/a&gt;&lt;strong&gt;运算符&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Go支持普通的数字运算符，下面的表格列出了当前支持的运算符，以及其优先级。它们全部是从左到右结合的
-    
-    </summary>
-    
-    
-      <category term="Golang" scheme="http://www.dyike.com/tags/Golang/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go语言学习笔记【第一目：变量、类型和关键字，布尔类型，数字类型...】</title>
-    <link href="http://www.dyike.com/2015/06/18/go-note-1-1/"/>
-    <id>http://www.dyike.com/2015/06/18/go-note-1-1/</id>
-    <published>2015-06-18T14:15:05.000Z</published>
-    <updated>2016-04-28T08:05:46.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;strong&gt;变量、类型和关键字&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Go 在语法上有着类 C 的感觉。如果你希望将两个（或更多）语句放在一行书写，它们必须用分号 (’;’) 分隔。&lt;u&gt;一般情况下，你不需要分号。&lt;/u&gt;&lt;/p&gt;
-&lt;p&gt;Go 同其他语言不同的地方在于变量的类型在变量名的后面。&lt;/p&gt;
-&lt;p&gt;不是：int a，而是 a int。&lt;/p&gt;
-&lt;p&gt;当定义了一个变量，它默认赋值为其类型的 null 值。&lt;/p&gt;
-&lt;p&gt;在 var a int后，a 的 值为 0。而 var  s string，意味着 s 被赋值为零长度字符串，也就是 “”。&lt;/p&gt;
-&lt;p&gt;在Go中，声明和赋值是两过程，但是可以连在一起。比较下面作用相同的代码片段。&lt;/p&gt;
-&lt;p&gt;用 = 声明&lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b &lt;span class=&quot;keyword&quot;&gt;bool&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;a = &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b = &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;用:= 声明&lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;a := &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b := &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;在左边使用了关键字 var 声明变量，然后赋值给它。右边的代码使用了 := 使得在一 步内完成了声明和赋值&lt;strong&gt;&lt;u&gt;（这一形式只可用在函数内）&lt;/u&gt;&lt;/strong&gt;。在这种情况下，变量的类型是由值推演出来的。值15表示是int 类型，值false告诉Go 它的类型应当是bool。多个var 声明可以成组；const 和import 同样允许这么做。留意圆括号的使用：&lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt;  (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;x &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b &lt;span class=&quot;keyword&quot;&gt;bool&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;有相同类型的多个变量同样可以在一行内完成声明：var x, y int让x和y都是int类型变量。同样可以使用 平行赋值：&lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;a, b := &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;让a和b都是整数变量，并且赋值 20 给 a，16 给 b。&lt;/p&gt;
-&lt;p&gt;一个特殊的变量名是_（下划线）。任何赋给它的值都被丢弃。在这个例子中，将35赋值给b，同时丢弃34。&lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;_, b := &lt;span class=&quot;number&quot;&gt;34&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;35&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;Go 的编译器对声明却未使用的变量在报错。下面的代码会产生这个错误：声明了i却未使用&lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt;   main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt;  &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt;  i &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;布尔类型&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;布尔类型表示由预定义的常量 true 和 false 代表的布尔判定值。布尔类型是 bool。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;数字类型&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Go有众所周知的类型如int，这个类型根据你的硬件决定适当的长度。意味着在32位硬件上，是32位的；在64位硬件上是64位的。&lt;/p&gt;
-&lt;p&gt;注意：int是32或64位之一，不会定义成其他值。uint情况相同。&lt;/p&gt;
-&lt;p&gt;如果你希望明确其长度，你可以使用int32或者uint32。完整的整数类型列表（符号和无符号）是 int8，int16，int32，int64 和 byte，uint8，uint16，uint32， uint64。byte 是 uint8 的别名。浮点类型的值有 ﬂoat32 和 ﬂoat64 （没有 float 类 型）。64  位的整数和浮点数总是 64 位的，即便是在 32 位的架构上。&lt;/p&gt;
-&lt;p&gt;需要留意的是这些类型全部都是独立的，并且混合用这些类型向变量赋值会引起编译 器错误，例如下面的代码：&lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;      &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;           &lt;span class=&quot;comment&quot;&gt;// 通用整数类型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b &lt;span class=&quot;keyword&quot;&gt;int32&lt;/span&gt;      &lt;span class=&quot;comment&quot;&gt;// 32 位整数类型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;a = &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b = a+ a           &lt;span class=&quot;comment&quot;&gt;// 混合这些类型是非法的&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b = b+ &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;           &lt;span class=&quot;comment&quot;&gt;//5 是一个（未定义类型的）常量，所以这没%问题&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;在b=a+a触发一个赋值错误：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;types.go:7: cannot use a + a (type int) as type int32 in assignment&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;赋值可以用八进制、十六进制或科学计数法：077，0xFF，1e3 或者 6.022e23 这些都是合法的。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;常量&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;常量在Go中，也就是 constant。它们在编译时被创建，只能是数字、字符串或布尔值；const x = 42 生成x这个常量。可以使用iota生成枚举值。&lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt;  (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;a = &lt;span class=&quot;literal&quot;&gt;iota&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b = &lt;span class=&quot;literal&quot;&gt;iota&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;第一个iota 表示为 0，因此a等于0，当iota 再次在新的一行使用时，它的值增加了1，因此b的值是1。&lt;/p&gt;
-&lt;p&gt;也可以像下面这样，省略Go重复的= iota：&lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt;  (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;a = &lt;span class=&quot;literal&quot;&gt;iota&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b                 &lt;span class=&quot;comment&quot;&gt;// Implicitly b = iota&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果需要，可以明确指定常量的类型：&lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt;  (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;a = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;                      &lt;span class=&quot;comment&quot;&gt;// Is an int now&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;  = &lt;span class=&quot;string&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;字符串&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;另一个重要的内建类型是string。赋值字符串的例子：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;s := “Hello World !”&lt;br&gt;字符串在Go中是UTF-8的由双引号（”）包裹的字符序列。如果你使用单引号（’）则 表示一个字符（UTF-8 编码）——这种在Go中不是string。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;&lt;u&gt;一旦给变量赋值，字符串就不能修改了：在&lt;/u&gt;**&lt;/strong&gt;&lt;u&gt; Go &lt;/u&gt;&lt;strong&gt;**&lt;u&gt;中字符串是不可变的。&lt;/u&gt;&lt;/strong&gt;从C来的用户， 下面的情况在Go中是非法的。&lt;/p&gt;
-&lt;p&gt;`var s string = “hello”&lt;/p&gt;
-&lt;p&gt;s[0] = ‘c’                //修改第一个字符为’c’，这会报错`&lt;/p&gt;
-&lt;p&gt;在 Go 中实现这个，需要下面的方法：&lt;/p&gt;
-&lt;p&gt;`s := “hello”&lt;/p&gt;
-&lt;p&gt;c := []rune(s)&lt;/p&gt;
-&lt;p&gt;c[0] = ‘c’&lt;/p&gt;
-&lt;p&gt;s2 := string(c)&lt;/p&gt;
-&lt;p&gt;fmt.Printf(“%s\n”, s2)`&lt;/p&gt;
-&lt;p&gt;2转换 s 为 rune 数组；&lt;/p&gt;
-&lt;p&gt;3修改数组的第一个元素；&lt;/p&gt;
-&lt;p&gt;4 创建新的字符串 s2 保存修改；&lt;/p&gt;
-&lt;p&gt;5 用 fmt.Printf 函数输出字符串。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;多行字符串&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;基于分号的置入，你需要小心使用多行字符串。如果这样写：&lt;/p&gt;
-&lt;p&gt;`s := “Starting part”&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;“Ending part”`&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;会被转换为：&lt;/p&gt;
-&lt;p&gt;`s := “Starting part” ;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;“Ending part” ;`&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;这是错误的语法，应当这样写：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;s := &amp;quot;Starting part&amp;quot; + &amp;quot;Ending part&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Go就不会在错误的地方插入分号。另一种方式是使用反引号 ` 作为原始字符串符号：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;s :=&lt;/code&gt;Starting part Ending part``&lt;/p&gt;
-&lt;p&gt;留意最后一个例子s现在也包含换行。不像转义字符串标识 ，原始字符串标识的值 在引号内的字符是不转义的。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;rune&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Rune是int32的别名。用UTF-8进行编码。这个类型在什么时候使用呢？例如需要遍 历字符串中的字符。可以循环每个字节（仅在使用 US ASCII 编码字符串时与字符等价， 而它们在 Go 中不存在！）。因此为了获得实际的字符，需要使用 rune 类型。&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;复数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Go原生支持复数。它的变量类型是complex128（64位虚数部分）。如果需要小一些的，还有complex64–32位的虚数部分。&lt;/p&gt;
-&lt;p&gt;复数写为 re + imi，re是实数部分，im是虚数部分，而i是标记 ’i’  (√−1)。使用复数的一个例子：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;var  c complex64  = 5+5i;fmt.Printf(&amp;quot;Value is: %v&amp;quot;, c)&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;将会打印：(5+5i)&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;错误&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;任何足够大的程序或多或少都会需要使用到错误报告。因此Go有为了错误而存在的内建类型，叫做 error。&lt;/p&gt;
-&lt;p&gt;var e error 定义了一个error类型的变量e，其的值是nil。这个error 类型是一个接口。&lt;/p&gt;
-&lt;hr&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;变量、类型和关键字&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Go 在语法上有着类 C 的感觉。如果你希望将两个（或更多）语句放在一行书写，它们必须用分号 (’;’) 分隔。&lt;u&gt;一般情况下，你不需要分号。&lt;/u&gt;&lt;/p&gt;
-&lt;p&gt;Go 同其他语言不同的地方在于变量的类
     
     </summary>
     

@@ -69,7 +69,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="内心OS," />
+  <meta name="keywords" content="JavaScript，学习笔记," />
 
 
 
@@ -87,25 +87,16 @@
 
 
 
-<meta name="description" content="前言：本来答应大家的是周末给大家分享一篇文章，可是总有一些琐碎的事，让我的时间一点一点地从我身边流逝，我内心真的很心痛啊。想了很久，不知道写些什么跟大家分享。我的语文高考也就考85（总分160），但我还是努力地写，用心地去交流。这文章我写了两个小时，修改了半个小时。
-
-关于自己
-作为一个典型的天蝎男，身上确实表现出了很多天蝎男不为人知的性格特点，或显性或隐性。天蝎的人给人的感觉就是冰冷的感觉，这个">
+<meta name="description" content="作为一个web开发者来说，在开发的过程需要考虑性能的问题。JavaScript在浏览器中的性能，可能就是可用性的问题，这个问题因JavaScript的阻塞特性变得复杂，说白了就是当浏览器在执行JavaScript的时候，浏览器不能同时做其他的事情。js的执行时间越长，浏览器的响应时间就会越长。标签出现的时候，就会让页面等待脚本的解析和执行，不管JavaScript的代码是内嵌还是包含的在外链的文件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内心的独白">
-<meta property="og:url" content="http://www.dyike.com/2013/11/18/heart-os/index.html">
+<meta property="og:title" content="高性能JavaScript的学习笔记——加载和执行">
+<meta property="og:url" content="http://www.dyike.com/2016/06/29/learn-loading-and-execution-of-js/index.html">
 <meta property="og:site_name" content="一刻笔记">
-<meta property="og:description" content="前言：本来答应大家的是周末给大家分享一篇文章，可是总有一些琐碎的事，让我的时间一点一点地从我身边流逝，我内心真的很心痛啊。想了很久，不知道写些什么跟大家分享。我的语文高考也就考85（总分160），但我还是努力地写，用心地去交流。这文章我写了两个小时，修改了半个小时。
-
-关于自己
-作为一个典型的天蝎男，身上确实表现出了很多天蝎男不为人知的性格特点，或显性或隐性。天蝎的人给人的感觉就是冰冷的感觉，这个">
-<meta property="og:updated_time" content="2016-04-28T08:17:06.000Z">
+<meta property="og:description" content="作为一个web开发者来说，在开发的过程需要考虑性能的问题。JavaScript在浏览器中的性能，可能就是可用性的问题，这个问题因JavaScript的阻塞特性变得复杂，说白了就是当浏览器在执行JavaScript的时候，浏览器不能同时做其他的事情。js的执行时间越长，浏览器的响应时间就会越长。标签出现的时候，就会让页面等待脚本的解析和执行，不管JavaScript的代码是内嵌还是包含的在外链的文件">
+<meta property="og:updated_time" content="2016-06-29T07:37:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内心的独白">
-<meta name="twitter:description" content="前言：本来答应大家的是周末给大家分享一篇文章，可是总有一些琐碎的事，让我的时间一点一点地从我身边流逝，我内心真的很心痛啊。想了很久，不知道写些什么跟大家分享。我的语文高考也就考85（总分160），但我还是努力地写，用心地去交流。这文章我写了两个小时，修改了半个小时。
-
-关于自己
-作为一个典型的天蝎男，身上确实表现出了很多天蝎男不为人知的性格特点，或显性或隐性。天蝎的人给人的感觉就是冰冷的感觉，这个">
+<meta name="twitter:title" content="高性能JavaScript的学习笔记——加载和执行">
+<meta name="twitter:description" content="作为一个web开发者来说，在开发的过程需要考虑性能的问题。JavaScript在浏览器中的性能，可能就是可用性的问题，这个问题因JavaScript的阻塞特性变得复杂，说白了就是当浏览器在执行JavaScript的时候，浏览器不能同时做其他的事情。js的执行时间越长，浏览器的响应时间就会越长。标签出现的时候，就会让页面等待脚本的解析和执行，不管JavaScript的代码是内嵌还是包含的在外链的文件">
 
 
 
@@ -123,7 +114,7 @@
   };
 </script>
 
-  <title> 内心的独白 | 一刻笔记 </title>
+  <title> 高性能JavaScript的学习笔记——加载和执行 | 一刻笔记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -292,7 +283,7 @@
             
             
               
-                内心的独白
+                高性能JavaScript的学习笔记——加载和执行
               
             
           </h1>
@@ -304,8 +295,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-11-18T22:37:24+08:00" content="2013-11-18">
-              2013-11-18
+            <time itemprop="dateCreated" datetime="2016-06-29T12:00:55+08:00" content="2016-06-29">
+              2016-06-29
             </time>
           </span>
 
@@ -315,8 +306,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/11/18/heart-os/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/11/18/heart-os/" itemprop="commentsCount"></span>
+                <a href="/2016/06/29/learn-loading-and-execution-of-js/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/29/learn-loading-and-execution-of-js/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -339,21 +330,26 @@
       
 
       
-        <p>前言：本来答应大家的是周末给大家分享一篇文章，可是总有一些琐碎的事，让我的时间一点一点地从我身边流逝，我内心真的很心痛啊。想了很久，不知道写些什么跟大家分享。我的语文高考也就考85（总分160），但我还是努力地写，用心地去交流。这文章我写了两个小时，修改了半个小时。</p>
-<hr>
-<p><strong>关于自己</strong></p>
-<p>作为一个典型的天蝎男，身上确实表现出了很多天蝎男不为人知的性格特点，或显性或隐性。天蝎的人给人的感觉就是冰冷的感觉，这个我有的时候我不得不同意，因为别人都这样认为，其实也没必要争论自己是一个什么样的人，做好自己就OK了。但有一点我不得不说的是，有些事天蝎男还是非常用心地去做。我习惯仔细的观察生活的一切，人和事必须包括在内。</p>
-<p>由于自己平时在生活太过多的关注一些人，一些人的做事方式，所以我确实看不惯一些人的做事方式。而我这个人的最大的弱点就是太直接太露骨了，一点儿都不知道含蓄地表现我想表现的东西。这样导致的结果就是我成为那么一些人的讨厌的对象，其实我也无所谓，你讨厌我也好，欢喜我也好。我只是在做我自己，干嘛考虑一些其他与自己无相关人的感受。我时常告诫自己，远离那些傻×，努力地做好自己！在生活中，你接近了那些傻×，然后他们把你拉到他那个层次上，结果他就可以用他丰富的经验把你给秒杀了。所以远离那些傻×还是重要的。</p>
-<p><strong>关于修炼</strong></p>
-<p>我也不知道自己是怎样修炼自己的，最起码我会努力地读书。说到这个我还不得不感谢一个曾经喜欢的女生，嘿嘿，也没有什么，就是想到了与我写的东西有那么一点关系，所以就可以顺便感谢一下人家。我原本不是很喜欢用微信，微信刚刚出来的那个时候用过，感觉是一个很烂的产品，于是乎就放弃了。由于她用微信所以也就习惯了微信。哈哈，未必啊，其实微信这个产品是越做越好，更多的地方吸引我去用微信。后来也不知道什么时候微信上有了微信公众账号，自然而然的开始关注一些自己感兴趣的东西，学会怎样读书，怎样对待生活……可能你会认为这是一个不靠谱的途径，至少我认为我关注的这些东西对我来说是非常有用的。看到微信上推荐了几本书，于是最近去了几次图书馆，可喜可悲。可喜的是竟然如此小的图书馆能够找到了我想看的两本书，可悲的是最普通不过的书也没有。不管怎样，先逮到了这两本书，就先看着吧。最近看的两本是凯文凯利的《失控》、《科技想要什么》。才刚刚看了一点点《失控》，开始的时候KK就在写自然生物之类还有蜜蜂，我看到的就是自然生物的伟大，就连一个小小的蜜蜂也有自己的超人类的智慧，我开始感叹自然的伟大，自然给予人类一切，一直以来都是用自己的血肉供养着我们人类，为什么现在的人类还要破坏我们赖以生存的家园呢?至于这个问题，我以前是真的没有认真地想过。也许是我们人类都变得更加贪婪了？人都变得很自私了？有的时候，我也很认真很严肃的告诉自己，我不能太慷慨。别人都很自私，我这样做，是不是很傻啊？当想到这个的时候，我都会拿“俞敏洪帮室友打了四年的水”这个例子来安慰自己。当然我也不会一味的模仿他啦。我内心深处坚信“付出一定是有回报的”当然回报不会立马实现，过早的回报未必是好事。</p>
-<p>我习惯了装傻，习惯了别人的嘲笑，我已经学会了将别人的嘲笑化为动力！读书至少有一个好处就是不会让我变得愚钝（我读的是好书），多明白一些道理肯定没有错！！！</p>
-<p><strong>关于坚持</strong></p>
-<p>坚持——我特地百度了一下。百度百科是这样说的：“坚持也有两意，现代汉语词典中解释为：坚决保持、维护或进行；坚持是意志力的完美表现。坚持常常是成功的代名词。”每当听到别人说某某成功了，我们的第一反应是人家怎样坚持的，度过了困难，最后达到了现在的成功。如果我面对这样的情况，还这样想的话，我一定会认为自己是个傻 逼。为什么我自己不想想自己应该怎样坚持。</p>
-<p>有这样一个真实的例子，那是11年我高考结束的第二个晚上也就是6月9号晚上跟我的英语老师一起吃饭。吃饭的时候老师跟我们几个同学开了一个玩笑，说大学了要带个女朋友给她看看。老师说现在她的老公以前追了她10年，也就是坚持了10年（高中4年，大学4年，工作了还在坚持）最后两个人还是幸福地走到了一起。不难可以看见，人家复读了还不忘继续追自己喜欢的女生。这就叫坚持。哈哈，当时还真没想过我参加了高考就一定上了大学，后来确实没有上大学，坚持自己的选择——复读。</p>
-<p>上面我讲的这个例子，有两种坚持——一种是对爱情的坚持，另一种是对求知的坚持。这两种坚持确实很高尚很伟大。对于第一种坚持，我那是在心底无比地佩服。确实成为我心中的偶像！对于这个爱情，我尝试过坚持，最后的最后还是不由自主地放弃了坚持。<strong>【祝她永远幸福！！！】</strong>感觉自己没有那个勇气去坚持，这种坚持对我来说真的太难了。我想坚持需要足够厚的脸皮，我真的但愿坚持需要这样的条件——脸皮厚！后一种坚持是最常见不过的坚持，有句话说的好“坚持就是胜利”。我坚持的最后未必是成功，但至少是一种胜利，暂时的胜利，我要做的还是坚持再坚持。后来上大学了我有了更多的时间，所以就经常锻炼，我的锻炼也非常简单就是每天跑步操场十圈。差不多坚持了三个月，后来后来就没有坚持下去，说实话这现在的体质肯定没有那个坚持跑步的时候的体质好。</p>
-<p>坚持，是一种美好的品德，是一种积极的姿态！你做好坚持的准备了吗？</p>
-<hr>
-
+        <p>作为一个web开发者来说，在开发的过程需要考虑性能的问题。JavaScript在浏览器中的性能，可能就是可用性的问题，这个问题因JavaScript的阻塞特性变得复杂，说白了就是当浏览器在执行JavaScript的时候，浏览器不能同时做其他的事情。js的执行时间越长，浏览器的响应时间就会越长。<script>标签出现的时候，就会让页面等待脚本的解析和执行，不管JavaScript的代码是内嵌还是包含的在外链的文件中，页面的下载和渲染都必须要停下来等待脚本的执行完毕。</p>
+<h3 id="脚本的位置"><a href="#脚本的位置" class="headerlink" title="脚本的位置"></a>脚本的位置</h3><p>在HTML4规范中指出<script>标签可以放在html文档中head或body的标签中。通常情况是这样的：<script>标签用来加载出现在<head>中外链的js文件，挨着<link>标签用来加载外部的css文件或其他页面元信息。</p>
+<p>先看下面的一段代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>js学习例子<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"file1.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"file2.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"file3.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"styles.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>你好，世界！<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面的代码需要注意的是：在浏览器解析到<body>标签之前，不会渲染页面的其他的内容。所以说把脚本放在页面的顶部会导致明显的延迟，表现出页面空白，没有内容信息。执行过程差不多就是这样的：<br><a href="">js执行过程</a></p>
+<p>从上图可以清晰的看到，第一个js文件下载的同时阻塞了页面其他文件的下载，以此类推！</p>
+<p>面对这样的原因，可以适当的调整js代码的位置是不是更合理呢？</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>js学习例子<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"styles.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>你好，世界！<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"file1.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"file2.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"file3.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>推荐是将所有的<script>标签尽可能的放在<body>标签的底部，尽量减少对整个页面的影响。记住：优化JavaScript代码的首要规范：将代码放在底部！</p>
+<p>上面谈到的原因也差不多明白，在组织脚本的时候，我们尽量减少<script>标签的个数，这不仅仅是针对外链，内嵌也是一样的。考虑HTTP请求会带来额外的性能开销，下载一个100kb的文件要比下载4个25kb的文件更快！这样我们就应该考虑文件的合并，可以通过离线打包工具等等，后面继续讲！</p>
+<p>下面说明两种脚本：</p>
+<ul>
+<li>无阻塞的脚本就是，在页面加载完成后才加载JavaScript代码，专业的就是说法就是在window对象的load事件触发后再下载脚本。</li>
+<li>延迟的脚本就是，在<script>标签中定义了一个扩展属性：defer。致命本元素所含的脚本不会修改DOM，这样代码就会安全的延迟执行。</li>
+</ul>
+<p>需要说明的是：目前主流的浏览器已经实现对defer属性的支持，W3C的html5规范，当且仅当src属性声明时生效。</p>
+<p>还有一种无阻塞加载脚本的方法是使用XMLHttpRequest(XHR)对象获取脚本并注入页面中。先创建一个XHR对象，然后用它去下载JavaScript文件，最后通过创建动态的<script>元素将代码注入到页面中。代码示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">"get"</span>,<span class="string">"file1.js"</span>,<span class="literal">true</span>);</span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(xhr.status &gt;=<span class="number">200</span> &amp;&amp; xhr.status &lt;<span class="number">300</span> || xhr.status == <span class="number">304</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">            script.type = <span class="string">"text/javascript"</span>;</span><br><span class="line">            script.text = xhr.responseText;</span><br><span class="line">            <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+<p>发送一个GET请求获取file1.js文件。事件处理函数onreadystatechange检查readyState的状态是否为1，同时还要校验http的状态码，如果满足条件，创建一个<script>元素。这样做的好处就是，可以先去下载一个JavaScript代码，但可以先不去执行。但也有局限性：JavaScript文件必须与请求的页面处与相同的域，也就是说不能从CDN上下载JavaScript文件，这种方法不用于大型web应用。</p>
+</script></p>
       
     </div>
 
@@ -390,7 +386,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/内心OS/" rel="tag">#内心OS</a>
+            <a href="/tags/JavaScript，学习笔记/" rel="tag">#JavaScript，学习笔记</a>
           
         </div>
       
@@ -399,17 +395,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2013/01/02/about-my-choices/" rel="next" title="我的几次选择">
-                <i class="fa fa-chevron-left"></i> 我的几次选择
+              <a href="/2016/06/26/the-feelings-of-graduation-2016/" rel="next" title="2016年，我的毕业感想">
+                <i class="fa fa-chevron-left"></i> 2016年，我的毕业感想
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2013/12/11/talk-about-lonely/" rel="prev" title="关于孤独">
-                关于孤独 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -435,8 +427,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2013/11/18/heart-os/"
-           data-title="内心的独白" data-url="http://www.dyike.com/2013/11/18/heart-os/">
+      <div class="ds-thread" data-thread-key="2016/06/29/learn-loading-and-execution-of-js/"
+           data-title="高性能JavaScript的学习笔记——加载和执行" data-url="http://www.dyike.com/2016/06/29/learn-loading-and-execution-of-js/">
       </div>
     
   </div>
