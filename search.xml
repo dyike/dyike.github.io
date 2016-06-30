@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title><![CDATA[高性能JavaScript学习笔记——DOM编程]]></title>
+      <url>http://www.dyike.com/2016/06/30/learn-dom-scripting-of-js/</url>
+      <content type="html"><![CDATA[<p>DOM是文档对象模型，用于操作XML和HTML文档的程序接口。DOM是JavaScript编码中一个重要的部分。</p>
+<h3 id="DOM的修改与访问"><a href="#DOM的修改与访问" class="headerlink" title="DOM的修改与访问"></a>DOM的修改与访问</h3><p>访问DOM元素是具有代价的，修改DOM元素的代价更大，因为它会导致浏览器重新计算页面的几何变化。</p>
+<p>最快的情况就是在循环中修改或者访问元素，尤其对HTML元素结合循环操作。先看一个简单的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">innerHTMLLoop</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> count = <span class="number">0</span>; count &lt; <span class="number">100</span> ; count++) &#123;</span><br><span class="line">        <span class="built_in">document</span>.getElementById(<span class="string">'here'</span>).innerHTML += <span class="string">'a'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个函数就是修改页面元素的内容，那性能问题出现在哪儿？每次循环迭代，该元素都会被访问两次：第一次是读取innnerHTML的属性值，第二次就是重写它。</p>
+<p>那换一种局部变量的存储方式修改其中的内容，在循环体结束之后一次性写入，是不是效率要更高效呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">innerHTMLLoop2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> content = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> count = <span class="number">0</span>; count &lt; <span class="number">100</span> ; count++) &#123;</span><br><span class="line">        content += <span class="string">'a'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'here'</span>).innerHTML += content;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>很明显修改后的代码运行速度更快了。访问DOM的次数越多，代码的运行速度越慢。因此，常用的经验法则：减少访问DOM的次数，把运行尽量留在ECMAScript处理。</p>
+<h3 id="innerHTML-对比-DOM方法"><a href="#innerHTML-对比-DOM方法" class="headerlink" title="innerHTML 对比 DOM方法"></a>innerHTML 对比 DOM方法</h3><p>首先带着一个问题：修改页面区域的最佳方案是用非标准但支持良好的innerHTML属性？还是只用类似document.createElement()的原声DOM方法？如果不考虑web标准，他们的性能都差不多，但是在出开最新版的webkit内核之外的浏览器中，innerHTML会更快一点。<br>这儿省略一个例子：两种方式创建一个1000行的表格。</p>
+<ul>
+<li>合并HTML字符，然后更新DOM的innerHTML属性。</li>
+<li>只用标准的DOM方法，比如document.createElement()和document.createTextNode().</li>
+</ul>
+<p>最终的结果怎么样？最终选择哪种方法取决你的用户使用的浏览器以及你的编码习惯。如果你的需求是在一个对性能有着苛刻的要求操作中更新一大段HTML，推荐使用innerHTML，在大部分的浏览器中，这个运行速度都要快！</p>
+<h3 id="节点克隆"><a href="#节点克隆" class="headerlink" title="节点克隆"></a>节点克隆</h3><p>使用DOM方法是更新页面的内容的另外一个途径就是克隆已有元素。就是使用element.cloneNode()(element表示已有节点)替代document.createElement().</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[高性能JavaScript的学习笔记——加载和执行]]></title>
       <url>http://www.dyike.com/2016/06/29/learn-loading-and-execution-of-js/</url>
       <content type="html"><![CDATA[<p>作为一个web开发者来说，在开发的过程需要考虑性能的问题。JavaScript在浏览器中的性能，可能就是可用性的问题，这个问题因JavaScript的阻塞特性变得复杂，说白了就是当浏览器在执行JavaScript的时候，浏览器不能同时做其他的事情。js的执行时间越长，浏览器的响应时间就会越长。&lt;script&gt;标签出现的时候，就会让页面等待脚本的解析和执行，不管JavaScript的代码是内嵌还是包含的在外链的文件中，页面的下载和渲染都必须要停下来等待脚本的执行完毕。</p>
