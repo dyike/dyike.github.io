@@ -97,7 +97,7 @@
 <meta property="og:description" content="概述今天在虚拟机上基于Ubuntu安装配置了服务器运行环境，web服务用 nginx，数据库存储在 mysql,动态脚本语言是 php。
 安装nginx下载并添加nginx_signing.key12wget http://nginx.org/keys/nginx_signing.keysudo apt-key add nginx_signing.key
 添加官方源1sudo vim /etc/a">
-<meta property="og:updated_time" content="2016-05-27T07:13:48.000Z">
+<meta property="og:updated_time" content="2016-07-08T10:40:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu下配置nginx，mysql，php环境">
 <meta name="twitter:description" content="概述今天在虚拟机上基于Ubuntu安装配置了服务器运行环境，web服务用 nginx，数据库存储在 mysql,动态脚本语言是 php。
@@ -349,29 +349,29 @@
 <h5 id="更新源并安装mysql-server"><a href="#更新源并安装mysql-server" class="headerlink" title="更新源并安装mysql-server"></a>更新源并安装mysql-server</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install mysql-server</span><br></pre></td></tr></table></figure>
 <h4 id="安装PHP"><a href="#安装PHP" class="headerlink" title="安装PHP"></a>安装PHP</h4><h5 id="下载Php并解压"><a href="#下载Php并解压" class="headerlink" title="下载Php并解压"></a>下载Php并解压</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://cn2.php.net/distributions/php-7.0.6.tar.bz2</span><br><span class="line">tar jxf php-7.0.6.tar.bz2</span><br></pre></td></tr></table></figure>
 <h5 id="安装所需依赖"><a href="#安装所需依赖" class="headerlink" title="安装所需依赖"></a>安装所需依赖</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libxml2-dev build-essential openssl libssl-dev make curl libcurl4-gnutls-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline6 libreadline6-dev</span><br></pre></td></tr></table></figure>
-<h5 id="configure"><a href="#configure" class="headerlink" title="configure"></a>configure</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-fpm --with-fpm-user=www --with-fpm-group=www --with-mysqli --with-pdo-mysql --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-mbstring --with-mcrypt --enable-ftp --with-gd --enable-gd-native-ttf --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --disable-fileinfo --enable-maintainer-zts</span><br></pre></td></tr></table></figure>
+<h5 id="configure"><a href="#configure" class="headerlink" title="configure"></a>configure</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-fpm --with-fpm-user=www --with-fpm-group=www --with-mysqli --with-pdo-mysql --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-mbstring --with-mcrypt --enable-ftp --with-gd --enable-gd-native-ttf --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --disable-fileinfo --enable-maintainer-zts</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">./configure --prefix=/usr/local/php7 \</span><br><span class="line">--with-config-file-path=/usr/local/php7/etc \</span><br><span class="line">--with-config-file-scan-dir=/usr/local/php7/etc/php.d \</span><br><span class="line">--with-mcrypt=/usr/include \</span><br><span class="line">--enable-mysqlnd \</span><br><span class="line">--with-mysqli \</span><br><span class="line">--with-pdo-mysql \</span><br><span class="line">--enable-fpm \</span><br><span class="line">--with-fpm-user=nginx \</span><br><span class="line">--with-fpm-group=nginx \</span><br><span class="line">--with-gd \</span><br><span class="line">--with-iconv \</span><br><span class="line">--with-zlib \</span><br><span class="line">--enable-xml \</span><br><span class="line">--enable-shmop \</span><br><span class="line">--enable-sysvsem \</span><br><span class="line">--enable-inline-optimization \</span><br><span class="line">--enable-mbregex \</span><br><span class="line">--enable-mbstring \</span><br><span class="line">--enable-ftp \</span><br><span class="line">--enable-gd-native-ttf \</span><br><span class="line">--with-openssl \</span><br><span class="line">--enable-pcntl \</span><br><span class="line">--enable-sockets \</span><br><span class="line">--with-xmlrpc \</span><br><span class="line">--enable-zip \</span><br><span class="line">--enable-soap \</span><br><span class="line">--without-pear \</span><br><span class="line">--with-gettext \</span><br><span class="line">--enable-session \</span><br><span class="line">--with-curl \</span><br><span class="line">--with-jpeg-dir \</span><br><span class="line">--with-freetype-dir \</span><br><span class="line">--enable-opcache</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<h5 id="加入系统变量"><a href="#加入系统变量" class="headerlink" title="加入系统变量"></a>加入系统变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo echo &quot;PATH=$PATH:/usr/local/php/bin&quot;&gt;&gt; /etc/profile</span><br><span class="line">sudo echo &quot;export PATH&quot;&gt;&gt; /etc/profile</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<h5 id="加入系统变量"><a href="#加入系统变量" class="headerlink" title="加入系统变量"></a>加入系统变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo echo &quot;PATH=$PATH:/usr/local/php7/bin&quot;&gt;&gt; /etc/profile</span><br><span class="line">sudo echo &quot;export PATH&quot;&gt;&gt; /etc/profile</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
 <h5 id="一些配置文件的复制"><a href="#一些配置文件的复制" class="headerlink" title="一些配置文件的复制"></a>一些配置文件的复制</h5><ul>
 <li>编译后，cd到源码跟目录，然后</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp php.ini-production /usr/local/php/lib/php.ini</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp php.ini-production /usr/local/php7/lib/php.ini</span><br></pre></td></tr></table></figure>
 <ul>
-<li>cd /usr/local/php/etc ,然后</li>
+<li>cd /usr/local/php7/etc ,然后</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp php-fpm.conf.default php-fpm.conf</span><br></pre></td></tr></table></figure>
 <ul>
-<li>cd /usr/local/php/etc/php-fpm.d，然后</li>
+<li>cd /usr/local/php7/etc/php-fpm.d，然后</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp www.conf.default www.conf</span><br></pre></td></tr></table></figure>
 <h5 id="设置php-fpm配置文件"><a href="#设置php-fpm配置文件" class="headerlink" title="设置php-fpm配置文件"></a>设置php-fpm配置文件</h5><ul>
 <li>php-fpm.conf的pid</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/local/php/etc/php-fpm.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/local/php7/etc/php-fpm.conf</span><br></pre></td></tr></table></figure>
 <ul>
 <li>启动php-fpm服务</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/php/sbin/php-fpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/php7/sbin/php-fpm</span><br></pre></td></tr></table></figure>
 <ul>
 <li>新建www用户组：</li>
 </ul>
@@ -379,9 +379,9 @@
 <ul>
 <li>再次启动</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/php/sbin/php-fpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/php7/sbin/php-fpm</span><br></pre></td></tr></table></figure>
 <ul>
-<li>开机启动php-fpm<br>开机启动的配置文件是：/etc/rc.local ，加入 /usr/local/php/sbin/php-fpm 即可</li>
+<li>开机启动php-fpm<br>开机启动的配置文件是：/etc/rc.local ，加入 /usr/local/php7/sbin/php-fpm 即可</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/rc.local</span><br></pre></td></tr></table></figure>
 <pre><code>#!/bin/sh
@@ -393,7 +393,7 @@
 touch /var/lock/subsys/local
 /usr/local/apache/bin/apachectl start
 /usr/local/bin/redis-server /etc/redis.conf
-/usr/local/php/sbin/php-fpm
+/usr/local/php7/sbin/php-fpm
 </code></pre><h4 id="配置nginx略了"><a href="#配置nginx略了" class="headerlink" title="配置nginx略了"></a>配置nginx略了</h4>
       
     </div>
