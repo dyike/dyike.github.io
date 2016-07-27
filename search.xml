@@ -4,6 +4,12 @@
   
     
     <entry>
+      <title><![CDATA[mianshi-zongjie-fenxiang]]></title>
+      <url>http://www.dyike.com/2016/07/27/mianshi-zongjie-fenxiang/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[高性能JavaScript学习笔记——DOM编程]]></title>
       <url>http://www.dyike.com/2016/06/30/learn-dom-scripting-of-js/</url>
       <content type="html"><![CDATA[<p>DOM是文档对象模型，用于操作XML和HTML文档的程序接口。DOM是JavaScript编码中一个重要的部分。</p>
