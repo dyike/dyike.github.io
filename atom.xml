@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-07-27T13:23:59.000Z</updated>
+  <updated>2016-07-27T13:27:58.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -16,18 +16,24 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>mianshi-zongjie-fenxiang</title>
+    <title>面试总结分享</title>
     <link href="http://www.dyike.com/2016/07/27/mianshi-zongjie-fenxiang/"/>
     <id>http://www.dyike.com/2016/07/27/mianshi-zongjie-fenxiang/</id>
     <published>2016-07-27T13:23:59.000Z</published>
-    <updated>2016-07-27T13:23:59.000Z</updated>
+    <updated>2016-07-27T13:27:58.000Z</updated>
     
-    <content type="html"></content>
+    <content type="html">&lt;p&gt;这是一个简单的参加几次面试php开发工程师后的面试总结报告。&lt;/p&gt;
+</content>
     
     <summary type="html">
     
+      &lt;p&gt;这是一个简单的参加几次面试php开发工程师后的面试总结报告。&lt;/p&gt;
+
+    
     </summary>
     
+    
+      <category term="面试，PHP" scheme="http://www.dyike.com/tags/%E9%9D%A2%E8%AF%95%EF%BC%8CPHP/"/>
     
   </entry>
   
