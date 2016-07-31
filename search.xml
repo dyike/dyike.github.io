@@ -20,7 +20,7 @@
 <li>删除某个文件夹所有内容，要求删除后停止1秒</li>
 </ul>
 <blockquote>
-<p>rm -r -f ./ &amp;&amp;  sleep 1<br>像这个里面的就是句点的意思，然后可不可以少掉。</p>
+<p>rm -r -f ./ &amp;&amp;  sleep 1<br>像这个里面需要注意的是句点，想想这个可不可以少掉。</p>
 </blockquote>
 <ul>
 <li>find、grep的使用以及管道符“|”</li>
