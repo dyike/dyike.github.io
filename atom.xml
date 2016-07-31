@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-07-31T11:55:44.000Z</updated>
+  <updated>2016-07-31T12:01:03.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://www.dyike.com/2016/07/31/mianshi-zongjie-fenxiang/"/>
     <id>http://www.dyike.com/2016/07/31/mianshi-zongjie-fenxiang/</id>
     <published>2016-07-31T12:23:59.000Z</published>
-    <updated>2016-07-31T11:55:44.000Z</updated>
+    <updated>2016-07-31T12:01:03.000Z</updated>
     
     <content type="html">&lt;p&gt;明天就要开始工作了，之前也没有什么面试的经验，我找工作也是通过社交性找的工作。在我找到PHP开发的这份工作之前我面过两三家，问过我的东西，当然了不会很全，但我每面一家都会做一个总结。希望这个能给找PHP开发的你带来些许帮助，或许一点卵用都没有。&lt;/p&gt;
-&lt;p&gt;我先说一下我自己接触PHP的经历吧，听说有这门世界上最好的语言是我在大二的时候听说过的，那个时候在网上找了一个教程把代码敲了一遍，做了一个简单的音乐盒子，能够播放管理音乐。后来正真接触PHP是我在今年三月份去渣浪微博实习的三个月里接触了这门语言，总的来说，我接触这门语言时间也不算很长，很多东西还不是很熟悉，比如常用的函数啥我有的还需要查阅文档……下面还是来做总结吧：&lt;/p&gt;
+&lt;p&gt;我先说一下我自己接触PHP的经历吧，听说有这门世界上最好的语言是我在大二的时候，那个时候在网上找了一个教程把代码敲了一遍，做了一个简单的音乐盒子，能够播放管理音乐。后来正真接触PHP是我在今年三月份去渣浪微博实习的三个月里接触了这门语言，后来自己的毕设用laravel框架做了一个在线学习的网站。总的来说，我真正接触这门语言时间也不算很长，很多东西还不是很深入，比如常用的函数啥我有的时候还需要查阅文档……下面还是来做总结吧：&lt;/p&gt;
 &lt;p&gt;学习PHP也就是那一套嘛——LNPM。也就是说Linux、Nginx、PHP、Mysql。&lt;/p&gt;
 &lt;h2 id=&quot;Linux这一块&quot;&gt;&lt;a href=&quot;#Linux这一块&quot; class=&quot;headerlink&quot; title=&quot;Linux这一块&quot;&gt;&lt;/a&gt;Linux这一块&lt;/h2&gt;&lt;p&gt;我问的比较多的问题就是会不会写一些shell脚本，然后还有就是常用的命令，还有一些不常见的就是：&lt;/p&gt;
 &lt;ul&gt;
