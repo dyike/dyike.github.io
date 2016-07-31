@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.dyike.com/about/index.html</loc>
+    
+    <lastmod>2016-07-31T12:50:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.dyike.com/2016/07/31/mianshi-zongjie-fenxiang/</loc>
     
     <lastmod>2016-07-31T12:43:19.000Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>http://www.dyike.com/life/index.html</loc>
     
     <lastmod>2016-06-26T03:50:40.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.dyike.com/about/index.html</loc>
-    
-    <lastmod>2016-06-26T02:28:00.000Z</lastmod>
     
   </url>
   
