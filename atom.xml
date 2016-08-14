@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-08-14T05:36:22.000Z</updated>
+  <updated>2016-08-14T05:41:09.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.dyike.com/2016/08/13/the-gdb-on-ubuntu/"/>
     <id>http://www.dyike.com/2016/08/13/the-gdb-on-ubuntu/</id>
     <published>2016-08-13T15:37:58.000Z</published>
-    <updated>2016-08-14T05:36:22.000Z</updated>
+    <updated>2016-08-14T05:41:09.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;关于GDB是什么，我就不多介绍了，这个不了解可以去谷歌一下。反正就是一个很强大的程序调试的工具。&lt;br&gt;为什么要学习这个？之前学习C语言不是在Linux下编程，后来发现之前折腾的跟现实还是有点出入的，所以现在有的时候还是挺懵逼的，每次都为调试代码这件事而苦恼。&lt;br&gt;还有就是学习Golang的都知道，go语言是支持GDB调试的。Go语言作为一门静态语言，当然可以通过Println之类的打印，但每次修改都需要重新编译。&lt;br&gt;这么看来，既然有这么一个强大的工具，有什么理由不掌握它呢？这里我从网上收集的，整理了一下，希望对你的学习也有帮助。&lt;/p&gt;
@@ -83,19 +83,19 @@
 &lt;p&gt;程序的运行，你有可能需要设置下面四方面的事:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;程序运行参数&lt;blockquote&gt;
-&lt;p&gt;set args 指定运行时的参数。（set args 1,2,3,4,5)&lt;br&gt;show args 查看当前设置好的运行参数。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;set args&lt;/code&gt; 指定运行时的参数。（set args 1,2,3,4,5)&lt;br&gt;&lt;code&gt;show args&lt;/code&gt; 查看当前设置好的运行参数。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;运行环境&lt;blockquote&gt;
-&lt;p&gt;show paths 查看程序的运行路径。&lt;br&gt;path &lt;dir&gt; 设定程序的运行路径。&lt;br&gt;set enviroment varname[=value] 设置环境变量。（set env USER=ityike)&lt;br&gt;show enviroment [varname] 查看环境变量。&lt;/dir&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show paths&lt;/code&gt; 查看程序的运行路径。&lt;br&gt;&lt;code&gt;path &amp;lt;dir&amp;gt;&lt;/code&gt; 设定程序的运行路径。&lt;br&gt;&lt;code&gt;set enviroment varname[=value]&lt;/code&gt; 设置环境变量。（set env USER=ityike)&lt;br&gt;&lt;code&gt;show enviroment [varname]&lt;/code&gt; 查看环境变量。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;工作目录&lt;blockquote&gt;
-&lt;p&gt;cd &lt;dir&gt; 相当于shell的cd命令。&lt;br&gt;pwd 显示当前的所在目录。&lt;/dir&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cd &amp;lt;dir&amp;gt;&lt;/code&gt;相当于shell的cd命令。&lt;br&gt;&lt;code&gt;pwd&lt;/code&gt; 显示当前的所在目录。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;程序的输入输出&lt;blockquote&gt;
-&lt;p&gt;nfo terminal 显示你程序用到的终端的模式。&lt;br&gt;使用重定向控制程序输出。如：run &amp;gt; outfile&lt;br&gt;tty命令可以指写输入输出的终端设备。如：tty /dev/ttyb&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;info terminal&lt;/code&gt; 显示你程序用到的终端的模式。&lt;br&gt;使用重定向控制程序输出。如：&lt;code&gt;run &amp;gt; outfile&lt;/code&gt;&lt;br&gt;tty命令可以指写输入输出的终端设备。如：&lt;code&gt;tty /dev/ttyb&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
