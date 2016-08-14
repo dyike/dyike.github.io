@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://www.dyike.com/2016/08/13/the-gdb-on-ubuntu/index.html">
 <meta property="og:site_name" content="一刻笔记">
 <meta property="og:description" content="关于GDB是什么，我就不多介绍了，这个不了解可以去谷歌一下。反正就是一个很强大的程序调试的工具。为什么要学习这个？之前学习C语言不是在Linux下编程，后来发现之前折腾的跟现实还是有点出入的，所以现在有的时候还是挺懵逼的，每次都为调试代码这件事而苦恼。还有就是学习Golang的都知道，go语言是支持GDB调试的。Go语言作为一门静态语言，当然可以通过Println之类的打印，但每次修改都需要重新">
-<meta property="og:updated_time" content="2016-08-14T06:06:06.000Z">
+<meta property="og:updated_time" content="2016-08-14T06:09:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GDB调试器的学习">
 <meta name="twitter:description" content="关于GDB是什么，我就不多介绍了，这个不了解可以去谷歌一下。反正就是一个很强大的程序调试的工具。为什么要学习这个？之前学习C语言不是在Linux下编程，后来发现之前折腾的跟现实还是有点出入的，所以现在有的时候还是挺懵逼的，每次都为调试代码这件事而苦恼。还有就是学习Golang的都知道，go语言是支持GDB调试的。Go语言作为一门静态语言，当然可以通过Println之类的打印，但每次修改都需要重新">
@@ -336,8 +336,8 @@
 <p>GDB能做的事情如下几个方面：</p>
 <ul>
 <li>启动程序，根据自己的想法来运行程序</li>
-<li>让程序在指定的端点出停住，端点可以是条件表达式</li>
-<li>在端点处，查看上下文</li>
+<li>让程序在指定的断点出停住，断点可以是条件表达式</li>
+<li>在断点处，查看上下文</li>
 <li>动态的改变程序的执行环境</li>
 </ul>
 <p>先说说安装吧，在ubuntu下安装也不是一件很难的事，这个自行谷歌。最好尝试编译安装，国内下载可能非常非常的慢。我这里给一个我之前下载好的，放在<a href="https://pan.baidu.com/s/1qYtOIio" target="_blank" rel="external">百度云盘</a>中, <strong>密码: 3drw</strong></p>

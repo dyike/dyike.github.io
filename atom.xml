@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-08-14T06:06:06.000Z</updated>
+  <updated>2016-08-14T06:09:18.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.dyike.com/2016/08/13/the-gdb-on-ubuntu/"/>
     <id>http://www.dyike.com/2016/08/13/the-gdb-on-ubuntu/</id>
     <published>2016-08-13T15:37:58.000Z</published>
-    <updated>2016-08-14T06:06:06.000Z</updated>
+    <updated>2016-08-14T06:09:18.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;关于GDB是什么，我就不多介绍了，这个不了解可以去谷歌一下。反正就是一个很强大的程序调试的工具。&lt;br&gt;为什么要学习这个？之前学习C语言不是在Linux下编程，后来发现之前折腾的跟现实还是有点出入的，所以现在有的时候还是挺懵逼的，每次都为调试代码这件事而苦恼。&lt;br&gt;还有就是学习Golang的都知道，go语言是支持GDB调试的。Go语言作为一门静态语言，当然可以通过Println之类的打印，但每次修改都需要重新编译。&lt;br&gt;这么看来，既然有这么一个强大的工具，有什么理由不掌握它呢？这里我从网上收集的，整理了一下，希望对你的学习也有帮助。&lt;/p&gt;
@@ -28,8 +28,8 @@
 &lt;p&gt;GDB能做的事情如下几个方面：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;启动程序，根据自己的想法来运行程序&lt;/li&gt;
-&lt;li&gt;让程序在指定的端点出停住，端点可以是条件表达式&lt;/li&gt;
-&lt;li&gt;在端点处，查看上下文&lt;/li&gt;
+&lt;li&gt;让程序在指定的断点出停住，断点可以是条件表达式&lt;/li&gt;
+&lt;li&gt;在断点处，查看上下文&lt;/li&gt;
 &lt;li&gt;动态的改变程序的执行环境&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;先说说安装吧，在ubuntu下安装也不是一件很难的事，这个自行谷歌。最好尝试编译安装，国内下载可能非常非常的慢。我这里给一个我之前下载好的，放在&lt;a href=&quot;https://pan.baidu.com/s/1qYtOIio&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;百度云盘&lt;/a&gt;中, &lt;strong&gt;密码: 3drw&lt;/strong&gt;&lt;/p&gt;
