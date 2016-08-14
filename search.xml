@@ -4,6 +4,258 @@
   
     
     <entry>
+      <title><![CDATA[GDB调试器的学习]]></title>
+      <url>http://www.dyike.com/2016/08/13/the-gdb-on-ubuntu/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>关于GDB是什么，我就不多介绍了，这个不了解可以去谷歌一下。反正就是一个很强大的程序调试的工具。<br>为什么要学习这个？之前学习C语言不是在Linux下编程，后来发现之前折腾的跟现实还是有点出入的，所以现在有的时候还是挺懵逼的，每次都为调试代码这件事而苦恼。<br>还有就是学习Golang的都知道，go语言是支持GDB调试的。Go语言作为一门静态语言，当然可以通过Println之类的打印，但每次修改都需要重新编译。<br>这么看来，既然有这么一个强大的工具，有什么理由不掌握它呢？这里我从网上收集的，整理了一下，希望对你的学习也有帮助。</p>
+</blockquote>
+<p>GDB能做的事情如下几个方面：</p>
+<ul>
+<li>启动程序，根据自己的想法来运行程序</li>
+<li>让程序在指定的端点出停住，端点可以是条件表达式</li>
+<li>在端点处，查看上下文</li>
+<li>动态的改变程序的执行环境</li>
+</ul>
+<p>先说说安装吧，在ubuntu下安装也不是一件很难的事，这个自行谷歌。最好尝试编译安装，国内下载可能非常非常的慢。我这里给一个我之前下载好的，放在(百度云盘)[<a href="https://pan.baidu.com/s/1qYtOIio]中" target="_blank" rel="external">https://pan.baidu.com/s/1qYtOIio]中</a>, <strong>密码: 3drw</strong></p>
+<p>下面直接切入学习吧！</p>
+<p>我们来编写一个简单的C程序：example.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum[<span class="number">5</span>] = &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> array1[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> array2[<span class="number">5</span>] = &#123;<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum[i] = add(array1[i], array2[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译：<code>gcc -g example.c -o example</code>,得到一个二进制文件example,执行<code>gdb example</code>命令进入调试状态。</p>
+<blockquote>
+<p>注意这里的编译命令，想想为什么要带上-g参数。如果没有-g参数，就看不到程序的函数名、变量名，所替代的全是运行时的内存地址。</p>
+</blockquote>
+<p>你将看到的是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">root@ityike:/vagrant/cproject/learngdb  # gdb example</span><br><span class="line">GNU gdb (GDB) 7.11.1</span><br><span class="line">Copyright (C) 2016 Free Software Foundation, Inc.</span><br><span class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.  Type &quot;show copying&quot;</span><br><span class="line">and &quot;show warranty&quot; for details.</span><br><span class="line">This GDB was configured as &quot;x86_64-pc-linux-gnu&quot;.</span><br><span class="line">Type &quot;show configuration&quot; for configuration details.</span><br><span class="line">For bug reporting instructions, please see:</span><br><span class="line">&lt;http://www.gnu.org/software/gdb/bugs/&gt;.</span><br><span class="line">Find the GDB manual and other documentation resources online at:</span><br><span class="line">&lt;http://www.gnu.org/software/gdb/documentation/&gt;.</span><br><span class="line">For help, type &quot;help&quot;.</span><br><span class="line">Type &quot;apropos word&quot; to search for commands related to &quot;word&quot;...</span><br><span class="line">Reading symbols from example...done.</span><br><span class="line">(gdb)</span><br></pre></td></tr></table></figure>
+<p>启动GDB的方法有：</p>
+<ul>
+<li>gdb <program>        | program也就是你的执行文件，一般在当前目录下。</program></li>
+<li>gdb <program> core   | 用gdb同时调试一个运行程序和core文件，core是程序非法执行后core dump后产生的文件。</program></li>
+<li>gdb <program> <pid>  | 可以指定这个服务程序运行时的进程ID，gdb会自动attach上去，并调试他。（一般用于调试已经在运行的程序）</pid></program></li>
+</ul>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="1、list【缩写：l】"><a href="#1、list【缩写：l】" class="headerlink" title="1、list【缩写：l】"></a>1、list【缩写：l】</h3><blockquote>
+<p>list命令后面可以带的参数：</p>
+<ul>
+<li><linenum> 行号</linenum></li>
+<li>&lt;+offset&gt; 当前行号的正偏移量</li>
+<li>&lt;-offset&gt; 当前行号的负偏移量</li>
+<li><filename:linenum> 哪个文件的哪一行</filename:linenum></li>
+<li><function> 函数名</function></li>
+<li><filename:function> 哪个文件的哪个函数</filename:function></li>
+<li>&lt;*address&gt;  程序运行时语句在内存中的地址</li>
+</ul>
+</blockquote>
+<ul>
+<li>list <linenum>,显示第linenum行附近的源程序。</linenum></li>
+<li>list <function>,显示函数名为function函数上下的源程序。</function></li>
+<li>list ,显示当前行后面的源程序。</li>
+<li>list -,显示当前行前面的源程序。<br>一般默认显示行数是10，也可以设置自己的行数。</li>
+<li>show listsize,查看当前设置的list行数。</li>
+<li>set listsize <count>,设置自己的一次显示的行数。<br>其他常用的list命令：</count></li>
+<li>list <first>,<last>  显示从first到last行之间的代码。</last></first></li>
+<li>list ,<last>  显示从当前行到last行之间的代码。</last></li>
+<li>list +  往后显示源代码。</li>
+</ul>
+<p>看到这里，不难发现，list就是一个显示内容的命令，是不是没啥呢？其实GDB还提供了代码搜索的命令。</p>
+<ul>
+<li>forward-search <regexp> | search <regexp> 向前搜索</regexp></regexp></li>
+<li>reverse-search <regexp> 全部搜索<blockquote>
+<p><regexp>是正则表达式，你是不是跟我一样还要去学习正则表达式，没有啥怕的！</regexp></p>
+</blockquote>
+</regexp></li>
+</ul>
+<h3 id="2、run【缩写-r】"><a href="#2、run【缩写-r】" class="headerlink" title="2、run【缩写:r】"></a>2、run【缩写:r】</h3><blockquote>
+<p>程序的运行，你有可能需要设置下面四方面的事:</p>
+<ul>
+<li>程序运行参数<blockquote>
+<p>set args 指定运行时的参数。（set args 1,2,3,4,5)<br>show args 查看当前设置好的运行参数。</p>
+</blockquote>
+</li>
+<li>运行环境<blockquote>
+<p>show paths 查看程序的运行路径。<br>path <dir> 设定程序的运行路径。<br>set enviroment varname[=value] 设置环境变量。（set env USER=ityike)<br>show enviroment [varname] 查看环境变量。</dir></p>
+</blockquote>
+</li>
+<li>工作目录<blockquote>
+<p>cd <dir> 相当于shell的cd命令。<br>pwd 显示当前的所在目录。</dir></p>
+</blockquote>
+</li>
+<li>程序的输入输出<blockquote>
+<p>nfo terminal 显示你程序用到的终端的模式。<br>使用重定向控制程序输出。如：run &gt; outfile<br>tty命令可以指写输入输出的终端设备。如：tty /dev/ttyb</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h3 id="3、break【缩写-b】"><a href="#3、break【缩写-b】" class="headerlink" title="3、break【缩写:b】"></a>3、break【缩写:b】</h3><ul>
+<li>break <function> 进入指定函数时停住。在C++中使用class::function或者function(type,type)格式来指定函数名。</function></li>
+<li>break <linenum> 在指定行停住。</linenum></li>
+<li>break +offset / break -offset 在当前行号的前面或后面的offset行停住。</li>
+<li>break filename:linenum 在filename文件的linenum行停住。</li>
+<li>break filename:function 在filename文件的function函数的入口处停住。</li>
+<li>break *address 在程序运行的内存地址处停住。</li>
+<li>break 不带参数表示在下一条指令处停住。</li>
+<li>在上面的带有参数的命令后面，还可以带有condition表示条件。break … if <condition>，条件成立的时候停住。</condition></li>
+<li>查看断点，可使用info命令，如info breakpoints [n]、info break [n]（n表示断点号）。</li>
+</ul>
+<h3 id="4、单步命令"><a href="#4、单步命令" class="headerlink" title="4、单步命令"></a>4、单步命令</h3><p>next命令可以用于单步执行，但是next不会进入函数的内部，那怎么办呢？还有一个命令step【缩写:s】会进入函数的内部。</p>
+<ul>
+<li>step <count> step后面不加count表示一条条地执行，加表示执行后面的count条指令，然后再停住。</count></li>
+<li>next <count> next后面不加count表示一条条地执行，加表示执行后面的count条指令，然后再停住。</count></li>
+<li>set step-mode </li>
+</ul>
+<blockquote>
+<p>set step-mode on用于打开step-mode模式，这样，在进行单步跟踪时，程序不会因为没有debug信息而不停住，这个参数的设置可便于查看机器码。<br>set step-mod off用于关闭step-mode模式。</p>
+</blockquote>
+<ul>
+<li>finish 运行程序，直到当前函数完成返回，并打印函数返回时的堆栈地址和返回值及参数值等信息。</li>
+<li>until【缩写:u】一直在循环体内执行单步，退不出来是一件令人烦恼的事情，until命令可以运行程序直到退出循环体。</li>
+</ul>
+<h3 id="5、continue【缩写-c】"><a href="#5、continue【缩写-c】" class="headerlink" title="5、continue【缩写:c】"></a>5、continue【缩写:c】</h3><p>当程序被停住后，可以使用continue恢复程序的运行知道程序结束，或达到下一个端点。</p>
+<ul>
+<li>continue [ignore-count] ignore-count表示忽略其后多少次断点。</li>
+</ul>
+<h3 id="6、print-【缩写-p】"><a href="#6、print-【缩写-p】" class="headerlink" title="6、print 【缩写:p】"></a>6、print 【缩写:p】</h3><ul>
+<li>print <expr>  <expr>是表达式，是被调试的程序中的表达式。</expr></expr></li>
+<li>print /<f> <expr>   <f>是输出的格式，如果要把表达式按16进制的格式输出，那么就是/x。</f></expr></f></li>
+</ul>
+<blockquote>
+<p>“@”是一个和数组有关的操作符，“::”指定一个在文件或是函数中的变量，“{<type>} <addr>”表示一个指向内存地址<addr>的类型为type的一个对象。</addr></addr></type></p>
+<p>x 按十六进制格式显示变量。<br>d 按十进制格式显示变量。<br>u 按十六进制格式显示无符号整型。<br>o 按八进制格式显示变量。<br>t 按二进制格式显示变量。<br>a 按十六进制格式显示变量。<br>c 按字符格式显示变量。<br>f 按浮点数格式显示变量。</p>
+</blockquote>
+<p>下面我们演示一下sum[]的数组变化过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">(gdb) b 14</span><br><span class="line">Breakpoint 1 at 0x400584: file example.c, line 14.</span><br><span class="line">(gdb) r</span><br><span class="line">Starting program: /vagrant/cproject/learngdb/example</span><br><span class="line"></span><br><span class="line">Breakpoint 1, main () at example.c:14</span><br><span class="line">14          sum[i] = add(array1[i], array2[i]);</span><br><span class="line">(gdb) p sum</span><br><span class="line">$1 = &#123;0, 0, 0, 0, 0&#125;</span><br><span class="line">(gdb) n</span><br><span class="line">12      for (i = 0; i &lt; 5; i++)</span><br><span class="line">(gdb) n</span><br><span class="line"></span><br><span class="line">Breakpoint 1, main () at example.c:14</span><br><span class="line">14          sum[i] = add(array1[i], array2[i]);</span><br><span class="line">(gdb) p sum</span><br><span class="line">$2 = &#123;3, 0, 0, 0, 0&#125;</span><br><span class="line">(gdb) n</span><br><span class="line">12      for (i = 0; i &lt; 5; i++)</span><br><span class="line">(gdb) p sum</span><br><span class="line">$3 = &#123;3, 6, 0, 0, 0&#125;</span><br><span class="line">(gdb) n</span><br><span class="line"></span><br><span class="line">Breakpoint 1, main () at example.c:14</span><br><span class="line">14          sum[i] = add(array1[i], array2[i]);</span><br><span class="line">(gdb) p sum</span><br><span class="line">$4 = &#123;3, 6, 0, 0, 0&#125;</span><br><span class="line">(gdb) n</span><br><span class="line">12      for (i = 0; i &lt; 5; i++)</span><br><span class="line">(gdb) p sum</span><br><span class="line">$5 = &#123;3, 6, 9, 0, 0&#125;</span><br></pre></td></tr></table></figure>
+<p>如果要修改变量，如x的值，可使用命令：<code>print x=4</code></p>
+<p>还有关于数组，有时需要查看一段连续内存空间的值，比如数组的一段，或者是动态分配的数据大小。可以使用“@”操作符。“@”左边是一个内存的地址的值，“@”右边是你查看内存的长度。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(gdb) p sum</span><br><span class="line">$7 = &#123;3, 6, 9, 12, 0&#125;</span><br><span class="line">(gdb) p *sum@5</span><br><span class="line">$8 = &#123;3, 6, 9, 12, 0&#125;</span><br><span class="line">(gdb) p *sum@2</span><br><span class="line">$9 = &#123;3, 6&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7、watch命令"><a href="#7、watch命令" class="headerlink" title="7、watch命令"></a>7、watch命令</h3><p>watch一般来观察某个表达式（变量也是一种表达式）的值是否有变化了，如果有变化，马上停住程序。</p>
+<ul>
+<li>watch <expr>：为表达式（变量）expr设置一个观察点。</expr></li>
+<li>rwatch <expr>：当表达式（变量）expr被读时，停住程序。</expr></li>
+<li>awatch <expr>：当表达式（变量）的值被读或被写时，停住程序。</expr></li>
+<li>info watchpoints：列出当前所设置了的所有观察点。</li>
+</ul>
+<p>看看i在连续运行next时一旦发现i变化，i值就会显示出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">(gdb) watch i</span><br><span class="line">Hardware watchpoint 2: i</span><br><span class="line">(gdb) next</span><br><span class="line"></span><br><span class="line">Hardware watchpoint 2: i</span><br><span class="line"></span><br><span class="line">Old value = 2</span><br><span class="line">New value = 3</span><br><span class="line">0x00000000004005ae in main () at example.c:12</span><br><span class="line">12      for (i = 0; i &lt; 5; i++)</span><br><span class="line">(gdb) n</span><br><span class="line"></span><br><span class="line">Breakpoint 1, main () at example.c:14</span><br><span class="line">14          sum[i] = add(array1[i], array2[i]);</span><br><span class="line">(gdb) n</span><br><span class="line">12      for (i = 0; i &lt; 5; i++)</span><br><span class="line">(gdb) n</span><br><span class="line"></span><br><span class="line">Hardware watchpoint 2: i</span><br><span class="line"></span><br><span class="line">Old value = 3</span><br><span class="line">New value = 4</span><br><span class="line">0x00000000004005ae in main () at example.c:12</span><br><span class="line">12      for (i = 0; i &lt; 5; i++)</span><br><span class="line">(gdb) info watchpoints</span><br><span class="line">Num     Type           Disp Enb Address            What</span><br><span class="line">2       hw watchpoint  keep y                      i</span><br><span class="line">    breakpoint already hit 2 times</span><br></pre></td></tr></table></figure>
+<p><strong>下面这一部分结合上面的break命令</strong></p>
+<h4 id="设置捕捉点（CatchPoint）"><a href="#设置捕捉点（CatchPoint）" class="headerlink" title="设置捕捉点（CatchPoint）"></a>设置捕捉点（CatchPoint）</h4><p>你可设置捕捉点来捕捉程序运行时的一些事件。如：载入共享库（动态链接库）或是C++的异常。</p>
+<ul>
+<li>catch <event></event></li>
+</ul>
+<blockquote>
+<p>当event发生时，停住程序。event可以是下面的内容：<br>1、throw 一个C++抛出的异常。（throw为关键字）<br>2、catch 一个C++捕捉到的异常。（catch为关键字）<br>3、exec 调用系统调用exec时。（exec为关键字，目前此功能只在HP-UX下有用）<br>4、fork 调用系统调用fork时。（fork为关键字，目前此功能只在HP-UX下有用）<br>5、vfork 调用系统调用vfork时。（vfork为关键字，目前此功能只在HP-UX下有用）<br>6、load 或 load <libname> 载入共享库（动态链接库）时。（load为关键字，目前此功能只在HP-UX下有用）<br>unload 或 unload <libname> 卸载共享库（动态链接库）时。（unload为关键字，目前此功能只在HP-UX下有用）</libname></libname></p>
+</blockquote>
+<ul>
+<li>tcatch <event><br>只设置一次捕捉点，当程序停住以后，该点被自动删除。</event></li>
+</ul>
+<h4 id="维护停止点"><a href="#维护停止点" class="headerlink" title="维护停止点"></a>维护停止点</h4><p>GDB中的停止点也就是断点、观察点、捕捉点。如果你觉得停止点没有用了，可以使用delete、clear、disable、enable来进行维护。</p>
+<ul>
+<li>clear    清除所有的已定义的停止点。</li>
+<li>clear <function> /clear <filename：function> 清除所有设置在函数上的停止点。</filename：function></function></li>
+<li>clear <linenum> / clear <filename：linenum>  清除所有设置在指定行上的停止点。</filename：linenum></linenum></li>
+<li><code>delete [breakpoints] [range...]</code>   删除指定的断点，breakpoints为断点号。如果不指定断点号，则表示删除所有的断点。range 表示断点号的范围（如：3-7）。简写:d</li>
+</ul>
+<p>比删除更好的一种方法是disable停止点，disable了的停止点，GDB不会删除，当你还需要时，enable即可，就好像回收站一样。</p>
+<ul>
+<li><code>disable [breakpoints] [range...]</code> disable所指定的停止点，breakpoints为停止点号。如果什么都不指定，表示disable所有的停止点。简写:dis。</li>
+<li><code>enable [breakpoints] [range...]</code> enable所指定的停止点，breakpoints为停止点号。</li>
+<li><code>enable [breakpoints] once range...</code> enable所指定的停止点一次，当程序停止后，该停止点马上被GDB自动disable。</li>
+<li><code>enable [breakpoints] delete range...</code> enable所指定的停止点一次，当程序停止后，该停止点马上被GDB自动删除。</li>
+</ul>
+<h4 id="停止条件的维护"><a href="#停止条件的维护" class="headerlink" title="停止条件的维护"></a>停止条件的维护</h4><p>前面我们说到的设置断点时，可以设置一个条件，当条件成立时，程序会自动停止。这个的条件的相关维护命令，为断点设置一个条件，使用if关键字，后面加上断点条件。条件设置好，我们可以使用condition命令来修改断点的条件。（只有break和watch命令支持if，catch目前暂不支持if）</p>
+<ul>
+<li>condition <bnum> <expression> 修改断点号为bnum的停止条件为expression。</expression></bnum></li>
+<li>condition <bnum> 清除断点号为bnum的停止条件。</bnum></li>
+</ul>
+<p>还有一个特殊的命令ignore</p>
+<ul>
+<li>ignore <bnum> <count>  表示忽略断点号为bnum的停止条件count次。</count></bnum></li>
+</ul>
+<h4 id="为停止点设定运行的命令"><a href="#为停止点设定运行的命令" class="headerlink" title="为停止点设定运行的命令"></a>为停止点设定运行的命令</h4><p>为断点号bnum指写一个命令列表。当程序被该断点停住时，gdb会依次运行命令列表中的命令。格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">commands [bnum]</span><br><span class="line">... command-list ...</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">break add if sum&gt;0</span><br><span class="line">commands</span><br><span class="line">printf &quot;sum is %d\n&quot;,sum</span><br><span class="line">continue</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>断点设置在函数add中，断点条件为sum》0，一旦sum的值大于0，就会自动打印sum的值，并继续运行程序。<br>如果要清除断点上的命令序列，那么只要简单的执行一下commands命令，并直接再打个end就行了。</p>
+<h3 id="8、Signals"><a href="#8、Signals" class="headerlink" title="8、Signals"></a>8、Signals</h3><p>信号是一种软中断，是一种处理异步事件的方法。一般来说，操作系统都支持许多信号。UNIX定义了许多信号，比如SIGINT表示中断字符信号，也就是Ctrl+C的信号，SIGBUS表示硬件故障的信号；SIGCHLD表示子进程状态改变信号；SIGKILL表示终止程序运行的信号，等等。<br>GDB的handle命令可以完成这个调试，格式如下：<br><code>handle &lt;signal&gt; &lt;keywords...&gt;</code><br>信号<signal>可以以SIG开头或不以SIG开头，可以用定义一个要处理信号的范围（如：SIGIO- SIGKILL，表示处理从SIGIO信号到SIGKILL的信号，其中包括SIGIO，SIGIOT，SIGKILL三个信号），也可以使用关键字 all来标明要处理所有的信号。一旦被调试的程序接收到信号，运行程序马上会被GDB停住，以供调试。其<keywords>可以是以下几种关键字的一个或多个。</keywords></signal></p>
+<ul>
+<li>nostop 当被调试的程序收到信号时，GDB不会停住程序的运行，但会打出消息告诉你收到这种信号。</li>
+<li>stop 当被调试的程序收到信号时，GDB会停住你的程序。</li>
+<li>print 当被调试的程序收到信号时，GDB会显示出一条信息。</li>
+<li>noprint 当被调试的程序收到信号时，GDB不会告诉你收到信号的信息。</li>
+<li>pass | noignore 当被调试的程序收到信号时，GDB不处理信号。这表示，GDB会把这个信号交给被调试程序处理。</li>
+<li>nopass | ignore   当被调试的程序收到信号时，GDB不会让被调试程序来处理这个信号。</li>
+<li>info signals | info handle  查看有哪些信号在被GDB检测中。</li>
+</ul>
+<h3 id="9、线程"><a href="#9、线程" class="headerlink" title="9、线程"></a>9、线程</h3><p>很多时间会涉及到多线程，那么断点是不是要打在所有的线程或者某个特定的线程上，GDB可以出色的完成这一项，这也是它强大的原因。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">break &lt;linespec&gt; thread &lt;threadno&gt;</span><br><span class="line">break &lt;linespec&gt; thread &lt;threadno&gt; if ...</span><br></pre></td></tr></table></figure>
+<p>linespec指定了断点设置在的源程序的行号。threadno指定了线程的ID</p>
+<blockquote>
+<p>这个ID是GDB分配的，你可以通过<code>info threads</code>命令来查看正在运行程序中的线程信息.</p>
+</blockquote>
+<p>如果你不指定thread <threadno>则表示你的断点设在所有线程上面。还可以为某线程指定断点的条件。当你的程序被GDB停住时，所有的运行线程都会被停住。这方便你查看运行程序的总体情况。而在你恢复程序运行时，所有的线程也会被恢复运行。哪怕是主进程在被单步调试时。</threadno></p>
+<h4 id="查看栈信息"><a href="#查看栈信息" class="headerlink" title="查看栈信息"></a>查看栈信息</h4><p>如果程序被停住了，此刻需要做的第一件事就是查看程序是在哪儿停住的。当你的程序调用了一个函数，函数的地址，参数，函数内部的局部变量都会被压入栈中。这时你又可以发现GDB的强大之处了。</p>
+<ul>
+<li><code>命令backtrace 【缩写:bt】</code>可以打印当前函数调用栈的所有信息。</li>
+<li>bt <n>  n是一个正整数，表示只打印栈顶上n层的栈信息。</n></li>
+<li>bt &lt;-n&gt; -n表一个负整数，表示只打印栈底下n层的栈信息。<br>如果你要查看某一层的信息，你需要切换当前栈，一般来说，程序停止时，最顶层的栈就是当前栈，如果你需要查看栈下面层的详细信息，你需要做的就是切换当前栈。</li>
+<li>frame <n> | f <n> n是一个从0开始的整数，是栈中的层编号。比如：frame 0，表示栈顶，frame 1，表示栈的第二层。</n></n></li>
+<li>up <n>  表示向栈的上面移动n层，可以不打n，表示向上移动一层。</n></li>
+<li>down <n>  表示向栈的下面移动n层，可以不打n，表示向下移动一层。<br>上面这三条命令都会打印栈层的信息，如果不想打印其信息，可以使用这三条命令：</n></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select-frame &lt;n&gt; 对应于 frame 命令。</span><br><span class="line">up-silently &lt;n&gt; 对应于 up 命令。</span><br><span class="line">down-silently &lt;n&gt; 对应于 down 命令。</span><br></pre></td></tr></table></figure>
+<h3 id="10、info命令"><a href="#10、info命令" class="headerlink" title="10、info命令"></a>10、info命令</h3><p>info命令可以在调试时用来查看寄存器、断点、观察点和信号等信息。</p>
+<ul>
+<li>info registers 查看除了浮点寄存器以外的寄存器</li>
+<li>info all-registers 查看所有寄存器，包括浮点寄存器</li>
+<li>info registers <regname ...="">  查看所指定的寄存器</regname></li>
+<li>info break  列出当前所设置的所有观察点 </li>
+<li>info frame | info f 打印出更为详细的当前栈层的信息，只不过，大多数都是运行时的内存地址。比如：函数地址，调用函数的地址，被调用函数的地址，目前的函数是由什么样的程序语言写成的、函数参数地址及值、局部变量的地址等等。</li>
+<li>info args    打印出当前函数的参数名及其值。</li>
+<li>info locals  打印出当前函数中所有局部变量及其值。</li>
+<li>info catch   打印出当前的函数中的异常处理信息。 </li>
+<li>info source  查看当前文件的程序语言。</li>
+</ul>
+<h3 id="11、jump命令"><a href="#11、jump命令" class="headerlink" title="11、jump命令"></a>11、jump命令</h3><p>一般情况程序都是顺序执行的，现在想要乱序执行怎么办呢？GDB也是可以修改程序的执行顺序，让程序随意跳转。</p>
+<ul>
+<li>jump <linespec> 来指定下一条语句的运行点。<linespec>可以是文件的行号，可以是file:line格式，也可以是+num这种偏移量格式，表示下一条运行语句从哪里开始。</linespec></linespec></li>
+<li>jump <address> 这里的<address>是代码行的内存地址。</address></address></li>
+</ul>
+<blockquote>
+<p>jump命令不会改变当前的程序栈中的内容，所以，如果使用jump从一个函数跳转到另一个函数，当跳转到的函数运行完返回，进行出栈操作时必然会发生错误，这可能导致意想不到的结果，所以最好只用jump在同一个函数中进行跳转。</p>
+</blockquote>
+<h3 id="12、强制函数返回-return"><a href="#12、强制函数返回-return" class="headerlink" title="12、强制函数返回 return"></a>12、强制函数返回 return</h3><p>return<br>return <expression> 使用return命令取消当前函数的执行，并立即返回，如果指定了<expression>，那么该表达式的值会被认作函数的返回值。</expression></expression></p>
+<h3 id="13、强制调用某函数-call"><a href="#13、强制调用某函数-call" class="headerlink" title="13、强制调用某函数 call"></a>13、强制调用某函数 call</h3><ul>
+<li>call <expr> 表达式中可以一是函数，以此达到强制调用函数的目的，它会显示函数的返回值（如果函数返回值不是void）</expr></li>
+</ul>
+<h3 id="14、set命令"><a href="#14、set命令" class="headerlink" title="14、set命令"></a>14、set命令</h3><ul>
+<li>set print address on/off   打开/关闭地址输出，当程序显示函数信息时，GDB会显出函数的参数地址。</li>
+<li>set print array on/off    打开/关闭 数组显示。</li>
+<li>set print elements <number-of-elements>   设置数组的长度，，如果长度太长，超过了就不再往下显示了。</number-of-elements></li>
+<li>set print null-stop <on off="">  打开了这个选项，那么当显示字符串时，遇到结束符则停止显示。这个选项默认为off。</on></li>
+<li>set print pretty on   GDB显示结构体时会比较漂亮。</li>
+<li>set print sevenbit-strings <on off="">    设置字符显示，是否按“\nnn”的格式显示，如果打开，则字符串或字符数据按\nnn显示，如“\065”。</on></li>
+<li>set print union <on off="">   设置显示结构体时，是否显式其内的联合体数据。</on></li>
+<li>set scheduler-locking off|on|step</li>
+</ul>
+<blockquote>
+<p>off 不锁定任何线程，也就是所有线程都执行，这是默认值。<br>on 只有当前被调试程序会执行。<br>step 在单步的时候，除了next过一个函数的情况以外，只有当前线程会执行。</p>
+</blockquote>
+<ul>
+<li>还有其他的。比如修改寄存器，修改内存</li>
+</ul>
+<h3 id="15、自动显示-display"><a href="#15、自动显示-display" class="headerlink" title="15、自动显示 display"></a>15、自动显示 display</h3><p>expr是一个表达式，fmt表示显示的格式，addr表示内存地址，当你用display设定好了一个或多个表达式后，只要你的程序被停下来，GDB会自动显示你所设置的这些表达式的值。</p>
+<ul>
+<li>display <expr></expr></li>
+<li>display/<fmt> <expr></expr></fmt></li>
+<li>display/<fmt> <addr><br>格式i和s同样被display支持，一个非常有用的命令是：<code>display/i $pc</code><br>$pc是GDB的环境变量，表示着指令的地址，/i则表示输出格式为机器指令码，也就是汇编。于是当程序停下后，就会出现源代码和机器指令码相对应的情形，这是一个很有意思的功能。</addr></fmt></li>
+</ul>
+<p>删除自动显示：</p>
+<ul>
+<li>disable display <dnums...></dnums...></li>
+<li>enable display <dnums...></dnums...></li>
+</ul>
+<p>———end—-有错误欢迎指定—-</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[面试总结分享]]></title>
       <url>http://www.dyike.com/2016/07/31/mianshi-zongjie-fenxiang/</url>
       <content type="html"><![CDATA[<p>明天就要开始工作了，之前也没有什么面试的经验，我找工作也是通过社交性找的工作。在我找到PHP开发的这份工作之前我面过两三家，问过我的东西，当然了不会很全，但我每面一家都会做一个总结。希望这个能给找PHP开发的你带来些许帮助，或许一点卵用都没有。</p>

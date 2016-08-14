@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-07-31T13:05:34.000Z</updated>
+  <updated>2016-08-14T05:36:22.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -14,6 +14,273 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GDB调试器的学习</title>
+    <link href="http://www.dyike.com/2016/08/13/the-gdb-on-ubuntu/"/>
+    <id>http://www.dyike.com/2016/08/13/the-gdb-on-ubuntu/</id>
+    <published>2016-08-13T15:37:58.000Z</published>
+    <updated>2016-08-14T05:36:22.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;关于GDB是什么，我就不多介绍了，这个不了解可以去谷歌一下。反正就是一个很强大的程序调试的工具。&lt;br&gt;为什么要学习这个？之前学习C语言不是在Linux下编程，后来发现之前折腾的跟现实还是有点出入的，所以现在有的时候还是挺懵逼的，每次都为调试代码这件事而苦恼。&lt;br&gt;还有就是学习Golang的都知道，go语言是支持GDB调试的。Go语言作为一门静态语言，当然可以通过Println之类的打印，但每次修改都需要重新编译。&lt;br&gt;这么看来，既然有这么一个强大的工具，有什么理由不掌握它呢？这里我从网上收集的，整理了一下，希望对你的学习也有帮助。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;GDB能做的事情如下几个方面：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;启动程序，根据自己的想法来运行程序&lt;/li&gt;
+&lt;li&gt;让程序在指定的端点出停住，端点可以是条件表达式&lt;/li&gt;
+&lt;li&gt;在端点处，查看上下文&lt;/li&gt;
+&lt;li&gt;动态的改变程序的执行环境&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;先说说安装吧，在ubuntu下安装也不是一件很难的事，这个自行谷歌。最好尝试编译安装，国内下载可能非常非常的慢。我这里给一个我之前下载好的，放在(百度云盘)[&lt;a href=&quot;https://pan.baidu.com/s/1qYtOIio]中&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://pan.baidu.com/s/1qYtOIio]中&lt;/a&gt;, &lt;strong&gt;密码: 3drw&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;下面直接切入学习吧！&lt;/p&gt;
+&lt;p&gt;我们来编写一个简单的C程序：example.c&lt;/p&gt;
+&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; a, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; b)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; a+b;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; sum[&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;] = &amp;#123;&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; array1[&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;] = &amp;#123;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; array2[&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;] = &amp;#123;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        sum[i] = add(array1[i], array2[i]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;编译：&lt;code&gt;gcc -g example.c -o example&lt;/code&gt;,得到一个二进制文件example,执行&lt;code&gt;gdb example&lt;/code&gt;命令进入调试状态。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意这里的编译命令，想想为什么要带上-g参数。如果没有-g参数，就看不到程序的函数名、变量名，所替代的全是运行时的内存地址。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;你将看到的是：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;root@ityike:/vagrant/cproject/learngdb  # gdb example&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GNU gdb (GDB) 7.11.1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Copyright (C) 2016 Free Software Foundation, Inc.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;License GPLv3+: GNU GPL version 3 or later &amp;lt;http://gnu.org/licenses/gpl.html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;This is free software: you are free to change and redistribute it.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;There is NO WARRANTY, to the extent permitted by law.  Type &amp;quot;show copying&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;and &amp;quot;show warranty&amp;quot; for details.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;This GDB was configured as &amp;quot;x86_64-pc-linux-gnu&amp;quot;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Type &amp;quot;show configuration&amp;quot; for configuration details.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;For bug reporting instructions, please see:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;http://www.gnu.org/software/gdb/bugs/&amp;gt;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Find the GDB manual and other documentation resources online at:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;http://www.gnu.org/software/gdb/documentation/&amp;gt;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;For help, type &amp;quot;help&amp;quot;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Type &amp;quot;apropos word&amp;quot; to search for commands related to &amp;quot;word&amp;quot;...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Reading symbols from example...done.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;启动GDB的方法有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gdb &lt;program&gt;        | program也就是你的执行文件，一般在当前目录下。&lt;/program&gt;&lt;/li&gt;
+&lt;li&gt;gdb &lt;program&gt; core   | 用gdb同时调试一个运行程序和core文件，core是程序非法执行后core dump后产生的文件。&lt;/program&gt;&lt;/li&gt;
+&lt;li&gt;gdb &lt;program&gt; &lt;pid&gt;  | 可以指定这个服务程序运行时的进程ID，gdb会自动attach上去，并调试他。（一般用于调试已经在运行的程序）&lt;/pid&gt;&lt;/program&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h2&gt;&lt;h3 id=&quot;1、list【缩写：l】&quot;&gt;&lt;a href=&quot;#1、list【缩写：l】&quot; class=&quot;headerlink&quot; title=&quot;1、list【缩写：l】&quot;&gt;&lt;/a&gt;1、list【缩写：l】&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;list命令后面可以带的参数：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;linenum&gt; 行号&lt;/linenum&gt;&lt;/li&gt;
+&lt;li&gt;&amp;lt;+offset&amp;gt; 当前行号的正偏移量&lt;/li&gt;
+&lt;li&gt;&amp;lt;-offset&amp;gt; 当前行号的负偏移量&lt;/li&gt;
+&lt;li&gt;&lt;filename:linenum&gt; 哪个文件的哪一行&lt;/filename:linenum&gt;&lt;/li&gt;
+&lt;li&gt;&lt;function&gt; 函数名&lt;/function&gt;&lt;/li&gt;
+&lt;li&gt;&lt;filename:function&gt; 哪个文件的哪个函数&lt;/filename:function&gt;&lt;/li&gt;
+&lt;li&gt;&amp;lt;*address&amp;gt;  程序运行时语句在内存中的地址&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;list &lt;linenum&gt;,显示第linenum行附近的源程序。&lt;/linenum&gt;&lt;/li&gt;
+&lt;li&gt;list &lt;function&gt;,显示函数名为function函数上下的源程序。&lt;/function&gt;&lt;/li&gt;
+&lt;li&gt;list ,显示当前行后面的源程序。&lt;/li&gt;
+&lt;li&gt;list -,显示当前行前面的源程序。&lt;br&gt;一般默认显示行数是10，也可以设置自己的行数。&lt;/li&gt;
+&lt;li&gt;show listsize,查看当前设置的list行数。&lt;/li&gt;
+&lt;li&gt;set listsize &lt;count&gt;,设置自己的一次显示的行数。&lt;br&gt;其他常用的list命令：&lt;/count&gt;&lt;/li&gt;
+&lt;li&gt;list &lt;first&gt;,&lt;last&gt;  显示从first到last行之间的代码。&lt;/last&gt;&lt;/first&gt;&lt;/li&gt;
+&lt;li&gt;list ,&lt;last&gt;  显示从当前行到last行之间的代码。&lt;/last&gt;&lt;/li&gt;
+&lt;li&gt;list +  往后显示源代码。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;看到这里，不难发现，list就是一个显示内容的命令，是不是没啥呢？其实GDB还提供了代码搜索的命令。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;forward-search &lt;regexp&gt; | search &lt;regexp&gt; 向前搜索&lt;/regexp&gt;&lt;/regexp&gt;&lt;/li&gt;
+&lt;li&gt;reverse-search &lt;regexp&gt; 全部搜索&lt;blockquote&gt;
+&lt;p&gt;&lt;regexp&gt;是正则表达式，你是不是跟我一样还要去学习正则表达式，没有啥怕的！&lt;/regexp&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/regexp&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2、run【缩写-r】&quot;&gt;&lt;a href=&quot;#2、run【缩写-r】&quot; class=&quot;headerlink&quot; title=&quot;2、run【缩写:r】&quot;&gt;&lt;/a&gt;2、run【缩写:r】&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;程序的运行，你有可能需要设置下面四方面的事:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;程序运行参数&lt;blockquote&gt;
+&lt;p&gt;set args 指定运行时的参数。（set args 1,2,3,4,5)&lt;br&gt;show args 查看当前设置好的运行参数。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;运行环境&lt;blockquote&gt;
+&lt;p&gt;show paths 查看程序的运行路径。&lt;br&gt;path &lt;dir&gt; 设定程序的运行路径。&lt;br&gt;set enviroment varname[=value] 设置环境变量。（set env USER=ityike)&lt;br&gt;show enviroment [varname] 查看环境变量。&lt;/dir&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;工作目录&lt;blockquote&gt;
+&lt;p&gt;cd &lt;dir&gt; 相当于shell的cd命令。&lt;br&gt;pwd 显示当前的所在目录。&lt;/dir&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;程序的输入输出&lt;blockquote&gt;
+&lt;p&gt;nfo terminal 显示你程序用到的终端的模式。&lt;br&gt;使用重定向控制程序输出。如：run &amp;gt; outfile&lt;br&gt;tty命令可以指写输入输出的终端设备。如：tty /dev/ttyb&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;3、break【缩写-b】&quot;&gt;&lt;a href=&quot;#3、break【缩写-b】&quot; class=&quot;headerlink&quot; title=&quot;3、break【缩写:b】&quot;&gt;&lt;/a&gt;3、break【缩写:b】&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;break &lt;function&gt; 进入指定函数时停住。在C++中使用class::function或者function(type,type)格式来指定函数名。&lt;/function&gt;&lt;/li&gt;
+&lt;li&gt;break &lt;linenum&gt; 在指定行停住。&lt;/linenum&gt;&lt;/li&gt;
+&lt;li&gt;break +offset / break -offset 在当前行号的前面或后面的offset行停住。&lt;/li&gt;
+&lt;li&gt;break filename:linenum 在filename文件的linenum行停住。&lt;/li&gt;
+&lt;li&gt;break filename:function 在filename文件的function函数的入口处停住。&lt;/li&gt;
+&lt;li&gt;break *address 在程序运行的内存地址处停住。&lt;/li&gt;
+&lt;li&gt;break 不带参数表示在下一条指令处停住。&lt;/li&gt;
+&lt;li&gt;在上面的带有参数的命令后面，还可以带有condition表示条件。break … if &lt;condition&gt;，条件成立的时候停住。&lt;/condition&gt;&lt;/li&gt;
+&lt;li&gt;查看断点，可使用info命令，如info breakpoints [n]、info break [n]（n表示断点号）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;4、单步命令&quot;&gt;&lt;a href=&quot;#4、单步命令&quot; class=&quot;headerlink&quot; title=&quot;4、单步命令&quot;&gt;&lt;/a&gt;4、单步命令&lt;/h3&gt;&lt;p&gt;next命令可以用于单步执行，但是next不会进入函数的内部，那怎么办呢？还有一个命令step【缩写:s】会进入函数的内部。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;step &lt;count&gt; step后面不加count表示一条条地执行，加表示执行后面的count条指令，然后再停住。&lt;/count&gt;&lt;/li&gt;
+&lt;li&gt;next &lt;count&gt; next后面不加count表示一条条地执行，加表示执行后面的count条指令，然后再停住。&lt;/count&gt;&lt;/li&gt;
+&lt;li&gt;set step-mode &lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;set step-mode on用于打开step-mode模式，这样，在进行单步跟踪时，程序不会因为没有debug信息而不停住，这个参数的设置可便于查看机器码。&lt;br&gt;set step-mod off用于关闭step-mode模式。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;finish 运行程序，直到当前函数完成返回，并打印函数返回时的堆栈地址和返回值及参数值等信息。&lt;/li&gt;
+&lt;li&gt;until【缩写:u】一直在循环体内执行单步，退不出来是一件令人烦恼的事情，until命令可以运行程序直到退出循环体。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;5、continue【缩写-c】&quot;&gt;&lt;a href=&quot;#5、continue【缩写-c】&quot; class=&quot;headerlink&quot; title=&quot;5、continue【缩写:c】&quot;&gt;&lt;/a&gt;5、continue【缩写:c】&lt;/h3&gt;&lt;p&gt;当程序被停住后，可以使用continue恢复程序的运行知道程序结束，或达到下一个端点。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;continue [ignore-count] ignore-count表示忽略其后多少次断点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;6、print-【缩写-p】&quot;&gt;&lt;a href=&quot;#6、print-【缩写-p】&quot; class=&quot;headerlink&quot; title=&quot;6、print 【缩写:p】&quot;&gt;&lt;/a&gt;6、print 【缩写:p】&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;print &lt;expr&gt;  &lt;expr&gt;是表达式，是被调试的程序中的表达式。&lt;/expr&gt;&lt;/expr&gt;&lt;/li&gt;
+&lt;li&gt;print /&lt;f&gt; &lt;expr&gt;   &lt;f&gt;是输出的格式，如果要把表达式按16进制的格式输出，那么就是/x。&lt;/f&gt;&lt;/expr&gt;&lt;/f&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“@”是一个和数组有关的操作符，“::”指定一个在文件或是函数中的变量，“{&lt;type&gt;} &lt;addr&gt;”表示一个指向内存地址&lt;addr&gt;的类型为type的一个对象。&lt;/addr&gt;&lt;/addr&gt;&lt;/type&gt;&lt;/p&gt;
+&lt;p&gt;x 按十六进制格式显示变量。&lt;br&gt;d 按十进制格式显示变量。&lt;br&gt;u 按十六进制格式显示无符号整型。&lt;br&gt;o 按八进制格式显示变量。&lt;br&gt;t 按二进制格式显示变量。&lt;br&gt;a 按十六进制格式显示变量。&lt;br&gt;c 按字符格式显示变量。&lt;br&gt;f 按浮点数格式显示变量。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;下面我们演示一下sum[]的数组变化过程：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;(gdb) b 14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Breakpoint 1 at 0x400584: file example.c, line 14.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) r&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Starting program: /vagrant/cproject/learngdb/example&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Breakpoint 1, main () at example.c:14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14          sum[i] = add(array1[i], array2[i]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) p sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$1 = &amp;#123;0, 0, 0, 0, 0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12      for (i = 0; i &amp;lt; 5; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Breakpoint 1, main () at example.c:14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14          sum[i] = add(array1[i], array2[i]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) p sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$2 = &amp;#123;3, 0, 0, 0, 0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12      for (i = 0; i &amp;lt; 5; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) p sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$3 = &amp;#123;3, 6, 0, 0, 0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Breakpoint 1, main () at example.c:14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14          sum[i] = add(array1[i], array2[i]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) p sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$4 = &amp;#123;3, 6, 0, 0, 0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12      for (i = 0; i &amp;lt; 5; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) p sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$5 = &amp;#123;3, 6, 9, 0, 0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果要修改变量，如x的值，可使用命令：&lt;code&gt;print x=4&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;还有关于数组，有时需要查看一段连续内存空间的值，比如数组的一段，或者是动态分配的数据大小。可以使用“@”操作符。“@”左边是一个内存的地址的值，“@”右边是你查看内存的长度。比如：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;(gdb) p sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$7 = &amp;#123;3, 6, 9, 12, 0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) p *sum@5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$8 = &amp;#123;3, 6, 9, 12, 0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) p *sum@2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$9 = &amp;#123;3, 6&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;7、watch命令&quot;&gt;&lt;a href=&quot;#7、watch命令&quot; class=&quot;headerlink&quot; title=&quot;7、watch命令&quot;&gt;&lt;/a&gt;7、watch命令&lt;/h3&gt;&lt;p&gt;watch一般来观察某个表达式（变量也是一种表达式）的值是否有变化了，如果有变化，马上停住程序。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;watch &lt;expr&gt;：为表达式（变量）expr设置一个观察点。&lt;/expr&gt;&lt;/li&gt;
+&lt;li&gt;rwatch &lt;expr&gt;：当表达式（变量）expr被读时，停住程序。&lt;/expr&gt;&lt;/li&gt;
+&lt;li&gt;awatch &lt;expr&gt;：当表达式（变量）的值被读或被写时，停住程序。&lt;/expr&gt;&lt;/li&gt;
+&lt;li&gt;info watchpoints：列出当前所设置了的所有观察点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;看看i在连续运行next时一旦发现i变化，i值就会显示出来。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;(gdb) watch i&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Hardware watchpoint 2: i&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) next&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Hardware watchpoint 2: i&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Old value = 2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;New value = 3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0x00000000004005ae in main () at example.c:12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12      for (i = 0; i &amp;lt; 5; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Breakpoint 1, main () at example.c:14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14          sum[i] = add(array1[i], array2[i]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12      for (i = 0; i &amp;lt; 5; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Hardware watchpoint 2: i&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Old value = 3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;New value = 4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0x00000000004005ae in main () at example.c:12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12      for (i = 0; i &amp;lt; 5; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) info watchpoints&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Num     Type           Disp Enb Address            What&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2       hw watchpoint  keep y                      i&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    breakpoint already hit 2 times&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;下面这一部分结合上面的break命令&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&quot;设置捕捉点（CatchPoint）&quot;&gt;&lt;a href=&quot;#设置捕捉点（CatchPoint）&quot; class=&quot;headerlink&quot; title=&quot;设置捕捉点（CatchPoint）&quot;&gt;&lt;/a&gt;设置捕捉点（CatchPoint）&lt;/h4&gt;&lt;p&gt;你可设置捕捉点来捕捉程序运行时的一些事件。如：载入共享库（动态链接库）或是C++的异常。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;catch &lt;event&gt;&lt;/event&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当event发生时，停住程序。event可以是下面的内容：&lt;br&gt;1、throw 一个C++抛出的异常。（throw为关键字）&lt;br&gt;2、catch 一个C++捕捉到的异常。（catch为关键字）&lt;br&gt;3、exec 调用系统调用exec时。（exec为关键字，目前此功能只在HP-UX下有用）&lt;br&gt;4、fork 调用系统调用fork时。（fork为关键字，目前此功能只在HP-UX下有用）&lt;br&gt;5、vfork 调用系统调用vfork时。（vfork为关键字，目前此功能只在HP-UX下有用）&lt;br&gt;6、load 或 load &lt;libname&gt; 载入共享库（动态链接库）时。（load为关键字，目前此功能只在HP-UX下有用）&lt;br&gt;unload 或 unload &lt;libname&gt; 卸载共享库（动态链接库）时。（unload为关键字，目前此功能只在HP-UX下有用）&lt;/libname&gt;&lt;/libname&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;tcatch &lt;event&gt;&lt;br&gt;只设置一次捕捉点，当程序停住以后，该点被自动删除。&lt;/event&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;维护停止点&quot;&gt;&lt;a href=&quot;#维护停止点&quot; class=&quot;headerlink&quot; title=&quot;维护停止点&quot;&gt;&lt;/a&gt;维护停止点&lt;/h4&gt;&lt;p&gt;GDB中的停止点也就是断点、观察点、捕捉点。如果你觉得停止点没有用了，可以使用delete、clear、disable、enable来进行维护。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;clear    清除所有的已定义的停止点。&lt;/li&gt;
+&lt;li&gt;clear &lt;function&gt; /clear &lt;filename：function&gt; 清除所有设置在函数上的停止点。&lt;/filename：function&gt;&lt;/function&gt;&lt;/li&gt;
+&lt;li&gt;clear &lt;linenum&gt; / clear &lt;filename：linenum&gt;  清除所有设置在指定行上的停止点。&lt;/filename：linenum&gt;&lt;/linenum&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;delete [breakpoints] [range...]&lt;/code&gt;   删除指定的断点，breakpoints为断点号。如果不指定断点号，则表示删除所有的断点。range 表示断点号的范围（如：3-7）。简写:d&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;比删除更好的一种方法是disable停止点，disable了的停止点，GDB不会删除，当你还需要时，enable即可，就好像回收站一样。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;disable [breakpoints] [range...]&lt;/code&gt; disable所指定的停止点，breakpoints为停止点号。如果什么都不指定，表示disable所有的停止点。简写:dis。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;enable [breakpoints] [range...]&lt;/code&gt; enable所指定的停止点，breakpoints为停止点号。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;enable [breakpoints] once range...&lt;/code&gt; enable所指定的停止点一次，当程序停止后，该停止点马上被GDB自动disable。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;enable [breakpoints] delete range...&lt;/code&gt; enable所指定的停止点一次，当程序停止后，该停止点马上被GDB自动删除。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;停止条件的维护&quot;&gt;&lt;a href=&quot;#停止条件的维护&quot; class=&quot;headerlink&quot; title=&quot;停止条件的维护&quot;&gt;&lt;/a&gt;停止条件的维护&lt;/h4&gt;&lt;p&gt;前面我们说到的设置断点时，可以设置一个条件，当条件成立时，程序会自动停止。这个的条件的相关维护命令，为断点设置一个条件，使用if关键字，后面加上断点条件。条件设置好，我们可以使用condition命令来修改断点的条件。（只有break和watch命令支持if，catch目前暂不支持if）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;condition &lt;bnum&gt; &lt;expression&gt; 修改断点号为bnum的停止条件为expression。&lt;/expression&gt;&lt;/bnum&gt;&lt;/li&gt;
+&lt;li&gt;condition &lt;bnum&gt; 清除断点号为bnum的停止条件。&lt;/bnum&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;还有一个特殊的命令ignore&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ignore &lt;bnum&gt; &lt;count&gt;  表示忽略断点号为bnum的停止条件count次。&lt;/count&gt;&lt;/bnum&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;为停止点设定运行的命令&quot;&gt;&lt;a href=&quot;#为停止点设定运行的命令&quot; class=&quot;headerlink&quot; title=&quot;为停止点设定运行的命令&quot;&gt;&lt;/a&gt;为停止点设定运行的命令&lt;/h4&gt;&lt;p&gt;为断点号bnum指写一个命令列表。当程序被该断点停住时，gdb会依次运行命令列表中的命令。格式如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;commands [bnum]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;... command-list ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;break add if sum&amp;gt;0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;commands&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;printf &amp;quot;sum is %d\n&amp;quot;,sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;continue&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;断点设置在函数add中，断点条件为sum》0，一旦sum的值大于0，就会自动打印sum的值，并继续运行程序。&lt;br&gt;如果要清除断点上的命令序列，那么只要简单的执行一下commands命令，并直接再打个end就行了。&lt;/p&gt;
+&lt;h3 id=&quot;8、Signals&quot;&gt;&lt;a href=&quot;#8、Signals&quot; class=&quot;headerlink&quot; title=&quot;8、Signals&quot;&gt;&lt;/a&gt;8、Signals&lt;/h3&gt;&lt;p&gt;信号是一种软中断，是一种处理异步事件的方法。一般来说，操作系统都支持许多信号。UNIX定义了许多信号，比如SIGINT表示中断字符信号，也就是Ctrl+C的信号，SIGBUS表示硬件故障的信号；SIGCHLD表示子进程状态改变信号；SIGKILL表示终止程序运行的信号，等等。&lt;br&gt;GDB的handle命令可以完成这个调试，格式如下：&lt;br&gt;&lt;code&gt;handle &amp;lt;signal&amp;gt; &amp;lt;keywords...&amp;gt;&lt;/code&gt;&lt;br&gt;信号&lt;signal&gt;可以以SIG开头或不以SIG开头，可以用定义一个要处理信号的范围（如：SIGIO- SIGKILL，表示处理从SIGIO信号到SIGKILL的信号，其中包括SIGIO，SIGIOT，SIGKILL三个信号），也可以使用关键字 all来标明要处理所有的信号。一旦被调试的程序接收到信号，运行程序马上会被GDB停住，以供调试。其&lt;keywords&gt;可以是以下几种关键字的一个或多个。&lt;/keywords&gt;&lt;/signal&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;nostop 当被调试的程序收到信号时，GDB不会停住程序的运行，但会打出消息告诉你收到这种信号。&lt;/li&gt;
+&lt;li&gt;stop 当被调试的程序收到信号时，GDB会停住你的程序。&lt;/li&gt;
+&lt;li&gt;print 当被调试的程序收到信号时，GDB会显示出一条信息。&lt;/li&gt;
+&lt;li&gt;noprint 当被调试的程序收到信号时，GDB不会告诉你收到信号的信息。&lt;/li&gt;
+&lt;li&gt;pass | noignore 当被调试的程序收到信号时，GDB不处理信号。这表示，GDB会把这个信号交给被调试程序处理。&lt;/li&gt;
+&lt;li&gt;nopass | ignore   当被调试的程序收到信号时，GDB不会让被调试程序来处理这个信号。&lt;/li&gt;
+&lt;li&gt;info signals | info handle  查看有哪些信号在被GDB检测中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;9、线程&quot;&gt;&lt;a href=&quot;#9、线程&quot; class=&quot;headerlink&quot; title=&quot;9、线程&quot;&gt;&lt;/a&gt;9、线程&lt;/h3&gt;&lt;p&gt;很多时间会涉及到多线程，那么断点是不是要打在所有的线程或者某个特定的线程上，GDB可以出色的完成这一项，这也是它强大的原因。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;break &amp;lt;linespec&amp;gt; thread &amp;lt;threadno&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;break &amp;lt;linespec&amp;gt; thread &amp;lt;threadno&amp;gt; if ...&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;linespec指定了断点设置在的源程序的行号。threadno指定了线程的ID&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这个ID是GDB分配的，你可以通过&lt;code&gt;info threads&lt;/code&gt;命令来查看正在运行程序中的线程信息.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果你不指定thread &lt;threadno&gt;则表示你的断点设在所有线程上面。还可以为某线程指定断点的条件。当你的程序被GDB停住时，所有的运行线程都会被停住。这方便你查看运行程序的总体情况。而在你恢复程序运行时，所有的线程也会被恢复运行。哪怕是主进程在被单步调试时。&lt;/threadno&gt;&lt;/p&gt;
+&lt;h4 id=&quot;查看栈信息&quot;&gt;&lt;a href=&quot;#查看栈信息&quot; class=&quot;headerlink&quot; title=&quot;查看栈信息&quot;&gt;&lt;/a&gt;查看栈信息&lt;/h4&gt;&lt;p&gt;如果程序被停住了，此刻需要做的第一件事就是查看程序是在哪儿停住的。当你的程序调用了一个函数，函数的地址，参数，函数内部的局部变量都会被压入栈中。这时你又可以发现GDB的强大之处了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;命令backtrace 【缩写:bt】&lt;/code&gt;可以打印当前函数调用栈的所有信息。&lt;/li&gt;
+&lt;li&gt;bt &lt;n&gt;  n是一个正整数，表示只打印栈顶上n层的栈信息。&lt;/n&gt;&lt;/li&gt;
+&lt;li&gt;bt &amp;lt;-n&amp;gt; -n表一个负整数，表示只打印栈底下n层的栈信息。&lt;br&gt;如果你要查看某一层的信息，你需要切换当前栈，一般来说，程序停止时，最顶层的栈就是当前栈，如果你需要查看栈下面层的详细信息，你需要做的就是切换当前栈。&lt;/li&gt;
+&lt;li&gt;frame &lt;n&gt; | f &lt;n&gt; n是一个从0开始的整数，是栈中的层编号。比如：frame 0，表示栈顶，frame 1，表示栈的第二层。&lt;/n&gt;&lt;/n&gt;&lt;/li&gt;
+&lt;li&gt;up &lt;n&gt;  表示向栈的上面移动n层，可以不打n，表示向上移动一层。&lt;/n&gt;&lt;/li&gt;
+&lt;li&gt;down &lt;n&gt;  表示向栈的下面移动n层，可以不打n，表示向下移动一层。&lt;br&gt;上面这三条命令都会打印栈层的信息，如果不想打印其信息，可以使用这三条命令：&lt;/n&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;select-frame &amp;lt;n&amp;gt; 对应于 frame 命令。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;up-silently &amp;lt;n&amp;gt; 对应于 up 命令。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;down-silently &amp;lt;n&amp;gt; 对应于 down 命令。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;10、info命令&quot;&gt;&lt;a href=&quot;#10、info命令&quot; class=&quot;headerlink&quot; title=&quot;10、info命令&quot;&gt;&lt;/a&gt;10、info命令&lt;/h3&gt;&lt;p&gt;info命令可以在调试时用来查看寄存器、断点、观察点和信号等信息。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;info registers 查看除了浮点寄存器以外的寄存器&lt;/li&gt;
+&lt;li&gt;info all-registers 查看所有寄存器，包括浮点寄存器&lt;/li&gt;
+&lt;li&gt;info registers &lt;regname ...=&quot;&quot;&gt;  查看所指定的寄存器&lt;/regname&gt;&lt;/li&gt;
+&lt;li&gt;info break  列出当前所设置的所有观察点 &lt;/li&gt;
+&lt;li&gt;info frame | info f 打印出更为详细的当前栈层的信息，只不过，大多数都是运行时的内存地址。比如：函数地址，调用函数的地址，被调用函数的地址，目前的函数是由什么样的程序语言写成的、函数参数地址及值、局部变量的地址等等。&lt;/li&gt;
+&lt;li&gt;info args    打印出当前函数的参数名及其值。&lt;/li&gt;
+&lt;li&gt;info locals  打印出当前函数中所有局部变量及其值。&lt;/li&gt;
+&lt;li&gt;info catch   打印出当前的函数中的异常处理信息。 &lt;/li&gt;
+&lt;li&gt;info source  查看当前文件的程序语言。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;11、jump命令&quot;&gt;&lt;a href=&quot;#11、jump命令&quot; class=&quot;headerlink&quot; title=&quot;11、jump命令&quot;&gt;&lt;/a&gt;11、jump命令&lt;/h3&gt;&lt;p&gt;一般情况程序都是顺序执行的，现在想要乱序执行怎么办呢？GDB也是可以修改程序的执行顺序，让程序随意跳转。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;jump &lt;linespec&gt; 来指定下一条语句的运行点。&lt;linespec&gt;可以是文件的行号，可以是file:line格式，也可以是+num这种偏移量格式，表示下一条运行语句从哪里开始。&lt;/linespec&gt;&lt;/linespec&gt;&lt;/li&gt;
+&lt;li&gt;jump &lt;address&gt; 这里的&lt;address&gt;是代码行的内存地址。&lt;/address&gt;&lt;/address&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;jump命令不会改变当前的程序栈中的内容，所以，如果使用jump从一个函数跳转到另一个函数，当跳转到的函数运行完返回，进行出栈操作时必然会发生错误，这可能导致意想不到的结果，所以最好只用jump在同一个函数中进行跳转。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;12、强制函数返回-return&quot;&gt;&lt;a href=&quot;#12、强制函数返回-return&quot; class=&quot;headerlink&quot; title=&quot;12、强制函数返回 return&quot;&gt;&lt;/a&gt;12、强制函数返回 return&lt;/h3&gt;&lt;p&gt;return&lt;br&gt;return &lt;expression&gt; 使用return命令取消当前函数的执行，并立即返回，如果指定了&lt;expression&gt;，那么该表达式的值会被认作函数的返回值。&lt;/expression&gt;&lt;/expression&gt;&lt;/p&gt;
+&lt;h3 id=&quot;13、强制调用某函数-call&quot;&gt;&lt;a href=&quot;#13、强制调用某函数-call&quot; class=&quot;headerlink&quot; title=&quot;13、强制调用某函数 call&quot;&gt;&lt;/a&gt;13、强制调用某函数 call&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;call &lt;expr&gt; 表达式中可以一是函数，以此达到强制调用函数的目的，它会显示函数的返回值（如果函数返回值不是void）&lt;/expr&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;14、set命令&quot;&gt;&lt;a href=&quot;#14、set命令&quot; class=&quot;headerlink&quot; title=&quot;14、set命令&quot;&gt;&lt;/a&gt;14、set命令&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;set print address on/off   打开/关闭地址输出，当程序显示函数信息时，GDB会显出函数的参数地址。&lt;/li&gt;
+&lt;li&gt;set print array on/off    打开/关闭 数组显示。&lt;/li&gt;
+&lt;li&gt;set print elements &lt;number-of-elements&gt;   设置数组的长度，，如果长度太长，超过了就不再往下显示了。&lt;/number-of-elements&gt;&lt;/li&gt;
+&lt;li&gt;set print null-stop &lt;on off=&quot;&quot;&gt;  打开了这个选项，那么当显示字符串时，遇到结束符则停止显示。这个选项默认为off。&lt;/on&gt;&lt;/li&gt;
+&lt;li&gt;set print pretty on   GDB显示结构体时会比较漂亮。&lt;/li&gt;
+&lt;li&gt;set print sevenbit-strings &lt;on off=&quot;&quot;&gt;    设置字符显示，是否按“\nnn”的格式显示，如果打开，则字符串或字符数据按\nnn显示，如“\065”。&lt;/on&gt;&lt;/li&gt;
+&lt;li&gt;set print union &lt;on off=&quot;&quot;&gt;   设置显示结构体时，是否显式其内的联合体数据。&lt;/on&gt;&lt;/li&gt;
+&lt;li&gt;set scheduler-locking off|on|step&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;off 不锁定任何线程，也就是所有线程都执行，这是默认值。&lt;br&gt;on 只有当前被调试程序会执行。&lt;br&gt;step 在单步的时候，除了next过一个函数的情况以外，只有当前线程会执行。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;还有其他的。比如修改寄存器，修改内存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;15、自动显示-display&quot;&gt;&lt;a href=&quot;#15、自动显示-display&quot; class=&quot;headerlink&quot; title=&quot;15、自动显示 display&quot;&gt;&lt;/a&gt;15、自动显示 display&lt;/h3&gt;&lt;p&gt;expr是一个表达式，fmt表示显示的格式，addr表示内存地址，当你用display设定好了一个或多个表达式后，只要你的程序被停下来，GDB会自动显示你所设置的这些表达式的值。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;display &lt;expr&gt;&lt;/expr&gt;&lt;/li&gt;
+&lt;li&gt;display/&lt;fmt&gt; &lt;expr&gt;&lt;/expr&gt;&lt;/fmt&gt;&lt;/li&gt;
+&lt;li&gt;display/&lt;fmt&gt; &lt;addr&gt;&lt;br&gt;格式i和s同样被display支持，一个非常有用的命令是：&lt;code&gt;display/i $pc&lt;/code&gt;&lt;br&gt;$pc是GDB的环境变量，表示着指令的地址，/i则表示输出格式为机器指令码，也就是汇编。于是当程序停下后，就会出现源代码和机器指令码相对应的情形，这是一个很有意思的功能。&lt;/addr&gt;&lt;/fmt&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;删除自动显示：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;disable display &lt;dnums...&gt;&lt;/dnums...&gt;&lt;/li&gt;
+&lt;li&gt;enable display &lt;dnums...&gt;&lt;/dnums...&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;———end—-有错误欢迎指定—-&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;关于GDB是什么，我就不多介绍了，这个不了解可以去谷歌一下。反正就是一个很强大的程序调试的工具。&lt;br&gt;为什么要学习这个？之前学习C语言不是在Linux下编程，后来发现之前折腾的跟现实还是有点出入的，所以现在有的时候还是挺懵逼的，每次都为调试代码这
+    
+    </summary>
+    
+    
+      <category term="GDB,C,Golang" scheme="http://www.dyike.com/tags/GDB-C-Golang/"/>
+    
+  </entry>
   
   <entry>
     <title>面试总结分享</title>
@@ -1067,37 +1334,6 @@ touch /var/lock/subsys/local
     
     
       <category term="PHP" scheme="http://www.dyike.com/tags/PHP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>谈谈“高校毕业生将达749万”的一些感想</title>
-    <link href="http://www.dyike.com/2015/06/20/think-about-graduation/"/>
-    <id>http://www.dyike.com/2015/06/20/think-about-graduation/</id>
-    <published>2015-06-20T14:31:30.000Z</published>
-    <updated>2016-04-28T07:15:40.000Z</updated>
-    
-    <content type="html">&lt;p&gt;前天看到一个新闻“2015年的高校毕业生将达到749万，留在一线城市的门槛提高了”，看到这个新闻后，我在想就业压力不能用“相当的大”来形容了，而是相当的严峻相当的严峻相当的严峻。&lt;/p&gt;
-&lt;p&gt;然后又想到了一年后现在的自己可能也会面临这样的问题，必须面临找工作。还记得之前看到过一个规定，就是说留京的应届本科毕业生不能超过24岁，研究生不超过27岁。卧槽，我毕业那年正好24岁，早知道当年不复读了。还记得当时把这个规定分享到微信朋友圈了，然后就有在下面评论说“少年，只要你是一个人才，年龄不是问题，得留住你在北京”。想想自己来到北京求学的这几年，确实看到了一些别人没看到的东西，回去了同学都说我接触的平台、看到的视野跟他们完全不一样。这点我确实也感受到了，每每这样想的时候，自己都很欣慰当年填报志愿的时候选择了北上广。当初对自己的目标就是我读大学就是要走出去看看，看看大城市究竟会有哪些不一样的。大城市，接触的人更多了，什么样的人都有，想要得到成长，需要跟各式各样的三教九流打交道。资源也丰富了，还记得当年刚来北京还办了张首都图书馆的会员卡，虽然没怎么借书，但是觉得只有大城市才会提供这么好的资源。机会相对来说多了，我这里说的是相对，其实竞争压力也是蛮大，因为比我优秀的人太多太多了，说白了自己就算个屁，有的时候连个屁都不算，那你还凭什么去跟别人竞争那一个机会呢？&lt;/p&gt;
-&lt;p&gt;还是说说毕业生人数吧，先看一张2015年之前的数据你就知道这是一个什么概念。&lt;a href=&quot;http://blog.dyike.com/wp-content/uploads/2015/06/p.jpg&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://www.dyike.com/wp-content/uploads/2015/06/p-300x166.jpg&quot; alt=&quot;picture&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;在我读大学后，我更有机会接触到这些数据了，但每年都看到“今年参加高考的人数减少百分之多少”高考的人数逐年减少，有的时候也挺羡慕他们（学弟学妹）感觉他们上大学的机会比我们越来越大，他们毕业时的压力应该没我们现在的压力这么大吧。2015年，自己也有好多同学大学毕业了，他们有的跟我聊，投了好多好多简历，面了好多好多家公司，最后也没有找到工作甚至是自己并不满意的工作。现实就是这么残酷，只有自己比别人更优秀才可能获得更好的机会，机会都是留给准备充分的人。给一年后的自己做准备吧。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;首先得清楚自己想要干什么，今后没什么特殊的应该是从事互联网相关的工作，主要原因这几年互联网发展确实如火如荼的，就业机会相对要好一点，还有自己大学学的就是这方面的专业，你不从事这个那从事哪个。不浪费时间在选择上，趁早做好选择并为自己的选择做准备。&lt;/li&gt;
-&lt;li&gt;其次，还有一年的时间，自己可能需要找工作【现在既希望自己能考上研究生，又希望自己考不上研究生】，得了解自己所要面临的工作是什么样的，所要哪些基础的技能，或许要做的就是查漏补缺吧。举个例子，面试哪家公司的工程师，不妨可以根据这家公司的招聘信息的要求认清自己是在一个什么样的水平。还有就是不要再看什么传统的招聘网站，智联前程无忧啥的，海投也没有什么乱用。不妨看看垂直的招聘，多利用好社交网络。找一家正规的公司也是很重要的。&lt;/li&gt;
-&lt;li&gt;还有，就是不要眼高手低，觉得自己就是要去BAT这样的大公司，不妨选择一个小公司，选择一个优秀的小团队，这样的自己应该更能得到更好的成长。选择了互联网行业，那还是选择大城市北上广深相对发展好点机会多点。&lt;/li&gt;
-&lt;li&gt;最后说说能力上的吧，自己这一年里应该更好的学好计算机相关的基础知识，像什么操作系统、数据结构、数据库原理等基础课程，掌握好几种计算机编程语言，如C语言、PHP、Golang等等，还有熟练使用一些工具，多阅读英文书籍，提供英文水平。能用Google搜索东西，尽量查找英文类的，为什么这样就不多说了。学会写一个好Email，整好一个站点多写写技术博客，有能力话再折腾个手机App。&lt;br&gt;最后的最后，谈谈关于研究生的事。之前我一直是不赞成考研这个事，但现在我也在准备考研这个事。你就不要问这是什么原因。现在我还是那个观点，考研也不是一个很好的，考研了你就能找到一个好的工作？如果出于为了找工作的话，那真的没有必要考研，如果为了学术研究的，不放试一试。我相信我考研的目的应该跟常人应该不一样。。。。。。不说了，努力一把，还是那句话【既希望考上，又希望考不上】。&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;前天看到一个新闻“2015年的高校毕业生将达到749万，留在一线城市的门槛提高了”，看到这个新闻后，我在想就业压力不能用“相当的大”来形容了，而是相当的严峻相当的严峻相当的严峻。&lt;/p&gt;
-&lt;p&gt;然后又想到了一年后现在的自己可能也会面临这样的问题，必须面临找工作。还记得之前看
-    
-    </summary>
-    
-    
-      <category term="随笔感想" scheme="http://www.dyike.com/tags/%E9%9A%8F%E7%AC%94%E6%84%9F%E6%83%B3/"/>
     
   </entry>
   
