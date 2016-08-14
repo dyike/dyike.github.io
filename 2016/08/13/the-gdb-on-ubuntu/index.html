@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://www.dyike.com/2016/08/13/the-gdb-on-ubuntu/index.html">
 <meta property="og:site_name" content="一刻笔记">
 <meta property="og:description" content="关于GDB是什么，我就不多介绍了，这个不了解可以去谷歌一下。反正就是一个很强大的程序调试的工具。为什么要学习这个？之前学习C语言不是在Linux下编程，后来发现之前折腾的跟现实还是有点出入的，所以现在有的时候还是挺懵逼的，每次都为调试代码这件事而苦恼。还有就是学习Golang的都知道，go语言是支持GDB调试的。Go语言作为一门静态语言，当然可以通过Println之类的打印，但每次修改都需要重新">
-<meta property="og:updated_time" content="2016-08-14T05:44:02.000Z">
+<meta property="og:updated_time" content="2016-08-14T05:48:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GDB调试器的学习">
 <meta name="twitter:description" content="关于GDB是什么，我就不多介绍了，这个不了解可以去谷歌一下。反正就是一个很强大的程序调试的工具。为什么要学习这个？之前学习C语言不是在Linux下编程，后来发现之前折腾的跟现实还是有点出入的，所以现在有的时候还是挺懵逼的，每次都为调试代码这件事而苦恼。还有就是学习Golang的都知道，go语言是支持GDB调试的。Go语言作为一门静态语言，当然可以通过Println之类的打印，但每次修改都需要重新">
@@ -356,8 +356,7 @@
 <li>gdb <program> core   | 用gdb同时调试一个运行程序和core文件，core是程序非法执行后core dump后产生的文件。</program></li>
 <li>gdb <program> <pid>  | 可以指定这个服务程序运行时的进程ID，gdb会自动attach上去，并调试他。（一般用于调试已经在运行的程序）</pid></program></li>
 </ul>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="1、list【缩写：l】"><a href="#1、list【缩写：l】" class="headerlink" title="1、list【缩写：l】"></a>1、list【缩写：l】</h3><blockquote>
-<p>list命令后面可以带的参数：</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="1、list【缩写：l】"><a href="#1、list【缩写：l】" class="headerlink" title="1、list【缩写：l】"></a>1、list【缩写：l】</h3><p> list命令后面可以带的参数：</p>
 <ul>
 <li><linenum> 行号</linenum></li>
 <li>&lt;+offset&gt; 当前行号的正偏移量</li>
@@ -367,7 +366,6 @@
 <li><filename:function> 哪个文件的哪个函数</filename:function></li>
 <li>&lt;*address&gt;  程序运行时语句在内存中的地址</li>
 </ul>
-</blockquote>
 <ul>
 <li>list <linenum>,显示第linenum行附近的源程序。</linenum></li>
 <li>list <function>,显示函数名为function函数上下的源程序。</function></li>
@@ -387,8 +385,7 @@
 </blockquote>
 </regexp></li>
 </ul>
-<h3 id="2、run【缩写-r】"><a href="#2、run【缩写-r】" class="headerlink" title="2、run【缩写:r】"></a>2、run【缩写:r】</h3><blockquote>
-<p>程序的运行，你有可能需要设置下面四方面的事:</p>
+<h3 id="2、run【缩写-r】"><a href="#2、run【缩写-r】" class="headerlink" title="2、run【缩写:r】"></a>2、run【缩写:r】</h3><p> 程序的运行，你有可能需要设置下面四方面的事:</p>
 <ul>
 <li>程序运行参数<blockquote>
 <p><code>set args</code> 指定运行时的参数。（set args 1,2,3,4,5)<br><code>show args</code> 查看当前设置好的运行参数。</p>
@@ -407,7 +404,6 @@
 </blockquote>
 </li>
 </ul>
-</blockquote>
 <h3 id="3、break【缩写-b】"><a href="#3、break【缩写-b】" class="headerlink" title="3、break【缩写:b】"></a>3、break【缩写:b】</h3><ul>
 <li>break <function> 进入指定函数时停住。在C++中使用class::function或者function(type,type)格式来指定函数名。</function></li>
 <li>break <linenum> 在指定行停住。</linenum></li>
@@ -438,12 +434,13 @@
 </ul>
 <h3 id="6、print-【缩写-p】"><a href="#6、print-【缩写-p】" class="headerlink" title="6、print 【缩写:p】"></a>6、print 【缩写:p】</h3><ul>
 <li>print <expr>  <expr>是表达式，是被调试的程序中的表达式。</expr></expr></li>
-<li>print /<f> <expr>   <f>是输出的格式，如果要把表达式按16进制的格式输出，那么就是/x。</f></expr></f></li>
-</ul>
+<li><p>print /<f> <expr>   <f>是输出的格式，如果要把表达式按16进制的格式输出，那么就是/x。</f></expr></f></p>
 <blockquote>
 <p>“@”是一个和数组有关的操作符，“::”指定一个在文件或是函数中的变量，“{<type>} <addr>”表示一个指向内存地址<addr>的类型为type的一个对象。</addr></addr></type></p>
 <p>x 按十六进制格式显示变量。<br>d 按十进制格式显示变量。<br>u 按十六进制格式显示无符号整型。<br>o 按八进制格式显示变量。<br>t 按二进制格式显示变量。<br>a 按十六进制格式显示变量。<br>c 按字符格式显示变量。<br>f 按浮点数格式显示变量。</p>
 </blockquote>
+</li>
+</ul>
 <p>下面我们演示一下sum[]的数组变化过程：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">(gdb) b 14</span><br><span class="line">Breakpoint 1 at 0x400584: file example.c, line 14.</span><br><span class="line">(gdb) r</span><br><span class="line">Starting program: /vagrant/cproject/learngdb/example</span><br><span class="line"></span><br><span class="line">Breakpoint 1, main () at example.c:14</span><br><span class="line">14          sum[i] = add(array1[i], array2[i]);</span><br><span class="line">(gdb) p sum</span><br><span class="line">$1 = &#123;0, 0, 0, 0, 0&#125;</span><br><span class="line">(gdb) n</span><br><span class="line">12      for (i = 0; i &lt; 5; i++)</span><br><span class="line">(gdb) n</span><br><span class="line"></span><br><span class="line">Breakpoint 1, main () at example.c:14</span><br><span class="line">14          sum[i] = add(array1[i], array2[i]);</span><br><span class="line">(gdb) p sum</span><br><span class="line">$2 = &#123;3, 0, 0, 0, 0&#125;</span><br><span class="line">(gdb) n</span><br><span class="line">12      for (i = 0; i &lt; 5; i++)</span><br><span class="line">(gdb) p sum</span><br><span class="line">$3 = &#123;3, 6, 0, 0, 0&#125;</span><br><span class="line">(gdb) n</span><br><span class="line"></span><br><span class="line">Breakpoint 1, main () at example.c:14</span><br><span class="line">14          sum[i] = add(array1[i], array2[i]);</span><br><span class="line">(gdb) p sum</span><br><span class="line">$4 = &#123;3, 6, 0, 0, 0&#125;</span><br><span class="line">(gdb) n</span><br><span class="line">12      for (i = 0; i &lt; 5; i++)</span><br><span class="line">(gdb) p sum</span><br><span class="line">$5 = &#123;3, 6, 9, 0, 0&#125;</span><br></pre></td></tr></table></figure>
 <p>如果要修改变量，如x的值，可使用命令：<code>print x=4</code></p>
@@ -461,13 +458,13 @@
 <p><strong>下面这一部分结合上面的break命令</strong></p>
 <h4 id="设置捕捉点（CatchPoint）"><a href="#设置捕捉点（CatchPoint）" class="headerlink" title="设置捕捉点（CatchPoint）"></a>设置捕捉点（CatchPoint）</h4><p>你可设置捕捉点来捕捉程序运行时的一些事件。如：载入共享库（动态链接库）或是C++的异常。</p>
 <ul>
-<li>catch <event></event></li>
-</ul>
+<li><p>catch <event></event></p>
 <blockquote>
 <p>当event发生时，停住程序。event可以是下面的内容：<br>1、throw 一个C++抛出的异常。（throw为关键字）<br>2、catch 一个C++捕捉到的异常。（catch为关键字）<br>3、exec 调用系统调用exec时。（exec为关键字，目前此功能只在HP-UX下有用）<br>4、fork 调用系统调用fork时。（fork为关键字，目前此功能只在HP-UX下有用）<br>5、vfork 调用系统调用vfork时。（vfork为关键字，目前此功能只在HP-UX下有用）<br>6、load 或 load <libname> 载入共享库（动态链接库）时。（load为关键字，目前此功能只在HP-UX下有用）<br>unload 或 unload <libname> 卸载共享库（动态链接库）时。（unload为关键字，目前此功能只在HP-UX下有用）</libname></libname></p>
 </blockquote>
-<ul>
-<li>tcatch <event><br>只设置一次捕捉点，当程序停住以后，该点被自动删除。</event></li>
+</li>
+<li><p>tcatch <event><br>只设置一次捕捉点，当程序停住以后，该点被自动删除。</event></p>
+</li>
 </ul>
 <h4 id="维护停止点"><a href="#维护停止点" class="headerlink" title="维护停止点"></a>维护停止点</h4><p>GDB中的停止点也就是断点、观察点、捕捉点。如果你觉得停止点没有用了，可以使用delete、clear、disable、enable来进行维护。</p>
 <ul>

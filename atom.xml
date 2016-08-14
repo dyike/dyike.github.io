@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-08-14T05:44:02.000Z</updated>
+  <updated>2016-08-14T05:48:12.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.dyike.com/2016/08/13/the-gdb-on-ubuntu/"/>
     <id>http://www.dyike.com/2016/08/13/the-gdb-on-ubuntu/</id>
     <published>2016-08-13T15:37:58.000Z</published>
-    <updated>2016-08-14T05:44:02.000Z</updated>
+    <updated>2016-08-14T05:48:12.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;关于GDB是什么，我就不多介绍了，这个不了解可以去谷歌一下。反正就是一个很强大的程序调试的工具。&lt;br&gt;为什么要学习这个？之前学习C语言不是在Linux下编程，后来发现之前折腾的跟现实还是有点出入的，所以现在有的时候还是挺懵逼的，每次都为调试代码这件事而苦恼。&lt;br&gt;还有就是学习Golang的都知道，go语言是支持GDB调试的。Go语言作为一门静态语言，当然可以通过Println之类的打印，但每次修改都需要重新编译。&lt;br&gt;这么看来，既然有这么一个强大的工具，有什么理由不掌握它呢？这里我从网上收集的，整理了一下，希望对你的学习也有帮助。&lt;/p&gt;
@@ -48,8 +48,7 @@
 &lt;li&gt;gdb &lt;program&gt; core   | 用gdb同时调试一个运行程序和core文件，core是程序非法执行后core dump后产生的文件。&lt;/program&gt;&lt;/li&gt;
 &lt;li&gt;gdb &lt;program&gt; &lt;pid&gt;  | 可以指定这个服务程序运行时的进程ID，gdb会自动attach上去，并调试他。（一般用于调试已经在运行的程序）&lt;/pid&gt;&lt;/program&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h2&gt;&lt;h3 id=&quot;1、list【缩写：l】&quot;&gt;&lt;a href=&quot;#1、list【缩写：l】&quot; class=&quot;headerlink&quot; title=&quot;1、list【缩写：l】&quot;&gt;&lt;/a&gt;1、list【缩写：l】&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;list命令后面可以带的参数：&lt;/p&gt;
+&lt;h2 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h2&gt;&lt;h3 id=&quot;1、list【缩写：l】&quot;&gt;&lt;a href=&quot;#1、list【缩写：l】&quot; class=&quot;headerlink&quot; title=&quot;1、list【缩写：l】&quot;&gt;&lt;/a&gt;1、list【缩写：l】&lt;/h3&gt;&lt;p&gt; list命令后面可以带的参数：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;linenum&gt; 行号&lt;/linenum&gt;&lt;/li&gt;
 &lt;li&gt;&amp;lt;+offset&amp;gt; 当前行号的正偏移量&lt;/li&gt;
@@ -59,7 +58,6 @@
 &lt;li&gt;&lt;filename:function&gt; 哪个文件的哪个函数&lt;/filename:function&gt;&lt;/li&gt;
 &lt;li&gt;&amp;lt;*address&amp;gt;  程序运行时语句在内存中的地址&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;list &lt;linenum&gt;,显示第linenum行附近的源程序。&lt;/linenum&gt;&lt;/li&gt;
 &lt;li&gt;list &lt;function&gt;,显示函数名为function函数上下的源程序。&lt;/function&gt;&lt;/li&gt;
@@ -79,8 +77,7 @@
 &lt;/blockquote&gt;
 &lt;/regexp&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;2、run【缩写-r】&quot;&gt;&lt;a href=&quot;#2、run【缩写-r】&quot; class=&quot;headerlink&quot; title=&quot;2、run【缩写:r】&quot;&gt;&lt;/a&gt;2、run【缩写:r】&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;程序的运行，你有可能需要设置下面四方面的事:&lt;/p&gt;
+&lt;h3 id=&quot;2、run【缩写-r】&quot;&gt;&lt;a href=&quot;#2、run【缩写-r】&quot; class=&quot;headerlink&quot; title=&quot;2、run【缩写:r】&quot;&gt;&lt;/a&gt;2、run【缩写:r】&lt;/h3&gt;&lt;p&gt; 程序的运行，你有可能需要设置下面四方面的事:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;程序运行参数&lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;set args&lt;/code&gt; 指定运行时的参数。（set args 1,2,3,4,5)&lt;br&gt;&lt;code&gt;show args&lt;/code&gt; 查看当前设置好的运行参数。&lt;/p&gt;
@@ -99,7 +96,6 @@
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;/blockquote&gt;
 &lt;h3 id=&quot;3、break【缩写-b】&quot;&gt;&lt;a href=&quot;#3、break【缩写-b】&quot; class=&quot;headerlink&quot; title=&quot;3、break【缩写:b】&quot;&gt;&lt;/a&gt;3、break【缩写:b】&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;break &lt;function&gt; 进入指定函数时停住。在C++中使用class::function或者function(type,type)格式来指定函数名。&lt;/function&gt;&lt;/li&gt;
 &lt;li&gt;break &lt;linenum&gt; 在指定行停住。&lt;/linenum&gt;&lt;/li&gt;
@@ -130,12 +126,13 @@
 &lt;/ul&gt;
 &lt;h3 id=&quot;6、print-【缩写-p】&quot;&gt;&lt;a href=&quot;#6、print-【缩写-p】&quot; class=&quot;headerlink&quot; title=&quot;6、print 【缩写:p】&quot;&gt;&lt;/a&gt;6、print 【缩写:p】&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;print &lt;expr&gt;  &lt;expr&gt;是表达式，是被调试的程序中的表达式。&lt;/expr&gt;&lt;/expr&gt;&lt;/li&gt;
-&lt;li&gt;print /&lt;f&gt; &lt;expr&gt;   &lt;f&gt;是输出的格式，如果要把表达式按16进制的格式输出，那么就是/x。&lt;/f&gt;&lt;/expr&gt;&lt;/f&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;print /&lt;f&gt; &lt;expr&gt;   &lt;f&gt;是输出的格式，如果要把表达式按16进制的格式输出，那么就是/x。&lt;/f&gt;&lt;/expr&gt;&lt;/f&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;“@”是一个和数组有关的操作符，“::”指定一个在文件或是函数中的变量，“{&lt;type&gt;} &lt;addr&gt;”表示一个指向内存地址&lt;addr&gt;的类型为type的一个对象。&lt;/addr&gt;&lt;/addr&gt;&lt;/type&gt;&lt;/p&gt;
 &lt;p&gt;x 按十六进制格式显示变量。&lt;br&gt;d 按十进制格式显示变量。&lt;br&gt;u 按十六进制格式显示无符号整型。&lt;br&gt;o 按八进制格式显示变量。&lt;br&gt;t 按二进制格式显示变量。&lt;br&gt;a 按十六进制格式显示变量。&lt;br&gt;c 按字符格式显示变量。&lt;br&gt;f 按浮点数格式显示变量。&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;下面我们演示一下sum[]的数组变化过程：&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;(gdb) b 14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Breakpoint 1 at 0x400584: file example.c, line 14.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) r&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Starting program: /vagrant/cproject/learngdb/example&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Breakpoint 1, main () at example.c:14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14          sum[i] = add(array1[i], array2[i]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) p sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$1 = &amp;#123;0, 0, 0, 0, 0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12      for (i = 0; i &amp;lt; 5; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Breakpoint 1, main () at example.c:14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14          sum[i] = add(array1[i], array2[i]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) p sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$2 = &amp;#123;3, 0, 0, 0, 0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12      for (i = 0; i &amp;lt; 5; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) p sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$3 = &amp;#123;3, 6, 0, 0, 0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Breakpoint 1, main () at example.c:14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14          sum[i] = add(array1[i], array2[i]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) p sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$4 = &amp;#123;3, 6, 0, 0, 0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12      for (i = 0; i &amp;lt; 5; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(gdb) p sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$5 = &amp;#123;3, 6, 9, 0, 0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;如果要修改变量，如x的值，可使用命令：&lt;code&gt;print x=4&lt;/code&gt;&lt;/p&gt;
@@ -153,13 +150,13 @@
 &lt;p&gt;&lt;strong&gt;下面这一部分结合上面的break命令&lt;/strong&gt;&lt;/p&gt;
 &lt;h4 id=&quot;设置捕捉点（CatchPoint）&quot;&gt;&lt;a href=&quot;#设置捕捉点（CatchPoint）&quot; class=&quot;headerlink&quot; title=&quot;设置捕捉点（CatchPoint）&quot;&gt;&lt;/a&gt;设置捕捉点（CatchPoint）&lt;/h4&gt;&lt;p&gt;你可设置捕捉点来捕捉程序运行时的一些事件。如：载入共享库（动态链接库）或是C++的异常。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;catch &lt;event&gt;&lt;/event&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;catch &lt;event&gt;&lt;/event&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;当event发生时，停住程序。event可以是下面的内容：&lt;br&gt;1、throw 一个C++抛出的异常。（throw为关键字）&lt;br&gt;2、catch 一个C++捕捉到的异常。（catch为关键字）&lt;br&gt;3、exec 调用系统调用exec时。（exec为关键字，目前此功能只在HP-UX下有用）&lt;br&gt;4、fork 调用系统调用fork时。（fork为关键字，目前此功能只在HP-UX下有用）&lt;br&gt;5、vfork 调用系统调用vfork时。（vfork为关键字，目前此功能只在HP-UX下有用）&lt;br&gt;6、load 或 load &lt;libname&gt; 载入共享库（动态链接库）时。（load为关键字，目前此功能只在HP-UX下有用）&lt;br&gt;unload 或 unload &lt;libname&gt; 卸载共享库（动态链接库）时。（unload为关键字，目前此功能只在HP-UX下有用）&lt;/libname&gt;&lt;/libname&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;tcatch &lt;event&gt;&lt;br&gt;只设置一次捕捉点，当程序停住以后，该点被自动删除。&lt;/event&gt;&lt;/li&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;tcatch &lt;event&gt;&lt;br&gt;只设置一次捕捉点，当程序停住以后，该点被自动删除。&lt;/event&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&quot;维护停止点&quot;&gt;&lt;a href=&quot;#维护停止点&quot; class=&quot;headerlink&quot; title=&quot;维护停止点&quot;&gt;&lt;/a&gt;维护停止点&lt;/h4&gt;&lt;p&gt;GDB中的停止点也就是断点、观察点、捕捉点。如果你觉得停止点没有用了，可以使用delete、clear、disable、enable来进行维护。&lt;/p&gt;
 &lt;ul&gt;
