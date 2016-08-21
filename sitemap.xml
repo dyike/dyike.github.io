@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.dyike.com/2016/08/21/php-components-development/</loc>
+    
+    <lastmod>2016-08-21T08:44:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.dyike.com/learn/index.html</loc>
+    
+    <lastmod>2016-08-14T12:23:46.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.dyike.com/2016/08/13/the-gdb-on-ubuntu/</loc>
     
     <lastmod>2016-08-14T06:09:18.000Z</lastmod>
@@ -68,13 +82,6 @@
     <loc>http://www.dyike.com/2016/06/08/php-array-combine-with-array/</loc>
     
     <lastmod>2016-06-08T09:02:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.dyike.com/learn/index.html</loc>
-    
-    <lastmod>2016-06-08T04:03:27.000Z</lastmod>
     
   </url>
   
