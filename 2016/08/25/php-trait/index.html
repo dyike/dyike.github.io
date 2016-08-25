@@ -87,19 +87,19 @@
 
 
 
-<meta name="description" content="有这样一天，我要去找工作了，虽然我是从三月份开始接触PHP，现在也就四五个月，面试的时候【才接触三个多月】稍微不傻叉的面试官，不去问过深的PHP知识，也就是围绕你学过的C/C++问问。
-一共面了三家，三家都问了同样的一个问题：说说你理解中的C++中的封装、继承、多态。 这个问题吧，你怎么答都行，毕竟是你自己理解的。第一次吱吱呜呜说了一些，最后感觉自己都不知道自己在说什么。后来就自己总结，看到网上有">
+<meta name="description" content="有这样一天，我要去找工作了，虽然我是从三月份开始接触PHP，到现在也就四五个月的样子，面试的时候【才接触三个多月】只要不是那种傻叉的面试官，基本不回你过深的PHP知识，也就是围绕你学过的C/C++啥的问问。
+一共面了三家，三家都问了同样的一个问题：说说你理解中的C++中的封装、继承、多态。 这个问题吧，你怎么答都行，毕竟是你自己理解的。第一次吱吱呜呜说了一些，最后感觉自己都不知道自己在说什么。后来">
 <meta property="og:type" content="article">
 <meta property="og:title" content="我是这样理解PHP中trait">
 <meta property="og:url" content="http://www.dyike.com/2016/08/25/php-trait/index.html">
 <meta property="og:site_name" content="一刻笔记">
-<meta property="og:description" content="有这样一天，我要去找工作了，虽然我是从三月份开始接触PHP，现在也就四五个月，面试的时候【才接触三个多月】稍微不傻叉的面试官，不去问过深的PHP知识，也就是围绕你学过的C/C++问问。
-一共面了三家，三家都问了同样的一个问题：说说你理解中的C++中的封装、继承、多态。 这个问题吧，你怎么答都行，毕竟是你自己理解的。第一次吱吱呜呜说了一些，最后感觉自己都不知道自己在说什么。后来就自己总结，看到网上有">
-<meta property="og:updated_time" content="2016-08-25T08:55:20.000Z">
+<meta property="og:description" content="有这样一天，我要去找工作了，虽然我是从三月份开始接触PHP，到现在也就四五个月的样子，面试的时候【才接触三个多月】只要不是那种傻叉的面试官，基本不回你过深的PHP知识，也就是围绕你学过的C/C++啥的问问。
+一共面了三家，三家都问了同样的一个问题：说说你理解中的C++中的封装、继承、多态。 这个问题吧，你怎么答都行，毕竟是你自己理解的。第一次吱吱呜呜说了一些，最后感觉自己都不知道自己在说什么。后来">
+<meta property="og:updated_time" content="2016-08-25T09:01:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我是这样理解PHP中trait">
-<meta name="twitter:description" content="有这样一天，我要去找工作了，虽然我是从三月份开始接触PHP，现在也就四五个月，面试的时候【才接触三个多月】稍微不傻叉的面试官，不去问过深的PHP知识，也就是围绕你学过的C/C++问问。
-一共面了三家，三家都问了同样的一个问题：说说你理解中的C++中的封装、继承、多态。 这个问题吧，你怎么答都行，毕竟是你自己理解的。第一次吱吱呜呜说了一些，最后感觉自己都不知道自己在说什么。后来就自己总结，看到网上有">
+<meta name="twitter:description" content="有这样一天，我要去找工作了，虽然我是从三月份开始接触PHP，到现在也就四五个月的样子，面试的时候【才接触三个多月】只要不是那种傻叉的面试官，基本不回你过深的PHP知识，也就是围绕你学过的C/C++啥的问问。
+一共面了三家，三家都问了同样的一个问题：说说你理解中的C++中的封装、继承、多态。 这个问题吧，你怎么答都行，毕竟是你自己理解的。第一次吱吱呜呜说了一些，最后感觉自己都不知道自己在说什么。后来">
 
 
 
@@ -333,9 +333,9 @@
       
 
       
-        <p>有这样一天，我要去找工作了，虽然我是从三月份开始接触PHP，现在也就四五个月，面试的时候【才接触三个多月】稍微不傻叉的面试官，不去问过深的PHP知识，也就是围绕你学过的C/C++问问。</p>
-<p>一共面了三家，三家都问了同样的一个问题：<code>说说你理解中的C++中的封装、继承、多态。</code> 这个问题吧，你怎么答都行，毕竟是你自己理解的。第一次吱吱呜呜说了一些，最后感觉自己都不知道自己在说什么。后来就自己总结，看到网上有一个从生物学的角度解释了一番，感觉还可以至少通俗易懂。后来又继续深入总结，在继承这一块，发现虽然PHP是单继承的语言，但还有一个比较特殊的东西，就是trait。这个翻译成中文还有比较奇葩的翻译——性状。一般我们都叫特性，或者直接叫trait。</p>
-<p>可能好多人跟我一样有一个困惑：之前我接触PHP的时候，至少我在项目中没有发现使用过这个。后来在毕设中，看到laravel的源码就使用了这个，那个时候也没有深入了解这个东西，看着像一个class。其实trait并不是一个很新的东西，在PHP5.4中加入的一种代码复用的语法，只是很少被关注。trait让PHP突破单继承的限制。</p>
+        <p>有这样一天，我要去找工作了，虽然我是从三月份开始接触PHP，到现在也就四五个月的样子，面试的时候【才接触三个多月】只要不是那种傻叉的面试官，基本不回你过深的PHP知识，也就是围绕你学过的C/C++啥的问问。</p>
+<p>一共面了三家，三家都问了同样的一个问题：<code>说说你理解中的C++中的封装、继承、多态。</code> 这个问题吧，你怎么答都行，毕竟是你自己理解的。第一次吱吱呜呜说了一些，最后感觉自己都不知道自己在说什么。后来就自己总结，看到网上有一个从生物学的角度解释了一番，感觉还可以至少通俗易懂。后来又继续深入总结，在继承这一块，发现PHP虽然是单继承的语言，但还有一个比较特殊的东西，就是trait。这个翻译成中文还有比较奇葩的翻译——性状。一般我们都叫特性，或者直接叫trait。</p>
+<p>可能好多人跟我一样有一个困惑：之前我接触PHP的时候，至少我在项目中没有发现使用过这个。后来也就是在毕设中，看到laravel的源码就使用了这个，那个时候也没有深入了解这个东西，看着像一个class。其实trait并不是一个很新的东西，在PHP5.4中加入的一种代码复用的语法，只是很少被关注而已。trait让PHP突破单继承的限制。</p>
 <p>下面就看看一个简单的例子：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">trait</span> Hello </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getHello</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"Hello"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">trait</span> World </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getWorld</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"World"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">Hello</span>, <span class="title">World</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHelloWorld</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$hw = <span class="keyword">new</span> HelloWorld();</span><br><span class="line">$hw-&gt;getHello();</span><br><span class="line">$hw-&gt;getWorld();</span><br><span class="line">$hw-&gt;sayHelloWorld();</span><br></pre></td></tr></table></figure>
 <p>上面的例子可以看出，trait像一个class,可以在写各种属性和方法，然后通过use关键字声明列出trait。由于PHP是单继承的语言，如果你想要继承多个基类，这个时候就需要将这些基类组合，而且这种组合是层叠，最终的效果就是一个树状的结构，但有了trait，就可以随意组合，结构简单。是不是很方便？我们在编写自己的代码前，我们可以把一些属性进行合理的划分，放在一个trait，让代码片段复用，耦合性低，代码清晰可读。</p>
