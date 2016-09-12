@@ -90,7 +90,7 @@
 <meta name="description" content="最近学习了一点PHP单元测试的东西，这里做一个简单的整理。
 什么是单元测试？单元测试将你的程序代码进行隔离并证明这个单个部件是正确的。通常情况下，单元测试是非常小、快并且简短的代码片段——比如一个方法。
 这样做有什么好处？可以保证代码的简洁，增强代码的可读性，同时还有利于编写更多有意义的代码，这样能减少代码的bug数量等等好处。
-####从手动测试到单元测试：####之前调试代码的时候基本是这样的">
+从手动测试到单元测试:之前调试代码的时候基本是这样的：编写代码，然后">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP单元测试的学习整理">
 <meta property="og:url" content="http://www.dyike.com/2016/09/12/php-unint-test/index.html">
@@ -98,14 +98,14 @@
 <meta property="og:description" content="最近学习了一点PHP单元测试的东西，这里做一个简单的整理。
 什么是单元测试？单元测试将你的程序代码进行隔离并证明这个单个部件是正确的。通常情况下，单元测试是非常小、快并且简短的代码片段——比如一个方法。
 这样做有什么好处？可以保证代码的简洁，增强代码的可读性，同时还有利于编写更多有意义的代码，这样能减少代码的bug数量等等好处。
-####从手动测试到单元测试：####之前调试代码的时候基本是这样的">
-<meta property="og:updated_time" content="2016-09-12T08:20:25.000Z">
+从手动测试到单元测试:之前调试代码的时候基本是这样的：编写代码，然后">
+<meta property="og:updated_time" content="2016-09-12T08:21:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP单元测试的学习整理">
 <meta name="twitter:description" content="最近学习了一点PHP单元测试的东西，这里做一个简单的整理。
 什么是单元测试？单元测试将你的程序代码进行隔离并证明这个单个部件是正确的。通常情况下，单元测试是非常小、快并且简短的代码片段——比如一个方法。
 这样做有什么好处？可以保证代码的简洁，增强代码的可读性，同时还有利于编写更多有意义的代码，这样能减少代码的bug数量等等好处。
-####从手动测试到单元测试：####之前调试代码的时候基本是这样的">
+从手动测试到单元测试:之前调试代码的时候基本是这样的：编写代码，然后">
 
 
 
@@ -342,7 +342,7 @@
         <p>最近学习了一点PHP单元测试的东西，这里做一个简单的整理。</p>
 <h2 id="什么是单元测试？"><a href="#什么是单元测试？" class="headerlink" title="什么是单元测试？"></a>什么是单元测试？</h2><p>单元测试将你的程序代码进行隔离并证明这个单个部件是正确的。通常情况下，单元测试是非常小、快并且简短的代码片段——比如一个方法。</p>
 <h2 id="这样做有什么好处？"><a href="#这样做有什么好处？" class="headerlink" title="这样做有什么好处？"></a>这样做有什么好处？</h2><p>可以保证代码的简洁，增强代码的可读性，同时还有利于编写更多有意义的代码，这样能减少代码的bug数量等等好处。</p>
-<p>####从手动测试到单元测试：####<br>之前调试代码的时候基本是这样的：编写代码，然后打开浏览器，给定不同的输入条件，最后看输出的结果是否符合预期的结果。对，这个就是手动测试，是对功能设计的测试，不是对我们的代码进行测试。</p>
+<h4 id="从手动测试到单元测试"><a href="#从手动测试到单元测试" class="headerlink" title="从手动测试到单元测试:"></a>从手动测试到单元测试:</h4><p>之前调试代码的时候基本是这样的：编写代码，然后打开浏览器，给定不同的输入条件，最后看输出的结果是否符合预期的结果。对，这个就是手动测试，是对功能设计的测试，不是对我们的代码进行测试。</p>
 <p>现在我们想要做的是自动测试，不再像上面说的那样死板的东西。有两种主要的方法可以达到如此效果——TDD(test-driven development)测试驱动开发 和 BDD(behavior-driven development)行为驱动开发。</p>
 <p>TDD是非常简短的，在编写业务代码之前编写测试用例，这种方式依赖于单元测试。正如前面提到的，单元测试是简短的、容易编写的代码片段，也就是说你的业务代码要确保被单元测试的代码所覆盖。TDD的大概流程是针对于每个功能点抽象出接口代码-&gt;编写单元测试的代码-&gt;实现接口-&gt;运行单元测试代码，循环此过程，直到整个单元测试都通过。这样做的好处是：减少代码逻辑的错误，尽可能减少项目中的bug。当然不是所有的项目都适合TDD这个方式。那使用TDD都是在什么情景下呢？(1) 对项目的需求足够的了解 (2)项目本身的复杂度和依赖性，如果一个项目极其复杂，模块之间又是相互依赖，这种情况下，TDD反正会增大拆分接口和编写测试用例的工作量。</p>
 <p>BDD,另一种单元测试的方式，就必须要对某些行为要有具体的期望，这样测试才会有意义！</p>
@@ -566,7 +566,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是单元测试？"><span class="nav-number">1.</span> <span class="nav-text">什么是单元测试？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这样做有什么好处？"><span class="nav-number">2.</span> <span class="nav-text">这样做有什么好处？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些讨论"><span class="nav-number">3.</span> <span class="nav-text">一些讨论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编写测试用例浪费很多时间？"><span class="nav-number">3.0.1.</span> <span class="nav-text">编写测试用例浪费很多时间？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我的代码，我了解，我不需要测试？"><span class="nav-number">3.0.2.</span> <span class="nav-text">我的代码，我了解，我不需要测试？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不可能测试所有的差异？"><span class="nav-number">3.0.3.</span> <span class="nav-text">不可能测试所有的差异？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写测试用例难？"><span class="nav-number">3.0.4.</span> <span class="nav-text">编写测试用例难？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充几点："><span class="nav-number">3.1.</span> <span class="nav-text">补充几点：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#测试功能"><span class="nav-number">3.1.1.</span> <span class="nav-text">测试功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重构"><span class="nav-number">3.1.2.</span> <span class="nav-text">重构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码质量"><span class="nav-number">3.1.3.</span> <span class="nav-text">代码质量</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是单元测试？"><span class="nav-number">1.</span> <span class="nav-text">什么是单元测试？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这样做有什么好处？"><span class="nav-number">2.</span> <span class="nav-text">这样做有什么好处？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从手动测试到单元测试"><span class="nav-number">2.0.1.</span> <span class="nav-text">从手动测试到单元测试:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些讨论"><span class="nav-number">3.</span> <span class="nav-text">一些讨论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编写测试用例浪费很多时间？"><span class="nav-number">3.0.1.</span> <span class="nav-text">编写测试用例浪费很多时间？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我的代码，我了解，我不需要测试？"><span class="nav-number">3.0.2.</span> <span class="nav-text">我的代码，我了解，我不需要测试？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不可能测试所有的差异？"><span class="nav-number">3.0.3.</span> <span class="nav-text">不可能测试所有的差异？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写测试用例难？"><span class="nav-number">3.0.4.</span> <span class="nav-text">编写测试用例难？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充几点："><span class="nav-number">3.1.</span> <span class="nav-text">补充几点：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#测试功能"><span class="nav-number">3.1.1.</span> <span class="nav-text">测试功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重构"><span class="nav-number">3.1.2.</span> <span class="nav-text">重构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码质量"><span class="nav-number">3.1.3.</span> <span class="nav-text">代码质量</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
