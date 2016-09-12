@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-09-12T08:15:27.000Z</updated>
+  <updated>2016-09-12T08:20:25.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -16,16 +16,16 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>php单元测试</title>
+    <title>PHP单元测试的学习整理</title>
     <link href="http://www.dyike.com/2016/09/12/php-unint-test/"/>
     <id>http://www.dyike.com/2016/09/12/php-unint-test/</id>
     <published>2016-09-12T08:05:52.000Z</published>
-    <updated>2016-09-12T08:15:27.000Z</updated>
+    <updated>2016-09-12T08:20:25.000Z</updated>
     
     <content type="html">&lt;p&gt;最近学习了一点PHP单元测试的东西，这里做一个简单的整理。&lt;/p&gt;
 &lt;h2 id=&quot;什么是单元测试？&quot;&gt;&lt;a href=&quot;#什么是单元测试？&quot; class=&quot;headerlink&quot; title=&quot;什么是单元测试？&quot;&gt;&lt;/a&gt;什么是单元测试？&lt;/h2&gt;&lt;p&gt;单元测试将你的程序代码进行隔离并证明这个单个部件是正确的。通常情况下，单元测试是非常小、快并且简短的代码片段——比如一个方法。&lt;/p&gt;
 &lt;h2 id=&quot;这样做有什么好处？&quot;&gt;&lt;a href=&quot;#这样做有什么好处？&quot; class=&quot;headerlink&quot; title=&quot;这样做有什么好处？&quot;&gt;&lt;/a&gt;这样做有什么好处？&lt;/h2&gt;&lt;p&gt;可以保证代码的简洁，增强代码的可读性，同时还有利于编写更多有意义的代码，这样能减少代码的bug数量等等好处。&lt;/p&gt;
-&lt;p&gt;###从手动测试到单元测试：&lt;br&gt;之前调试代码的时候基本是这样的：编写代码，然后打开浏览器，给定不同的输入条件，最后看输出的结果是否符合预期的结果。对，这个就是手动测试，是对功能设计的测试，不是对我们的代码进行测试。&lt;/p&gt;
+&lt;p&gt;####从手动测试到单元测试：####&lt;br&gt;之前调试代码的时候基本是这样的：编写代码，然后打开浏览器，给定不同的输入条件，最后看输出的结果是否符合预期的结果。对，这个就是手动测试，是对功能设计的测试，不是对我们的代码进行测试。&lt;/p&gt;
 &lt;p&gt;现在我们想要做的是自动测试，不再像上面说的那样死板的东西。有两种主要的方法可以达到如此效果——TDD(test-driven development)测试驱动开发 和 BDD(behavior-driven development)行为驱动开发。&lt;/p&gt;
 &lt;p&gt;TDD是非常简短的，在编写业务代码之前编写测试用例，这种方式依赖于单元测试。正如前面提到的，单元测试是简短的、容易编写的代码片段，也就是说你的业务代码要确保被单元测试的代码所覆盖。TDD的大概流程是针对于每个功能点抽象出接口代码-&amp;gt;编写单元测试的代码-&amp;gt;实现接口-&amp;gt;运行单元测试代码，循环此过程，直到整个单元测试都通过。这样做的好处是：减少代码逻辑的错误，尽可能减少项目中的bug。当然不是所有的项目都适合TDD这个方式。那使用TDD都是在什么情景下呢？(1) 对项目的需求足够的了解 (2)项目本身的复杂度和依赖性，如果一个项目极其复杂，模块之间又是相互依赖，这种情况下，TDD反正会增大拆分接口和编写测试用例的工作量。&lt;/p&gt;
 &lt;p&gt;BDD,另一种单元测试的方式，就必须要对某些行为要有具体的期望，这样测试才会有意义！&lt;/p&gt;
