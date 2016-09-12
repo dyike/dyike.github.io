@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-09-12T08:21:27.000Z</updated>
+  <updated>2016-09-12T08:28:32.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -20,15 +20,21 @@
     <link href="http://www.dyike.com/2016/09/12/php-unint-test/"/>
     <id>http://www.dyike.com/2016/09/12/php-unint-test/</id>
     <published>2016-09-12T08:05:52.000Z</published>
-    <updated>2016-09-12T08:21:27.000Z</updated>
+    <updated>2016-09-12T08:28:32.000Z</updated>
     
     <content type="html">&lt;p&gt;最近学习了一点PHP单元测试的东西，这里做一个简单的整理。&lt;/p&gt;
 &lt;h2 id=&quot;什么是单元测试？&quot;&gt;&lt;a href=&quot;#什么是单元测试？&quot; class=&quot;headerlink&quot; title=&quot;什么是单元测试？&quot;&gt;&lt;/a&gt;什么是单元测试？&lt;/h2&gt;&lt;p&gt;单元测试将你的程序代码进行隔离并证明这个单个部件是正确的。通常情况下，单元测试是非常小、快并且简短的代码片段——比如一个方法。&lt;/p&gt;
 &lt;h2 id=&quot;这样做有什么好处？&quot;&gt;&lt;a href=&quot;#这样做有什么好处？&quot; class=&quot;headerlink&quot; title=&quot;这样做有什么好处？&quot;&gt;&lt;/a&gt;这样做有什么好处？&lt;/h2&gt;&lt;p&gt;可以保证代码的简洁，增强代码的可读性，同时还有利于编写更多有意义的代码，这样能减少代码的bug数量等等好处。&lt;/p&gt;
-&lt;h4 id=&quot;从手动测试到单元测试&quot;&gt;&lt;a href=&quot;#从手动测试到单元测试&quot; class=&quot;headerlink&quot; title=&quot;从手动测试到单元测试:&quot;&gt;&lt;/a&gt;从手动测试到单元测试:&lt;/h4&gt;&lt;p&gt;之前调试代码的时候基本是这样的：编写代码，然后打开浏览器，给定不同的输入条件，最后看输出的结果是否符合预期的结果。对，这个就是手动测试，是对功能设计的测试，不是对我们的代码进行测试。&lt;/p&gt;
+&lt;h4 id=&quot;从手动测试到单元测试&quot;&gt;&lt;a href=&quot;#从手动测试到单元测试&quot; class=&quot;headerlink&quot; title=&quot;从手动测试到单元测试:&quot;&gt;&lt;/a&gt;从手动测试到单元测试:&lt;/h4&gt;&lt;p&gt;之前调试代码的时候基本是这样的：编写代码——&amp;gt;打开浏览器——&amp;gt;给定不同的输入条件——&amp;gt;看输出的结果是否符合预期的结果。对，这个就是手动测试，是对功能设计的测试，不是对我们的代码进行测试。&lt;/p&gt;
 &lt;p&gt;现在我们想要做的是自动测试，不再像上面说的那样死板的东西。有两种主要的方法可以达到如此效果——TDD(test-driven development)测试驱动开发 和 BDD(behavior-driven development)行为驱动开发。&lt;/p&gt;
-&lt;p&gt;TDD是非常简短的，在编写业务代码之前编写测试用例，这种方式依赖于单元测试。正如前面提到的，单元测试是简短的、容易编写的代码片段，也就是说你的业务代码要确保被单元测试的代码所覆盖。TDD的大概流程是针对于每个功能点抽象出接口代码-&amp;gt;编写单元测试的代码-&amp;gt;实现接口-&amp;gt;运行单元测试代码，循环此过程，直到整个单元测试都通过。这样做的好处是：减少代码逻辑的错误，尽可能减少项目中的bug。当然不是所有的项目都适合TDD这个方式。那使用TDD都是在什么情景下呢？(1) 对项目的需求足够的了解 (2)项目本身的复杂度和依赖性，如果一个项目极其复杂，模块之间又是相互依赖，这种情况下，TDD反正会增大拆分接口和编写测试用例的工作量。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TDD是非常简短的，在编写业务代码之前编写测试用例，这种方式依赖于单元测试。正如前面提到的，单元测试是简短的、容易编写的代码片段，也就是说你的业务代码要确保被单元测试的代码所覆盖。TDD的大概流程是针对于每个功能点抽象出接口代码——&amp;gt;编写单元测试的代码——&amp;gt;实现接口——&amp;gt;运行单元测试代码，循环此过程，直到整个单元测试都通过。这样做的好处是：减少代码逻辑的错误，尽可能减少项目中的bug。当然不是所有的项目都适合TDD这个方式。那使用TDD都是在什么情景下呢？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;(1) 对项目的需求足够的了解 &lt;/li&gt;
+&lt;li&gt;(2)项目本身的复杂度和依赖性，如果一个项目极其复杂，模块之间又是相互依赖，这种情况下，TDD反正会增大拆分接口和编写测试用例的工作量。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;BDD,另一种单元测试的方式，就必须要对某些行为要有具体的期望，这样测试才会有意义！&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&quot;一些讨论&quot;&gt;&lt;a href=&quot;#一些讨论&quot; class=&quot;headerlink&quot; title=&quot;一些讨论&quot;&gt;&lt;/a&gt;一些讨论&lt;/h2&gt;&lt;p&gt;写到这里，对每样东西每个人的看法都是不一样，对单元测试也是这样。也有人反对单元测试，每个东西不会是十全十美，当然了我写这篇文章肯定要夸单元测试的好处。现在不妨来讨论讨论。&lt;/p&gt;
 &lt;h4 id=&quot;编写测试用例浪费很多时间？&quot;&gt;&lt;a href=&quot;#编写测试用例浪费很多时间？&quot; class=&quot;headerlink&quot; title=&quot;编写测试用例浪费很多时间？&quot;&gt;&lt;/a&gt;编写测试用例浪费很多时间？&lt;/h4&gt;&lt;p&gt;首先需要说明的是，编写测试用例代码(额外的代码)显而易见是需要花时间的。对的，这个不只是花费时间的唯一因素。当我们编写完一个项目的业务逻辑的代码，过了好几个月，回过头来去看我们自己的代码，就要花费很长时间去理解我当初为什么要这样编写而不那样编写。也有可能是花费时间去理解别人的代码。fix bug的时候也需要花费时间在自己的代码中穿行。如果我们使用第三方的一些库，库被修改，我们也需要花很多时间review我们的代码……这些时间加起来是不是要比编写测试用例的代码还要多得多。&lt;br&gt;甚至还有人抱怨说，“我编写了测试用例的代码，并没有找到bug，这不是浪费时间？是什么？”既然你编写了测试用例，当你修改了某个部分的代码时，就可以帮你检查出来。至少这样你不需要手动测试你哪些修改过的代码。&lt;/p&gt;
 &lt;h4 id=&quot;我的代码，我了解，我不需要测试？&quot;&gt;&lt;a href=&quot;#我的代码，我了解，我不需要测试？&quot; class=&quot;headerlink&quot; title=&quot;我的代码，我了解，我不需要测试？&quot;&gt;&lt;/a&gt;我的代码，我了解，我不需要测试？&lt;/h4&gt;&lt;p&gt;有的时候，我们第一次编写业务逻辑代码是非常清晰的，但过了一段时间我们总要花费一点时间来理解当初编写业务逻辑的代码。我们写的测试用例的方法通常有五六行代码组成，但这些方法可用于不同的服务器、不同版本的脚本语言环境。&lt;/p&gt;
