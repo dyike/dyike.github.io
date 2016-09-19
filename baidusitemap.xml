@@ -5,10 +5,10 @@
     
   <url>
     <loc>http://www.dyike.com/2016/09/19/tips-for-productive-debugging-with-gdb/</loc>
-    <lastmod>2016-09-19T15:27:21.000Z</lastmod>
+    <lastmod>2016-09-19T15:30:40.000Z</lastmod>
     <data>
         <display>
-        <title>tips-for--productive-debugging-with-gdb</title>
+        <title>GDB高效调试的一些小tips</title>
         <pubTime>2016-09-19T14:23:49.000Z</pubTime>
         
         <tag>GDB</tag>

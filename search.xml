@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[tips-for--productive-debugging-with-gdb]]></title>
+      <title><![CDATA[GDB高效调试的一些小tips]]></title>
       <url>http://www.dyike.com/2016/09/19/tips-for-productive-debugging-with-gdb/</url>
       <content type="html"><![CDATA[<p>今天来翻译一篇文章，是关于高效使用GDB调试的。</p>
 <h2 id="建议一：Try-GDB-Dashboard"><a href="#建议一：Try-GDB-Dashboard" class="headerlink" title="建议一：Try GDB Dashboard"></a>建议一：Try GDB Dashboard</h2><p>这可能是你不太喜欢的“菜”，但像我这样的，喜欢在每一个断点处获得更多的程序信息，所以就尝试GDB仪表板。</p>

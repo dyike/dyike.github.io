@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-09-19T15:27:21.000Z</updated>
+  <updated>2016-09-19T15:30:40.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>tips-for--productive-debugging-with-gdb</title>
+    <title>GDB高效调试的一些小tips</title>
     <link href="http://www.dyike.com/2016/09/19/tips-for-productive-debugging-with-gdb/"/>
     <id>http://www.dyike.com/2016/09/19/tips-for-productive-debugging-with-gdb/</id>
     <published>2016-09-19T14:23:49.000Z</published>
-    <updated>2016-09-19T15:27:21.000Z</updated>
+    <updated>2016-09-19T15:30:40.000Z</updated>
     
     <content type="html">&lt;p&gt;今天来翻译一篇文章，是关于高效使用GDB调试的。&lt;/p&gt;
 &lt;h2 id=&quot;建议一：Try-GDB-Dashboard&quot;&gt;&lt;a href=&quot;#建议一：Try-GDB-Dashboard&quot; class=&quot;headerlink&quot; title=&quot;建议一：Try GDB Dashboard&quot;&gt;&lt;/a&gt;建议一：Try GDB Dashboard&lt;/h2&gt;&lt;p&gt;这可能是你不太喜欢的“菜”，但像我这样的，喜欢在每一个断点处获得更多的程序信息，所以就尝试GDB仪表板。&lt;/p&gt;
