@@ -90,7 +90,7 @@
 <meta name="description" content="php、swift、程序员、arduino、设计">
 <meta property="og:type" content="website">
 <meta property="og:title" content="一刻笔记">
-<meta property="og:url" content="http://www.dyike.com/tags/PHP/index.html">
+<meta property="og:url" content="http://www.dyike.com/tags/php/index.html">
 <meta property="og:site_name" content="一刻笔记">
 <meta property="og:description" content="php、swift、程序员、arduino、设计">
 <meta name="twitter:card" content="summary">
@@ -113,7 +113,7 @@
   };
 </script>
 
-  <title> 标签: PHP | 一刻笔记 </title>
+  <title> 标签: php | 一刻笔记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +264,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        PHP
+        php
         <small>标签</small>
       </h2>
     </div>
@@ -277,37 +277,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/08/25/php-trait/" itemprop="url">
+            <a class="post-title-link" href="/2016/09/12/php-unint-test/" itemprop="url">
               
-                <span itemprop="name">我是这样理解PHP中trait</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-25T15:50:22+08:00"
-              content="2016-08-25" >
-          08-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/08/php-array-combine-with-array/" itemprop="url">
-              
-                <span itemprop="name">PHP数组的“合并相加”</span>
+                <span itemprop="name">PHP单元测试的学习整理</span>
               
             </a>
         
@@ -315,93 +287,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-08T10:31:24+08:00"
-              content="2016-06-08" >
-          06-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/01/02/php7-compile-err/" itemprop="url">
-              
-                <span itemprop="name">php7编译出现的问题</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-01-02T18:15:13+08:00"
-              content="2016-01-02" >
-          01-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/09/16/the-php-dev-in-ubuntu/" itemprop="url">
-              
-                <span itemprop="name">ubuntu下配置nginx，mysql，php环境</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-09-16T20:56:59+08:00"
-              content="2015-09-16" >
-          09-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/06/23/learn-php-source-code/" itemprop="url">
-              
-                <span itemprop="name">【转载】06-19怎么学习或者阅读PHP源码？</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-06-23T21:25:09+08:00"
-              content="2015-06-23" >
-          06-23
+              datetime="2016-09-12T16:05:52+08:00"
+              content="2016-09-12" >
+          09-12
         </time>
       </div>
 
@@ -451,7 +339,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -461,7 +349,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -729,6 +617,82 @@
                                 }
                                 if (i == 0) {
                                     first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
+irst_occur = index_content;
                                 }
                             }
                         });
