@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.dyike.com/2015/09/16/the-php-dev-in-ubuntu/</loc>
+    
+    <lastmod>2016-09-28T06:34:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.dyike.com/2016/09/19/tips-for-productive-debug-with-gdb/</loc>
     
     <lastmod>2016-09-19T15:51:49.000Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>http://www.dyike.com/2016/07/31/mianshi-zongjie-fenxiang/</loc>
     
     <lastmod>2016-07-31T13:05:34.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.dyike.com/2015/09/16/the-php-dev-in-ubuntu/</loc>
-    
-    <lastmod>2016-07-08T10:40:06.000Z</lastmod>
     
   </url>
   
