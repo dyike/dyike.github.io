@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-10-18T14:08:53.000Z</updated>
+  <updated>2016-11-02T14:13:24.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>好久没有写东西了</title>
+    <link href="http://www.dyike.com/2016/11/02/long-time-no-writing/"/>
+    <id>http://www.dyike.com/2016/11/02/long-time-no-writing/</id>
+    <published>2016-11-02T13:56:11.000Z</published>
+    <updated>2016-11-02T14:13:24.000Z</updated>
+    
+    <content type="html">&lt;p&gt;上一次写东西还是九月份呢，整个十月份没有写东西，今天晚上突然就想写点东西，十一月份了，来杭州三个月了，工作也基本走上了正轨，也转正了。不过最近也不是很忙，说实话，前段时间确实很闲，偏偏闲的时候没有写点东西，现在回过头来想想，我是不是把那段时间给浪费了。&lt;/p&gt;
+&lt;p&gt;前段时间，首先接触了一点前端的东西，自己比较喜欢Vue框架，就用Vue2.0写了一两个demo，过了一遍文档。坦率地讲，对于前端的东西，自己还存在很多弱点，要是有兴趣，也许当年就可能是选前端了。哈哈哈哈，这都是开玩笑，其实前端还是很好玩的，现在的前端的门槛还是挺高的。慢慢来吧，有时间就去写点demo啥的，学！&lt;/p&gt;
+&lt;p&gt;后来听朋友讲，rust，看了一下文档，有点被这个当出来的语言给迷住了一会儿，基本都是那种学习的套路，看文档，撸实例代码，好玩，也有些让我头疼的东西比如，泛型，可变性，所有权这些知识点上，还是很含糊的，估计还是要过几遍文档。rust也有很多不错的地方，比如traits。&lt;/p&gt;
+&lt;p&gt;其他生活方面呢，没有啥特殊变化，目前，周末自己做做饭。真是那句话“吃饭五分钟，做饭两小时”😂，确实有点麻烦，但可以自己想吃啥就吃啥，还能省钱。到目前为止，还没有出现自己做得饭不能吃的情况。生活作息时间也按照日程来了，每天晚上11点开始睡觉，然后早上6点起床！坚持了两个多周了，现在杭州开始越来越冷，早上起床确实需要勇气了。坚持吧！&lt;/p&gt;
+&lt;p&gt;对了，现在写这个的时候，我旁边的手机还在放董路老师的直播，他老司机每天发车，我不保证每天上车，有时间就看看，至少还能听到不少意思的关于足球的东西。他直播播放的歌曲也挺好听的，能放松一下一天的疲惫！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;上一次写东西还是九月份呢，整个十月份没有写东西，今天晚上突然就想写点东西，十一月份了，来杭州三个月了，工作也基本走上了正轨，也转正了。不过最近也不是很忙，说实话，前段时间确实很闲，偏偏闲的时候没有写点东西，现在回过头来想想，我是不是把那段时间给浪费了。&lt;/p&gt;
+&lt;p&gt;前段时
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>php二维数组去重</title>
@@ -1089,31 +1113,6 @@
     
     
       <category term="vagrant virtualbox" scheme="http://www.dyike.com/tags/vagrant-virtualbox/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>由于自己的疏忽，一个低级的错误</title>
-    <link href="http://www.dyike.com/2015/09/19/about-an-error/"/>
-    <id>http://www.dyike.com/2015/09/19/about-an-error/</id>
-    <published>2015-09-19T11:20:17.000Z</published>
-    <updated>2016-04-28T07:29:19.000Z</updated>
-    
-    <content type="html">&lt;p&gt;PHP中continue后面的分号，疏忽掉就会出现不一样的情况。&lt;br&gt;看一个简单的例子：&lt;br&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;lt;?php&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; ($i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; $i &amp;amp;lt; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;; ++$i) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ($i == &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;continue&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;$i\n&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;这种情况输出的结果：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;去掉分号后：&lt;br&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;lt;?php&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; ($i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; $i &amp;amp;lt; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;; ++$i) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ($i == &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;continue&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;$i\n&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;在php5.4之前的版本输出的结果：&lt;br&gt;&lt;code&gt;2&lt;/code&gt;&lt;br&gt;因为整个 continue print “$i\n”; 被当做单一的表达式而求值，所以 print 函数只有在 $i == 2 为真时才被调用（print 的值被当成了上述的可选数字参数而传递给了 continue）。&lt;/p&gt;
-&lt;p&gt;还有重要的，在php5.4版本中，这个情况是不能输出结果的。&lt;br&gt;&lt;code&gt;5.4.0 continue 0; 不再合法。这在之前的版本被解析为 continue 1;。&lt;/code&gt;&lt;br&gt;&lt;code&gt;5.4.0 取消变量作为参数传递（例如 $num = 2; continue $num;）。&lt;/code&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;PHP中continue后面的分号，疏忽掉就会出现不一样的情况。&lt;br&gt;看一个简单的例子：&lt;br&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/s
-    
-    </summary>
-    
-    
-      <category term="-PHP" scheme="http://www.dyike.com/tags/PHP/"/>
     
   </entry>
   
