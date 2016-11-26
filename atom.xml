@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-11-02T14:13:24.000Z</updated>
+  <updated>2016-11-26T14:24:48.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -14,6 +14,83 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Programming iOS 9 学习笔记-view章节</title>
+    <link href="http://www.dyike.com/2016/11/26/ios-learn-note-view/"/>
+    <id>http://www.dyike.com/2016/11/26/ios-learn-note-view/</id>
+    <published>2016-11-26T14:08:34.000Z</published>
+    <updated>2016-11-26T14:24:48.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;  首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前两个版本来说好很多，改动相当的大，所以说swift的每一个版本都可以算一个新语言。我最近把swift3的文档过了一遍（之前只看过swift1的，swift2没怎么看过）现在又拿出这个本书出来学习。&lt;/p&gt;
+&lt;p&gt;  这个笔记谈不上翻译，当然目前很大一部分是借鉴&lt;a href=&quot;http://wdxtub.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://wdxtub.com/&lt;/a&gt; 这个blog里的笔记【这个blog文章我常看】，我只是在上面作了一些修改。&lt;/p&gt;
+&lt;p&gt;为什么这么说呢？因为我操作的环境是在swift3+Xcode8+iOS10。&lt;/p&gt;
+&lt;p&gt;我只是业余的、业余的、业余的学习iOS开发，如果里面什么错误，欢迎指正！欢迎iOS大牛带我飞。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;第一章Views&quot;&gt;&lt;a href=&quot;#第一章Views&quot; class=&quot;headerlink&quot; title=&quot;第一章Views&quot;&gt;&lt;/a&gt;第一章Views&lt;/h1&gt;&lt;h3 id=&quot;几个概念：&quot;&gt;&lt;a href=&quot;#几个概念：&quot; class=&quot;headerlink&quot; title=&quot;几个概念：&quot;&gt;&lt;/a&gt;几个概念：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;一个view是UIView类或UIView的子类的对象，知道怎么在界面的矩形区域绘制自己。&lt;/li&gt;
+&lt;li&gt;一个view也是一个responder(UIView是UIResponder的子类)。是与用户交互的（触摸、点击）。&lt;/li&gt;
+&lt;li&gt;一个view可以有子view（subview），一个subview只能有一个superview。这就形成了一个view的树状结构。如果从界面上去除（隐藏/移动）一个view，它的subview也将去除（隐藏/移动）。&lt;/li&gt;
+&lt;li&gt;一个view可以从nib生成，也可以通过代码生成。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Window&quot;&gt;&lt;a href=&quot;#Window&quot; class=&quot;headerlink&quot; title=&quot;Window&quot;&gt;&lt;/a&gt;Window&lt;/h2&gt;&lt;p&gt;view hierarchy的顶层是app的window，是UIWindow的一个实例，或者UIView子类的实例。在应用中应该只有一个main window。在启动的时候创建，不会被销毁或者代替。想象一个平时我们使用的app，这是一个什么东西？就是一个应用的背景，并且是superview，其他的view都是他的subview。&lt;/p&gt;
+&lt;p&gt;app的window需要填充设备的屏幕：window初始化时候，frame设置成UIScreen.main.bounds。如果使用main storyboard, UIApplicationMain 函数会自动完成。&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; w = &lt;span class=&quot;type&quot;&gt;UIWindow&lt;/span&gt;(frame: &lt;span class=&quot;type&quot;&gt;UIScreen&lt;/span&gt;.main.bounds)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//在iOS10 中可以不传入frame参数，默认设置成screen的bounds&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; w = &lt;span class=&quot;type&quot;&gt;UIWindow&lt;/span&gt;()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;为了保证window在app的生命周期中存在，app delegate类会用一个strong retain policy来维持一个window属性。这个过程是：启动app，UIApplicationMain方法会初始化app delegate类并一直保持这个实例。然后window实例就会被赋值到app delegate实例的window属性上，所以app的整个生命周期都一直保持。如果使用main storyboard，这些都是自动初始化的。&lt;/p&gt;
+&lt;p&gt;当一个view控制器成为main window的rootViewController， 它的view将会变为main window的有且仅有的一个直接subview，也就是main window上的root view，之后所有的view都是这个root view上的subview。因此，root view是view hierarchy的最顶层的对象，用户是可以看到的。但有时候，用户可能会看到root view之后的window，基于这个原因，可以在给main view 设置好backgroundColor。&lt;/p&gt;
+&lt;p&gt;app的界面应该是不可见的，知道你window被设置为key window。这个可以通过调用UIWindow实例的makeKeyVisible方法来完成。&lt;/p&gt;
+&lt;h4 id=&quot;总结：&quot;&gt;&lt;a href=&quot;#总结：&quot; class=&quot;headerlink&quot; title=&quot;总结：&quot;&gt;&lt;/a&gt;总结：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;使用main storyboard&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;storyboard文件在Info.plist的键为 Main storyboard file base name中指定（UIMainStoryboardFile）&lt;/li&gt;
+&lt;li&gt;UIApplicationMain实例化UIWindow，设置好frame。把设置好的UIWindow实例指定给app delegate的window属性&lt;/li&gt;
+&lt;li&gt;storyboard初始化的view controller，指定到 window 的 rootViewController 属性&lt;/li&gt;
+&lt;li&gt;这些都是发生在app delegate的 application: didFinishLaunchingWithOptions 被调用之前&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;不使用main storyboard&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;在General pane,选择”Main”，并删除&lt;/li&gt;
+&lt;li&gt;删除Main.storyboard和ViewController.swift&lt;/li&gt;
+&lt;li&gt;删除AppDelegate.swift的所有内容&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;例子：An App Delegate class with no storyboard&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; UIKit&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@UIApplicationMain&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;AppDelegate&lt;/span&gt; : &lt;span class=&quot;title&quot;&gt;UIResponder&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;UIApplicationDelegate&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; window : &lt;span class=&quot;type&quot;&gt;UIWindow&lt;/span&gt;?&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(application: UIApplication,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        -&amp;gt; &lt;span class=&quot;type&quot;&gt;Bool&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.window = &lt;span class=&quot;type&quot;&gt;UIWindow&lt;/span&gt;()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.window!.rootViewController = &lt;span class=&quot;type&quot;&gt;UIViewController&lt;/span&gt;()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.window!.backgroundColor = &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;.whiteColor()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.window!.makeKeyAndVisible()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;app一旦运行起来之后，将会有多中方式来引用window：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;界面中的UIView，会自动创建一个window属性（通过对window的引用创建）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以使用UIView的window属性来检查这个view是否被嵌入到了window中。如果不是，window属性为nil。一个window的属性为nil的UIView对用户是不可见的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;app的delegate实例会保持这个window的引用（window属性）。通过使用shared application的delegate 属性来获取这个引用：&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; w = &lt;span class=&quot;type&quot;&gt;UIApplication&lt;/span&gt;.shared.delegate!.window!!&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果不那样使用的话，可以显式转换成app delegate类&lt;br&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; w = (&lt;span class=&quot;type&quot;&gt;UIApplication&lt;/span&gt;.shared.delegate &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt;! &lt;span class=&quot;type&quot;&gt;AppDelegate&lt;/span&gt;).window!&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;shared application 会通过它的keyWindow属性来维护一个执行window的引用。&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; w = &lt;span class=&quot;type&quot;&gt;UIApplication&lt;/span&gt;.shared.keyWindow!&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但是，这个引用不是很稳定。原因：系统会创建临时的window来当做key window。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;  首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相
+    
+    </summary>
+    
+    
+      <category term="swift, iOS" scheme="http://www.dyike.com/tags/swift-iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>好久没有写东西了</title>
@@ -1027,92 +1104,6 @@
     
     
       <category term="redis" scheme="http://www.dyike.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用 Vagrant 管理虚拟机</title>
-    <link href="http://www.dyike.com/2015/09/20/manage-virtualbox-by-vagrant/"/>
-    <id>http://www.dyike.com/2015/09/20/manage-virtualbox-by-vagrant/</id>
-    <published>2015-09-20T11:28:24.000Z</published>
-    <updated>2016-04-28T07:40:39.000Z</updated>
-    
-    <content type="html">&lt;p&gt;Vagrant 可以让我们用命令直接从云上下载虚拟机的镜像，你想要什么系统都行，Centos，Ubuntu …   只需要一行命令，然后再用命令去操作虚拟机，启动，暂停，关闭，重启，你可以更方便的管理所有的在本地上电脑上的虚拟机镜像，手工去配置它们，可以再重新打包成新的镜像，方便你跟你的团队在其它的项目上重复使用。&lt;/p&gt;
-&lt;h2 id=&quot;安装-Vagrant&quot;&gt;&lt;a href=&quot;#安装-Vagrant&quot; class=&quot;headerlink&quot; title=&quot;安装 Vagrant&quot;&gt;&lt;/a&gt;安装 Vagrant&lt;/h2&gt;&lt;p&gt;Vagrant 提供了一个虚拟机的管理层，虚拟机本身还是需要用到虚拟机的软件，比如 VMware，Virtualbox 等等，推荐用 Virtualbox 。使用系统的包管理工具去安装软件。&lt;/p&gt;
-&lt;h3 id=&quot;Mac-上安装-Vagrant&quot;&gt;&lt;a href=&quot;#Mac-上安装-Vagrant&quot; class=&quot;headerlink&quot; title=&quot;Mac 上安装 Vagrant&quot;&gt;&lt;/a&gt;Mac 上安装 Vagrant&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install vagrant&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;Mac-上安装-Virtualbox&quot;&gt;&lt;a href=&quot;#Mac-上安装-Virtualbox&quot; class=&quot;headerlink&quot; title=&quot;Mac 上安装 Virtualbox&quot;&gt;&lt;/a&gt;Mac 上安装 Virtualbox&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install Caskroom/cask/virtualbox&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;Box&quot;&gt;&lt;a href=&quot;#Box&quot; class=&quot;headerlink&quot; title=&quot;Box&quot;&gt;&lt;/a&gt;Box&lt;/h2&gt;&lt;p&gt;Box ，你可以把它想成是一个箱子，里面装了一些东西。在用 Vagrant 创建虚拟机的时候，需要用到 Box ，它里面会包装操作系统的镜像，不同的 Box 带的操作系统可能是不一样的，比如 CentOS，Ubuntu 等等，你可以基于它们去创建自己版本的 Box，比如在虚拟机上安装一些软件，然后把它重新打包成 Box 。&lt;/p&gt;
-&lt;p&gt;在 Vagrant 提供的云服务（&lt;a href=&quot;https://vagrantcloud.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://vagrantcloud.com/&lt;/a&gt;）上面可以下载到别人做好的 Box，这个云服务现在叫 Atlas，是 hashicorp 公司的一个产品，Vagrant 也是这家公司的项目。打开这个地址以后，可以去搜索想要用的 Box，可以搜索操作系统的名字，也可以搜索特定的软件的名字，比如 Laravel，Drupal …    在搜索结果上面会显示这个 Box 的下载的次数，你可以用来判断这个 Box 是否受欢迎。&lt;/p&gt;
-&lt;p&gt;我们需要一个纯净的 Box，就是只包含操作系统，在系统上没有安装其它的多余的东西。注意不同发行版的 Linux 操作起来是有些区别的，我推荐先用一下 CentOS 这款操作系统。&lt;/p&gt;
-&lt;h3 id=&quot;添加-Box&quot;&gt;&lt;a href=&quot;#添加-Box&quot; class=&quot;headerlink&quot; title=&quot;添加 Box&quot;&gt;&lt;/a&gt;添加 Box&lt;/h3&gt;&lt;p&gt;你要把 Box 下载到本地的电脑上，交给 Vagrant 去管理，这样在创建虚拟机的时候，Vagrant 会复制一份你指定的 Box 到你的项目里面，这样你在这个虚拟机上的操作，就不会影响到其它的项目。先确定你用的电脑上的操作系统的位数，现在一般都是 64 位的操作系统。打开命令行工具以后，执行 vagrant box add 命令去添加 Box 。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant box add 名字&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果你指定的 Box 在本地电脑上不存在，Vagrant 就会到它的云上去给你下载。执行：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant box add chef/centos-6.5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;上面的 chef/centos-6.5 还有 centos-6.5-i386 就是想要添加的 Box 的名字，最前面的 chef  ，是一个命名空间，一般就是这个 Box 的作者的名字，后面的 centos-6.5 表示这个 Box 的操作系统是 CentOS ，版本是 6.5 ，i386 表示 32 位的系统。&lt;/p&gt;
-&lt;h3 id=&quot;查看本地上的-Box-列表&quot;&gt;&lt;a href=&quot;#查看本地上的-Box-列表&quot; class=&quot;headerlink&quot; title=&quot;查看本地上的 Box 列表&quot;&gt;&lt;/a&gt;查看本地上的 Box 列表&lt;/h3&gt;&lt;p&gt;完成以后，可以查看一下在本地上的 Box 列表。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant box list&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;手工下载并添加-Box-的方法&quot;&gt;&lt;a href=&quot;#手工下载并添加-Box-的方法&quot; class=&quot;headerlink&quot; title=&quot;手工下载并添加 Box 的方法&quot;&gt;&lt;/a&gt;手工下载并添加 Box 的方法&lt;/h3&gt;&lt;p&gt;在执行 Vagrant box add 添加 Box 的时候，Vagrant 会在命令行上显示 Box 的下载地址，下载的速度还有进度，如果你在国内，很可能下载的速度非常慢。你可以复制 Box 的下载地址，然后用下载工具，比如用迅雷去下载。&lt;/p&gt;
-&lt;p&gt;完成以后，找到下载下来的文件，文件名里会包含 .box 这个扩展名，如果不是，你需要手工添加这个扩展名。并且重命名一下文件，比如命名为 centos_6.5.box 。然后把它放到桌面上，其它地方也行。打开命令行，进入到手工下面的 Box 文件所在的位置。比如&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd ~/ityike&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;然后查看一下文件列表：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ls&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;确定 Box 文件在当前的目录的下面，再执行 vagrant box add 命令去手工添加 Box 。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant box add 名称 路径&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;名称就是你想给这个 Box 起的名字，以后我们会用到这个名字去管理这个 Box，路径是 Box 文件所在的位置，如果你要添加的 Box 直接在你当前所在的目录的下面，可以直接使用 Box 文件的名称，像这样：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant box add centos-6.5 centos-6.5.box&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;Vagrant 会把 Box 文件复制到系统的某个特定的目录的下面，完成以后，你就可以把桌面上的 Box 文件删除掉了。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;rm centos-6.5.box&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;再查看一下可用的 Box 列表：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant box list&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;在返回的列表里，你应该可以找到自己手工添加的 centos-6.5 这个 Box 。&lt;/p&gt;
-&lt;h3 id=&quot;管理-Box&quot;&gt;&lt;a href=&quot;#管理-Box&quot; class=&quot;headerlink&quot; title=&quot;管理 Box&quot;&gt;&lt;/a&gt;管理 Box&lt;/h3&gt;&lt;p&gt;添加到本地电脑上的 Box 会放到一个特定的目录的下面。跟 Box 相关的命令，可以用 vagrant box 命令查看。使用的方法就是 vagrant box 后面再加上子相应的子命令，接着是对应的参数。常用的就是 add ，list 还有 remove。add 是添加新的 Box ，list 可以查看已有的 Box ，remove 就是从系统中删除掉 Box 。注意在创建虚拟机的时候，Vagrant 会把你指定的 Box 复制一份放到特定的目录的下面。所以，你在使用 remove 命令删除掉添加到系统中的 Box 的时候，不会影响到这些已有的虚拟机。&lt;/p&gt;
-&lt;h2 id=&quot;创建虚拟机&quot;&gt;&lt;a href=&quot;#创建虚拟机&quot; class=&quot;headerlink&quot; title=&quot;创建虚拟机&quot;&gt;&lt;/a&gt;创建虚拟机&lt;/h2&gt;&lt;p&gt;添加了 Box 以后，我们就可以用 Vagrant 基于这个 Box 去创建虚拟机了。先找个地方去创建一个目录，这个目录就是你的项目所在的目录，它会自动跟虚拟机上的某个目录同步，也就是在你电脑上的这个目录里面的文件，你同样可以在虚拟机里的某个目录里面找到。比如我要在桌面上创建一个叫 ninghao-project 的目录，然后再进入到这个目录，在命令行工具下面执行：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd ~/ityike&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mkdir ityike-project&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cd ityike-project&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;初始化&quot;&gt;&lt;a href=&quot;#初始化&quot; class=&quot;headerlink&quot; title=&quot;初始化&quot;&gt;&lt;/a&gt;初始化&lt;/h3&gt;&lt;p&gt;首先要做的就是初始化一下，用 vagrant init ，后面指定一下要使用的 Box 的名字。完成以后，在你的目录下面创建一个叫 Vagrantfile 的文件。&lt;/p&gt;
-&lt;p&gt;先查看一下可用的 Box&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant box list&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果跟着我的步骤来，你应该可以看到一个叫 centos-6.5 的 Box 。下面我们用这个 Box 去初始化一下项目。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant init centos-6.5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;完成以后，查看一下当前目录下面的东西。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ls&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;你会看到一个 Vagrantfile 文件，这个文件是配置当前项目的虚拟机用的，以后我们会再回来看一下怎么样使用这个文件。&lt;/p&gt;
-&lt;h3 id=&quot;启动虚拟机&quot;&gt;&lt;a href=&quot;#启动虚拟机&quot; class=&quot;headerlink&quot; title=&quot;启动虚拟机&quot;&gt;&lt;/a&gt;启动虚拟机&lt;/h3&gt;&lt;p&gt;Vagrant 提供了一些命令可以操作虚拟机，比如启动，暂停，关闭或者销毁虚拟机。启动虚拟机，执行：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant up&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;第一次启动，花的时间会长一些，因为 Vagrant 会把你为项目指定的 Box 复制到一个地方，然后再去启动它。完成以后，你可以用命令再查看一下虚拟机的状态：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant status&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果返回的是 running ，说明虚拟机启动成功，现在你就可以使用 ssh 连接到虚拟机，去控制它了。&lt;/p&gt;
-&lt;h3 id=&quot;控制虚拟机&quot;&gt;&lt;a href=&quot;#控制虚拟机&quot; class=&quot;headerlink&quot; title=&quot;控制虚拟机&quot;&gt;&lt;/a&gt;控制虚拟机&lt;/h3&gt;&lt;p&gt;想在 Linux 系统的虚拟机上进行操作，你要用 ssh 连接到虚拟机，这跟你远程控制 Linux 的服务器是一样的。&lt;/p&gt;
-&lt;h4 id=&quot;Mac&quot;&gt;&lt;a href=&quot;#Mac&quot; class=&quot;headerlink&quot; title=&quot;Mac&quot;&gt;&lt;/a&gt;Mac&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant ssh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;暂停与恢复&quot;&gt;&lt;a href=&quot;#暂停与恢复&quot; class=&quot;headerlink&quot; title=&quot;暂停与恢复&quot;&gt;&lt;/a&gt;暂停与恢复&lt;/h3&gt;&lt;p&gt;虚拟机在运行的时候会消耗你的电脑资源，比如内存，CPU 等等，在不用它的时候，可以关掉或者使用暂停，暂停虚拟机可以保存虚拟机运行时候的状态，暂停以后，除了占点硬盘空间以外，就不会消耗你的其它资源了。&lt;/p&gt;
-&lt;p&gt;进入到项目所在的目录，然后可以用 vagrant status 查看一下当前的虚拟机的状态，如果是 running ，你就可以使用命令去暂停一下：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant suspend&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;重新恢复起动，执行命令：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant resume&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;想要彻底关掉虚拟机的运行，执行：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant halt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;停止以后，要想再起动虚拟机，要执行：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant up&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;删除虚拟机&quot;&gt;&lt;a href=&quot;#删除虚拟机&quot; class=&quot;headerlink&quot; title=&quot;删除虚拟机&quot;&gt;&lt;/a&gt;删除虚拟机&lt;/h3&gt;&lt;p&gt;不打算再用的虚拟机，可以把它删除掉，直接删除项目的目录是不行的，因为为项目指定的虚拟机并不包含在这个项目的目录下面，需要使用命令去删除虚拟机。进入到项目所在目录，然后执行：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vagrant destroy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;配置共享目录&quot;&gt;&lt;a href=&quot;#配置共享目录&quot; class=&quot;headerlink&quot; title=&quot;配置共享目录&quot;&gt;&lt;/a&gt;配置共享目录&lt;/h3&gt;&lt;p&gt;打开 Vagrantfile ，搜索一下共享目录的配置：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# config.vm.synced_folder&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;去掉这行代码前面的 # 符号 。这个配置后面有两个参数，第一个参数是主机上的目录，可以使用绝对的位置，也可以使用相对的位置，如果是相对位置，是相对于项目根目录的位置，也就是相对于 Vagrantfile 这个文件所在的目录的位置。两个参数之间是一个逗号，第二个参数是在虚拟机上的目录，如果你设置的目录在虚拟机上不存在，Vagrant 在启动虚拟机的时候，会自动去创建这个目录。&lt;br&gt;比如：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;config.vm.synced_folder &amp;quot;app&amp;quot;, &amp;quot;/vagrant&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;端口转发&quot;&gt;&lt;a href=&quot;#端口转发&quot; class=&quot;headerlink&quot; title=&quot;端口转发&quot;&gt;&lt;/a&gt;端口转发&lt;/h2&gt;&lt;p&gt;然后搜索：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;config.vm.network &amp;quot;forwarded_port&amp;quot;, guest: 80, host: 8080&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;去掉这行代码最前面的 # 号， 这个配置就是端口转发&lt;/p&gt;
-&lt;hr&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Vagrant 可以让我们用命令直接从云上下载虚拟机的镜像，你想要什么系统都行，Centos，Ubuntu …   只需要一行命令，然后再用命令去操作虚拟机，启动，暂停，关闭，重启，你可以更方便的管理所有的在本地上电脑上的虚拟机镜像，手工去配置它们，可以再重新打包成新的镜像
-    
-    </summary>
-    
-    
-      <category term="vagrant virtualbox" scheme="http://www.dyike.com/tags/vagrant-virtualbox/"/>
     
   </entry>
   
