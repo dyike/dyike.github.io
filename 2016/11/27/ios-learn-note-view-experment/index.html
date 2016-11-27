@@ -69,7 +69,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="php," />
+  <meta name="keywords" content="ios，swift," />
 
 
 
@@ -87,22 +87,16 @@
 
 
 
-<meta name="description" content="没有啥，就是随便写点关于php数组的处理，数组一直是我的弱项，现在还是做一点记录吧。
-对于二维数组咱们分两种情况讨论，一种是因为某一键名的值不能重复，删除重复项；另一种因为内部的一维数组不能完全相同，而删除重复项，下面举例说明：
-某一键名的值不能重复，删除重复项1234567891011121314151617181920212223242526&amp;lt;?phpfunction arrayUniq">
+<meta name="description" content="首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前两个版本来说好很多，改动相当的大，所以说swift的每一个版本都可以算一个新语言。我最近把swift3的文档过了一遍（之前只看过swift1的，swi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="php二维数组去重">
-<meta property="og:url" content="http://www.dyike.com/2016/10/18/php-array-unique/index.html">
+<meta property="og:title" content="Programming iOS 9 学习笔记-view实验">
+<meta property="og:url" content="http://www.dyike.com/2016/11/27/ios-learn-note-view-experment/index.html">
 <meta property="og:site_name" content="一刻笔记">
-<meta property="og:description" content="没有啥，就是随便写点关于php数组的处理，数组一直是我的弱项，现在还是做一点记录吧。
-对于二维数组咱们分两种情况讨论，一种是因为某一键名的值不能重复，删除重复项；另一种因为内部的一维数组不能完全相同，而删除重复项，下面举例说明：
-某一键名的值不能重复，删除重复项1234567891011121314151617181920212223242526&amp;lt;?phpfunction arrayUniq">
-<meta property="og:updated_time" content="2016-10-18T14:08:53.000Z">
+<meta property="og:description" content="首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前两个版本来说好很多，改动相当的大，所以说swift的每一个版本都可以算一个新语言。我最近把swift3的文档过了一遍（之前只看过swift1的，swi">
+<meta property="og:updated_time" content="2016-11-27T13:18:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="php二维数组去重">
-<meta name="twitter:description" content="没有啥，就是随便写点关于php数组的处理，数组一直是我的弱项，现在还是做一点记录吧。
-对于二维数组咱们分两种情况讨论，一种是因为某一键名的值不能重复，删除重复项；另一种因为内部的一维数组不能完全相同，而删除重复项，下面举例说明：
-某一键名的值不能重复，删除重复项1234567891011121314151617181920212223242526&amp;lt;?phpfunction arrayUniq">
+<meta name="twitter:title" content="Programming iOS 9 学习笔记-view实验">
+<meta name="twitter:description" content="首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前两个版本来说好很多，改动相当的大，所以说swift的每一个版本都可以算一个新语言。我最近把swift3的文档过了一遍（之前只看过swift1的，swi">
 
 
 
@@ -120,7 +114,7 @@
   };
 </script>
 
-  <title> php二维数组去重 | 一刻笔记 </title>
+  <title> Programming iOS 9 学习笔记-view实验 | 一刻笔记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -289,7 +283,7 @@
             
             
               
-                php二维数组去重
+                Programming iOS 9 学习笔记-view实验
               
             
           </h1>
@@ -301,8 +295,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-18T21:55:04+08:00" content="2016-10-18">
-              2016-10-18
+            <time itemprop="dateCreated" datetime="2016-11-27T21:11:30+08:00" content="2016-11-27">
+              2016-11-27
             </time>
           </span>
 
@@ -312,8 +306,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/18/php-array-unique/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/18/php-array-unique/" itemprop="commentsCount"></span>
+                <a href="/2016/11/27/ios-learn-note-view-experment/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/27/ios-learn-note-view-experment/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -336,13 +330,57 @@
       
 
       
-        <p>没有啥，就是随便写点关于php数组的处理，数组一直是我的弱项，现在还是做一点记录吧。</p>
-<p>对于二维数组咱们分两种情况讨论，一种是因为某一键名的值不能重复，删除重复项；另一种因为内部的一维数组不能完全相同，而删除重复项，下面举例说明：</p>
-<h2 id="某一键名的值不能重复，删除重复项"><a href="#某一键名的值不能重复，删除重复项" class="headerlink" title="某一键名的值不能重复，删除重复项"></a>某一键名的值不能重复，删除重复项</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">arrayUnique</span><span class="params">($arr, $key)</span> </span>&#123;</span><br><span class="line">    $tmp = [];</span><br><span class="line">    <span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $k =&gt; $v) &#123;</span><br><span class="line">        <span class="comment">//搜索$v[$key]是否在$tmp_arr数组中存在，若存在返回true</span></span><br><span class="line">        <span class="keyword">if</span> (in_array($v[$key], $tmp)) &#123;</span><br><span class="line">            <span class="keyword">unset</span>($arr[$k]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $tmp[] = $v[$key];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    sort($arr); <span class="comment">//sort函数对数组进行排序</span></span><br><span class="line">    <span class="keyword">return</span> $arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$test = [</span><br><span class="line">    [<span class="string">'id'</span> =&gt; <span class="number">123</span>, <span class="string">'name'</span> =&gt; <span class="string">'张三'</span>],</span><br><span class="line">    [<span class="string">'id'</span> =&gt; <span class="number">123</span>, <span class="string">'name'</span> =&gt; <span class="string">'李四'</span>],</span><br><span class="line">    [<span class="string">'id'</span> =&gt; <span class="number">124</span>, <span class="string">'name'</span> =&gt; <span class="string">'王五'</span>],</span><br><span class="line">    [<span class="string">'id'</span> =&gt; <span class="number">125</span>, <span class="string">'name'</span> =&gt; <span class="string">'赵六'</span>],</span><br><span class="line">    [<span class="string">'id'</span> =&gt; <span class="number">126</span>, <span class="string">'name'</span> =&gt; <span class="string">'赵六'</span>],</span><br><span class="line">];</span><br><span class="line">$key = <span class="string">'id'</span>;</span><br><span class="line">arrayUnique(&amp;$test, $key);</span><br><span class="line">print_r($test);</span><br></pre></td></tr></table></figure>
-<p>显示结果就知道了。。。</p>
-<h4 id="内部的一维数组不能完全相同，而删除重复项"><a href="#内部的一维数组不能完全相同，而删除重复项" class="headerlink" title="内部的一维数组不能完全相同，而删除重复项"></a>内部的一维数组不能完全相同，而删除重复项</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">arrayUnique</span><span class="params">($array)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span> ($array <span class="keyword">as</span> $v)&#123;</span><br><span class="line">        $v = join(<span class="string">","</span>, $v); <span class="comment">//降维,也可以用implode,将一维数组转换为用逗号连接的字符串</span></span><br><span class="line">        $temp[] = $v;</span><br><span class="line">    &#125;</span><br><span class="line">    $temp = array_unique($temp);    <span class="comment">//去掉重复的字符串,也就是重复的一维数组</span></span><br><span class="line">                </span><br><span class="line">    <span class="keyword">foreach</span> ($temp <span class="keyword">as</span> $k =&gt; $v)&#123;</span><br><span class="line">        $temp[$k] = explode(<span class="string">","</span>, $v);   <span class="comment">//再将拆开的数组重新组装</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $temp;</span><br><span class="line">&#125;</span><br><span class="line">$test = [</span><br><span class="line">    [<span class="string">'id'</span> =&gt; <span class="number">123</span>, <span class="string">'name'</span> =&gt; <span class="string">'张三'</span>],</span><br><span class="line">    [<span class="string">'id'</span> =&gt; <span class="number">123</span>, <span class="string">'name'</span> =&gt; <span class="string">'李四'</span>],</span><br><span class="line">    [<span class="string">'id'</span> =&gt; <span class="number">124</span>, <span class="string">'name'</span> =&gt; <span class="string">'王五'</span>],</span><br><span class="line">    [<span class="string">'id'</span> =&gt; <span class="number">125</span>, <span class="string">'name'</span> =&gt; <span class="string">'赵六'</span>],</span><br><span class="line">    [<span class="string">'id'</span> =&gt; <span class="number">126</span>, <span class="string">'name'</span> =&gt; <span class="string">'赵六'</span>],</span><br><span class="line">];</span><br><span class="line">$data = arrayUnique($test);</span><br><span class="line">print_r($data);</span><br></pre></td></tr></table></figure>
-<p>结果显示就知道了。。。。</p>
-<p>就这样简单粗暴一点吧！</p>
+        <blockquote>
+<p>首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前两个版本来说好很多，改动相当的大，所以说swift的每一个版本都可以算一个新语言。我最近把swift3的文档过了一遍（之前只看过swift1的，swift2没怎么看过）现在又拿出这个本书出来学习。</p>
+<p>这个笔记谈不上翻译，当然目前很大一部分是借鉴<a href="http://wdxtub.com/" target="_blank" rel="external">http://wdxtub.com/</a> 这个blog里的笔记【这个blog文章我常看】，我只是在上面作了一些修改。</p>
+<p>为什么这么说呢？因为我操作的环境是在swift3+Xcode8+iOS10。<br>我只是业余的、业余的、业余的学习iOS开发，如果里面什么错误，欢迎指正！欢迎iOS大牛带我飞。</p>
+</blockquote>
+<h3 id="View的实验"><a href="#View的实验" class="headerlink" title="View的实验"></a>View的实验</h3><p>这里做几个简单的介绍和实验操作：</p>
+<h4 id="single-View-Application-："><a href="#single-View-Application-：" class="headerlink" title="single View Application ："></a>single View Application ：</h4><p>一个single view application项目创建后，你将会看到一个包含一个页面的main storyboard 以及一个包含一个main view的view controller的实例。app运行起来，view controller将会成为app的main window的rootViewController，它的main view将会变成window的root view。</p>
+<p>在ViewController.swift文件中修改viewDidLoaded()：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">    <span class="keyword">let</span> mainview = <span class="keyword">self</span>.view</span><br><span class="line">    <span class="keyword">let</span> v = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">100</span>, y: <span class="number">200</span>, width: <span class="number">50</span>, height: <span class="number">50</span>))</span><br><span class="line">    v.backgroundColor = <span class="type">UIColor</span>.blue   <span class="comment">// small blue square</span></span><br><span class="line">    mainview?.addSubview(v)    <span class="comment">// add it to main view</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="App-without-a-main-storyboard（-这个例子我就省略了）"><a href="#App-without-a-main-storyboard（-这个例子我就省略了）" class="headerlink" title="App without a main storyboard（ 这个例子我就省略了）"></a>App without a main storyboard（ 这个例子我就省略了）</h4><h3 id="Subview-和-Superview"><a href="#Subview-和-Superview" class="headerlink" title="Subview 和 Superview"></a>Subview 和 Superview</h3><p>在iOS中，一个的subview的一部分或者全部，可以出现在superview之外。一个view可以与另外一个view重叠，也可以在一个view前面绘制部分或全部。<br>[<a href="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/view-ios10-1.png" target="_blank" rel="external">https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/view-ios10-1.png</a>]</p>
+<p>上图三个view都有一个背景颜色，每一个view都相当于是一个带有颜色的矩形。光看上面的图是没法区别这个三个view之间的关系，其实，中间的view（水平方向）是左边view的sibling view。右边的view是中view的一个subview。</p>
+<p> view hierarchy的一些特点：</p>
+<ul>
+<li>一个view被移出，或者引入他的superview，它的subview也会被引入。</li>
+<li>一个view的透明度会被其subview继承。</li>
+<li>一个view可以限制subview的显示范围。比如不让subview超出view本身的范围，这个叫做clipping，被设置在view的clipsToBounds属性中。</li>
+<li>一个superview拥有它的subview。</li>
+<li>如果改变一个view的大小，那么它的subview也会被自动设置尺寸。</li>
+</ul>
+<p>一个UIView有一个superview的属性（一个UIView）和一个subviews属性（一个UIView对象的数组，back-to-front的顺序），在代码中可以判断view hierarchy。有一个方法isDescendantOfView：用来检查一个view是否是另一个view的subview。View还有一个tag属性，有一个方法viewWithTag进行引用。</p>
+<blockquote>
+<p>注意：这里的这两个func 在swift3中跟swift2有点不一样：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isDescendantOfView</span><span class="params">(view: UIView)</span></span> -&gt; <span class="type">Bool</span>  </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">viewWithTag</span><span class="params">(tag: Int)</span></span> -&gt; <span class="type">UIView</span>?</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>在代码中操作view hierarchy是非常简单的！</p>
+<blockquote>
+<p>addSubview方法添加一个subview。比如：view.addSubview(button)。<br>removeFromSuperview方法移除一个subview。比如：xxxView.removeFromSuperview();</p>
+</blockquote>
+<p>注意从superview中移除subview同时也会释放它。如果以后需要重用的话，最好先确定能够把它保存在内存中，通常的方法是把这个view保存在一个属性中。</p>
+<p>在进行这些操作时系统也会给出通知，重写下列方法就可以根据需要在不同的情况下进行不同的操作：</p>
+<ul>
+<li>didAddSubview, willRemoveSubview</li>
+<li>didMoveToSuperview, willMoveToSuperview</li>
+<li>didMoveToWindow, willMoveToWindow</li>
+</ul>
+<p>当调用了addSubview，这个view也会被放到其superview的subview数组中的最后一个，也就是说这个view会被最后一个渲染出来。如果view的subviews是被索引的，从0开始（rearmost），这样就可以把view插入到指定位置，已经放到前面/后面，或两个view进行交互。</p>
+<ul>
+<li>swift3：// Insert subview at specific position<br>insertSubview(_:at:)<br>比如:<br>let f1 = someView.insertSubview(view: at:)</li>
+<li>swift3：// Insert subview above/below a specific subview<br>insertSubview(<em>:aboveSubview:)<br>insertSubview(</em>:belowSubview:)<br>比如：<br>let f2 = someView.insertSubview(view: aboveSubview:)<br>let f3 = someView.insertSubview(view: belowSubview:)</li>
+<li>swift3: // Exchange two subview’s position<br>exchangeSubview(at:withSubviewAt:)</li>
+<li>swift3：// Bring the subview to the front or back of its sibling<br>bringSubview(toFront:)<br>sendSubview(toBack:)</li>
+</ul>
+<p>看到这里，你可能会感觉有点奇怪，没有一个方法可以直接移除一个superview的所有subview。然后，因为一个superview的subivew数组是一个不可变的数组，遍历subiviews数组，然后依次执行removeFromSuperview()就大差不差了！比如：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rootView.subviews.forEach &#123; $<span class="number">0</span>.removeFromSuperview() &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Visibility-and-Opacity-可见度和不透明"><a href="#Visibility-and-Opacity-可见度和不透明" class="headerlink" title="Visibility and Opacity(可见度和不透明)"></a>Visibility and Opacity(可见度和不透明)</h3><p>一个view的可见度是可以通过hidden属性来设置的。隐藏一个view（包括subview）只是从界面上隐藏，而不需要从view hierarchy结构中删除。一个隐藏的view不能接受触摸的事件。（用户看不到而已，其实是存在的）</p>
+<p>backgroundColor属性可以设置view的背景颜色，颜色是属于UIColor类，颜色背景为nil的view，默认是具有透明背景的。</p>
+<p>可以通过设置 view 的 alpha 属性来修改透明程度，1.0 是完全不透明，0.0 是透明。假设一个 view 的 alpha 是 0.5，那么它的 subview 的 alpha 都是以 0.5 为基准的，不可能高于 0.5。而 UIColor 也有 alpha 这个属性，所以即使一个 view 的 alpha 是 1.0，它仍旧可能是透明的，因为其 backgroundColor 可以是透明的。一个 alpha 为 0.0 的 view 是完全透明的所以是不可见的，通常来说也不可能被点击。</p>
+<p>View 的 alpha 属性不仅影响背景颜色，也会影响其内容的透明度。</p>
+<p>view的opaque属性的修改不会影响view的样子，更多的是对于系统绘制的提示。如果一个view的opaque设置true，因为不用考虑透明的绘制，所以效率高一点。并且再设置透明的背景颜色或者 alpha 属性都无效。可能会让人吃惊，它的默认值是 true。</p>
+<h3 id="Frame"><a href="#Frame" class="headerlink" title="Frame"></a>Frame</h3><p>view的frame属性（CGRect类）是他本身的长方形在superview中位置，注意是在superview的坐标系中国的位置。默认来说，superview的坐标系圆点在坐上，向右x增加，向下y增加。</p>
+<p>给view的frame设置不同的CGRect属性值，能够改变view的view的位置或者改变尺寸大小（同时改变也可以）。</p>
+<p>现在我们画上图大差不差的图：我们在AppDelegate.swift中func application()增加下面几行代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//here we can add subviews</span></span><br><span class="line"><span class="keyword">let</span> mainview = <span class="keyword">self</span>.window!.rootViewController!.view</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">113</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</span><br><span class="line">v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">41</span>, y: <span class="number">56</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</span><br><span class="line">v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> v3 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">43</span>, y: <span class="number">197</span>, width: <span class="number">160</span>, height: <span class="number">230</span>))</span><br><span class="line">v3.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">mainview?.addSubview(v1)</span><br><span class="line">v1.addSubview(v2)</span><br><span class="line">mainview?.addSubview(v3)</span><br></pre></td></tr></table></figure></p>
+<p>效果图如下：（v2是添加在v1上）</p>
+<p>[<a href="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/view-ios10-1.png" target="_blank" rel="external">https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/view-ios10-1.png</a>]</p>
 
       
     </div>
@@ -380,7 +418,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/php/" rel="tag">#php</a>
+            <a href="/tags/ios，swift/" rel="tag">#ios，swift</a>
           
         </div>
       
@@ -389,17 +427,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/19/tips-for-productive-debug-with-gdb/" rel="next" title="GDB高效调试的一些小tips">
-                <i class="fa fa-chevron-left"></i> GDB高效调试的一些小tips
+              <a href="/2016/11/26/ios-learn-note-view/" rel="next" title="Programming iOS 9 学习笔记-view章节">
+                <i class="fa fa-chevron-left"></i> Programming iOS 9 学习笔记-view章节
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/02/long-time-no-writing/" rel="prev" title="好久没有写东西了">
-                好久没有写东西了 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -425,8 +459,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/18/php-array-unique/"
-           data-title="php二维数组去重" data-url="http://www.dyike.com/2016/10/18/php-array-unique/">
+      <div class="ds-thread" data-thread-key="2016/11/27/ios-learn-note-view-experment/"
+           data-title="Programming iOS 9 学习笔记-view实验" data-url="http://www.dyike.com/2016/11/27/ios-learn-note-view-experment/">
       </div>
     
   </div>
@@ -562,7 +596,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#某一键名的值不能重复，删除重复项"><span class="nav-number">1.</span> <span class="nav-text">某一键名的值不能重复，删除重复项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内部的一维数组不能完全相同，而删除重复项"><span class="nav-number">1.0.1.</span> <span class="nav-text">内部的一维数组不能完全相同，而删除重复项</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#View的实验"><span class="nav-number">1.</span> <span class="nav-text">View的实验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#single-View-Application-："><span class="nav-number">1.1.</span> <span class="nav-text">single View Application ：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#App-without-a-main-storyboard（-这个例子我就省略了）"><span class="nav-number">1.2.</span> <span class="nav-text">App without a main storyboard（ 这个例子我就省略了）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subview-和-Superview"><span class="nav-number">2.</span> <span class="nav-text">Subview 和 Superview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Visibility-and-Opacity-可见度和不透明"><span class="nav-number">3.</span> <span class="nav-text">Visibility and Opacity(可见度和不透明)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frame"><span class="nav-number">4.</span> <span class="nav-text">Frame</span></a></li></ol></div>
             
           </div>
         </section>

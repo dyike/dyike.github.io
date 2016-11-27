@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-11-26T14:24:48.000Z</updated>
+  <updated>2016-11-27T13:18:22.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -14,6 +14,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Programming iOS 9 学习笔记-view实验</title>
+    <link href="http://www.dyike.com/2016/11/27/ios-learn-note-view-experment/"/>
+    <id>http://www.dyike.com/2016/11/27/ios-learn-note-view-experment/</id>
+    <published>2016-11-27T13:11:30.000Z</published>
+    <updated>2016-11-27T13:18:22.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前两个版本来说好很多，改动相当的大，所以说swift的每一个版本都可以算一个新语言。我最近把swift3的文档过了一遍（之前只看过swift1的，swift2没怎么看过）现在又拿出这个本书出来学习。&lt;/p&gt;
+&lt;p&gt;这个笔记谈不上翻译，当然目前很大一部分是借鉴&lt;a href=&quot;http://wdxtub.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://wdxtub.com/&lt;/a&gt; 这个blog里的笔记【这个blog文章我常看】，我只是在上面作了一些修改。&lt;/p&gt;
+&lt;p&gt;为什么这么说呢？因为我操作的环境是在swift3+Xcode8+iOS10。&lt;br&gt;我只是业余的、业余的、业余的学习iOS开发，如果里面什么错误，欢迎指正！欢迎iOS大牛带我飞。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;View的实验&quot;&gt;&lt;a href=&quot;#View的实验&quot; class=&quot;headerlink&quot; title=&quot;View的实验&quot;&gt;&lt;/a&gt;View的实验&lt;/h3&gt;&lt;p&gt;这里做几个简单的介绍和实验操作：&lt;/p&gt;
+&lt;h4 id=&quot;single-View-Application-：&quot;&gt;&lt;a href=&quot;#single-View-Application-：&quot; class=&quot;headerlink&quot; title=&quot;single View Application ：&quot;&gt;&lt;/a&gt;single View Application ：&lt;/h4&gt;&lt;p&gt;一个single view application项目创建后，你将会看到一个包含一个页面的main storyboard 以及一个包含一个main view的view controller的实例。app运行起来，view controller将会成为app的main window的rootViewController，它的main view将会变成window的root view。&lt;/p&gt;
+&lt;p&gt;在ViewController.swift文件中修改viewDidLoaded()：&lt;br&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;viewDidLoad&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.viewDidLoad()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; mainview = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.view&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; v = &lt;span class=&quot;type&quot;&gt;UIView&lt;/span&gt;(frame: &lt;span class=&quot;type&quot;&gt;CGRect&lt;/span&gt;(x: &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;, y: &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;, width: &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;, height: &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    v.backgroundColor = &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;.blue   &lt;span class=&quot;comment&quot;&gt;// small blue square&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mainview?.addSubview(v)    &lt;span class=&quot;comment&quot;&gt;// add it to main view&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&quot;App-without-a-main-storyboard（-这个例子我就省略了）&quot;&gt;&lt;a href=&quot;#App-without-a-main-storyboard（-这个例子我就省略了）&quot; class=&quot;headerlink&quot; title=&quot;App without a main storyboard（ 这个例子我就省略了）&quot;&gt;&lt;/a&gt;App without a main storyboard（ 这个例子我就省略了）&lt;/h4&gt;&lt;h3 id=&quot;Subview-和-Superview&quot;&gt;&lt;a href=&quot;#Subview-和-Superview&quot; class=&quot;headerlink&quot; title=&quot;Subview 和 Superview&quot;&gt;&lt;/a&gt;Subview 和 Superview&lt;/h3&gt;&lt;p&gt;在iOS中，一个的subview的一部分或者全部，可以出现在superview之外。一个view可以与另外一个view重叠，也可以在一个view前面绘制部分或全部。&lt;br&gt;[&lt;a href=&quot;https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/view-ios10-1.png&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/view-ios10-1.png&lt;/a&gt;]&lt;/p&gt;
+&lt;p&gt;上图三个view都有一个背景颜色，每一个view都相当于是一个带有颜色的矩形。光看上面的图是没法区别这个三个view之间的关系，其实，中间的view（水平方向）是左边view的sibling view。右边的view是中view的一个subview。&lt;/p&gt;
+&lt;p&gt; view hierarchy的一些特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个view被移出，或者引入他的superview，它的subview也会被引入。&lt;/li&gt;
+&lt;li&gt;一个view的透明度会被其subview继承。&lt;/li&gt;
+&lt;li&gt;一个view可以限制subview的显示范围。比如不让subview超出view本身的范围，这个叫做clipping，被设置在view的clipsToBounds属性中。&lt;/li&gt;
+&lt;li&gt;一个superview拥有它的subview。&lt;/li&gt;
+&lt;li&gt;如果改变一个view的大小，那么它的subview也会被自动设置尺寸。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个UIView有一个superview的属性（一个UIView）和一个subviews属性（一个UIView对象的数组，back-to-front的顺序），在代码中可以判断view hierarchy。有一个方法isDescendantOfView：用来检查一个view是否是另一个view的subview。View还有一个tag属性，有一个方法viewWithTag进行引用。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：这里的这两个func 在swift3中跟swift2有点不一样：&lt;br&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;isDescendantOfView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(view: UIView)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;Bool&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;viewWithTag&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(tag: Int)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;UIView&lt;/span&gt;?&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在代码中操作view hierarchy是非常简单的！&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;addSubview方法添加一个subview。比如：view.addSubview(button)。&lt;br&gt;removeFromSuperview方法移除一个subview。比如：xxxView.removeFromSuperview();&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;注意从superview中移除subview同时也会释放它。如果以后需要重用的话，最好先确定能够把它保存在内存中，通常的方法是把这个view保存在一个属性中。&lt;/p&gt;
+&lt;p&gt;在进行这些操作时系统也会给出通知，重写下列方法就可以根据需要在不同的情况下进行不同的操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;didAddSubview, willRemoveSubview&lt;/li&gt;
+&lt;li&gt;didMoveToSuperview, willMoveToSuperview&lt;/li&gt;
+&lt;li&gt;didMoveToWindow, willMoveToWindow&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当调用了addSubview，这个view也会被放到其superview的subview数组中的最后一个，也就是说这个view会被最后一个渲染出来。如果view的subviews是被索引的，从0开始（rearmost），这样就可以把view插入到指定位置，已经放到前面/后面，或两个view进行交互。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;swift3：// Insert subview at specific position&lt;br&gt;insertSubview(_:at:)&lt;br&gt;比如:&lt;br&gt;let f1 = someView.insertSubview(view: at:)&lt;/li&gt;
+&lt;li&gt;swift3：// Insert subview above/below a specific subview&lt;br&gt;insertSubview(&lt;em&gt;:aboveSubview:)&lt;br&gt;insertSubview(&lt;/em&gt;:belowSubview:)&lt;br&gt;比如：&lt;br&gt;let f2 = someView.insertSubview(view: aboveSubview:)&lt;br&gt;let f3 = someView.insertSubview(view: belowSubview:)&lt;/li&gt;
+&lt;li&gt;swift3: // Exchange two subview’s position&lt;br&gt;exchangeSubview(at:withSubviewAt:)&lt;/li&gt;
+&lt;li&gt;swift3：// Bring the subview to the front or back of its sibling&lt;br&gt;bringSubview(toFront:)&lt;br&gt;sendSubview(toBack:)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;看到这里，你可能会感觉有点奇怪，没有一个方法可以直接移除一个superview的所有subview。然后，因为一个superview的subivew数组是一个不可变的数组，遍历subiviews数组，然后依次执行removeFromSuperview()就大差不差了！比如：&lt;br&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;rootView.subviews.forEach &amp;#123; $&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;.removeFromSuperview() &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Visibility-and-Opacity-可见度和不透明&quot;&gt;&lt;a href=&quot;#Visibility-and-Opacity-可见度和不透明&quot; class=&quot;headerlink&quot; title=&quot;Visibility and Opacity(可见度和不透明)&quot;&gt;&lt;/a&gt;Visibility and Opacity(可见度和不透明)&lt;/h3&gt;&lt;p&gt;一个view的可见度是可以通过hidden属性来设置的。隐藏一个view（包括subview）只是从界面上隐藏，而不需要从view hierarchy结构中删除。一个隐藏的view不能接受触摸的事件。（用户看不到而已，其实是存在的）&lt;/p&gt;
+&lt;p&gt;backgroundColor属性可以设置view的背景颜色，颜色是属于UIColor类，颜色背景为nil的view，默认是具有透明背景的。&lt;/p&gt;
+&lt;p&gt;可以通过设置 view 的 alpha 属性来修改透明程度，1.0 是完全不透明，0.0 是透明。假设一个 view 的 alpha 是 0.5，那么它的 subview 的 alpha 都是以 0.5 为基准的，不可能高于 0.5。而 UIColor 也有 alpha 这个属性，所以即使一个 view 的 alpha 是 1.0，它仍旧可能是透明的，因为其 backgroundColor 可以是透明的。一个 alpha 为 0.0 的 view 是完全透明的所以是不可见的，通常来说也不可能被点击。&lt;/p&gt;
+&lt;p&gt;View 的 alpha 属性不仅影响背景颜色，也会影响其内容的透明度。&lt;/p&gt;
+&lt;p&gt;view的opaque属性的修改不会影响view的样子，更多的是对于系统绘制的提示。如果一个view的opaque设置true，因为不用考虑透明的绘制，所以效率高一点。并且再设置透明的背景颜色或者 alpha 属性都无效。可能会让人吃惊，它的默认值是 true。&lt;/p&gt;
+&lt;h3 id=&quot;Frame&quot;&gt;&lt;a href=&quot;#Frame&quot; class=&quot;headerlink&quot; title=&quot;Frame&quot;&gt;&lt;/a&gt;Frame&lt;/h3&gt;&lt;p&gt;view的frame属性（CGRect类）是他本身的长方形在superview中位置，注意是在superview的坐标系中国的位置。默认来说，superview的坐标系圆点在坐上，向右x增加，向下y增加。&lt;/p&gt;
+&lt;p&gt;给view的frame设置不同的CGRect属性值，能够改变view的view的位置或者改变尺寸大小（同时改变也可以）。&lt;/p&gt;
+&lt;p&gt;现在我们画上图大差不差的图：我们在AppDelegate.swift中func application()增加下面几行代码：&lt;br&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//here we can add subviews&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; mainview = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.window!.rootViewController!.view&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; v1 = &lt;span class=&quot;type&quot;&gt;UIView&lt;/span&gt;(frame: &lt;span class=&quot;type&quot;&gt;CGRect&lt;/span&gt;(x: &lt;span class=&quot;number&quot;&gt;113&lt;/span&gt;, y: &lt;span class=&quot;number&quot;&gt;111&lt;/span&gt;, width: &lt;span class=&quot;number&quot;&gt;132&lt;/span&gt;, height: &lt;span class=&quot;number&quot;&gt;194&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;v1.backgroundColor = &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;(red: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, green: &lt;span class=&quot;number&quot;&gt;0.4&lt;/span&gt;, blue: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, alpha: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; v2 = &lt;span class=&quot;type&quot;&gt;UIView&lt;/span&gt;(frame: &lt;span class=&quot;type&quot;&gt;CGRect&lt;/span&gt;(x: &lt;span class=&quot;number&quot;&gt;41&lt;/span&gt;, y: &lt;span class=&quot;number&quot;&gt;56&lt;/span&gt;, width: &lt;span class=&quot;number&quot;&gt;132&lt;/span&gt;, height: &lt;span class=&quot;number&quot;&gt;194&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;v2.backgroundColor = &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;(red: &lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;, green: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, blue: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, alpha: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; v3 = &lt;span class=&quot;type&quot;&gt;UIView&lt;/span&gt;(frame: &lt;span class=&quot;type&quot;&gt;CGRect&lt;/span&gt;(x: &lt;span class=&quot;number&quot;&gt;43&lt;/span&gt;, y: &lt;span class=&quot;number&quot;&gt;197&lt;/span&gt;, width: &lt;span class=&quot;number&quot;&gt;160&lt;/span&gt;, height: &lt;span class=&quot;number&quot;&gt;230&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;v3.backgroundColor = &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;(red: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, green: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, blue: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, alpha: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mainview?.addSubview(v1)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;v1.addSubview(v2)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mainview?.addSubview(v3)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;效果图如下：（v2是添加在v1上）&lt;/p&gt;
+&lt;p&gt;[&lt;a href=&quot;https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/view-ios10-1.png&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/view-ios10-1.png&lt;/a&gt;]&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前
+    
+    </summary>
+    
+    
+      <category term="ios，swift" scheme="http://www.dyike.com/tags/ios%EF%BC%8Cswift/"/>
+    
+  </entry>
   
   <entry>
     <title>Programming iOS 9 学习笔记-view章节</title>
@@ -1045,65 +1117,6 @@
     
     
       <category term="随笔感想" scheme="http://www.dyike.com/tags/%E9%9A%8F%E7%AC%94%E6%84%9F%E6%83%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>讨论下redis集群方案以及遇到过的坑</title>
-    <link href="http://www.dyike.com/2015/10/22/talk-about-redis/"/>
-    <id>http://www.dyike.com/2015/10/22/talk-about-redis/</id>
-    <published>2015-10-22T14:10:54.000Z</published>
-    <updated>2016-04-15T09:59:31.000Z</updated>
-    
-    <content type="html">&lt;p&gt;【今日话题】&lt;/p&gt;
-&lt;p&gt;讨论下redis集群方案以及遇到过的坑 - 阿牛哥&lt;/p&gt;
-&lt;p&gt;1. twemproxy，codis，未来的redis-cluster&lt;/p&gt;
-&lt;p&gt;codis的作者出来创业了，但是一直很活跃 - hello&lt;/p&gt;
-&lt;p&gt;2. Redis cluster 以后的趋势 - 如末&lt;/p&gt;
-&lt;p&gt;3. 胡兰tv已经用redis cluster了 - sky&lt;/p&gt;
-&lt;p&gt;4. codis组件太多了&lt;/p&gt;
-&lt;p&gt;但是周边工具很配套 - hello&lt;/p&gt;
-&lt;p&gt;5. 目前在用Twemproxy做集群 git上这个已经很久不更新了， Twemproxy支持的命令也有限， - hey&lt;/p&gt;
-&lt;p&gt;6. 市面上最多的估计据就是它了 官方的cluster还不成熟稳定 Codis 其实也不算成熟 - 如末&lt;/p&gt;
-&lt;p&gt;7. 目前的redis基于2.6自己定制的…… - tiyee&lt;/p&gt;
-&lt;p&gt;8. redis集群 我自己之前的操作方法是直接利用redis_sentinel 一主多从 故障之后 选举出新的master 多个master之间利用一致性hash做分配 - lawlielt&lt;/p&gt;
-&lt;p&gt;9. 偷偷抛个小炸弹：&lt;/p&gt;
-&lt;p&gt;主redis做数据变更，从做数据查询，但从会产生临时中间计算器数据，这样子大家认为对主从同步是否有影响？为啥[偷笑] - 乔楚&lt;/p&gt;
-&lt;p&gt;回: 万一全部同步的话 中间数据岂不是被覆盖了？&lt;/p&gt;
-&lt;p&gt;如果是命令同步 竟然同步必然会涉及到一个类似于什么命令缓存偏移的问题吧 更新操作 会不会影响从库的同步点的问题&lt;/p&gt;
-&lt;p&gt;主从也要考虑很多问题的 类似于故障迁移 扩展之类的 - lawlielt&lt;/p&gt;
-&lt;p&gt;10. 其实很想知道有将red is cluster 官方版那个用起来的吗？&lt;/p&gt;
-&lt;p&gt;我之前收到试用过几次，还挺好用。就是phpredis 扩展缺乏支持 - 如末&lt;/p&gt;
-&lt;p&gt;11. 我有用过，不过被phpredis坑死了&lt;/p&gt;
-&lt;p&gt;估计没有proxy不行 - Huangsir&lt;/p&gt;
-&lt;p&gt;12. 确实phpredis 对集群用起来很蛋疼。昨天看了下&lt;/p&gt;
-&lt;p&gt;Predis 这个代码扩展。倒是用起来很好用。但是估计效率差点 - 如末&lt;/p&gt;
-&lt;p&gt;13. 豌豆荚分布式Redis的设计与实现 &lt;a href=&quot;http://www.infoq.com/cn/presentations/design-and-implementation-of-wandoujia-distributed-redis&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.infoq.com/cn/presentations/design-and-implementation-of-wandoujia-distributed-redis&lt;/a&gt; - 昱北&lt;/p&gt;
-&lt;p&gt;【分享链接】&lt;/p&gt;
-&lt;p&gt;1. 多人开发的 Git 流程 &lt;a href=&quot;http://gold.xitu.io/entry/56263cfd00b0023ca69de5ec&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://gold.xitu.io/entry/56263cfd00b0023ca69de5ec&lt;/a&gt; - ShiverySea&lt;/p&gt;
-&lt;p&gt;2. 维护一个大型开源项目是怎样的体验？ &lt;a href=&quot;http://www.zhihu.com/question/36292298/answer/67049956&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.zhihu.com/question/36292298/answer/67049956&lt;/a&gt; - 猿蜗&lt;/p&gt;
-&lt;p&gt;3. MariaDB 10.1 每秒可处理一百万查询 &lt;a href=&quot;http://mp.weixin.qq.com/s?__biz=MzA5ODM5MDU3MA==&amp;amp;mid=400055734&amp;amp;idx=1&amp;amp;sn=d04822306c80e5bf00203cecda1dfdaf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp.weixin.qq.com/s?__biz=MzA5ODM5MDU3MA==&amp;amp;mid=400055734&amp;amp;idx=1&amp;amp;sn=d04822306c80e5bf00203cecda1dfdaf&lt;/a&gt; - tony&lt;/p&gt;
-&lt;p&gt;4. 无线APP日志上报优化实践 &lt;a href=&quot;http://mp.weixin.qq.com/s?__biz=MjM5ODYxMDA5OQ==&amp;amp;mid=400110965&amp;amp;idx=1&amp;amp;sn=d105f59c78bfaaab943e0e0bde925d99&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp.weixin.qq.com/s?__biz=MjM5ODYxMDA5OQ==&amp;amp;mid=400110965&amp;amp;idx=1&amp;amp;sn=d105f59c78bfaaab943e0e0bde925d99&lt;/a&gt; - 朱政国&lt;/p&gt;
-&lt;p&gt;5. 西部数据宣布190亿美元收购闪迪SanDisk &lt;a href=&quot;http://mp.weixin.qq.com/s?__biz=MjM5MzM3NjM4MA==&amp;amp;mid=400599228&amp;amp;idx=1&amp;amp;sn=43287d40a9c8421214fcf608861e90c9&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp.weixin.qq.com/s?__biz=MjM5MzM3NjM4MA==&amp;amp;mid=400599228&amp;amp;idx=1&amp;amp;sn=43287d40a9c8421214fcf608861e90c9&lt;/a&gt; - @理鱼&lt;/p&gt;
-&lt;p&gt;6. 微服务年度总结，看完这个你应该知道如何回答别人的问题了。 &lt;a href=&quot;http://mp.weixin.qq.com/s?__biz=MzA5ODM0NjA3NA==&amp;amp;mid=400146790&amp;amp;idx=1&amp;amp;sn=5cba6e9f90db52dc6d9010c3237c1902&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp.weixin.qq.com/s?__biz=MzA5ODM0NjA3NA==&amp;amp;mid=400146790&amp;amp;idx=1&amp;amp;sn=5cba6e9f90db52dc6d9010c3237c1902&lt;/a&gt; - @理鱼&lt;/p&gt;
-&lt;p&gt;7. PHP 性能优化 &lt;a href=&quot;http://mp.weixin.qq.com/s?__biz=MzAwNjMxMTA5Mw==&amp;amp;mid=400058189&amp;amp;idx=1&amp;amp;sn=bada7be26e1d33071af23e6765ef8a51&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mp.weixin.qq.com/s?__biz=MzAwNjMxMTA5Mw==&amp;amp;mid=400058189&amp;amp;idx=1&amp;amp;sn=bada7be26e1d33071af23e6765ef8a51&lt;/a&gt; - 黑夜路人&lt;/p&gt;
-&lt;p&gt;8. Redis数据结构与存储 &lt;a href=&quot;http://shift-alt-ctrl.iteye.com/blog/1874693&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://shift-alt-ctrl.iteye.com/blog/1874693&lt;/a&gt; - 程序员朋&lt;/p&gt;
-&lt;p&gt;9. Nginx image processing server with OpenResty and Lua &lt;a href=&quot;http://leafo.net/posts/creating_an_image_server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://leafo.net/posts/creating_an_image_server.html&lt;/a&gt; - 姚文强&lt;/p&gt;
-&lt;p&gt;10. 构建高性能web之路——mysql读写分离实战 &lt;a href=&quot;http://blog.csdn.net/cutesource/article/details/5710645&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/cutesource/article/details/5710645&lt;/a&gt; - 黑夜路人&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;【今日话题】&lt;/p&gt;
-&lt;p&gt;讨论下redis集群方案以及遇到过的坑 - 阿牛哥&lt;/p&gt;
-&lt;p&gt;1. twemproxy，codis，未来的redis-cluster&lt;/p&gt;
-&lt;p&gt;codis的作者出来创业了，但是一直很活跃 - hello&lt;/p&gt;
-&lt;p&gt;2. Redis c
-    
-    </summary>
-    
-    
-      <category term="redis" scheme="http://www.dyike.com/tags/redis/"/>
     
   </entry>
   
