@@ -1,0 +1,935 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="baidu-site-verification" content="8NBkpThWUl" />
+<meta name="google-site-verification" content="Yb1SzwY5w5garHORFOIh7xq1lqEEmerfXIAthf7JyEY" />
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS，swift," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="一刻笔记" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。
+这个笔记谈不上翻译，当然目前很大一部分是借鉴http://wdxtub.com/ 这个blog里的笔记【这个blog文章我常看】，我只是在上面作了一些修改。
+为什么这么说呢？因为我操作的环境是在swift3+Xcode8+iOS10。
+我只是业余的、业余的、业余的学习iOS开发，如果里">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programming iOS9（Swift3）学习笔记">
+<meta property="og:url" content="http://www.dyike.com/2016/11/28/ios-learn-note-view-bounds-transform/index.html">
+<meta property="og:site_name" content="一刻笔记">
+<meta property="og:description" content="首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。
+这个笔记谈不上翻译，当然目前很大一部分是借鉴http://wdxtub.com/ 这个blog里的笔记【这个blog文章我常看】，我只是在上面作了一些修改。
+为什么这么说呢？因为我操作的环境是在swift3+Xcode8+iOS10。
+我只是业余的、业余的、业余的学习iOS开发，如果里">
+<meta property="og:image" content="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/bounds1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/bounds2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/bounds3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/bounds4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform6.png">
+<meta property="og:updated_time" content="2016-11-28T14:31:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Programming iOS9（Swift3）学习笔记">
+<meta name="twitter:description" content="首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。
+这个笔记谈不上翻译，当然目前很大一部分是借鉴http://wdxtub.com/ 这个blog里的笔记【这个blog文章我常看】，我只是在上面作了一些修改。
+为什么这么说呢？因为我操作的环境是在swift3+Xcode8+iOS10。
+我只是业余的、业余的、业余的学习iOS开发，如果里">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/bounds1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Programming iOS9（Swift3）学习笔记 | 一刻笔记 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1254977565&web_id=1254977565" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一刻笔记</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">带着一颗变态的、积极的心走向未来</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-learn">
+          <a href="/learn" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-battery-full"></i> <br />
+            
+            充电
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/life" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-coffee"></i> <br />
+            
+            生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Programming iOS9（Swift3）学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-28T22:22:07+08:00" content="2016-11-28">
+              2016-11-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/28/ios-learn-note-view-bounds-transform/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/28/ios-learn-note-view-bounds-transform/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。</p>
+<p>这个笔记谈不上翻译，当然目前很大一部分是借鉴<a href="http://wdxtub.com/" target="_blank" rel="external">http://wdxtub.com/</a> 这个blog里的笔记【这个blog文章我常看】，我只是在上面作了一些修改。</p>
+<p>为什么这么说呢？因为我操作的环境是在swift3+Xcode8+iOS10。</p>
+<p>我只是业余的、业余的、业余的学习iOS开发，如果里面什么错误，欢迎指正！欢迎iOS大牛带我飞。</p>
+</blockquote>
+<h2 id="首先补充一些知识点（关于CGRect、“NS”和UserDefaults的变化）："><a href="#首先补充一些知识点（关于CGRect、“NS”和UserDefaults的变化）：" class="headerlink" title="首先补充一些知识点（关于CGRect、“NS”和UserDefaults的变化）："></a>首先补充一些知识点（关于CGRect、“NS”和UserDefaults的变化）：</h2><blockquote>
+<p>#CGRect：<br>Swift 2:<br>let frame = CGRectMake(0, 0, 20, 20)<br>Swift 3:<br>let frame = CGRect(x: 0, y: 0, width: 20, height: 20)</p>
+<p>#CGPoint<br>Swift 2:<br>let point = CGPointMake(0, 0)<br>Swift 3:<br>let point = CGPoint(x: 0, y: 0)</p>
+<p>#CGSize<br>Swift 2:<br>let size = CGSizeMake(20, 20)<br>Swift 3:<br>let size = CGSize(width: 20, height: 20)</p>
+<p>#UIColor<br>Swift 2:<br>let color = UIColor.redColor()<br>Swift 3:<br>let color = UIColor.red</p>
+<p>#”NS”<br>Swift 2:<br>NSTimer<br>NSData<br>NSError<br>Swift 3:<br>Timer<br>Data<br>Error</p>
+<p>#UserDefaults<br>Swift 2:<br>NSUserDefaults.standardUserDefaults().//something<br>Swift 3:<br>UserDefaults.standard.//something</p>
+</blockquote>
+<h3 id="Bounds-and-Center"><a href="#Bounds-and-Center" class="headerlink" title="Bounds and Center"></a>Bounds and Center</h3><p>假设有一个Superview和一个subview，subview是被嵌入了10个points。如图所示：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/bounds1.png" alt="view-demo"><br>实现上图的代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">113</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</span><br><span class="line">        v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: v1.bounds.insetBy(dx: <span class="number">10</span>, dy: <span class="number">10</span>))</span><br><span class="line">        v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</span><br><span class="line">        mainview?.addSubview(v1)</span><br><span class="line">        v1.addSubview(v2)</span><br></pre></td></tr></table></figure></p>
+<p>关于bounds的属性是一个view在自己的坐标系中的矩形尺寸（frame是在superview的坐标系的）。<br>效果图如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/bounds2.png" alt="view-demo"></p>
+<p>我们通常都是如此使用bounds的用法。当你需要往一个view里面放东西的时候，无论是手动绘制们还是放一个subview，通常都要使用view的bounds。</p>
+<p>当你改变一个view的bounds，他的frame也会对应改变，frame的改变是基于其中心点的（中心点不会变）。</p>
+<p>在上面的代码增加两行：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">113</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</span><br><span class="line">v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: v1.bounds.insetBy(dx: <span class="number">10</span>, dy: <span class="number">10</span>))</span><br><span class="line">v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</span><br><span class="line">mainview?.addSubview(v1)</span><br><span class="line">v1.addSubview(v2)</span><br><span class="line">v2.bounds.size.height += <span class="number">20</span></span><br><span class="line">v2.bounds.size.width += <span class="number">20</span></span><br></pre></td></tr></table></figure></p>
+<p>效果图如下：就是v2基于中心点不变，height和width属性值都增加了20个points，结果就是完全覆盖了紫色的view。<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/bounds3.png" alt="view-demo"></p>
+<p>还可以变着花样来：</p>
+<p>再增加两行代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v1.bounds.origin.x += <span class="number">10</span></span><br><span class="line">v1.bounds.origin.y += <span class="number">10</span></span><br></pre></td></tr></table></figure></p>
+<p>效果图如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/bounds4.png" alt="view-demo"></p>
+<p>不难看出view向原点移动方向的反方向进行了移动，这个因为一个view 的原点是与其frame的左上角一致。</p>
+<p>其实我们可以发现：改变view的bounds size是会影响frame的Size，反之亦然，唯一不变的是view的center，。这个属性，跟frame的属性一样，这表示一个subview的位置是在其Superview的坐标系中的位置。通过下面的代码是可以获取的：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="built_in">c</span> = <span class="type">CGPoint</span>(theView.bounds.midX, theView.bounds.midY)</span><br></pre></td></tr></table></figure></p>
+<p>改变 view 的 bounds 不会影响其 center，改变一个 view 的 center 不会影响其 bounds。所以其实一个 view 的 bounds 和 center 就可以确定其在 superview 中的位置，frame 可以看作是一个由 bounds 和 center 组成的表达式的简便写法而已。注意有些情况下 frame 会没有什么意义，但是 bounds 和 center 总是有效的，所以建议多用 bounds 和 center 的组合，也比较容易理解。</p>
+<ul>
+<li>bounds: 一个 view 自己的坐标系统</li>
+<li>center: 一个 view 的坐标系统和其 superview 的坐标系统的关系</li>
+</ul>
+<p>以下方法是可以进行不同view之间的坐标转换：</p>
+<ul>
+<li>convert(point: CGPoint, from: UIView?), convert(point: CGPoint, to: UIView?)</li>
+<li>convert(rect: CGRect, from: UIView?), convert(rect: CGRect, to: UIView?)</li>
+</ul>
+<p>如果第二参数为nil，那么就取window的值。比如：如果v2是v1的subview，那么要把v2放到v1的中心，就用：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v2.center  = v1.convert(v1.center, from: v1.superview)</span><br></pre></td></tr></table></figure></p>
+<p>注意，通过改变 center 来设置 view 的位置时，如果高或宽不是偶数，那么可能会导致 misaligned。可以通过打开模拟器的 Debug -&gt; Color Misaligned Images 来进行检测。一个简单的方法是调整好位置之后调用 makeIntegralInPlace 来设置 view 的 frame。</p>
+<h3 id="Window-Coordinates-和-Screen-Coordinates"><a href="#Window-Coordinates-和-Screen-Coordinates" class="headerlink" title="Window Coordinates 和 Screen Coordinates"></a>Window Coordinates 和 Screen Coordinates</h3><p>设备屏幕是没有 frame 的，但是有 bounds。Main window 也没有 superview，不过其 frame 被设置为屏幕的 bounds，如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> w = <span class="type">UIWindow</span>(frame: <span class="type">UIScreen</span>.main.bounds)</span><br></pre></td></tr></table></figure>
+<p>在绝大数的情况下，window 坐标系就是 screen 坐标系。现在的iOS中坐标系和手机是否选择是有关的，有如下两个属性：</p>
+<ul>
+<li><p>UIScreen 的 coordinateSpace 属性</p>
+<blockquote>
+<p>这个坐标空间会旋转，就是高和宽在设备旋转时会呼唤，（0.0， 0.0）是这个app本身的左上方 。</p>
+</blockquote>
+</li>
+<li><p>UIScreen的fixedCoordinateSpace 属性</p>
+<blockquote>
+<p>这个坐标空间不会变化，就是物理上的左上角，从用户来看，这里的 (0.0, 0.0) 可能是 app 本身的任何一个角。</p>
+</blockquote>
+</li>
+</ul>
+<p>可以用下面的方法来对不同坐标空间进行转换：</p>
+<ul>
+<li>convert(point: CGPoint, from: UICoordinateSpace), convert(point: CGPoint, to: UICoordinateSpace),</li>
+<li>convert(rect: CGRect, from: UICoordinateSpace), convert(rect: CGRect, to: UICoordinateSpace)</li>
+</ul>
+<p>假设界面中有一个 UIView v，我们想知道它的实际设备坐标，可以用下面的代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> r = v.superview!.convert(v.frame, to: <span class="type">UIScreen</span>.main.fixedCoordinateSpace)</span><br></pre></td></tr></table></figure>
+<h3 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h3><p>一个 view 的 transform 属性改变这个 view 是如何被绘制的，实际上就是一个 CGAffineTransform类的 3x3 矩阵。所有的变换都是以这个view的center做基准的，下面的具体实例：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">113</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</span><br><span class="line">v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</span><br><span class="line"><span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: v1.bounds.insetBy(dx: <span class="number">10</span>, dy: <span class="number">10</span>))</span><br><span class="line">v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</span><br><span class="line">mainview?.addSubview(v1)</span><br><span class="line">v1.addSubview(v2)</span><br><span class="line">v1.transform = <span class="type">CGAffineTransform</span>(rotationAngle: <span class="number">45</span> * <span class="type">CGFloat</span>(<span class="type">M_PI</span>)/<span class="number">180.0</span>)</span><br></pre></td></tr></table></figure></p>
+<p>效果图入下：旋转了45度<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform1.png" alt="view-demo"></p>
+<p>注意，这里的view的center和bounds都没有变，但是frame的数值已经没有意义，因为现在它的尺寸是能够覆盖当前view的最小矩形，并不会随着view的旋转而旋转。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">113</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</span><br><span class="line">v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</span><br><span class="line"><span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: v1.bounds.insetBy(dx: <span class="number">10</span>, dy: <span class="number">10</span>))</span><br><span class="line">v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</span><br><span class="line">mainview?.addSubview(v1)</span><br><span class="line">v1.addSubview(v2)</span><br><span class="line">v1.transform = <span class="type">CGAffineTransform</span>(scaleX: <span class="number">1.8</span>, y: <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>效果如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform2.png" alt="view-demo"></p>
+<p>view的bounds仍然不收影响，因为subview仍然绘制在相对于Superview的位置。也就是说这个两个view在水平方向一起拉伸。</p>
+<p>代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">20</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</span><br><span class="line">v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</span><br><span class="line"><span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: v1.bounds)</span><br><span class="line">v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</span><br><span class="line">mainview?.addSubview(v1)</span><br><span class="line">v1.addSubview(v2)</span><br><span class="line">v2.transform = <span class="type">CGAffineTransform</span>(translationX: <span class="number">100</span>, y: <span class="number">0</span>)</span><br><span class="line">v2.transform = v2.transform.rotated(by: <span class="number">45</span> * <span class="type">CGFloat</span>(<span class="type">M_PI</span>)/<span class="number">180.0</span>)</span><br></pre></td></tr></table></figure></p>
+<p>效果图如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform3.png" alt="view-demo"></p>
+<p>再变，代码只需要改动如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v2.transform = <span class="type">CGAffineTransform</span>(rotationAngle: <span class="number">45</span> * <span class="type">CGFloat</span>(<span class="type">M_PI</span>)/<span class="number">180.0</span>)</span><br><span class="line">v2.transform = v2.transform.translatedBy(x: <span class="number">100</span>, y: <span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
+<p>效果图如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform4.png" alt="view-demo"></p>
+<p>还有一种方法能实现上图的效果：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> r = <span class="type">CGAffineTransform</span>(rotationAngle: <span class="number">45</span> * <span class="type">CGFloat</span>(<span class="type">M_PI</span>)/<span class="number">180.0</span>)</span><br><span class="line"><span class="keyword">let</span> t = <span class="type">CGAffineTransform</span>(translationX: <span class="number">100</span>, y: <span class="number">0</span>)</span><br><span class="line">v2.transform = t.concatenating(r)</span><br></pre></td></tr></table></figure></p>
+<p>继续增加下面的代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v2.transform = r.inverted().concatenating(v2.transform)</span><br></pre></td></tr></table></figure></p>
+<p>效果图如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform5.png" alt="view-demo"></p>
+<p>再来一个变换：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">113</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</span><br><span class="line">v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</span><br><span class="line"><span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: v1.bounds.insetBy(dx: <span class="number">10</span>, dy: <span class="number">10</span>))</span><br><span class="line">v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</span><br><span class="line">mainview?.addSubview(v1)</span><br><span class="line">v1.addSubview(v2)</span><br><span class="line">v1.transform = <span class="type">CGAffineTransform</span>(a: <span class="number">1</span>, b: <span class="number">0</span>, <span class="built_in">c</span>: -<span class="number">0.2</span>, d: <span class="number">1</span>, tx: <span class="number">0</span>, ty: <span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
+<p>效果图如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform6.png" alt="view-demo"></p>
+<h3 id="Trait-Collections-and-Size-Classes"><a href="#Trait-Collections-and-Size-Classes" class="headerlink" title="Trait Collections and Size Classes"></a>Trait Collections and Size Classes</h3><p>界面上的每个 view 都有一个 traitCollection 属性，值是一个 UITraitCollection，包含下面四个属性：</p>
+<ul>
+<li>displayScale，由当前屏幕决定的缩放尺寸，1(single resolution) 2(double resolution) 3(iPhone 6/6s/7 Plus)</li>
+<li>userInterfaceIdiom，一个 UserIterfaceIdiom 值，可能是 .Phone 或 .Pad，来标志不同的设备，默认来说和 UIDevice 的 userInterfaceIdiom 属性一致.</li>
+<li>horizontalSizeClass, verticalSizeClass，是 UIUserInterfaceSizeClass 值，可能是 .Regular 或 .Compact<blockquote>
+<p>水平和竖直都是 .Regular -&gt; iPad</p>
+<p>水平是 .Compact 竖直是 .Regular -&gt; iPhone 在垂直方向，或者 iPad 的分屏应用</p>
+<p>水平和竖直都是 .Compact -&gt; iPhone 在水平方向(iPhone 6/6s/7 plus除外)</p>
+<p>水平是 .Regular 竖直是 .Compact -&gt; iPhone 6/6s/7 Plus 在水平方向</p>
+</blockquote>
+</li>
+</ul>
+<p>当应用运行时如果 trait collection 发生改变，会调用 traitCollectionDidChange 方法.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/wechat.jpg" alt="ityike WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS，swift/" rel="tag">#iOS，swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/27/ios-learn-note-view-experment/" rel="next" title="Programming iOS 9 学习笔记-view实验">
+                <i class="fa fa-chevron-left"></i> Programming iOS 9 学习笔记-view实验
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/28/ios-learn-note-view-bounds-transform/"
+           data-title="Programming iOS9（Swift3）学习笔记" data-url="http://www.dyike.com/2016/11/28/ios-learn-note-view-bounds-transform/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/touxiang.jpg"
+               alt="ityike" />
+          <p class="site-author-name" itemprop="name">ityike</p>
+          <p class="site-description motion-element" itemprop="description">php、swift、程序员、arduino、设计</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dyike" target="_blank" title="github">
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/734529030" target="_blank" title="weibo">
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/feng92" target="_blank" title="zhihu">
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.iamle.com/" title="流水理鱼wwek" target="_blank">流水理鱼wwek</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.chenjie.info/" title="陈捷的博客" target="_blank">陈捷的博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://qii404.me/" title="qii404" target="_blank">qii404</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先补充一些知识点（关于CGRect、“NS”和UserDefaults的变化）："><span class="nav-number">1.</span> <span class="nav-text">首先补充一些知识点（关于CGRect、“NS”和UserDefaults的变化）：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bounds-and-Center"><span class="nav-number">1.1.</span> <span class="nav-text">Bounds and Center</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Window-Coordinates-和-Screen-Coordinates"><span class="nav-number">1.2.</span> <span class="nav-text">Window Coordinates 和 Screen Coordinates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transform"><span class="nav-number">1.3.</span> <span class="nav-text">Transform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trait-Collections-and-Size-Classes"><span class="nav-number">1.4.</span> <span class="nav-text">Trait Collections and Size Classes</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ityike</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"diyike"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
