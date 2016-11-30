@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-11-28T14:40:33.000Z</updated>
+  <updated>2016-11-30T00:03:23.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.dyike.com/2016/11/28/ios-learn-note-view-bounds-transform/"/>
     <id>http://www.dyike.com/2016/11/28/ios-learn-note-view-bounds-transform/</id>
     <published>2016-11-28T14:22:07.000Z</published>
-    <updated>2016-11-28T14:40:33.000Z</updated>
+    <updated>2016-11-30T00:03:23.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。&lt;/p&gt;
@@ -108,7 +108,18 @@
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;当应用运行时如果 trait collection 发生改变，会调用 traitCollectionDidChange 方法.&lt;/p&gt;
+&lt;p&gt;当应用运行时如果 trait collection 发生改变，会调用 traitCollectionDidChange 方法。&lt;/p&gt;
+&lt;h3 id=&quot;Layout&quot;&gt;&lt;a href=&quot;#Layout&quot; class=&quot;headerlink&quot; title=&quot;Layout&quot;&gt;&lt;/a&gt;Layout&lt;/h3&gt;&lt;p&gt;假设superview的bounds变化，其subview的bounds和center是不会变的，实际应用中，我们可能更需要subview根据Superview的变化而变化，这就是Layout。&lt;/p&gt;
+&lt;p&gt;Layout的主要执行方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Manual layout（手动layout）&lt;br&gt;superview在被更改尺寸会发送layoutSubview消息，如果你新建自己的子类，并且重写layoutSuperview就可以手动更改，这个很麻烦，但是可以做任何你想做的事。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Autoresizing&lt;br&gt;Autoresizing是iOS6之前的方式，主要通过自己的autoresizingMask属性来变化。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Authlayout&lt;br&gt;iOS6中引入的，取决于view的constraints（NSLayoutConstraint的实例）。Autolayout是在layoutSubview的幕后实现，不需要代码也能实现复杂的layoutSubview功能。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通常不会用到手动 layout，autoresizing 基本也是自动的，autolayout 主要在 xCode 的编辑器中进行设定。在代码中创建的 view 默认使用 autoresizing 而不是 autolayout。&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -129,7 +140,7 @@
     <link href="http://www.dyike.com/2016/11/27/ios-learn-note-view-experment/"/>
     <id>http://www.dyike.com/2016/11/27/ios-learn-note-view-experment/</id>
     <published>2016-11-27T13:11:30.000Z</published>
-    <updated>2016-11-28T14:25:45.000Z</updated>
+    <updated>2016-11-30T00:03:07.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前两个版本来说好很多，改动相当的大，所以说swift的每一个版本都可以算一个新语言。我最近把swift3的文档过了一遍（之前只看过swift1的，swift2没怎么看过）现在又拿出这个本书出来学习。&lt;/p&gt;

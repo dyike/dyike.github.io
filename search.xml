@@ -92,7 +92,18 @@
 </blockquote>
 </li>
 </ul>
-<p>当应用运行时如果 trait collection 发生改变，会调用 traitCollectionDidChange 方法.</p>
+<p>当应用运行时如果 trait collection 发生改变，会调用 traitCollectionDidChange 方法。</p>
+<h3 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h3><p>假设superview的bounds变化，其subview的bounds和center是不会变的，实际应用中，我们可能更需要subview根据Superview的变化而变化，这就是Layout。</p>
+<p>Layout的主要执行方式：</p>
+<ul>
+<li><p>Manual layout（手动layout）<br>superview在被更改尺寸会发送layoutSubview消息，如果你新建自己的子类，并且重写layoutSuperview就可以手动更改，这个很麻烦，但是可以做任何你想做的事。</p>
+</li>
+<li><p>Autoresizing<br>Autoresizing是iOS6之前的方式，主要通过自己的autoresizingMask属性来变化。</p>
+</li>
+<li><p>Authlayout<br>iOS6中引入的，取决于view的constraints（NSLayoutConstraint的实例）。Autolayout是在layoutSubview的幕后实现，不需要代码也能实现复杂的layoutSubview功能。</p>
+</li>
+</ul>
+<p>通常不会用到手动 layout，autoresizing 基本也是自动的，autolayout 主要在 xCode 的编辑器中进行设定。在代码中创建的 view 默认使用 autoresizing 而不是 autolayout。</p>
 ]]></content>
     </entry>
     
