@@ -90,7 +90,7 @@
 <meta name="description" content="php、swift、程序员、arduino、设计">
 <meta property="og:type" content="website">
 <meta property="og:title" content="一刻笔记">
-<meta property="og:url" content="http://www.dyike.com/tags/php/index.html">
+<meta property="og:url" content="http://www.dyike.com/archives/2016/12/index.html">
 <meta property="og:site_name" content="一刻笔记">
 <meta property="og:description" content="php、swift、程序员、arduino、设计">
 <meta name="twitter:card" content="summary">
@@ -113,7 +113,7 @@
   };
 </script>
 
-  <title> 标签: php | 一刻笔记 </title>
+  <title> 归档 | 一刻笔记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -140,7 +140,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -261,15 +261,31 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        php
-        <small>标签</small>
-      </h2>
-    </div>
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
+
+    <span class="archive-page-counter">
+      
+      
+       
+      
+      OK! 目前共计 43 篇日志。 继续努力。
+    </span>
 
     
+
+      
+      
+      
+
+      
+        
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+        </div>
+      
+      
+
       
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -277,37 +293,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/10/18/php-array-unique/" itemprop="url">
+            <a class="post-title-link" href="/2016/12/25/2016-in-all/" itemprop="url">
               
-                <span itemprop="name">php二维数组去重</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-18T21:55:04+08:00"
-              content="2016-10-18" >
-          10-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/12/php-unint-test/" itemprop="url">
-              
-                <span itemprop="name">PHP单元测试的学习整理</span>
+                <span itemprop="name">2016年总结</span>
               
             </a>
         
@@ -315,9 +303,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-12T16:05:52+08:00"
-              content="2016-09-12" >
-          09-12
+              datetime="2016-12-25T14:09:21+08:00"
+              content="2016-12-25" >
+          12-25
         </time>
       </div>
 
@@ -325,10 +313,13 @@
   </article>
 
 
+
     
-  </div>
+
+  </section>
 
   
+
 
 
           </div>
@@ -547,6 +538,12 @@
   
 
   
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
+
 
   
 
@@ -662,69 +659,6 @@
                             // cut out 100 characters
                             var start = first_occur - 20;
                             var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
-  
-
-  
-
-  
-<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
-</script>
-
-
-</body>
-</html>
- = first_occur + 80;
                             if(start < 0){
                                 start = 0;
                             }
