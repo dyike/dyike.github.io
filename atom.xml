@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2016-12-25T09:16:13.000Z</updated>
+  <updated>2016-12-25T09:25:23.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.dyike.com/2016/12/25/2016-in-all/"/>
     <id>http://www.dyike.com/2016/12/25/2016-in-all/</id>
     <published>2016-12-25T06:09:21.000Z</published>
-    <updated>2016-12-25T09:16:13.000Z</updated>
+    <updated>2016-12-25T09:25:23.000Z</updated>
     
     <content type="html">&lt;p&gt;时间过得真快，又一年过去了，不知道从什么时候开始喜欢写年度总结的，最开始好像是在51空间上写，那个时候还是高中的时候，后来就在QQ空间上写，再后来到读大学，在自己的blog上写。去年的总结是我在考研结束的那天晚上开始写的，写了两天。这真巧，今天正好也是今年考研的第二天，趁着圣诞的气息，该交作业了。&lt;/p&gt;
 &lt;p&gt;先祝大家圣诞快乐，其次就是向大家拜个早年，鸡年大吉。&lt;/p&gt;
@@ -34,7 +34,7 @@
 &lt;li&gt;年初的时候，参加Swift大会，认识了一些人，再加之去年玩arduino的时候接触了一点swift做iOS App，自然而然入门了swift3，总得来说，这个还是值得学习的一门语言，毕竟我之前没有怎么接触强类型的语言。最近写用swift写一个App，才完成了三分之一，我不知道啥时候可以写出来。&lt;/li&gt;
 &lt;li&gt;看了一本golang的书《go语言圣经》，会写的那种，谈不上深入，挺喜欢谢大搞的社区(gocn.io)。&lt;/li&gt;
 &lt;li&gt;七拽八歪地接触了Rust，一门注重高效、安全、并行的系统程序语言，写起来跟go一样爽，比go还好的是支持泛型。希望有一天能用到实际项目中。&lt;/li&gt;
-&lt;li&gt;还有就是吵得比较火热的前端，我也接触一点Vue.js，让我写CSS简直是折磨我，大概就是没有在这一块找到我的兴趣点。&lt;/li&gt;
+&lt;li&gt;还有就是吵得比较火热的前端，我也接触一点Vue.js。前端让我写CSS简直是折磨我，大概就是没有在这一块找到我的兴趣点。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;看的书&quot;&gt;&lt;a href=&quot;#看的书&quot; class=&quot;headerlink&quot; title=&quot;看的书&quot;&gt;&lt;/a&gt;看的书&lt;/h3&gt;&lt;p&gt;今年买的书，技术方面的书比较多，自从工作了之后，发现自身暴露出的问题还是挺多的，在买书上面也不再那么吝啬了，相信付出总是有回报的。&lt;/p&gt;
 &lt;h3 id=&quot;做的饭&quot;&gt;&lt;a href=&quot;#做的饭&quot; class=&quot;headerlink&quot; title=&quot;做的饭&quot;&gt;&lt;/a&gt;做的饭&lt;/h3&gt;&lt;p&gt;周末常常自己做饭，尝试了一些新花样，好多失败了。反正自己能做的也有两道拿手的菜，还有自己做的饭不至于那么的难吃，哈哈哈！&lt;/p&gt;
