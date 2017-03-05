@@ -90,7 +90,7 @@
 <meta name="description" content="php、swift、程序员、arduino、设计">
 <meta property="og:type" content="website">
 <meta property="og:title" content="一刻笔记">
-<meta property="og:url" content="http://www.dyike.com/tags/Golang/index.html">
+<meta property="og:url" content="http://www.dyike.com/tags/golang/index.html">
 <meta property="og:site_name" content="一刻笔记">
 <meta property="og:description" content="php、swift、程序员、arduino、设计">
 <meta name="twitter:card" content="summary">
@@ -113,7 +113,7 @@
   };
 </script>
 
-  <title> 标签: Golang | 一刻笔记 </title>
+  <title> 标签: golang | 一刻笔记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +264,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        Golang
+        golang
         <small>标签</small>
       </h2>
     </div>
@@ -277,37 +277,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2015/07/26/go-note-1-2/" itemprop="url">
+            <a class="post-title-link" href="/2017/03/05/read-go-package-bufio/" itemprop="url">
               
-                <span itemprop="name">Go语言学习笔记：【Go中字符串小记】</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-07-26T17:01:49+08:00"
-              content="2015-07-26" >
-          07-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/06/19/go-note-3/" itemprop="url">
-              
-                <span itemprop="name">Go语言学习笔记【第三目：内建函数】</span>
+                <span itemprop="name">Go Package —— bufio包</span>
               
             </a>
         
@@ -315,65 +287,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2015-06-19T22:37:07+08:00"
-              content="2015-06-19" >
-          06-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/06/19/go-note-2/" itemprop="url">
-              
-                <span itemprop="name">Go语言学习笔记【第二目：运算符、控制结构】</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-06-19T22:06:46+08:00"
-              content="2015-06-19" >
-          06-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/06/18/go-note-1-1/" itemprop="url">
-              
-                <span itemprop="name">Go语言学习笔记【第一目：变量、类型和关键字，布尔类型，数字类型...】</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-06-18T22:15:05+08:00"
-              content="2015-06-18" >
-          06-18
+              datetime="2017-03-05T22:06:20+08:00"
+              content="2017-03-05" >
+          03-05
         </time>
       </div>
 
@@ -423,7 +339,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -433,7 +349,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -717,6 +633,70 @@
                         if (first_occur >= 0) {
                             // cut out 100 characters
                             var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
+start = first_occur - 20;
                             var end = first_occur + 80;
                             if(start < 0){
                                 start = 0;

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2017-02-26T12:44:36.000Z</updated>
+  <updated>2017-03-05T14:42:53.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Go Package —— bufio包</title>
+    <link href="http://www.dyike.com/2017/03/05/read-go-package-bufio/"/>
+    <id>http://www.dyike.com/2017/03/05/read-go-package-bufio/</id>
+    <published>2017-03-05T14:06:20.000Z</published>
+    <updated>2017-03-05T14:42:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文阅读golang的bufio包，常用的函数，结构体以及方法</p>
+<h2 id="scan-go"><a href="#scan-go" class="headerlink" title="scan.go"></a><em>scan.go</em></h2><h3 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight plain"><figcaption><span>NewScanner(r io.Reader) *Scanner```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; 返回一个新的Scanner从r读取。split函数默认为ScanLines。</div><div class="line"></div><div class="line">### ```func ScanBytes(data []byte, atEOF bool) (advance int, token []byte, err error)</div></pre></td></tr></table></figure></h3><blockquote>
+<p>是scaner的一个分割函数，将每一个字节作为一个字符返回。</p>
+</blockquote>
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a><figure class="highlight plain"><figcaption><span>ScanLines(data []byte, atEOF bool) (advance int, token []byte, err error)```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; ScanLines是一个Scanner的拆分函数，它返回每行文本，删除任何尾随的行尾标记。</div><div class="line">&gt; 返回的行可能为空。行结束标记是一个可选的回车，后跟一个强制换行。在正则表达式符号中，它是`\ r？\ n`。</div><div class="line">&gt; 最后一个非空行的输入将被返回，即使它没有换行符。</div><div class="line"></div><div class="line">### ```func ScanRunes(data []byte, atEOF bool) (advance int, token []byte, err error)</div></pre></td></tr></table></figure></h3><h3 id="-2"><a href="#-2" class="headerlink" title=""></a><figure class="highlight plain"><figcaption><span>ScanWords(data []byte, atEOF bool) (advance int, token []byte, err error)```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### ```func (s *Scanner) Err() error</div></pre></td></tr></table></figure></h3><h3 id="-3"><a href="#-3" class="headerlink" title=""></a><figure class="highlight plain"><figcaption><span>(s *Scanner) Bytes() []byte```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">### ```func (s *Scanner) Text() string</div></pre></td></tr></table></figure></h3><h3 id="-4"><a href="#-4" class="headerlink" title=""></a><figure class="highlight plain"><figcaption><span>(s *Scanner) Scan() bool```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">### ```func (s *Scanner) Buffer(buf []byte, max int)</div></pre></td></tr></table></figure></h3><h3 id="-5"><a href="#-5" class="headerlink" title=""></a><figure class="highlight plain"><figcaption><span>(s *Scanner) Split(split SplitFunc)```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## _bufio.go_</div><div class="line"></div><div class="line">### ```func NewReader(rd io.Reader) *Reader</div></pre></td></tr></table></figure></h3><blockquote>
+<p>创建一个reader，其中buffer的Size是默认大小。<br>其实就是调用<code>func NewReaderSize(rd io.Reader, size int) *Reader</code></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文阅读golang的bufio包，常用的函数，结构体以及方法&lt;/p&gt;
+&lt;h2 id=&quot;scan-go&quot;&gt;&lt;a href=&quot;#scan-go&quot; class=&quot;headerlink&quot; title=&quot;scan.go&quot;&gt;&lt;/a&gt;&lt;em&gt;scan.go&lt;/em&gt;&lt;/h2&gt;&lt;h3 i
+    
+    </summary>
+    
+    
+      <category term="golang" scheme="http://www.dyike.com/tags/golang/"/>
+    
+  </entry>
   
   <entry>
     <title>制定一个高效的计划</title>
@@ -1187,32 +1215,6 @@
     
     
       <category term="PHP" scheme="http://www.dyike.com/tags/PHP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>将数组转换成字符串</title>
-    <link href="http://www.dyike.com/2016/04/28/array-to-string/"/>
-    <id>http://www.dyike.com/2016/04/28/array-to-string/</id>
-    <published>2016-04-28T07:08:32.000Z</published>
-    <updated>2016-04-28T07:44:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<p>##一个简单的方法：将一个二维的数组转换成字符串</p>
-<p>常常出现这样一种情况，sql语句查询出来的结果是一个二维数组，但是查询的结果还是需要用到下一条查询语句，这个时候可能需要将一个二维数组转换成字符串用于sql语句的查询。<br>下面是一个简单的例子：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">arr2str</span> <span class="params">($arr)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $v)</div><div class="line">    &#123;</div><div class="line">        $v = join(<span class="string">","</span>,$v); <span class="comment">//可以用implode将一维数组转换为用逗号连接的字符串</span></div><div class="line">        $temp[] = $v;</div><div class="line">    &#125;</div><div class="line">    $t=<span class="string">""</span>;</div><div class="line">    <span class="keyword">foreach</span>($temp <span class="keyword">as</span> $v)&#123;</div><div class="line">        $t.=<span class="string">"'"</span>.$v.<span class="string">"'"</span>.<span class="string">","</span>;</div><div class="line">    &#125;</div><div class="line">    $t=substr($t,<span class="number">0</span>,<span class="number">-1</span>);</div><div class="line">    <span class="keyword">return</span> $t;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;p&gt;##一个简单的方法：将一个二维的数组转换成字符串&lt;/p&gt;
-&lt;p&gt;常常出现这样一种情况，sql语句查询出来的结果是一个二维数组，但是查询的结果还是需要用到下一条查询语句，这个时候可能需要将一个二维数组转换成字符串用于sql语句的查询。&lt;br&gt;下面是一个简单的例子：&lt;
-    
-    </summary>
-    
-    
-      <category term="-php" scheme="http://www.dyike.com/tags/php/"/>
     
   </entry>
   
