@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.dyike.com/learn/index.html</loc>
+    
+    <lastmod>2017-03-27T14:11:41.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.dyike.com/2017/03/27/design-mode-strategy/</loc>
     
     <lastmod>2017-03-27T13:53:10.000Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>http://www.dyike.com/2016/09/12/php-unint-test/</loc>
     
     <lastmod>2016-09-12T08:38:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.dyike.com/learn/index.html</loc>
-    
-    <lastmod>2016-09-12T08:14:11.000Z</lastmod>
     
   </url>
   
