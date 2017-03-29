@@ -3,13 +3,30 @@
 
 
     
-    
   <url>
-    <loc>http://www.dyike.com/2017/03/27/design-mode-strategy/</loc>
-    <lastmod>2017-03-27T13:53:10.000Z</lastmod>
+    <loc>http://www.dyike.com/2017/03/29/design-pattern-decorator/</loc>
+    <lastmod>2017-03-29T14:50:47.000Z</lastmod>
     <data>
         <display>
-        <title>设计模式之“策略模式”</title>
+        <title>设计模式之“装饰者模式”——手机与包装盒示例</title>
+        <pubTime>2017-03-29T14:27:22.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>http://www.dyike.com/2017/03/27/design-pattern-strategy/</loc>
+    <lastmod>2017-03-29T14:29:09.000Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式之“策略模式”——出行outing示例</title>
         <pubTime>2017-03-27T13:42:50.000Z</pubTime>
         
         <tag>设计模式</tag>
