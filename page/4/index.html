@@ -5,13 +5,12 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="baidu-site-verification" content="8NBkpThWUl" />
-<meta name="google-site-verification" content="Yb1SzwY5w5garHORFOIh7xq1lqEEmerfXIAthf7JyEY" />
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -28,9 +27,12 @@
 
 
 
+
+
+
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -64,12 +66,12 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="一刻笔记" />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,7 +82,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -99,19 +101,35 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
+
+
+
+  <link rel="canonical" href="http://www.dyike.com/page/4/"/>
+
+
+
+
 
   <title> 一刻笔记 </title>
 </head>
@@ -127,9 +145,7 @@
 
 
 
-  <div style="display: none;">
-    <script src="http://s6.cnzz.com/stat.php?id=1254977565&web_id=1254977565" type="text/javascript"></script>
-  </div>
+
 
 
 
@@ -140,31 +156,35 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">一刻笔记</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一刻笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">带着一颗变态的、积极的心走向未来</p>
+      
   </div>
-  <p class="site-subtitle">带着一颗变态的、积极的心走向未来</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -184,26 +204,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-learn">
-          <a href="/learn" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-fa fa-battery-full"></i> <br />
-            
-            充电
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-life">
-          <a href="/life" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-fa fa-coffee"></i> <br />
-            
-            生活
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -214,45 +214,24 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            关于
+            标签
           </a>
         </li>
       
 
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
       
     </ul>
   
 
   
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
-  
 </nav>
+
+
 
  </div>
     </header>
@@ -267,13 +246,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2015/09/16/the-php-dev-in-ubuntu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -295,13 +284,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-16T20:56:59+08:00" content="2015-09-16">
-              2015-09-16
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-16T20:56:59+08:00">
+                2015-09-16
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -309,20 +306,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2015/09/16/the-php-dev-in-ubuntu/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/16/the-php-dev-in-ubuntu/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/16/the-php-dev-in-ubuntu/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -336,16 +339,72 @@
       
         
           
-          概述今天在虚拟机上基于Ubuntu安装配置了服务器运行环境，web服务用 nginx，数据库存储在 mysql,动态脚本语言是 php。
-安装nginx下载并添加nginx_signing.key12wget http://nginx.org/keys/nginx_signing.keysudo a
-          ...
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>今天在虚拟机上基于Ubuntu安装配置了服务器运行环境，web服务用 nginx，数据库存储在 mysql,动态脚本语言是 php。</p>
+<h4 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h4><h5 id="下载并添加nginx-signing-key"><a href="#下载并添加nginx-signing-key" class="headerlink" title="下载并添加nginx_signing.key"></a>下载并添加nginx_signing.key</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget http://nginx.org/keys/nginx_signing.key</div><div class="line">sudo apt-key add nginx_signing.key</div></pre></td></tr></table></figure>
+<h5 id="添加官方源"><a href="#添加官方源" class="headerlink" title="添加官方源"></a>添加官方源</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/apt/sources.list</div></pre></td></tr></table></figure>
+<p>在末尾加上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">deb http://nginx.org/packages/ubuntu/ trusty nginx</div><div class="line">deb-src http://nginx.org/packages/ubuntu/ trusty nginx</div></pre></td></tr></table></figure>
+<p>然后更新：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>
+<h5 id="安装nginx-1"><a href="#安装nginx-1" class="headerlink" title="安装nginx"></a>安装nginx</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install nginx</div></pre></td></tr></table></figure>
+<h4 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h4><h5 id="下载和安装MySQL-APT-Repository"><a href="#下载和安装MySQL-APT-Repository" class="headerlink" title="下载和安装MySQL APT Repository"></a>下载和安装MySQL APT Repository</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget http://dev.mysql.com/get/mysql-apt-config_0.5.3-1_all.deb</div><div class="line">sudo dpkg -i mysql-apt-config_0.5.3-1_all.deb</div></pre></td></tr></table></figure>
+<h5 id="确认版本，或者更改版本："><a href="#确认版本，或者更改版本：" class="headerlink" title="确认版本，或者更改版本："></a>确认版本，或者更改版本：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dpkg-reconfigure mysql-apt-config</div></pre></td></tr></table></figure>
+<h5 id="更新源并安装mysql-server"><a href="#更新源并安装mysql-server" class="headerlink" title="更新源并安装mysql-server"></a>更新源并安装mysql-server</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install mysql-server</div></pre></td></tr></table></figure>
+<h4 id="安装PHP"><a href="#安装PHP" class="headerlink" title="安装PHP"></a>安装PHP</h4><h5 id="下载Php并解压"><a href="#下载Php并解压" class="headerlink" title="下载Php并解压"></a>下载Php并解压</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget http://cn2.php.net/distributions/php-7.0.6.tar.bz2</div><div class="line">tar jxf php-7.0.6.tar.bz2</div></pre></td></tr></table></figure>
+<h5 id="安装所需依赖"><a href="#安装所需依赖" class="headerlink" title="安装所需依赖"></a>安装所需依赖</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libxml2-dev build-essential openssl libssl-dev make curl libcurl4-gnutls-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline6 libreadline6-dev</div></pre></td></tr></table></figure>
+<h5 id="configure"><a href="#configure" class="headerlink" title="configure"></a>configure</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-fpm --with-fpm-user=www --with-fpm-group=www --with-mysqli --with-pdo-mysql --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-mbstring --with-mcrypt --enable-ftp --with-gd --enable-gd-native-ttf --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --disable-fileinfo --enable-maintainer-zts</div></pre></td></tr></table></figure>
+<p>或者是这样的：(下面是我常用的)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">./configure --prefix=/usr/local/php7 \</div><div class="line">--with-config-file-path=/usr/local/php7/etc \</div><div class="line">--with-config-file-scan-dir=/usr/local/php7/etc/php.d \</div><div class="line">--with-mcrypt=/usr/include \</div><div class="line">--enable-mysqlnd \</div><div class="line">--with-mysqli \</div><div class="line">--with-pdo-mysql \</div><div class="line">--enable-fpm \</div><div class="line">--with-fpm-user=nginx \</div><div class="line">--with-fpm-group=nginx \</div><div class="line">--with-gd \</div><div class="line">--with-iconv \</div><div class="line">--with-zlib \</div><div class="line">--enable-xml \</div><div class="line">--enable-shmop \</div><div class="line">--enable-sysvsem \</div><div class="line">--enable-inline-optimization \</div><div class="line">--enable-mbregex \</div><div class="line">--enable-mbstring \</div><div class="line">--enable-ftp \</div><div class="line">--enable-gd-native-ttf \</div><div class="line">--with-openssl \</div><div class="line">--enable-pcntl \</div><div class="line">--enable-sockets \</div><div class="line">--with-xmlrpc \</div><div class="line">--enable-zip \</div><div class="line">--enable-soap \</div><div class="line">--without-pear \</div><div class="line">--with-gettext \</div><div class="line">--enable-session \</div><div class="line">--with-curl \</div><div class="line">--with-jpeg-dir \</div><div class="line">--with-freetype-dir \</div><div class="line">--enable-opcache  \</div><div class="line">--with-readline</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<h5 id="加入系统变量"><a href="#加入系统变量" class="headerlink" title="加入系统变量"></a>加入系统变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo echo &quot;PATH=$PATH:/usr/local/php7/bin&quot;&gt;&gt; /etc/profile</div><div class="line">sudo echo &quot;export PATH&quot;&gt;&gt; /etc/profile</div><div class="line">source /etc/profile</div></pre></td></tr></table></figure>
+<h5 id="一些配置文件的复制"><a href="#一些配置文件的复制" class="headerlink" title="一些配置文件的复制"></a>一些配置文件的复制</h5><ul>
+<li>编译后，cd到源码跟目录，然后</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cp php.ini-production /usr/local/php7/lib/php.ini</div></pre></td></tr></table></figure>
+<ul>
+<li>cd /usr/local/php7/etc ,然后</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cp php-fpm.conf.default php-fpm.conf</div></pre></td></tr></table></figure>
+<ul>
+<li>cd /usr/local/php7/etc/php-fpm.d，然后</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cp www.conf.default www.conf</div></pre></td></tr></table></figure>
+<h5 id="设置php-fpm配置文件"><a href="#设置php-fpm配置文件" class="headerlink" title="设置php-fpm配置文件"></a>设置php-fpm配置文件</h5><ul>
+<li>php-fpm.conf的pid</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /usr/local/php7/etc/php-fpm.conf</div></pre></td></tr></table></figure>
+<ul>
+<li>启动php-fpm服务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/php7/sbin/php-fpm</div></pre></td></tr></table></figure>
+<ul>
+<li>新建www用户组：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">groupadd www</div><div class="line">useradd -g www www</div></pre></td></tr></table></figure>
+<ul>
+<li>再次启动</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/php7/sbin/php-fpm</div></pre></td></tr></table></figure>
+<ul>
+<li>开机启动php-fpm<br>开机启动的配置文件是：/etc/rc.local ，加入 /usr/local/php7/sbin/php-fpm 即可</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/rc.local</div></pre></td></tr></table></figure>
+<pre><code>#!/bin/sh
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/16/the-php-dev-in-ubuntu/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+# This script will be executed *after* all the other init scripts.
+# You can put your own initialization stuff in here if you don&apos;t
+# want to do the full Sys V style init stuff.
+
+touch /var/lock/subsys/local
+/usr/local/apache/bin/apachectl start
+/usr/local/bin/redis-server /etc/redis.conf
+/usr/local/php7/sbin/php-fpm
+</code></pre><h4 id="配置nginx略了"><a href="#配置nginx略了" class="headerlink" title="配置nginx略了"></a>配置nginx略了</h4>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -363,6 +422,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -374,13 +435,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2015/09/04/how-to-use-google/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -402,13 +473,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-04T21:54:11+08:00" content="2015-09-04">
-              2015-09-04
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-04T21:54:11+08:00">
+                2015-09-04
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -416,20 +495,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2015/09/04/how-to-use-google/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/04/how-to-use-google/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/04/how-to-use-google/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -443,21 +528,68 @@
       
         
           
-          学会 科学上网：用 VPS搭建shadowsocks 服务器
-目前将shadowsocks部署到25端口似乎还不会被封锁，大家可以尝试。
-购买VPS服务器主流的VPS（虚拟主机）服务器提供商有三家：
+            <p>学会 科学上网：用 VPS搭建shadowsocks 服务器</p>
+<p>目前将shadowsocks部署到25端口似乎还不会被封锁，大家可以尝试。</p>
+<h2 id="购买VPS服务器"><a href="#购买VPS服务器" class="headerlink" title="购买VPS服务器"></a>购买VPS服务器</h2><p>主流的VPS（虚拟主机）服务器提供商有三家：</p>
+<ul>
+<li>linode</li>
+<li>digital ocean</li>
+<li>bandwagon<br>下面的比上面的便宜。如果只是自用，bandwagon足够。</li>
+</ul>
+<p>一般使用paypal绑定一个visa或mastercard信用卡来付款。注意要用国际paypal帐号，国内的是不能用外币付款的。</p>
+<p>在bandwagon购买VPS以后会获得一个主机地址和用于ssh登录的root密码。</p>
+<h2 id="远程登陆VPS"><a href="#远程登陆VPS" class="headerlink" title="远程登陆VPS"></a>远程登陆VPS</h2><p>Mac OS X 或Linux下直接在终端中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh root@your_vps_ip -p your_ssh_port</div></pre></td></tr></table></figure>
+<p>即可。</p>
+<p>在windows系统下需要专门的客户端来SSH登录VPS。在<a href="http://www.netsarang.com/download/down_form.html?code=522" target="_blank" rel="external">xShell官网</a> 下载xShell。</p>
+<p>家庭和学校用户可以免费试用，下载时选择home and school use即可。需要用邮箱注册一下，下载链接会发送到邮箱中。</p>
+<p>xShell中新建一个连接，会要求输入目标IP地址和端口，以及root密码，按提示操作即可。</p>
+<h2 id="安装shadowsocks"><a href="#安装shadowsocks" class="headerlink" title="安装shadowsocks"></a>安装shadowsocks</h2><p>打开shell，使用VPS服务商提供的root用户和密码SSH登录VPS。然后执行如下命令：</p>
+<h3 id="Debian-Ubuntu"><a href="#Debian-Ubuntu" class="headerlink" title="Debian/Ubuntu:"></a>Debian/Ubuntu:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install python-pip</div><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure>
+<h3 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS:"></a>CentOS:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install python-setuptools &amp;amp;&amp;amp; easy_install pip</div><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure>
+<p>shadowsocks就安装好了。</p>
+<p>有时Ubuntu会遇到第一个命令安装python-pip时找不到包的情况。pip官方给出了一个安装脚本，可以自动安装pip。先下载脚本，然后执行即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://bootstrap.pypa.io/get-pip.py</div><div class="line">python get-pip.py</div></pre></td></tr></table></figure>
+<h2 id="编写配置文件"><a href="#编写配置文件" class="headerlink" title="编写配置文件"></a>编写配置文件</h2><p>shadowsocks启动时的参数，如服务器端口，代理端口，登录密码等，可以通过启动时的命令行参数来设定，也可以通过json格式的配置文件设定。推荐使用配置文件，方便查看和修改。</p>
+<p>用vi新建一个配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/shadowsocks.json</div></pre></td></tr></table></figure>
+<p>然后输入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">&quot;server&quot;:&quot;my_server_ip&quot;,</div><div class="line">&quot;server_port&quot;:25,</div><div class="line">&quot;local_address&quot;: &quot;127.0.0.1&quot;,</div><div class="line">&quot;local_port&quot;:1080,</div><div class="line">&quot;password&quot;:&quot;mypassword&quot;,</div><div class="line">&quot;timeout&quot;:300,</div><div class="line">&quot;method&quot;:&quot;aes-256-cfb&quot;,</div><div class="line">&quot;fast_open&quot;: false</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>保存退出。</p>
+<h2 id="启动shadowsocks"><a href="#启动shadowsocks" class="headerlink" title="启动shadowsocks"></a>启动shadowsocks</h2><p>如果已经写好了配置文件，启动shadowsocks服务器的命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -c /etc/shadowsocks.json</div></pre></td></tr></table></figure>
+<p>后台启动和停止shadowsocks服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssserver -c /etc/shadowsocks.json -d start</div><div class="line">ssserver -c /etc/shadowsocks.json -d stop</div></pre></td></tr></table></figure>
+<p>shadowsocks的日志保存在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/var/log/shadowsocks.log</div></pre></td></tr></table></figure>
+<h2 id="安装并启动shadowsocks客户端"><a href="#安装并启动shadowsocks客户端" class="headerlink" title="安装并启动shadowsocks客户端"></a>安装并启动shadowsocks客户端</h2><p>shadowsocks支持windows、Mac OS X、Linux、Android、iOS等多个平台。不过iOS由于系统对应用后台运行的限制，只能使用客户端内嵌的浏览器科学上网，不能给其他应用代理。</p>
+<p>shadowsocks项目Github主页：<a href="https://github.com/shadowsocks/shadowsocks" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks</a></p>
+<p>里面可以找到客户端下载地址。</p>
+<p>下载安装客户端以后，只需按服务器的配置填写IP地址、服务器端口、本地端口（如果没有本地端口选项，就是默认的1080）、密码、加密方式等参数，启动就可以了。</p>
+<p>客户端支持全局代理和PAC代理两种方式，后者会使用一个脚本来自动检查一个网站是否在需要代理的网站列表中，自动选择直接连接或代理连接。</p>
+<p>PAC列表可以在线更新，但是难免有收录不全的情况。这时可以选择关闭shadowsocks代理（实际上是取消对系统代理的配置，shadowsocks客户端仍然保持工作），然后使用支持自定义规则的代理管理插件来实现自动切换代理，比如switchyOmega。</p>
+<h2 id="使用switchyOmega实现自动切换代理"><a href="#使用switchyOmega实现自动切换代理" class="headerlink" title="使用switchyOmega实现自动切换代理"></a>使用switchyOmega实现自动切换代理</h2><p>switchyOmega是chrome浏览器上一个很好用的代理管理插件。它的前身switchySharp更有名。</p>
+<p>chrome应用商店本身需要翻墙才能访问，因此需要先在shadowsocks启动代理模式下下载安装，再关闭shadowsocks代理。</p>
+<p>安装完毕后，右击switchyOmega图标，选择选项，进入switchOmega配置界面。</p>
+<h3 id="创建shadowsocks情景模式"><a href="#创建shadowsocks情景模式" class="headerlink" title="创建shadowsocks情景模式"></a>创建shadowsocks情景模式</h3><p>新建一个情景模式，比如叫SS，代理协议选择socks5，代理地址为127.0.0.1，端口1080。</p>
+<p>现在切换到SS情景模式就可以通过shadowsocks科学上网了。后面获取自动切换规则列表</p>
+<h3 id="设置自动切换模式"><a href="#设置自动切换模式" class="headerlink" title="设置自动切换模式"></a>设置自动切换模式</h3><p>在设置界面选择自动切换模式，在“切换规则”中勾选“规则列表规则”，对应的情景模式选择刚刚新建的SS。</p>
+<p>然后在下面的规则列表地址中填写</p>
+<p><a href="https://autoproxy-gfwlist.googlecode.com/svn/trunk/gfwlist.txt" target="_blank" rel="external">https://autoproxy-gfwlist.googlecode.com/svn/trunk/gfwlist.txt</a></p>
+<p>规则列表格式选择AutoProxy。</p>
+<p>然后点击立即更新情景模式， 更新完成后会有提示。</p>
+<p>点击左侧的“应用选项”。然后单击switchyOmega图标，选择自动切换，就可以在访问“不存在的网站”时自动切换到shadowsocks代理了。</p>
+<h3 id="添加自定义规则"><a href="#添加自定义规则" class="headerlink" title="添加自定义规则"></a>添加自定义规则</h3><p>如果遇到某个国外网站无法直接连接或速度太慢时，可以单击switchyOmega图标，选择“添加条件”，情景模式选择SS，就可以了。</p>
+<p>这时打开switchyOmega选项，在自动切换模式的切换规则中就可以看到刚刚添加的规则。可以在这里管理自定义的规则。</p>
+<h3 id="导入和导出switchyOmega设置"><a href="#导入和导出switchyOmega设置" class="headerlink" title="导入和导出switchyOmega设置"></a>导入和导出switchyOmega设置</h3><p>如果换了一台电脑，重新设置一遍switchyOmega就太麻烦了。可以在设置好的switchyOmega中导出设置文件，在另一个chrome浏览器中导入，就可以直接复制原来的设置了。</p>
+<p>在switchyOmega选项的左侧点击“导入/导出”，点击“生成备份文件”即可生成switchyOmega设置备份。点击“从备份文件恢复”可以导入备份文件。</p>
 
-linode
-digital ocean
-bandwagon下面的比上面的便宜。如果只是自用，ba
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/04/how-to-use-google/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -475,6 +607,8 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -486,13 +620,23 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2015/08/08/2015-8-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -514,13 +658,21 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-08T21:59:45+08:00" content="2015-08-08">
-              2015-08-08
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-08T21:59:45+08:00">
+                2015-08-08
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -528,20 +680,26 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2015/08/08/2015-8-8/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/08/2015-8-8/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/08/2015-8-8/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -555,16 +713,19 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
         
           
-          好久好久没有对自己进行总结了，记得上一次对自己得总结还是2015年初写2014年的总结。2015年都已经走下了一大半了，该总结的总结了。还记得年初的时候在轻单list了一份计划，现在看看，有的实现了，有的今年不能实现了。
-3月份大三开学，回学校做了一个决定，几乎改变了今年的动向，那个时候觉得自己就是
-          ...
+            <p>好久好久没有对自己进行总结了，记得上一次对自己得总结还是2015年初写2014年的总结。2015年都已经走下了一大半了，该总结的总结了。还记得年初的时候在轻单list了一份计划，现在看看，有的实现了，有的今年不能实现了。</p>
+<p>3月份大三开学，回学校做了一个决定，几乎改变了今年的动向，那个时候觉得自己就是在做梦一样，可是偏偏自己决定了考研。常常对自己说，<strong><u>自己决定的东西，含着泪也要坚持做完。</u></strong>我一直是反对考研的人，因为考研就意味能找到一个好的工作？身边好多同学都会反驳我不是说考研不好嘛为什么还要考研，我都是说“现在我还是觉得考研并一定是一个最好的选择”。</p>
+<p>在决定的过程中，自己犹豫过，不知道自己选择考什么专业，毕竟如今的互联网技术发展太快了，人们喜欢学习新的知识。也犹豫是不是要留北京，总之太多的犹豫，不过最后还是爽快地决定了。离考研的日子越来越近了，这个过程确实有很多的感受，自己吊儿郎当过，也任性过。有时候想放弃，学习真的太痛苦了，自己已经不是以前的自己，已经不太适合学习。。。可人都是被逼出来的，在学校的时候，把高数翻了一遍，英语单词也过完一遍，也复习了数据结构，学习了计算机网络。</p>
+<p>暑假，也是人生中的最后一个暑假，还是选择一放假就回来了，回来跟父母在一起。回来重要的任务还是学习迎考。但是在家的学习效率还是很低很低的。现在做数学全书题目【做到积分】，每天对着考点复习计算机组成原理，英语词汇在过第二遍……虽然在家已经习惯每天早上六点起床，但每天有很多的松懈的时候，感觉自己还不处于饱和的状态。【此文也是在提醒自己】</p>
+<p>说了这么多学习，还要说点其他的。四月份坚持跑步一个月，原本把这个事坚持下去，最后还是没有坚持得下去，那一个月最充实，每天还坚持写代码，哪怕只写一个函数调用……美好的事情总是短暂的，原因还是我自己的问题。</p>
+<p>哦，还有一个事就是大三下学期没有挂科，这个有记录的意义。其他我没有写的事应该都是鸡毛蒜皮的事了。</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/08/2015-8-8/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -582,6 +743,8 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -593,13 +756,23 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2015/08/04/share-with-amateur-learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -621,13 +794,21 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-04T21:25:50+08:00" content="2015-08-04">
-              2015-08-04
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-04T21:25:50+08:00">
+                2015-08-04
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -635,20 +816,26 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2015/08/04/share-with-amateur-learning/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/04/share-with-amateur-learning/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/04/share-with-amateur-learning/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -662,18 +849,144 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
         
           
-          转自2015-08-04 黑夜路人技术【今日话题】
-业余时间大家是怎么充电？技术管理的进阶，有哪些方面的初和中级书籍，工具？技术思想怎么提升和实践？ - 马犇 星星bigxing
-1. 介绍一个充电好地方，黑夜路人技术微信群phper值得进的群。 - 拉菲哥
-2. 据说管理可以从生养孩子开始 - 胡
-          ...
+            <h2 id="转自2015-08-04-黑夜路人技术"><a href="#转自2015-08-04-黑夜路人技术" class="headerlink" title="转自2015-08-04 黑夜路人技术"></a><em>转自2015-08-04</em> 黑夜路人技术</h2><p>【今日话题】</p>
+<p>业余时间大家是怎么充电？技术管理的进阶，有哪些方面的初和中级书籍，工具？技术思想怎么提升和实践？ - 马犇 星星bigxing</p>
+<p>1. 介绍一个充电好地方，黑夜路人技术微信群phper值得进的群。 - 拉菲哥</p>
+<p>2. 据说管理可以从生养孩子开始 - 胡继伟</p>
+<p>3. 偏基础和理论的自修，偏思维进阶和实践的要交流 - Jesse</p>
+<p>4. 个人感觉充电的方向如果和手头的项目紧密关键效果会很好 学以致用 - 蚂蚁</p>
+<p>5. 下班时间会读想要了解的技术方面的书籍来充电 - phpfans</p>
+<p>6. 看大牛们的博客， - 王大锤</p>
+<p>7. 《代码大全》 - 黄垣华</p>
+<p>8. 刚来北京要找工作的时候～看过一些大公司面试要求上面的知识点～针对性google了一遍～盲区变少～知识颠覆对初入行有帮助 - 零度西瓜</p>
+<p>9. Linux 管理：</p>
+<p>《Linux 系统管理技术手册》 案头必备的工具书。</p>
+<p>《鸟哥的 Linux 私房菜》不错的入门书。</p>
+<p>《Linux 101 Hacks》常用命令手册</p>
+<p>《UNIX Shell Scripting》写脚本的参考书</p>
+<p>《The Linux Command Line》更详细的命令手册</p>
+<p>Linux 编程：</p>
+<p>《Linux 系统编程》对常用 API 讲述最详细的一本书</p>
+<p>《UNIX 环境高级编程》经典</p>
+<p>《The Linux Programming Interface》与上本书配套</p>
+<p>《程序员的自我修养》别被名字误导，极好的一本深度基础书。</p>
+<p>《深入理解 Linux 内核》可以翻翻，对提升细节理解有好处。</p>
+<p>《UNIX 网络编程》经典</p>
+<p>《TCP/IP 高级编程》好书</p>
+<p>C/C++:</p>
+<p>《C 程序设计语言》入门书</p>
+<p>《Lnux C 编程一站式学习》Linux 下开发的入门书</p>
+<p>《C 语言核心技术》参考手册</p>
+<p>《彻底搞定 C 指针》最好的指针入门书</p>
+<p>《C++ 编程思想》经典</p>
+<p>《高质量程序设计指南——C/C++语言》经典</p>
+<p>《C 专家编程》</p>
+<p>《C 和指针》</p>
+<p>《C 陷阱与缺陷》</p>
+<p>Golang:</p>
+<p>《Learing Go》简单</p>
+<p>《The Go Programming Language》比较详细</p>
+<p>《The way to Go》提升</p>
+<p>Javascript:</p>
+<p>《Javascript, A Beginner’s Guide》</p>
+<p>《Object-Oriented Javascript》</p>
+<p>Python:</p>
+<p>《Python Pocket Reference》适合经常翻翻</p>
+<p>《Expert Python Programming》某些地方很有启发</p>
+<p>其他:</p>
+<p>《深入理解计算机系统》经典，必读</p>
+<p>《计算机组成与设计》可以翻翻</p>
+<p>《汇编语言》王爽 最好的汇编入门书</p>
+<p>《数据结构》C 语言版 经典</p>
+<p>《Java 数据结构和算法》更易阅读</p>
+<p>《Debug Hacks 中文版》GDB 入门书</p>
+<p>《设计模式——可复用面向对象软件的基础》经典</p>
+<ul>
+<li>老虎</li>
+</ul>
+<p>10. 我一般会去国外淘一些比较好的视频教程，一边看，一边照着做，效果不错 - 姚文强</p>
+<p>11. 在大学如果能所这些基础弄好，出来干个一年，就会有指数性增长</p>
+<p>我认识一人，重庆大学电子系，大学6年都在学。。出来在南京呆了一年，来上海就上升到技术经理了。 - tywei</p>
+<p>12. 计算机书籍控 <a href="http://bestcbooks.com/categories/c/" target="_blank" rel="external">http://bestcbooks.com/categories/c/</a> - victor_少钢</p>
+<p>13. 人月神话 算不算。。 - 孟尧</p>
+<p>14. 吴军的那几本书不错</p>
+<p>松本有本书叫《代码的未来》对我挺有影响的。</p>
+<p>管理类的书籍强烈推荐一本《领导梯队》，看到王兴在美团力推，我就买来看了看，挺好。 - 幻觉大的很</p>
+<p>15. 我给大家推荐一本书，奇特的一生。 - 阿牛哥</p>
+<p>16. 周爱民有本 大道至简里，专门吐槽 人月神话 老提问题，不求本质 - 孟尧</p>
+<p>17. 大话设计模式，高性能mysql，mysql技术内幕—innodb存储引擎 - 周志</p>
+<p>18. 大家平时是怎么分配时间看书的，我身边的朋友有两类，一是利用很长的一段时间来看，比如3个月，每天看一点点。另外一类朋友，喜欢短时间内，一直看这本书。比如每天下班回家看个几个小时</p>
+<p>我是不管怎么样，每天都必须翻一翻，哪怕就是翻一页想睡觉了，也要看上几页。话说，对于喜欢熬夜的童鞋，又想改掉这个习惯的，看书真的是一个不错的选择，说不定没看几分钟就倦意袭来 - 阿牛哥</p>
+<p>19. 浪潮之巅 - 如末</p>
+<p>20. 难道不应该多学学英语吗</p>
+<p>我觉得吧，工作了，很多基础知识和技能被忽视了，比如英语，计算机体系的知识。</p>
+<p>偏基础的知识读起来比较苦闷，不然技能书籍读起来畅快</p>
+<p>很多人，虽然写代码多年，但知识不成体系，阻碍了自身发展</p>
+<p>会再多的语言，也还是很浅显的层面，还美其名曰”全栈工程师” - tiyee</p>
+<p>21. 之前看过疯狂的程序员，感觉刚毕业的或者在校童鞋可以看看</p>
+<p>unix编程艺术 - 宋明明</p>
+<p>22. 我一般只看几页没意思，下次接着看还是得把这几页重新看一遍，看一次尽量把一个相对独立的知识点看完，然后一次专注看一本书，看完再下一本，储备太多书会经常每本都没看完的情况，买书还看时效，有时候兴趣一提就买了，如果不马上看完，过两个月就不会看了 - JoJo</p>
+<p>23. 操作系统的书大家来推荐几本，我一口气读完了操作系统哲学原理 通俗</p>
+<p>以我的观察，身边很多同事都是1年工作经验工作10年</p>
+<p>充其量只是熟练点而已</p>
+<p>没有知识体系，也不愿意去学习 - 阿牛哥</p>
+<p>24. 像代码大全，重构这类书，我觉得是必看的，我身边同事很多人都没看过，甚至没有看书的习惯，我都不喜欢跟他们一起工作</p>
+<p>其实学习也是相对的，身边牛人多，就不敢不学，分分钟被淘汰，像我这边还是牛人太少 - JoJo</p>
+<p>25. 工作必备技能不看更要命</p>
+<p>比如协同开发，版本控制，我是开发岗位，但是涉及协同开发，这东西必须要会。否则没法合作呀 - 宋明明</p>
+<p>26. 还得多买几本教你怎么吹牛的书。 - 如末</p>
+<p>27. 网易有一套完整的本科计算机课程</p>
+<p><a href="http://study.163.com/curricula/cs.htm" target="_blank" rel="external">http://study.163.com/curricula/cs.htm</a> - tiyee</p>
+<p>28. 我的习惯是这样的: 先初步了解，然后做中学，追求极致的想着怎么做好，然后会发现某些方面的匮乏，在去专攻，如此循环。把手头的事，身边的事做极致，想极致，一个点一个点的最后会连成线，最后在面的层面大量看书去融会贯通，线和面也交替循环。 - 劉飛</p>
+<p>29. 以学习php拓展为例子。可以在公司内部的技术群招募想要学习的人。公司大牛做指导。然后，每周抽一天或者二天下班后，大家一起学习。目前所在公司是大牛组织学习，讲解。大家平时自己抽时间练习。 - HQ数字卡</p>
+<p>30. 多看书，多撸代码，多思考！</p>
+<p>我一般先把工作中需要用的知识以及相关的知识都搞熟，这样学习的知识就能在实际工作中进行应用，同时，我也会比工作中其它成员知道的更多，也会让我能够更加熟悉的驾驭工作，之后当工作已经没有任何问题以后，再以工作中的知识点进行拓展！ -</p>
+<ul>
+<li>果冻</li>
+</ul>
+<p>31. 先完成手上的工作，如果遇到一些不懂得最后解决了，或者看其他人的好的代码，都要写博客记录下来。手头上的工作不要拖，越早完成越好，那么剩下的时间都是你的了，你可以看书，可以写博客，可以学其他的东西。 - 如末</p>
+<p>32. 看开源的代码会提升的比较快，但是在看的时候要清楚自己想要获得什么！ - 阿辉</p>
+<p>33. 最近总结php高级应该掌握的技术各位觉的怎么样</p>
+<p>1 yii thinkphp ci 各自优点</p>
+<p>2 php 设计模式</p>
+<p>3 c 排序算法</p>
+<p>4 php 基本结构</p>
+<p>5 memcache magent 分布式设计</p>
+<p>6 redis 分布式设计</p>
+<p>7 mongo 集群架构</p>
+<p>8 mysql 索引原理及sql性能优化</p>
+<p>9 tcp/ip 网络协议</p>
+<p>10 php 处理大数据业务</p>
+<p>11 linux 应用 负载性能查看</p>
+<p>12 nginx 实战优化业务功能</p>
+<ul>
+<li>罗金龙</li>
+</ul>
+<p>【分享链接】</p>
+<p>1. [MySQL FAQ]系列 — 怎么计算打开文件数 <a href="http://mp.weixin.qq.com/s?__biz=MjM5NzAzMTY4NQ==&amp;mid=207286573&amp;idx=1&amp;sn=7d7d69eac648ee85b5c2e31e6a5001fe" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MjM5NzAzMTY4NQ==&amp;mid=207286573&amp;idx=1&amp;sn=7d7d69eac648ee85b5c2e31e6a5001fe</a> - 马振国</p>
+<p>2. etcd 2.1发布，可不宕机滚动升级 <a href="http://dockone.io/article/539" target="_blank" rel="external">http://dockone.io/article/539</a> - xingxing</p>
+<p>3. RebornDB：下一代分布式Key-Value数据库架构介绍 <a href="http://mp.weixin.qq.com/s?__biz=MzAwNjMxNjQzNA==&amp;mid=208050108&amp;idx=1&amp;sn=05f972ab35726fcaa0fc3a8c4e9a33f8" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MzAwNjMxNjQzNA==&amp;mid=208050108&amp;idx=1&amp;sn=05f972ab35726fcaa0fc3a8c4e9a33f8</a> - 黑夜路人</p>
+<p>4. Google 镜像站搜集 <a href="https://github.com/sxyx2008/DevArticles/issues/99" target="_blank" rel="external">https://github.com/sxyx2008/DevArticles/issues/99</a> - 风轻轻</p>
+<p>5. 基于容器的微服务架构剖析 <a href="http://mp.weixin.qq.com/s?__biz=MjM5NzAwNDI4Mg==&amp;mid=210298194&amp;idx=1&amp;sn=2b14ab466002088dfd7ce2f2d7ea2ac6" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MjM5NzAwNDI4Mg==&amp;mid=210298194&amp;idx=1&amp;sn=2b14ab466002088dfd7ce2f2d7ea2ac6</a> - 鲁猛</p>
+<p>6. Asynchronous Javascript templating for the browser and server <a href="https://github.com/linkedin/dustjs" target="_blank" rel="external">https://github.com/linkedin/dustjs</a> - twin</p>
+<p>7. 分布式系统若干经验总结 <a href="http://m.oschina.net/blog/409503" target="_blank" rel="external">http://m.oschina.net/blog/409503</a> - 不如</p>
+<p>8. 做一个这样的 APP 要多久？ <a href="http://mp.weixin.qq.com/s?__biz=MjM5ODI5Njc2MA==&amp;mid=210896168&amp;idx=1&amp;sn=a5ac91b3da39c1d8c67bfd1aa84bd220" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MjM5ODI5Njc2MA==&amp;mid=210896168&amp;idx=1&amp;sn=a5ac91b3da39c1d8c67bfd1aa84bd220</a> - null</p>
+<p>9. 作为程序员最应该投资的是这十件事 <a href="http://mp.weixin.qq.com/s?__biz=MzI1OTAwNDAzNA==&amp;mid=208152421&amp;idx=1&amp;sn=9830a91208b1dfdbee64752f235ace56" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MzI1OTAwNDAzNA==&amp;mid=208152421&amp;idx=1&amp;sn=9830a91208b1dfdbee64752f235ace56</a> - 黑夜路人</p>
+<p>10. 我用爬虫一天时间“偷了”知乎一百万用户，只为证明PHP是世界上最好的语言 <a href="http://mp.weixin.qq.com/s?__biz=MzAwNjMxMTA5Mw==&amp;mid=212859441&amp;idx=1&amp;sn=d73ece2901ec4eabc2b5ea896141305f" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MzAwNjMxMTA5Mw==&amp;mid=212859441&amp;idx=1&amp;sn=d73ece2901ec4eabc2b5ea896141305f</a> - 黑夜路人</p>
+<p>11. 微服务实战（三）：深入微服务架构的进程间通信 <a href="http://dockone.io/article/549" target="_blank" rel="external">http://dockone.io/article/549</a> - 不如</p>
+<p>12. 构建亿级前端读服务 <a href="http://mp.weixin.qq.com/s?__biz=MjM5NDMwNjMzNA==&amp;mid=207712155&amp;idx=1&amp;sn=8944ec13cc1a0639d844c4466f44c2b6" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MjM5NDMwNjMzNA==&amp;mid=207712155&amp;idx=1&amp;sn=8944ec13cc1a0639d844c4466f44c2b6</a> - 飞翔的尾巴</p>
+<p>13. 素数的妙用—一道关于字符串的面试题 <a href="http://m.blog.chinaunix.net/uid-25538637-id-292076.html" target="_blank" rel="external">http://m.blog.chinaunix.net/uid-25538637-id-292076.html</a> - 金灶沐</p>
+<p>14. [MySQL优化案例]系列 — slave延迟很大优化方法 <a href="https://mp.weixin.qq.com/s?__biz=MjM5NzAzMTY4NQ==&amp;mid=207299751&amp;idx=1&amp;sn=5d0b6cd66a4f3a848d08d04b354b282d" target="_blank" rel="external">https://mp.weixin.qq.com/s?__biz=MjM5NzAzMTY4NQ==&amp;mid=207299751&amp;idx=1&amp;sn=5d0b6cd66a4f3a848d08d04b354b282d</a> - Klein</p>
+<p>15. 10 steps to becoming a better than programmer <a href="http://tutscode.com/10-steps-becoming-better-programmer.html" target="_blank" rel="external">http://tutscode.com/10-steps-becoming-better-programmer.html</a> - xingxing</p>
+<p>16. CLI模式下几个实用的PHP函数。 <a href="https://gist.github.com/liuxd/8097014" target="_blank" rel="external">https://gist.github.com/liuxd/8097014</a> - XiangZ</p>
+<p>17. The purpose of this site is to help you discover all the changes and new features in PHP7. <a href="http://php7-tutorial.com/#1" target="_blank" rel="external">http://php7-tutorial.com/#1</a> - Albert</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/04/share-with-amateur-learning/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -691,6 +1004,8 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -702,13 +1017,23 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2015/07/26/go-note-1-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -730,13 +1055,21 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-26T17:01:49+08:00" content="2015-07-26">
-              2015-07-26
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-26T17:01:49+08:00">
+                2015-07-26
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -744,20 +1077,26 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2015/07/26/go-note-1-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/26/go-note-1-2/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/26/go-note-1-2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -771,20 +1110,24 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
         
           
-           Go语言中的字符串
-字符串是用一对双号(“”)或者单引号(‘’)括起来的定义的，它的类型是srting。
-值得注意的是，在go语言中字符串是不可变的，有这样一段代码，编译时会报错。
-123var s string = "hello"s[0] = 'c'
-但是想要修改怎么办呢？方法如下：
-12345
-          ...
+            <p> Go语言中的字符串</p>
+<p><strong>字符串是用一对双号(“”)或者单引号(‘’)括起来的定义的，它的类型是srting。</strong></p>
+<p>值得注意的是，在go语言中字符串是不可变的，有这样一段代码，编译时会报错。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s <span class="keyword">string</span> = <span class="string">"hello"</span></div><div class="line"></div><div class="line">s[<span class="number">0</span>] = <span class="string">'c'</span></div></pre></td></tr></table></figure>
+<p>但是想要修改怎么办呢？方法如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">s := <span class="string">"hello"</span></div><div class="line"></div><div class="line">c := []<span class="keyword">byte</span>(s) <span class="comment">// 将字符串 s转换为 []byte类型</span></div><div class="line"></div><div class="line">c[<span class="number">0</span>] = <span class="string">'c'</span></div><div class="line"></div><div class="line">s2 := <span class="keyword">string</span>(c) <span class="comment">// 再转换回 string类型</span></div><div class="line"></div><div class="line">fmt.Printf(<span class="string">"%s\n"</span>, s2)</div></pre></td></tr></table></figure>
+<p>修改也可以这样：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">s := <span class="string">"hello"</span></div><div class="line"></div><div class="line">s = <span class="string">"c"</span> + s[<span class="number">1</span>:] <span class="comment">// 字符串虽不能更改，但可进行切片操作</span></div><div class="line"></div><div class="line">fmt.Printf(<span class="string">"%s\n"</span>, s)</div></pre></td></tr></table></figure>
+<p>go中也可声明多行字符串，可以通过`来声明：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">m := hello</div><div class="line">world</div></pre></td></tr></table></figure>
+<hr>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/26/go-note-1-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -802,6 +1145,8 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -813,13 +1158,23 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2015/06/23/learn-php-source-code/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -841,13 +1196,21 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-23T21:25:09+08:00" content="2015-06-23">
-              2015-06-23
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-23T21:25:09+08:00">
+                2015-06-23
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -855,20 +1218,26 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2015/06/23/learn-php-source-code/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/23/learn-php-source-code/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/23/learn-php-source-code/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -882,18 +1251,64 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
         
           
-          【今日话题】
-怎么学习或者阅读PHP源码？ - kdrol.li
-1. 学习别人的源代码phpstorm等好用的IDE是必备利器，方便追踪查看 - 杨恒飞
-2. 这个源码指的是PHP的C源码吧，首先C基础是必须要掌握的，初学我个人建议先从自己熟悉的扩展开始阅读，比如ext/standard/arra
-          ...
+            <p>【今日话题】</p>
+<p>怎么学习或者阅读PHP源码？ - kdrol.li</p>
+<p>1. 学习别人的源代码phpstorm等好用的IDE是必备利器，方便追踪查看 - 杨恒飞</p>
+<p>2. 这个源码指的是PHP的C源码吧，首先C基础是必须要掌握的，初学我个人建议先从自己熟悉的扩展开始阅读，比如ext/standard/array.c里面是常用的数组操作函数，ext/mysql下是对mysql原生api的封装，直接阅读Zend内核源码可能有点头大。阅读之前先从网上找点资料，把常见的数据结构、函数、宏的意思搞明白，看底层实现会有种豁然开朗的感觉。工具的话vim+ctags足够了，喜欢IDE的话就Source Insight。 - 马犇</p>
+<p>3. php学习方法：如何阅读php源代码</p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAwNjMxMTA5Mw==&amp;mid=211794038&amp;idx=1&amp;sn=e0726f5334c5fb703ed1118403a1d8fb#rd" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MzAwNjMxMTA5Mw==&amp;mid=211794038&amp;idx=1&amp;sn=e0726f5334c5fb703ed1118403a1d8fb#rd</a> - 泉-June</p>
+<p>4. 网上的文章什么的看一看有个大概的了解。装好好点的能导航的编辑器，我用的sublime和ctags，然后从官方的那几个扩展开始看看别人怎么写的，主要就关注下对字符串，数组，内存，函数的输入输出的处理，然后自己写点处理字符串的扩展学习一下，再后来写点网络相关的，处理下持久化资源什么的。其实也就是你想做个什么事，别人一般都做过了，看看别人扩展怎么写的，那些宏看多了有用的就那么一些。 - lalala</p>
+<p>5. <a href="http://www.php-internals.com/" target="_blank" rel="external">http://www.php-internals.com/</a> 把这本书都搞透了就很牛逼了 - 姚文强</p>
+<p>6. www.imsiren.com，这个blog学习扩展，lxr.php.net，搜索代码方便</p>
+<p>挖路的walu.cc都是很好学习资源</p>
+<p>解惑原理当然是鸟哥blog</p>
+<p>如果你C玩的溜，那学起来就事半功倍 - 星星</p>
+<p>7. 先了解两个结构hashtable和bucket，然后就可以了解各个php_function了，我就看了字符和数组相关函数，本来还想看看类方面的，实在是枯燥，犯困 - 徐刚</p>
+<p>8. 只看原理那你能不犯困么？没有正反馈啊，你应该先写个简单扩展出来，然后是问why 你得有性奋点，时不时刺激下才行 为啥喜欢SEX呢，大家琢磨琢磨 - 星星bigxing</p>
+<p>9. 对得 要写 然后不懂 再看书 消化 然后继续写。。光看理论。。。会睡着的 第一门语言最好是PYTHON 。。开阔视野~[偷笑] - 小明</p>
+<p>10. 写扩展和看php源码还是两码事，不看源码也不影响写扩展呀</p>
+<p>写扩展的目的一般是对自身业务的封装，出于性能或是其他因素，写不好是c语言功底的问题，可以学习php源码，也可以从一些更有针对性的来源项目源码去学习，后者更快 - 李鑫</p>
+<p>11. 1 要了解php源码项目工程组织架构，确定比较感兴趣的部分</p>
+<p>2 c 语言要过关，指针，struct 等知识点，看起来没压力。 - 罗金龙</p>
+<p>12. PHP源码能够读懂。其实要有一定的C语言基础的，特别是指针和结构体。</p>
+<p>不然，完全像在看天书。完全不知所谓。</p>
+<p>先去把C语言结构体搞透，再去看PHP源码。不要越级。</p>
+<p>国内有很多好的PHP源码解读的资料。不过有老，是PHP5.3的 - 如末</p>
+<p>13. github 上有个tipi 很全面 - Feel.</p>
+<p>14. 看源代码的动机是啥呢？觉得高大上？我倒是觉得看php的源码的意义远小于nginx和redis</p>
+<p>Nginx的意义在于对网络通讯的理解，redis的代码能加深对数据结构的领悟 - tiyee</p>
+<p>回: 萝卜白菜，各有所好呗…</p>
+<p>不然里面的各种级别的结构体嵌套，指针里面还有指针的指针，还有指针的指针的指针，各种指针函数相互调用…分分钟就晕，建议带着问题去看，带着自己的思路去看，有针对性的去看。 - carlsonlin</p>
+<p>回: 是的，读php源码性价比不如读nginx或者redis - song</p>
+<p>回: 还好吧…php源码都看完了，redis和nginx无压力的… - carlsonlin</p>
+<p>15. 我是首先把源码编译成debug版本，然后通过gdb tui来读，需要看看结构的时候就p出来 直接读代码的话借助ctags - nothing_zhangbc</p>
+<p>16. 最快的方法就是自己动手，php项目庞大，单单看是很低效的</p>
+<p>比如从写俄扩展开始</p>
+<p>怎么定义一个函数给用户用</p>
+<p>怎么定义一个类等等</p>
+<p>这个过程中会要用到很多的zend api 从这些api入手就能理解Php是怎么给用户提供各种工具和函数了</p>
+<p>至于eebook我之前记得说过它有一个不好的地方是把现象当成了定律</p>
+<p>比如refcount refcount只是用来做垃圾回收</p>
+<p>不是说一定的代码下refcount就一定是几 只要能保证垃圾回收是几并不重要</p>
+<p>所以，少看，多动手 带着问题去研究，会很有意思 over：）</p>
+<p>再加一句，PHP7开始，代码变化很大，很多优化的思想在里面，值得一读：）</p>
+<p>另外，要搞清楚为啥读源码，是为了学习、学习啥呢？ 如果学习网络编程，那读fpm部分，或者cli部分</p>
+<p>如果是共享内存那就opcache部分 之类的</p>
+<p>慢慢积累，不是说读PHP的源代码只是为了了解PHP</p>
+<p>你读多了、C下面的各种东东就都熟了、那里都用得着的[呲牙]</p>
+<p>反正，多读源码是有好处的，无论是是PHP还是其他的项目</p>
+<p>我唯一的建议是尽量读c项目 别读c++的 后者太那啥了[偷笑] - 惠新宸</p>
+<p>【分享链接】</p>
+<p>1. 京东618 ｜ Docker扛大旗，弹性伸缩成重点 <a href="http://mp.weixin.qq.com/s?__biz=MjM5MDE0Mjc4MA==&amp;mid=207702375&amp;idx=1&amp;sn=248f2599f35a9bf6fb3c6aad149fd41d" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MjM5MDE0Mjc4MA==&amp;mid=207702375&amp;idx=1&amp;sn=248f2599f35a9bf6fb3c6aad149fd41d</a> - 黑夜路人</p>
+<p>2. 是时候给糟糕的技术面试来场革命了 <a href="http://www.codeceo.com/article/the-terrible-technical-interview.html" target="_blank" rel="external">http://www.codeceo.com/article/the-terrible-technical-interview.html</a> - 马犇</p>
+<p>3. 许式伟：十一年逆流顺流，首席架构师到CEO <a href="http://mp.weixin.qq.com/s?__biz=MjM5MjE3NDA1Mw==&amp;mid=201422576&amp;idx=1&amp;sn=909981e0cf0fba99d154f17c56972c41" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MjM5MjE3NDA1Mw==&amp;mid=201422576&amp;idx=1&amp;sn=909981e0cf0fba99d154f17c56972c41</a> - phperzone</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/23/learn-php-source-code/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -911,6 +1326,8 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -922,13 +1339,23 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2015/06/20/think-about-graduation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -950,13 +1377,21 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-20T22:31:30+08:00" content="2015-06-20">
-              2015-06-20
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-20T22:31:30+08:00">
+                2015-06-20
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -964,20 +1399,26 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2015/06/20/think-about-graduation/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/20/think-about-graduation/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/20/think-about-graduation/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -991,16 +1432,23 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
         
           
-          前天看到一个新闻“2015年的高校毕业生将达到749万，留在一线城市的门槛提高了”，看到这个新闻后，我在想就业压力不能用“相当的大”来形容了，而是相当的严峻相当的严峻相当的严峻。
-然后又想到了一年后现在的自己可能也会面临这样的问题，必须面临找工作。还记得之前看到过一个规定，就是说留京的应届本科毕业生
-          ...
+            <p>前天看到一个新闻“2015年的高校毕业生将达到749万，留在一线城市的门槛提高了”，看到这个新闻后，我在想就业压力不能用“相当的大”来形容了，而是相当的严峻相当的严峻相当的严峻。</p>
+<p>然后又想到了一年后现在的自己可能也会面临这样的问题，必须面临找工作。还记得之前看到过一个规定，就是说留京的应届本科毕业生不能超过24岁，研究生不超过27岁。卧槽，我毕业那年正好24岁，早知道当年不复读了。还记得当时把这个规定分享到微信朋友圈了，然后就有在下面评论说“少年，只要你是一个人才，年龄不是问题，得留住你在北京”。想想自己来到北京求学的这几年，确实看到了一些别人没看到的东西，回去了同学都说我接触的平台、看到的视野跟他们完全不一样。这点我确实也感受到了，每每这样想的时候，自己都很欣慰当年填报志愿的时候选择了北上广。当初对自己的目标就是我读大学就是要走出去看看，看看大城市究竟会有哪些不一样的。大城市，接触的人更多了，什么样的人都有，想要得到成长，需要跟各式各样的三教九流打交道。资源也丰富了，还记得当年刚来北京还办了张首都图书馆的会员卡，虽然没怎么借书，但是觉得只有大城市才会提供这么好的资源。机会相对来说多了，我这里说的是相对，其实竞争压力也是蛮大，因为比我优秀的人太多太多了，说白了自己就算个屁，有的时候连个屁都不算，那你还凭什么去跟别人竞争那一个机会呢？</p>
+<p>还是说说毕业生人数吧，先看一张2015年之前的数据你就知道这是一个什么概念。<a href="http://blog.dyike.com/wp-content/uploads/2015/06/p.jpg" target="_blank" rel="external"><img src="http://www.dyike.com/wp-content/uploads/2015/06/p-300x166.jpg" alt="picture"></a></p>
+<p>在我读大学后，我更有机会接触到这些数据了，但每年都看到“今年参加高考的人数减少百分之多少”高考的人数逐年减少，有的时候也挺羡慕他们（学弟学妹）感觉他们上大学的机会比我们越来越大，他们毕业时的压力应该没我们现在的压力这么大吧。2015年，自己也有好多同学大学毕业了，他们有的跟我聊，投了好多好多简历，面了好多好多家公司，最后也没有找到工作甚至是自己并不满意的工作。现实就是这么残酷，只有自己比别人更优秀才可能获得更好的机会，机会都是留给准备充分的人。给一年后的自己做准备吧。</p>
+<ul>
+<li>首先得清楚自己想要干什么，今后没什么特殊的应该是从事互联网相关的工作，主要原因这几年互联网发展确实如火如荼的，就业机会相对要好一点，还有自己大学学的就是这方面的专业，你不从事这个那从事哪个。不浪费时间在选择上，趁早做好选择并为自己的选择做准备。</li>
+<li>其次，还有一年的时间，自己可能需要找工作【现在既希望自己能考上研究生，又希望自己考不上研究生】，得了解自己所要面临的工作是什么样的，所要哪些基础的技能，或许要做的就是查漏补缺吧。举个例子，面试哪家公司的工程师，不妨可以根据这家公司的招聘信息的要求认清自己是在一个什么样的水平。还有就是不要再看什么传统的招聘网站，智联前程无忧啥的，海投也没有什么乱用。不妨看看垂直的招聘，多利用好社交网络。找一家正规的公司也是很重要的。</li>
+<li>还有，就是不要眼高手低，觉得自己就是要去BAT这样的大公司，不妨选择一个小公司，选择一个优秀的小团队，这样的自己应该更能得到更好的成长。选择了互联网行业，那还是选择大城市北上广深相对发展好点机会多点。</li>
+<li>最后说说能力上的吧，自己这一年里应该更好的学好计算机相关的基础知识，像什么操作系统、数据结构、数据库原理等基础课程，掌握好几种计算机编程语言，如C语言、PHP、Golang等等，还有熟练使用一些工具，多阅读英文书籍，提供英文水平。能用Google搜索东西，尽量查找英文类的，为什么这样就不多说了。学会写一个好Email，整好一个站点多写写技术博客，有能力话再折腾个手机App。<br>最后的最后，谈谈关于研究生的事。之前我一直是不赞成考研这个事，但现在我也在准备考研这个事。你就不要问这是什么原因。现在我还是那个观点，考研也不是一个很好的，考研了你就能找到一个好的工作？如果出于为了找工作的话，那真的没有必要考研，如果为了学术研究的，不放试一试。我相信我考研的目的应该跟常人应该不一样。。。。。。不说了，努力一把，还是那句话【既希望考上，又希望考不上】。</li>
+</ul>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/20/think-about-graduation/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1018,6 +1466,8 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -1029,13 +1479,23 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2015/06/19/go-note-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -1057,13 +1517,21 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-19T22:37:07+08:00" content="2015-06-19">
-              2015-06-19
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-19T22:37:07+08:00">
+                2015-06-19
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -1071,20 +1539,26 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2015/06/19/go-note-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/19/go-note-3/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/19/go-note-3/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -1098,20 +1572,79 @@ bandwagon下面的比上面的便宜。如果只是自用，ba
       
         
           
-          内建函数预定义了少数函数，这意味着无需引用任何包就可以使用它们。下面的表格列出了所有的内建函数。
-Table Go中的预定义函数
-closenewpaniccomplexdeletemakerecoverreallenappendprintimagcap copyprintln
+            <h2 id="内建函数"><a href="#内建函数" class="headerlink" title="内建函数"></a><strong>内建函数</strong></h2><p>预定义了少数函数，这意味着无需引用任何包就可以使用它们。下面的表格列出了所有的内建函数。</p>
+<p>Table Go中的预定义函数</p>
+<table><br><tbody><br><tr><br><td width="138">close</td><br><td width="138">new</td><br><td width="138">panic</td><br><td width="138">complex</td><br></tr><br><tr><br><td width="138">delete</td><br><td width="138">make</td><br><td width="138">recover</td><br><td width="138">real</td><br></tr><br><tr><br><td width="138">len</td><br><td width="138">append</td><br><td width="138">print</td><br><td width="138">imag</td><br></tr><br><tr><br><td width="138">cap copy</td><br><td width="138">println</td><br><td width="138"></td><br><td width="138"></td><br></tr><br></tbody><br></table>
 
-##Close
-用
-          ...
+<p>##Close</p>
+<pre><code>用于 channel 通讯。使用它来关闭 channel
+</code></pre><p>##delete</p>
+<pre><code>用于在 map 中删除实例
+</code></pre><p>##len 和 cap</p>
+<pre><code>可用于不同的类型，len 用于返回字符串、slice 和数组的长度
+</code></pre><p>##new</p>
+<p>用于各种类型的内存分配</p>
+<p>##make</p>
+<p>用于内建类型（map、slice 和 channel）的内存分配</p>
+<p>##copy</p>
+<p>用于复制 slice</p>
+<p>##append</p>
+<p>用于追加 slice</p>
+<p>##panic 和 recover</p>
+<p>用于异常处理机制</p>
+<p>##print 和 println</p>
+<p>是底层打印函数，可以在不引入  fmt 包的情况下使用。它们主要用于调试</p>
+<p>##complex、real 和 imag</p>
+<p>全部用于处理 复数。有了之前给的简单的例子，不用再进一步讨论复数了</p>
+<p>##array、slices 和 map</p>
+<p>可以利用 array 在列表中进行多个值的排序，或者使用更加灵活的：slice。字典或哈希 类型同样可以使用，在Go中叫做map</p>
+<p>##array</p>
+<p>array 由 [n]&lt;type&gt; 定义，n 标示 array 的长度，而 &lt;type&gt; 标示希望存储的内容的类 型。对 array 的元素赋值或索引是由方括号完成的：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr [<span class="number">10</span>] <span class="keyword">int</span></div><div class="line"></div><div class="line">arr[<span class="number">0</span>] = <span class="number">42</span></div><div class="line"></div><div class="line">arr[<span class="number">1</span>] = <span class="number">13</span></div><div class="line"></div><div class="line">fmt.Printf(<span class="string">"The first element is %d\n"</span>, arr[<span class="number">0</span>])</div></pre></td></tr></table></figure>
+<p>像var arr = [10]int 这样的数组类型有固定的大小。大小是类型的一部分。由于不同的大小是不同的类型，因此不能改变大小。数组同样是值类型的：将一个数组赋值给另一个数组，会复制所有的元素。尤其是当向函数内传递一个数组的时候，它会获 得一个数组的副本，而不是数组的指针。</p>
+<p>可以像这样声明一个数组：var a [3]int，如果不使用零来初始化它，则用复合声明： a := [3]int{1, 2, 3} 也可以简写为 a := […]int{1, 2, 3}，Go会自动统计元素的个数。</p>
+<p>注意，所有项目必须都指定。因此，如果你使用多维数组，有一些内容你必须录入：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a := [<span class="number">3</span>][<span class="number">2</span>] <span class="keyword">int</span> &#123;  [<span class="number">2</span>] <span class="keyword">int</span> &#123; <span class="number">1</span>,<span class="number">2</span> &#125;, [<span class="number">2</span>] <span class="keyword">int</span> &#123; <span class="number">3</span>,<span class="number">4</span> &#125;, [<span class="number">2</span>] <span class="keyword">int</span> &#123; <span class="number">5</span>,<span class="number">6</span> &#125;  &#125;</div></pre></td></tr></table></figure>
+<p>类似于：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a := [<span class="number">3</span>][<span class="number">2</span>] <span class="keyword">int</span> &#123;  [...] <span class="keyword">int</span> &#123; <span class="number">1</span>,<span class="number">2</span> &#125;, [...] <span class="keyword">int</span> &#123; <span class="number">3</span>,<span class="number">4</span> &#125;, [...] <span class="keyword">int</span> &#123; <span class="number">5</span>,<span class="number">6</span> &#125;  &#125;</div></pre></td></tr></table></figure>
+<p>声明一个 array 时，你必须在方括号内输入些内容，数字或者三个点 (…)。</p>
+<p>array、slice 和 map 的复合声明变得更加简单。使用复合声明的 array、slice和 map，元素复合声明的类型与外部一致，则可以省略。</p>
+<p>这表示上面的例子可以修改为：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a := [<span class="number">3</span>][<span class="number">2</span>] <span class="keyword">int</span> &#123;  &#123; <span class="number">1</span>,<span class="number">2</span> &#125;, &#123; <span class="number">3</span>,<span class="number">4</span> &#125;, &#123; <span class="number">5</span>,<span class="number">6</span> &#125;  &#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>##slice</p>
+<p>slice 与 array 接近，但是在新的元素加入的时候可以增加长度。slice 总是指向底层的一个array。slice 是一个指向 array 的指针，这是其与array不同的地方；slice 是引用类型，这意味着当赋值某个 slice 到另外一个变量，两个引用会指向同一个 array。例如，如果一个函数需要一个slice 参数，在其内对slice元素的修改也会体现在函数调用者中，这和传递底层的array指针类似。通过：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sl := <span class="built_in">make</span>([] <span class="keyword">int</span> , <span class="number">10</span>)</div></pre></td></tr></table></figure>
+<p>创建了一个保存有10个元素的slice。需要注意的是底层的 array 并无不同。slice 总 是与一个固定长度的 array 成对出现。其影响 slice 的容量和长度。</p>
+<p>给定一个 array 或者其他 slice，一个新 slice 通过 a[I:J] 的方式创建。这会创建一个 新的 slice，指向变量a，从序号 I 开始，结束在序号 J 之前。长度为 J - I。</p>
+<p>// array[n:m] 从 array 创建了一个  slice，具有元素  n 到 m-1</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">a := [...] <span class="keyword">int</span> &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> &#125;</div><div class="line"></div><div class="line">s1 := a[<span class="number">2</span>:<span class="number">4</span>]</div><div class="line"></div><div class="line">s2 := a[<span class="number">1</span>:<span class="number">5</span>]</div><div class="line"></div><div class="line">s3 := a[:]</div><div class="line"></div><div class="line">s4 := a[:<span class="number">4</span>]</div><div class="line"></div><div class="line">s5 := s2[:]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">2  定义一个 5 个元素的 array，序号从 0 到 4；</div><div class="line"></div><div class="line">3  从序号 2 至 3 创建 slice，它包含元素 3, 4；</div><div class="line"></div><div class="line">4  从序号 1 至 4 创建，它包含元素 2, 3, 4, 5；</div><div class="line"></div><div class="line">5  用 array 中的所有元素创建 slice，这是 a[0:len(a)] 的简化写法；</div><div class="line"></div><div class="line">6  从序号 0 至 3 创建，这是 a[0:4] 的简化写法，得到 1, 2, 3, 4；</div><div class="line"></div><div class="line">7  从 slice s2 创建 slice，注意 s5 仍然指向 array a。</div></pre></td></tr></table></figure>
+<p>函数 append 向 slice s 追加零值或其他 x 值，并且返回追加后的新的、与 s 有相同类型的 slice。如果 s 没有足够的容量存储追加的值，append 分配一 个足够大的、新的 slice 来存放原有 slice 的元素和追加的值。因此，返回 的 slice 可能指向不同的底层 array。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">s0 := [] <span class="keyword">int</span> &#123; <span class="number">0</span>, <span class="number">0</span> &#125;</div><div class="line"></div><div class="line">s1 := <span class="built_in">append</span>(s0, <span class="number">2</span>) <span class="comment">//0</span></div><div class="line"></div><div class="line">s2 := <span class="built_in">append</span>(s1, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>) <span class="comment">//1</span></div><div class="line"></div><div class="line">s3 := <span class="built_in">append</span>(s2, s0...) <span class="comment">//2</span></div></pre></td></tr></table></figure>
+<hr>
+<p>##map</p>
+<p>许多语言都内建了类似的类型， 例如 Perl 有哈希， Python 有字典， 而 C++ 同样也 有map（作为库）。在Go中有 map 类型。map 可以认为是一个用字符串做索引的数 组（在其最简单的形式下）。下面定义了 map 类型，用于将 string （月的缩写）转换 为 int – 那个月的天数。一般定义 map 的方法是：map[&lt;from type&gt;]&lt;to type&gt;</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">monthdays := <span class="keyword">map</span>[ <span class="keyword">string</span>] <span class="keyword">int</span> &#123;</div><div class="line"></div><div class="line"><span class="string">"Jan"</span>: <span class="number">31</span>, <span class="string">"Feb"</span>:  <span class="number">28</span>, <span class="string">"Mar"</span>: <span class="number">31</span>,</div><div class="line"></div><div class="line"><span class="string">"Apr"</span>:<span class="number">30</span>, <span class="string">"May"</span>: <span class="number">31</span>, <span class="string">"Jun"</span>:  <span class="number">30</span>,</div><div class="line"></div><div class="line"><span class="string">"Jul"</span>:  <span class="number">31</span>, <span class="string">"Aug"</span>: <span class="number">31</span>, <span class="string">"Sep"</span>:  <span class="number">30</span>,</div><div class="line"></div><div class="line"><span class="string">"Oct"</span>:       <span class="number">31</span>, <span class="string">"Nov"</span>: <span class="number">30</span>, <span class="string">"Dec"</span>:  <span class="number">31</span>,     <span class="comment">//逗号是必须的</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>留意，当只需要声明一个 map 的时候，使用 make 的形式：monthdays := make(map[string]int)</p>
+<p>当在map中索引（搜索）时，使用方括号。例如打印出 12 月的天数：fmt.Printf(“%d\n”, monthdays[“Dec”])</p>
+<p>当对 array、slice、string 或者 map 循环遍历的时候，range 会帮助你，每次调用，它都会返回一个键和对应的值。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">year := <span class="number">0</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> _ , days := <span class="keyword">range</span>  monthdays &#123;    <span class="comment">//键没有使用，因此用 _, days</span></div><div class="line"></div><div class="line">year += days</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">fmt.Printf(<span class="string">"Numbers of days in a year: %d\n"</span>, year)</div></pre></td></tr></table></figure>
+<p>向 map 增加元素，可以这样做：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">monthdays[<span class="string">"Undecim"</span>] = <span class="number">30</span>    <span class="comment">//添加一个月</span></div><div class="line"></div><div class="line">monthdays[<span class="string">"Feb"</span>]       = <span class="number">29</span>            <span class="comment">// ‰年时重写这个元素</span></div></pre></td></tr></table></figure>
+<p>检查元素是否存在，可以使用下面的方式 ：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span>  value <span class="keyword">int</span></div><div class="line"></div><div class="line"><span class="keyword">var</span>  present <span class="keyword">bool</span></div><div class="line"></div><div class="line">value, present = monthdays[<span class="string">"Jan"</span>]    <span class="comment">//如果存在，present 则有值 true</span></div><div class="line"></div><div class="line"><span class="comment">//或者更接近 Go 的方式</span></div><div class="line"></div><div class="line">v, ok := monthdays[<span class="string">"Jan"</span>]           <span class="comment">//“逗号 ok”形式</span></div></pre></td></tr></table></figure>
+<p>也可以从 map 中移除元素：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">delete</span>(monthdays, <span class="string">"Mar"</span>)      <span class="comment">//删除”Mar”  吧，总是下雨的月份</span></div></pre></td></tr></table></figure>
+<p>通常来说语句 delete(m, x) 会删除 map 中由 m[x] 建立的实例。</p>
+<hr>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/19/go-note-3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1129,6 +1662,8 @@ closenewpaniccomplexdeletemakerecoverreallenappendprintimagcap copyprintln
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -1140,13 +1675,23 @@ closenewpaniccomplexdeletemakerecoverreallenappendprintimagcap copyprintln
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2015/06/19/go-note-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -1168,13 +1713,21 @@ closenewpaniccomplexdeletemakerecoverreallenappendprintimagcap copyprintln
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-19T22:06:46+08:00" content="2015-06-19">
-              2015-06-19
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-19T22:06:46+08:00">
+                2015-06-19
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -1182,20 +1735,26 @@ closenewpaniccomplexdeletemakerecoverreallenappendprintimagcap copyprintln
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2015/06/19/go-note-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/19/go-note-2/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/19/go-note-2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -1209,17 +1768,92 @@ closenewpaniccomplexdeletemakerecoverreallenappendprintimagcap copyprintln
       
         
           
-          运算符Go支持普通的数字运算符，下面的表格列出了当前支持的运算符，以及其优先级。它们全部是从左到右结合的。
-Table运算优先级
-PrecedenceOperator(s)Highest&nbsp;&nbsp;&nbsp;&nbsp;Lowest     /     %    &lt;&lt;  &
-          ...
+            <h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a><strong>运算符</strong></h2><p>Go支持普通的数字运算符，下面的表格列出了当前支持的运算符，以及其优先级。它们全部是从左到右结合的。</p>
+<p>Table运算优先级</p>
+<table><br><tbody><br><tr><br><td width="113">Precedence</td><br><td width="236">Operator(s)</td><br></tr><br><tr><br><td rowspan="6" width="113">Highest&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br>Lowest</td><br><td width="236"><em>     /     %    &lt;&lt;  &gt;&gt;  &amp;    &amp;^</em></td><br></tr><br><tr><br><td width="236">+     -      | ^</td><br></tr><br><tr><br><td width="236">==  !=   &lt;     &lt;=  &gt;     &gt;=</td><br></tr><br><tr><br><td width="236">&lt;-</td><br></tr><br><tr><br><td width="236">&amp;&amp;</td><br></tr><br><tr><br><td width="236">||</td><br></tr><br></tbody><br></table><br>+ -  / 和 % 会像你期望的那样工作，&amp; | ^ 和 &amp;^ 分别表示位运算符按位与，按位或，按位异或和位清除。&amp;&amp;和||运算符是逻辑与和逻辑或。表格中没有列出的是逻辑非：!。<br><br>虽然Go不支持运算符重载（或者方法重载），而一些内建运算符却支持重载。例如 + 可以用于整数、浮点数、复数和字符串（字符串相加表示串联它们）。<br><br>&nbsp;<br><br><em> </em> <em><br><br>&nbsp;<br><br>## <em>*Go 关键字</em></em><br><br>Table  Go中的关键字<br><table><br><tbody><br><tr><br><td width="111">break</td><br><td width="111">default</td><br><td width="111">func</td><br><td width="111">interface</td><br><td width="111">select</td><br></tr><br><tr><br><td width="111">case</td><br><td width="111">defer</td><br><td width="111">go</td><br><td width="111">map</td><br><td width="111">struct</td><br></tr><br><tr><br><td width="111">chan</td><br><td width="111">else</td><br><td width="111">goto</td><br><td width="111">package</td><br><td width="111">switch</td><br></tr><br><tr><br><td width="111">const</td><br><td width="111">fallthrough</td><br><td width="111">if</td><br><td width="111">range</td><br><td width="111">type</td><br></tr><br><tr><br><td width="111">continue</td><br><td width="111">for</td><br><td width="111">import</td><br><td width="111">return</td><br><td width="111">var</td><br></tr><br></tbody><br></table>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/19/go-note-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+<ul>
+<li>func 用于定义函数和方法；</li>
+<li>return 用于从函数返回；</li>
+<li>go用于并行；</li>
+<li>select用于选择不同类型的通讯；</li>
+<li>interface；</li>
+<li>struct 用于抽象数据类型；<br>&nbsp;</li>
+</ul>
+<hr>
+<p>&nbsp;</p>
+<h2 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a><strong>控制结构</strong></h2><p>在Go中只有很少的几个控制结构。例如这里没有do或者while循环，只有for。有灵活的switch语句和if，而switch接受像for那样可选的初始化语句。还有叫做<strong>类型选择和多路通讯转接器的**</strong> select<strong>。语法有所不同（同 C 相比）： </strong>无需圆括号，而语句体必须总是包含在大括号内。**</p>
+<p>if-eles</p>
+<p>在 Go 中 if 看起来是这样的：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">i f   x &amp;gt; <span class="number">0</span> &#123;                    <span class="comment">//&#123; 是强制的</span></div><div class="line"></div><div class="line"><span class="keyword">return</span>  y</div><div class="line"></div><div class="line">&#125;   <span class="keyword">else</span>  &#123;</div><div class="line"></div><div class="line"><span class="keyword">return</span>  x</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>强制大括号鼓励将简单的 if 语句写在多行上。无论如何，这都是一个很好的形式，尤其是语句体中含有控制语句，例return或者break。</p>
+<p>if 和 switch 接受初始化语句，通常用于设置一个（局部）变量。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">i f err := Chmod(<span class="number">0664</span>) ; err != <span class="literal">nil</span> &#123;        ← <span class="literal">nil</span>与C的NULL类似</div><div class="line"></div><div class="line">fmt.Printf(err)        ← err 的作用域被限定在<span class="keyword">if</span>内</div><div class="line"></div><div class="line"><span class="keyword">return</span>  err</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以像通常那样使用逻辑运算符：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">i f  <span class="literal">true</span> &amp;amp;&amp;amp; <span class="literal">true</span>   &#123;</div><div class="line"></div><div class="line">fmt.Println(<span class="string">"true"</span>)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">i f  ! <span class="literal">false</span> &#123;</div><div class="line"></div><div class="line">fmt.Println(<span class="string">"true"</span>)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在Go库中，你会发现当一个if语句不会进入下一个语句流程–也就是说，语句体结束于 break，continue，goto或者return–不必要的 else会被省略。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">f, err := os.Open(name, os.O_RDONLY, 0)</div><div class="line"></div><div class="line">i f err != nil &#123;</div><div class="line"></div><div class="line">return  err</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">doSomething(f)</div></pre></td></tr></table></figure>
+<p>这个例子通常用于检测可能的错误序列。成功的流程一直执行到底部使代码很好读，当遇到错误的时候就排除它。这样错误的情况结束于 return 语句，这样就无须else语句。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">f, err := os.Open(name, os.O_RDONLY, 0)</div><div class="line"></div><div class="line">i f err != nil &#123; return  err</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">d, err := f.Stat()</div><div class="line"></div><div class="line">i f err != nil &#123; return  err</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>doSomething(f, d)</p>
+<p>下面的语法在 Go 中是非法的：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">i f   err != <span class="literal">nil</span></div><div class="line"></div><div class="line">&#123;                          <span class="comment">//**  ****←****必须同**** if ****在同一行**</span></div><div class="line"></div><div class="line"><span class="keyword">return</span>  err</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h3 id="goto"><a href="#goto" class="headerlink" title="goto"></a><strong>goto</strong></h3><blockquote>
+<p>用 goto 跳转到一定是当前函数内定义的标签。例如假设这样一个循环：</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span>  <span class="title">myfunc</span><span class="params">()</span></span> &#123;</div><div class="line"></div><div class="line">i := <span class="number">0</span></div><div class="line"></div><div class="line">Here:         ← 这行的第一个词，以分号结束作为标签</div><div class="line"></div><div class="line"><span class="built_in">println</span>(i) i++</div><div class="line"></div><div class="line"><span class="keyword">goto</span>  Here      ← 跳转</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>标签名是大小写敏感的。</p>
+<h3 id="for"><a href="#for" class="headerlink" title="for"></a><strong>for</strong></h3><p>Go 的 for 循环有三种形式，只有其中的一种使用分号。</p>
+<blockquote>
+<p><del><em>for  init ;   condition ;   post {   }      ← 和 C 的 for 一样</em></del></p>
+<p><del><em>for  condition {    }              ← 和 while 一样</em></del></p>
+<p><del><em>for   {   }                 ← 死循环</em></del></p>
+</blockquote>
+<p>短声明使得在循环中声明一个序号变量更加容易。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sum := <span class="number">0</span></div><div class="line"></div><div class="line"><span class="keyword">for</span>  i := <span class="number">0</span> ;   i &amp;lt; <span class="number">10</span> ;   i++ &#123;</div><div class="line"></div><div class="line">sum += i              ← sum = sum + i 的简化写法</div><div class="line"></div><div class="line">&#125;             ← i 实例在循环结束会消失</div></pre></td></tr></table></figure>
+<p>最后，由于Go没有逗号表达式，而 ++ 和–是语句而不是表达式，如果你想在 for 中 执行多个变量，应当使用平行赋值。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Reverse a</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> i, j := <span class="number">0</span>, <span class="built_in">len</span>(a)<span class="number">-1</span> ; i &amp;lt; j ; i, j = i+<span class="number">1</span>, j<span class="number">-1</span> &#123;</div><div class="line"></div><div class="line">a[i], a[j] = a[j], a[i]      ← 平行赋值</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">### **<span class="keyword">break</span> 和 <span class="keyword">continue</span>**</div><div class="line"></div><div class="line">利用 <span class="keyword">break</span> 可以提前退出循环，<span class="keyword">break</span> 终止当前的循环。</div><div class="line"></div><div class="line"><span class="keyword">for</span>  i := <span class="number">0</span> ;   i &amp;lt; <span class="number">10</span> ;   i++ &#123; i f   i &amp;gt; <span class="number">5</span> &#123;</div><div class="line"></div><div class="line"><span class="keyword">break</span>   ← 终止这个循环，只打印 <span class="number">0</span> 到 <span class="number">5</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">println</span>(i)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>循环嵌套循环时，可以在break后指定标签。用标签决定哪个循环被终止：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">J:    <span class="keyword">for</span> j := <span class="number">0</span> ;   j &lt; <span class="number">5</span> ;   j++ &#123;</div><div class="line"></div><div class="line"><span class="keyword">for</span> i := <span class="number">0</span> ;   i &lt; <span class="number">10</span> ;   i++ &#123;</div><div class="line"></div><div class="line">i f  i &gt; <span class="number">5</span> &#123;</div><div class="line"></div><div class="line"><span class="keyword">break</span>  J    ← 现在终止的是 j 循环，而不是 i 的那个</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">println</span>(i)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>利用continue 让循环进入下一个迭代，而略过剩下的所有代码。下面循环打印了0到 5。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i := <span class="number">0</span> ;  i &lt; <span class="number">10</span> ;   i++ &#123;</div><div class="line"></div><div class="line">i f  i &gt; <span class="number">5</span> &#123;</div><div class="line"></div><div class="line"><span class="keyword">continue</span>      ← 跳过循环中所有的代码<span class="built_in">println</span>(i)</div></pre></td></tr></table></figure>
+<h3 id="range"><a href="#range" class="headerlink" title="range"></a><strong>range</strong></h3><p><strong>关键字**</strong> range <strong>**可用于循环</strong>。它可以在 slice、array、string、map 和 channel。range是个迭代器，当被调用的时候，从它循环的内容中返回一个键值对。基于不同的内容，range返回不同的东西。</p>
+<p>当对slice 或者array做循环时，range 返回序号作为键，这个序号对应的内容作为值。考虑这个代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">list := [] <span class="keyword">string</span> &#123;<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"e"</span>, <span class="string">"f"</span>&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span>  k, v := <span class="keyword">range</span>  list &#123;</div><div class="line"></div><div class="line"><span class="comment">// 对  k 和  v 做想做的事情</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1  创建一个字符串的 slice。</p>
+<p>2 用range对其进行循环。每一个迭代，range 将返回 int 类型的序号，string类型的值，以0和“a”开始。</p>
+<p>3  k 的值为 0…5，而v在循环从“a”…“f”。</p>
+<p>也可以在字符串上直接使用range。这样字符串被打散成独立的 Unicode 字符并且 起始位按照 UTF-8 解析。</p>
+<p>【在 UTF-8 世界的字符有时被称作 runes。通常，当人们讨论字符时，多数是指 8 位字符。UTF-8 字符可 能会有 32 位，称作 rune。在这个例子里，char 的类型是 rune。】</p>
+<p>循环：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> pos, char := <span class="keyword">range</span>  <span class="string">"aΦx"</span> &#123;</div><div class="line"></div><div class="line">fmt.Printf(<span class="string">"character '%c' starts at byte position %d\n"</span>, char, pos)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>打印</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">character &apos;a&apos; starts at byte position</div><div class="line"></div><div class="line">character &apos;Φ&apos; starts at byte position</div><div class="line"></div><div class="line">character &apos;x&apos; starts at byte position      ← Φ took 2 bytes</div></pre></td></tr></table></figure>
+<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a><strong>switch</strong></h3><p>Go的switch非常灵活。表达式不必是常量或整数，执行的过程从上至下，直到找到匹 配项，而如果switch没有表达式，它会匹配true 。这产生一种可能——使用switch编写if-else-if-else判断序列。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">unhex</span><span class="params">(c <span class="keyword">byte</span>)</span> <span class="title">byte</span></span> &#123;</div><div class="line"></div><div class="line"><span class="keyword">switch</span>  &#123;</div><div class="line"></div><div class="line"><span class="keyword">case</span>  <span class="string">'0'</span> &amp;lt;= c &amp;amp;&amp;amp; c &amp;lt;= <span class="string">'9'</span>:</div><div class="line"></div><div class="line"><span class="keyword">return</span>  c - <span class="string">'0'</span></div><div class="line"></div><div class="line"><span class="keyword">case</span>  <span class="string">'a'</span> &amp;lt;= c &amp;amp;&amp;amp; c &amp;lt;= <span class="string">'f'</span>:</div><div class="line"></div><div class="line"><span class="keyword">return</span>  c - <span class="string">'a'</span> + <span class="number">10</span></div><div class="line"></div><div class="line"><span class="keyword">case</span>  <span class="string">'A'</span> &amp;lt;= c &amp;amp;&amp;amp; c &amp;lt;= <span class="string">'F'</span>:</div><div class="line"></div><div class="line"><span class="keyword">return</span>  c - <span class="string">'A'</span> + <span class="number">10</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span>  <span class="number">0</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>它不会匹配失败后自动向下尝试，但是可以使用fallthrough 使其这样做。 没有fallthrough：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>  i &#123;</div><div class="line"></div><div class="line"><span class="keyword">case</span>  <span class="number">0</span>:         <span class="comment">// 空的  case 体</span></div><div class="line"></div><div class="line"><span class="keyword">case</span>  <span class="number">1</span>:</div><div class="line"></div><div class="line">f()       <span class="comment">// 当  i == 0 时，f 不会被调用！</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">而这样：</div><div class="line"></div><div class="line"><span class="keyword">switch</span>  i &#123;</div><div class="line"></div><div class="line"><span class="keyword">case</span>  <span class="number">0</span>:     <span class="keyword">fallthrough</span></div><div class="line"></div><div class="line"><span class="keyword">case</span>  <span class="number">1</span>:</div><div class="line"></div><div class="line">f()     <span class="comment">// 当  i == 0 时，f 会被调用！</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>&nbsp;</p>
+<p>用default 可以指定当其他所有分支都不匹配的时候的行为。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>  i &#123;</div><div class="line"></div><div class="line"><span class="keyword">case</span>  <span class="number">0</span>:</div><div class="line"></div><div class="line"><span class="keyword">case</span>  <span class="number">1</span>:</div><div class="line"></div><div class="line">f()</div><div class="line"></div><div class="line"><span class="keyword">default</span>:</div><div class="line"></div><div class="line">g()         <span class="comment">// 当  i 不等于  0 或  1 时调用</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>分支可以使用逗号分隔的列表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">func shouldEscape(c byte) bool &#123;</div><div class="line"></div><div class="line">switch  c &#123;</div><div class="line"></div><div class="line">case  &apos; &apos;, &apos;?&apos;, &apos;&amp;amp;&apos;, &apos;=&apos;, &apos;#&apos;, &apos;+&apos;:   ← , as ”or”</div><div class="line"></div><div class="line">return  true</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">return  false</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里有一个使用两个 switch 对字节数组进行比较的例子：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//0</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span>  <span class="title">Compare</span><span class="params">(a, b []<span class="keyword">byte</span>)</span> <span class="title">int</span></span>   &#123;</div><div class="line"></div><div class="line"><span class="keyword">for</span> i := <span class="number">0</span> ; i &amp;lt; <span class="built_in">len</span>(a) &amp;amp;&amp;amp; i &amp;lt; <span class="built_in">len</span>(b) ; i++ &#123;</div><div class="line"></div><div class="line"><span class="keyword">switch</span>  &#123;</div><div class="line"></div><div class="line"><span class="keyword">case</span>  a[i] &amp;gt; b[i]:</div><div class="line"></div><div class="line"><span class="keyword">return</span>  <span class="number">1</span></div><div class="line"></div><div class="line"><span class="keyword">case</span>  a[i] &amp;lt; b[i]:</div><div class="line"></div><div class="line"><span class="keyword">return</span>  <span class="number">-1</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">switch</span>   &#123;           <span class="comment">//1</span></div><div class="line"></div><div class="line"><span class="keyword">case</span> <span class="built_in">len</span>(a) &amp;lt; <span class="built_in">len</span>(b):</div><div class="line"></div><div class="line"><span class="keyword">return</span>  <span class="number">-1</span></div><div class="line"></div><div class="line"><span class="keyword">case</span> <span class="built_in">len</span>(a) &amp;gt; <span class="built_in">len</span>(b):</div><div class="line"></div><div class="line"><span class="keyword">return</span>  <span class="number">1</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span>  <span class="number">0</span>       <span class="comment">//2</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>0  比较返回两个字节数组字典数序先后的整数。</p>
+<p>如果 a == b 返回 0，如果 a &lt; b 返回 -1，而如果 a &gt; b 返回+1；</p>
+<p>1  长度不同，则不相等；</p>
+<p>2  字符串相等。</p>
+
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1237,6 +1871,8 @@ PrecedenceOperator(s)Highest&nbsp;&nbsp;&nbsp;&nbsp;Lowest     /     %    &lt;&l
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -1248,13 +1884,23 @@ PrecedenceOperator(s)Highest&nbsp;&nbsp;&nbsp;&nbsp;Lowest     /     %    &lt;&l
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2015/06/18/go-note-1-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -1276,13 +1922,21 @@ PrecedenceOperator(s)Highest&nbsp;&nbsp;&nbsp;&nbsp;Lowest     /     %    &lt;&l
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-18T22:15:05+08:00" content="2015-06-18">
-              2015-06-18
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-18T22:15:05+08:00">
+                2015-06-18
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -1290,20 +1944,26 @@ PrecedenceOperator(s)Highest&nbsp;&nbsp;&nbsp;&nbsp;Lowest     /     %    &lt;&l
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2015/06/18/go-note-1-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/18/go-note-1-1/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/18/go-note-1-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -1317,18 +1977,104 @@ PrecedenceOperator(s)Highest&nbsp;&nbsp;&nbsp;&nbsp;Lowest     /     %    &lt;&l
       
         
           
-          变量、类型和关键字
-Go 在语法上有着类 C 的感觉。如果你希望将两个（或更多）语句放在一行书写，它们必须用分号 (’;’) 分隔。一般情况下，你不需要分号。
-Go 同其他语言不同的地方在于变量的类型在变量名的后面。
-不是：int a，而是 a int。
-当定义了一个变量，它默认赋值为其类型的 nu
-          ...
+            <p><strong>变量、类型和关键字</strong></p>
+<p>Go 在语法上有着类 C 的感觉。如果你希望将两个（或更多）语句放在一行书写，它们必须用分号 (’;’) 分隔。<u>一般情况下，你不需要分号。</u></p>
+<p>Go 同其他语言不同的地方在于变量的类型在变量名的后面。</p>
+<p>不是：int a，而是 a int。</p>
+<p>当定义了一个变量，它默认赋值为其类型的 null 值。</p>
+<p>在 var a int后，a 的 值为 0。而 var  s string，意味着 s 被赋值为零长度字符串，也就是 “”。</p>
+<p>在Go中，声明和赋值是两过程，但是可以连在一起。比较下面作用相同的代码片段。</p>
+<p>用 = 声明</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a <span class="keyword">int</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> b <span class="keyword">bool</span></div><div class="line"></div><div class="line">a = <span class="number">15</span></div><div class="line"></div><div class="line">b = <span class="literal">false</span></div></pre></td></tr></table></figure>
+<p>用:= 声明</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a := <span class="number">15</span></div><div class="line"></div><div class="line">b := <span class="literal">false</span></div></pre></td></tr></table></figure>
+<p>在左边使用了关键字 var 声明变量，然后赋值给它。右边的代码使用了 := 使得在一 步内完成了声明和赋值<strong><u>（这一形式只可用在函数内）</u></strong>。在这种情况下，变量的类型是由值推演出来的。值15表示是int 类型，值false告诉Go 它的类型应当是bool。多个var 声明可以成组；const 和import 同样允许这么做。留意圆括号的使用：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span>  (</div><div class="line"></div><div class="line">x <span class="keyword">int</span></div><div class="line"></div><div class="line">b <span class="keyword">bool</span></div><div class="line"></div><div class="line">)</div></pre></td></tr></table></figure>
+<p>有相同类型的多个变量同样可以在一行内完成声明：var x, y int让x和y都是int类型变量。同样可以使用 平行赋值：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a, b := <span class="number">20</span>, <span class="number">16</span></div></pre></td></tr></table></figure>
+<p>让a和b都是整数变量，并且赋值 20 给 a，16 给 b。</p>
+<p>一个特殊的变量名是_（下划线）。任何赋给它的值都被丢弃。在这个例子中，将35赋值给b，同时丢弃34。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">_, b := <span class="number">34</span>, <span class="number">35</span></div></pre></td></tr></table></figure>
+<p>Go 的编译器对声明却未使用的变量在报错。下面的代码会产生这个错误：声明了i却未使用</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span>   main</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span>  <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line"></div><div class="line"><span class="keyword">var</span>  i <span class="keyword">int</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p><strong>布尔类型</strong></p>
+<p>布尔类型表示由预定义的常量 true 和 false 代表的布尔判定值。布尔类型是 bool。</p>
+<hr>
+<p><strong>数字类型</strong></p>
+<p>Go有众所周知的类型如int，这个类型根据你的硬件决定适当的长度。意味着在32位硬件上，是32位的；在64位硬件上是64位的。</p>
+<p>注意：int是32或64位之一，不会定义成其他值。uint情况相同。</p>
+<p>如果你希望明确其长度，你可以使用int32或者uint32。完整的整数类型列表（符号和无符号）是 int8，int16，int32，int64 和 byte，uint8，uint16，uint32， uint64。byte 是 uint8 的别名。浮点类型的值有 ﬂoat32 和 ﬂoat64 （没有 float 类 型）。64  位的整数和浮点数总是 64 位的，即便是在 32 位的架构上。</p>
+<p>需要留意的是这些类型全部都是独立的，并且混合用这些类型向变量赋值会引起编译 器错误，例如下面的代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>      &#123;</div><div class="line"></div><div class="line"><span class="keyword">var</span> a <span class="keyword">int</span>           <span class="comment">// 通用整数类型</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> b <span class="keyword">int32</span>      <span class="comment">// 32 位整数类型</span></div><div class="line"></div><div class="line">a = <span class="number">15</span></div><div class="line"></div><div class="line">b = a+ a           <span class="comment">// 混合这些类型是非法的</span></div><div class="line"></div><div class="line">b = b+ <span class="number">5</span>           <span class="comment">//5 是一个（未定义类型的）常量，所以这没%问题</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在b=a+a触发一个赋值错误：</p>
+<p><strong>types.go:7: cannot use a + a (type int) as type int32 in assignment</strong></p>
+<p>赋值可以用八进制、十六进制或科学计数法：077，0xFF，1e3 或者 6.022e23 这些都是合法的。</p>
+<hr>
+<p><strong>常量</strong></p>
+<p>常量在Go中，也就是 constant。它们在编译时被创建，只能是数字、字符串或布尔值；const x = 42 生成x这个常量。可以使用iota生成枚举值。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span>  (</div><div class="line"></div><div class="line">a = <span class="literal">iota</span></div><div class="line"></div><div class="line">b = <span class="literal">iota</span></div><div class="line"></div><div class="line">)</div></pre></td></tr></table></figure>
+<p>第一个iota 表示为 0，因此a等于0，当iota 再次在新的一行使用时，它的值增加了1，因此b的值是1。</p>
+<p>也可以像下面这样，省略Go重复的= iota：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span>  (</div><div class="line"></div><div class="line">a = <span class="literal">iota</span></div><div class="line"></div><div class="line">b                 <span class="comment">// Implicitly b = iota</span></div><div class="line"></div><div class="line">)</div></pre></td></tr></table></figure>
+<p>如果需要，可以明确指定常量的类型：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span>  (</div><div class="line"></div><div class="line">a = <span class="number">0</span>                      <span class="comment">// Is an int now</span></div><div class="line"></div><div class="line">b <span class="keyword">string</span>  = <span class="string">"0"</span></div><div class="line"></div><div class="line">)</div></pre></td></tr></table></figure>
+<hr>
+<p><strong>字符串</strong></p>
+<p>另一个重要的内建类型是string。赋值字符串的例子：</p>
+<blockquote>
+<p>s := “Hello World !”<br>字符串在Go中是UTF-8的由双引号（”）包裹的字符序列。如果你使用单引号（’）则 表示一个字符（UTF-8 编码）——这种在Go中不是string。</p>
+</blockquote>
+<p><strong><u>一旦给变量赋值，字符串就不能修改了：在</u>**</strong><u> Go </u><strong>**<u>中字符串是不可变的。</u></strong>从C来的用户， 下面的情况在Go中是非法的。</p>
+<p>`var s string = “hello”</p>
+<p>s[0] = ‘c’                //修改第一个字符为’c’，这会报错`</p>
+<p>在 Go 中实现这个，需要下面的方法：</p>
+<p>`s := “hello”</p>
+<p>c := []rune(s)</p>
+<p>c[0] = ‘c’</p>
+<p>s2 := string(c)</p>
+<p>fmt.Printf(“%s\n”, s2)`</p>
+<p>2转换 s 为 rune 数组；</p>
+<p>3修改数组的第一个元素；</p>
+<p>4 创建新的字符串 s2 保存修改；</p>
+<p>5 用 fmt.Printf 函数输出字符串。</p>
+<p><strong>多行字符串</strong></p>
+<p>基于分号的置入，你需要小心使用多行字符串。如果这样写：</p>
+<p>`s := “Starting part”</p>
+<ul>
+<li>“Ending part”`</li>
+</ul>
+<p>会被转换为：</p>
+<p>`s := “Starting part” ;</p>
+<ul>
+<li>“Ending part” ;`</li>
+</ul>
+<p>这是错误的语法，应当这样写：</p>
+<p><code>s := &quot;Starting part&quot; + &quot;Ending part&quot;</code></p>
+<p>Go就不会在错误的地方插入分号。另一种方式是使用反引号 ` 作为原始字符串符号：</p>
+<p><code>s :=</code>Starting part Ending part``</p>
+<p>留意最后一个例子s现在也包含换行。不像转义字符串标识 ，原始字符串标识的值 在引号内的字符是不转义的。</p>
+<hr>
+<p>&nbsp;</p>
+<p><strong>rune</strong></p>
+<p>Rune是int32的别名。用UTF-8进行编码。这个类型在什么时候使用呢？例如需要遍 历字符串中的字符。可以循环每个字节（仅在使用 US ASCII 编码字符串时与字符等价， 而它们在 Go 中不存在！）。因此为了获得实际的字符，需要使用 rune 类型。</p>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<p><strong>复数</strong></p>
+<p>Go原生支持复数。它的变量类型是complex128（64位虚数部分）。如果需要小一些的，还有complex64–32位的虚数部分。</p>
+<p>复数写为 re + imi，re是实数部分，im是虚数部分，而i是标记 ’i’  (√−1)。使用复数的一个例子：</p>
+<p><code>var  c complex64  = 5+5i;fmt.Printf(&quot;Value is: %v&quot;, c)</code></p>
+<p>将会打印：(5+5i)</p>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<p><strong>错误</strong></p>
+<p>任何足够大的程序或多或少都会需要使用到错误报告。因此Go有为了错误而存在的内建类型，叫做 error。</p>
+<p>var e error 定义了一个error类型的变量e，其的值是nil。这个error 类型是一个接口。</p>
+<hr>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/18/go-note-1-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
@@ -1341,7 +2087,13 @@ Go 同其他语言不同的地方在于变量的类型在变量名的后面。
       
     </div>
 
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -1389,25 +2141,32 @@ Go 同其他语言不同的地方在于变量的类型在变量名的后面。
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/touxiang.jpg"
+               src="/images/avatar.gif"
                alt="ityike" />
           <p class="site-author-name" itemprop="name">ityike</p>
-          <p class="site-description motion-element" itemprop="description">php、swift、程序员、arduino、设计</p>
+           
+              <p class="site-description motion-element" itemprop="description">php、swift、程序员、arduino、设计</p>
+          
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">48</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
           
 
           
+
+          
+            
+            
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">31</span>
@@ -1433,6 +2192,8 @@ Go 同其他语言不同的地方在于变量的类型在变量名的后面。
               <span class="links-of-author-item">
                 <a href="https://github.com/dyike" target="_blank" title="github">
                   
+                    <i class="fa fa-fw fa-globe"></i>
+                  
                   github
                 </a>
               </span>
@@ -1440,12 +2201,16 @@ Go 同其他语言不同的地方在于变量的类型在变量名的后面。
               <span class="links-of-author-item">
                 <a href="http://weibo.com/734529030" target="_blank" title="weibo">
                   
+                    <i class="fa fa-fw fa-globe"></i>
+                  
                   weibo
                 </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="http://www.zhihu.com/people/feng92" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
                   
                   zhihu
                 </a>
@@ -1459,30 +2224,13 @@ Go 同其他语言不同的地方在于变量的类型在变量名的后面。
 
         
         
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.iamle.com/" title="流水理鱼wwek" target="_blank">流水理鱼wwek</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.chenjie.info/" title="陈捷的博客" target="_blank">陈捷的博客</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://qii404.me/" title="qii404" target="_blank">qii404</a>
-                </li>
-              
-            </ul>
-          </div>
+
         
 
+
       </section>
+
+      
 
       
 
@@ -1498,7 +2246,7 @@ Go 同其他语言不同的地方在于变量的类型在变量名的后面。
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2013 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -1506,16 +2254,18 @@ Go 同其他语言不同的地方在于变量的类型在变量名的后面。
   <span class="author" itemprop="copyrightHolder">ityike</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
+
 
         
 
@@ -1523,9 +2273,13 @@ Go 同其他语言不同的地方在于变量的类型在变量名的后面。
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
   
@@ -1548,35 +2302,40 @@ Go 同其他语言不同的地方在于变量的类型在变量名的后面。
 
 
 
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
   
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
   
 
   
@@ -1584,7 +2343,7 @@ Go 同其他语言不同的地方在于变量的类型在变量名的后面。
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -1609,6 +2368,26 @@ Go 同其他语言不同的地方在于变量的类型在变量名的后面。
 
   
     
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -1616,144 +2395,14 @@ Go 同其他语言不同的地方在于变量的类型在变量名的后面。
 
 
   
-  
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';                
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
 
   
 
   
 
   
-<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
-</script>
 
+  
 
 </body>
 </html>

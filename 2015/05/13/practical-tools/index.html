@@ -5,13 +5,12 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="baidu-site-verification" content="8NBkpThWUl" />
-<meta name="google-site-verification" content="Yb1SzwY5w5garHORFOIh7xq1lqEEmerfXIAthf7JyEY" />
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -28,9 +27,12 @@
 
 
 
+
+
+
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -64,9 +66,9 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="PM 创业者 工具 服务 我的收藏," />
@@ -80,7 +82,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -115,19 +117,35 @@ https://mei">
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
+
+
+
+  <link rel="canonical" href="http://www.dyike.com/2015/05/13/practical-tools/"/>
+
+
+
+
 
   <title> 实用工具 & 服务 | 一刻笔记 </title>
 </head>
@@ -143,9 +161,7 @@ https://mei">
 
 
 
-  <div style="display: none;">
-    <script src="http://s6.cnzz.com/stat.php?id=1254977565&web_id=1254977565" type="text/javascript"></script>
-  </div>
+
 
 
 
@@ -156,29 +172,33 @@ https://mei">
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">一刻笔记</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一刻笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">带着一颗变态的、积极的心走向未来</p>
+      
   </div>
-  <p class="site-subtitle">带着一颗变态的、积极的心走向未来</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -198,26 +218,6 @@ https://mei">
         </li>
       
         
-        <li class="menu-item menu-item-learn">
-          <a href="/learn" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-fa fa-battery-full"></i> <br />
-            
-            充电
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-life">
-          <a href="/life" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-fa fa-coffee"></i> <br />
-            
-            生活
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -228,45 +228,24 @@ https://mei">
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            关于
+            标签
           </a>
         </li>
       
 
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
       
     </ul>
   
 
   
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
-  
 </nav>
+
+
 
  </div>
     </header>
@@ -281,13 +260,23 @@ https://mei">
     
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2015/05/13/practical-tools/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -306,13 +295,21 @@ https://mei">
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-05-13T21:10:18+08:00" content="2015-05-13">
-              2015-05-13
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-13T21:10:18+08:00">
+                2015-05-13
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -320,20 +317,26 @@ https://mei">
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2015/05/13/practical-tools/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/13/practical-tools/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/13/practical-tools/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -386,28 +389,20 @@ https://mei">
     <div>
       
         
+
       
     </div>
 
     <div>
       
         
-  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
-    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-      <span>赏</span>
-    </button>
-    <div id="QR" style="display: none;">
-      
-        <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/wechat.jpg" alt="ityike WeChat Pay"/>
-          <p>微信打赏</p>
-        </div>
-      
+
       
     </div>
-  </div>
 
+    <div>
+      
+        
 
       
     </div>
@@ -416,9 +411,13 @@ https://mei">
       
         <div class="post-tags">
           
-            <a href="/tags/PM-创业者-工具-服务-我的收藏/" rel="tag">#PM 创业者 工具 服务 我的收藏</a>
+            <a href="/tags/PM-创业者-工具-服务-我的收藏/" rel="tag"># PM 创业者 工具 服务 我的收藏</a>
           
         </div>
+      
+
+      
+        
       
 
       
@@ -430,6 +429,8 @@ https://mei">
               </a>
             
           </div>
+
+          <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
@@ -496,25 +497,32 @@ https://mei">
         </ul>
       
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/touxiang.jpg"
+               src="/images/avatar.gif"
                alt="ityike" />
           <p class="site-author-name" itemprop="name">ityike</p>
-          <p class="site-description motion-element" itemprop="description">php、swift、程序员、arduino、设计</p>
+           
+              <p class="site-description motion-element" itemprop="description">php、swift、程序员、arduino、设计</p>
+          
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">48</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
           
 
           
+
+          
+            
+            
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">31</span>
@@ -540,6 +548,8 @@ https://mei">
               <span class="links-of-author-item">
                 <a href="https://github.com/dyike" target="_blank" title="github">
                   
+                    <i class="fa fa-fw fa-globe"></i>
+                  
                   github
                 </a>
               </span>
@@ -547,12 +557,16 @@ https://mei">
               <span class="links-of-author-item">
                 <a href="http://weibo.com/734529030" target="_blank" title="weibo">
                   
+                    <i class="fa fa-fw fa-globe"></i>
+                  
                   weibo
                 </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="http://www.zhihu.com/people/feng92" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
                   
                   zhihu
                 </a>
@@ -566,42 +580,30 @@ https://mei">
 
         
         
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.iamle.com/" title="流水理鱼wwek" target="_blank">流水理鱼wwek</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.chenjie.info/" title="陈捷的博客" target="_blank">陈捷的博客</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://qii404.me/" title="qii404" target="_blank">qii404</a>
-                </li>
-              
-            </ul>
-          </div>
+
         
+
 
       </section>
 
       
+      <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
+
             
               
             
+
             
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#提供给-开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。"><span class="nav-number">1.</span> <span class="nav-text">提供给 开发者，创业者，测试人员，产品经理，项目经理使用的实用工具以及服务。欢迎补充。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-www-testin-cn-免费移动App真机云测试平台"><span class="nav-number">2.</span> <span class="nav-text">http://www.testin.cn/ 免费移动App真机云测试平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-www-mikecrm-com-免费的信息收集工具"><span class="nav-number">3.</span> <span class="nav-text">http://www.mikecrm.com/ 免费的信息收集工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https-www-jinshuju-net-免费强大的表单设计、数据收集工具"><span class="nav-number">4.</span> <span class="nav-text">https://www.jinshuju.net/ 免费强大的表单设计、数据收集工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-mob-com-sms-免费的短信验证码SDK"><span class="nav-number">5.</span> <span class="nav-text">http://mob.com/sms 免费的短信验证码SDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https-meiqia-com-美恰-实时在线的客户服务工具"><span class="nav-number">6.</span> <span class="nav-text">https://meiqia.com/ 美恰 实时在线的客户服务工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-www-jiathis-com-JiaThis-社会化分享平台"><span class="nav-number">7.</span> <span class="nav-text">http://www.jiathis.com/ JiaThis 社会化分享平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https-trello-com-Trello-轻量级团队流程协作管理平台"><span class="nav-number">8.</span> <span class="nav-text">https://trello.com/ Trello 轻量级团队流程协作管理平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https-modao-io-墨刀-免费在线原型工具"><span class="nav-number">9.</span> <span class="nav-text">https://modao.io/ 墨刀 免费在线原型工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https-popapp-in-POP-快速制作可交互纸面原型"><span class="nav-number">10.</span> <span class="nav-text">https://popapp.in/ POP 快速制作可交互纸面原型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-www-sojump-com-问卷星-免费调查问卷平台"><span class="nav-number">11.</span> <span class="nav-text">http://www.sojump.com/ 问卷星 免费调查问卷平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-fir-im-fir-IM-免费应用发布平台（android、iOS）"><span class="nav-number">12.</span> <span class="nav-text">http://fir.im/ fir.IM 免费应用发布平台（android、iOS）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-www-cloud7-com-cn-云起-快速轻应用创建平台（微信公众号、百度直达号）"><span class="nav-number">13.</span> <span class="nav-text">http://www.cloud7.com.cn/ 云起 快速轻应用创建平台（微信公众号、百度直达号）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-eqxiu-com-易企秀-免费移动场景应用制作"><span class="nav-number">14.</span> <span class="nav-text">http://eqxiu.com/ 易企秀 免费移动场景应用制作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-youzan-com-有赞-免费微店、微商城，完整的微店商解决方案"><span class="nav-number">15.</span> <span class="nav-text">http://youzan.com/ 有赞 免费微店、微商城，完整的微店商解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-www-eteams-cn-团队、办公协作空间"><span class="nav-number">16.</span> <span class="nav-text">http://www.eteams.cn/团队、办公协作空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-www-duiba-com-cn-兑吧-专业的积分兑换服务平台（提现、话费、抽奖、礼品）"><span class="nav-number">17.</span> <span class="nav-text">http://www.duiba.com.cn/ 兑吧 专业的积分兑换服务平台（提现、话费、抽奖、礼品）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-www-easemob-com-环信-移动IM解决方案"><span class="nav-number">18.</span> <span class="nav-text">http://www.easemob.com/ 环信 移动IM解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https-leancloud-cn-LeanCloud-应用开发一站式解决方案提供商：数据存储、用户管理、消息推送、应用统计、社交分享、实时聊天等服务"><span class="nav-number">19.</span> <span class="nav-text">https://leancloud.cn/ LeanCloud 应用开发一站式解决方案提供商：数据存储、用户管理、消息推送、应用统计、社交分享、实时聊天等服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-www-rongcloud-cn-融云-专注为开发者提供-IM-云服务"><span class="nav-number">20.</span> <span class="nav-text">http://www.rongcloud.cn/ 融云 专注为开发者提供 IM 云服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-chuye-cloud7-com-cn-初页-微信H5海报创作神器"><span class="nav-number">21.</span> <span class="nav-text">http://chuye.cloud7.com.cn/ 初页 微信H5海报创作神器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-weixin-drip-im-水滴-轻巧、智能的微信公众号管理平台"><span class="nav-number">22.</span> <span class="nav-text">http://weixin.drip.im/ 水滴 轻巧、智能的微信公众号管理平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-xiumi-us-秀米-微信公众号排版利器"><span class="nav-number">23.</span> <span class="nav-text">http://xiumi.us/ 秀米 微信公众号排版利器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https-tower-im-网上办公室：管理项目和团队"><span class="nav-number">24.</span> <span class="nav-text">https://tower.im/ 网上办公室：管理项目和团队</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-next-36kr-com-发现热门APP"><span class="nav-number">25.</span> <span class="nav-text">http://next.36kr.com/ 发现热门APP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-www-qiniu-com-七牛-提供云存储服务、分发加速、数据处理等服务"><span class="nav-number">26.</span> <span class="nav-text">http://www.qiniu.com/ 七牛 提供云存储服务、分发加速、数据处理等服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-www-devstore-cn-移动互联网运营解决方案整合平台"><span class="nav-number">27.</span> <span class="nav-text">http://www.devstore.cn/ 移动互联网运营解决方案整合平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https-www-teambition-com-简单、高效的项目协作工具"><span class="nav-number">28.</span> <span class="nav-text">https://www.teambition.com/ 简单、高效的项目协作工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-www-apicloud-com-“云端一体”的移动应用云服务提供商"><span class="nav-number">29.</span> <span class="nav-text">http://www.apicloud.com/ “云端一体”的移动应用云服务提供商</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-www-getui-com-个推-手机消息推送解决方案提供商"><span class="nav-number">30.</span> <span class="nav-text">http://www.getui.com/ 个推 手机消息推送解决方案提供商</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https-pingxx-com-Ping-是为移动端量身打造的下一代支付系统，简单接入，多种支付渠道。"><span class="nav-number">31.</span> <span class="nav-text">https://pingxx.com/ Ping++是为移动端量身打造的下一代支付系统，简单接入，多种支付渠道。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-apistore-baidu-com-为开发者提供最全面的API服务"><span class="nav-number">32.</span> <span class="nav-text">http://apistore.baidu.com/ 为开发者提供最全面的API服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-samllpdf-com-cn-针对PDF问题解决方案"><span class="nav-number">33.</span> <span class="nav-text">http://samllpdf.com/cn/ 针对PDF问题解决方案</span></a></li></ol></div>
             
+
           </div>
         </section>
+      <!--/noindex-->
+      
+
       
 
     </div>
@@ -616,7 +618,7 @@ https://mei">
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2013 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -624,16 +626,18 @@ https://mei">
   <span class="author" itemprop="copyrightHolder">ityike</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
+
 
         
 
@@ -641,9 +645,13 @@ https://mei">
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
   
@@ -666,47 +674,52 @@ https://mei">
 
 
 
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
   
-  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -731,6 +744,26 @@ https://mei">
 
   
     
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -738,144 +771,14 @@ https://mei">
 
 
   
-  
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';                
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
 
   
 
   
 
   
-<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
-</script>
 
+  
 
 </body>
 </html>

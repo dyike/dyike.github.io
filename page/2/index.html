@@ -5,13 +5,12 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="baidu-site-verification" content="8NBkpThWUl" />
-<meta name="google-site-verification" content="Yb1SzwY5w5garHORFOIh7xq1lqEEmerfXIAthf7JyEY" />
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -28,9 +27,12 @@
 
 
 
+
+
+
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -64,12 +66,12 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="一刻笔记" />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,7 +82,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -99,19 +101,35 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
+
+
+
+  <link rel="canonical" href="http://www.dyike.com/page/2/"/>
+
+
+
+
 
   <title> 一刻笔记 </title>
 </head>
@@ -127,9 +145,7 @@
 
 
 
-  <div style="display: none;">
-    <script src="http://s6.cnzz.com/stat.php?id=1254977565&web_id=1254977565" type="text/javascript"></script>
-  </div>
+
 
 
 
@@ -140,31 +156,35 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">一刻笔记</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一刻笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">带着一颗变态的、积极的心走向未来</p>
+      
   </div>
-  <p class="site-subtitle">带着一颗变态的、积极的心走向未来</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -184,26 +204,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-learn">
-          <a href="/learn" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-fa fa-battery-full"></i> <br />
-            
-            充电
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-life">
-          <a href="/life" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-fa fa-coffee"></i> <br />
-            
-            生活
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -214,45 +214,24 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            关于
+            标签
           </a>
         </li>
       
 
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
       
     </ul>
   
 
   
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
-  
 </nav>
+
+
 
  </div>
     </header>
@@ -267,13 +246,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/10/18/php-array-unique/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -295,13 +284,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-18T21:55:04+08:00" content="2016-10-18">
-              2016-10-18
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-18T21:55:04+08:00">
+                2016-10-18
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -309,20 +306,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/10/18/php-array-unique/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/18/php-array-unique/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/18/php-array-unique/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -336,17 +339,20 @@
       
         
           
-          没有啥，就是随便写点关于php数组的处理，数组一直是我的弱项，现在还是做一点记录吧。
-对于二维数组咱们分两种情况讨论，一种是因为某一键名的值不能重复，删除重复项；另一种因为内部的一维数组不能完全相同，而删除重复项，下面举例说明：
-某一键名的值不能重复，删除重复项1234567891011121314
-          ...
+            <p>没有啥，就是随便写点关于php数组的处理，数组一直是我的弱项，现在还是做一点记录吧。</p>
+<p>对于二维数组咱们分两种情况讨论，一种是因为某一键名的值不能重复，删除重复项；另一种因为内部的一维数组不能完全相同，而删除重复项，下面举例说明：</p>
+<h2 id="某一键名的值不能重复，删除重复项"><a href="#某一键名的值不能重复，删除重复项" class="headerlink" title="某一键名的值不能重复，删除重复项"></a>某一键名的值不能重复，删除重复项</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">arrayUnique</span><span class="params">($arr, $key)</span> </span>&#123;</div><div class="line">    $tmp = [];</div><div class="line">    <span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $k =&gt; $v) &#123;</div><div class="line">        <span class="comment">//搜索$v[$key]是否在$tmp_arr数组中存在，若存在返回true</span></div><div class="line">        <span class="keyword">if</span> (in_array($v[$key], $tmp)) &#123;</div><div class="line">            <span class="keyword">unset</span>($arr[$k]);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            $tmp[] = $v[$key];</div><div class="line">        &#125;</div><div class="line">    &#125; </div><div class="line">    sort($arr); <span class="comment">//sort函数对数组进行排序</span></div><div class="line">    <span class="keyword">return</span> $arr;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$test = [</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">123</span>, <span class="string">'name'</span> =&gt; <span class="string">'张三'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">123</span>, <span class="string">'name'</span> =&gt; <span class="string">'李四'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">124</span>, <span class="string">'name'</span> =&gt; <span class="string">'王五'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">125</span>, <span class="string">'name'</span> =&gt; <span class="string">'赵六'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">126</span>, <span class="string">'name'</span> =&gt; <span class="string">'赵六'</span>],</div><div class="line">];</div><div class="line">$key = <span class="string">'id'</span>;</div><div class="line">arrayUnique(&amp;$test, $key);</div><div class="line">print_r($test);</div></pre></td></tr></table></figure>
+<p>显示结果就知道了。。。</p>
+<h4 id="内部的一维数组不能完全相同，而删除重复项"><a href="#内部的一维数组不能完全相同，而删除重复项" class="headerlink" title="内部的一维数组不能完全相同，而删除重复项"></a>内部的一维数组不能完全相同，而删除重复项</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">arrayUnique</span><span class="params">($array)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">foreach</span> ($array <span class="keyword">as</span> $v)&#123;</div><div class="line">        $v = join(<span class="string">","</span>, $v); <span class="comment">//降维,也可以用implode,将一维数组转换为用逗号连接的字符串</span></div><div class="line">        $temp[] = $v;</div><div class="line">    &#125;</div><div class="line">    $temp = array_unique($temp);    <span class="comment">//去掉重复的字符串,也就是重复的一维数组</span></div><div class="line">                </div><div class="line">    <span class="keyword">foreach</span> ($temp <span class="keyword">as</span> $k =&gt; $v)&#123;</div><div class="line">        $temp[$k] = explode(<span class="string">","</span>, $v);   <span class="comment">//再将拆开的数组重新组装</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> $temp;</div><div class="line">&#125;</div><div class="line">$test = [</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">123</span>, <span class="string">'name'</span> =&gt; <span class="string">'张三'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">123</span>, <span class="string">'name'</span> =&gt; <span class="string">'李四'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">124</span>, <span class="string">'name'</span> =&gt; <span class="string">'王五'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">125</span>, <span class="string">'name'</span> =&gt; <span class="string">'赵六'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">126</span>, <span class="string">'name'</span> =&gt; <span class="string">'赵六'</span>],</div><div class="line">];</div><div class="line">$data = arrayUnique($test);</div><div class="line">print_r($data);</div></pre></td></tr></table></figure>
+<p>结果显示就知道了。。。。</p>
+<p>就这样简单粗暴一点吧！</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/18/php-array-unique/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -364,6 +370,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -375,13 +383,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/09/19/tips-for-productive-debug-with-gdb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -403,13 +421,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-19T22:23:49+08:00" content="2016-09-19">
-              2016-09-19
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-19T22:23:49+08:00">
+                2016-09-19
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -417,20 +443,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/09/19/tips-for-productive-debug-with-gdb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/19/tips-for-productive-debug-with-gdb/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/19/tips-for-productive-debug-with-gdb/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -444,18 +476,42 @@
       
         
           
-          今天来翻译一篇文章，是关于高效使用GDB调试的。
-建议一：Try GDB Dashboard这可能不是你喜欢的“菜”，但像我这样的，喜欢在每一个断点处获得更多的程序信息，所以就尝试GDB仪表板。
-它是一款非常棒的组合式的界面，看起来是这样的：
-从Github仓库(https://github.com
-          ...
+            <p>今天来翻译一篇文章，是关于高效使用GDB调试的。</p>
+<h2 id="建议一：Try-GDB-Dashboard"><a href="#建议一：Try-GDB-Dashboard" class="headerlink" title="建议一：Try GDB Dashboard"></a>建议一：Try GDB Dashboard</h2><p>这可能不是你喜欢的“菜”，但像我这样的，喜欢在每一个断点处获得更多的程序信息，所以就尝试GDB仪表板。</p>
+<p>它是一款非常棒的组合式的界面，看起来是这样的：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/gdb/gdb-dashboard.png" alt="界面"></p>
+<p>从Github仓库(<a href="https://github.com/cyrus-and/gdb-dashboard)，能够获取该项目的更多信息,根据你的需求定制你自己的样式。" target="_blank" rel="external">https://github.com/cyrus-and/gdb-dashboard)，能够获取该项目的更多信息,根据你的需求定制你自己的样式。</a></p>
+<h2 id="建议二：Use-a-global-gdbinit-and-a-project-gdbinit"><a href="#建议二：Use-a-global-gdbinit-and-a-project-gdbinit" class="headerlink" title="建议二：Use a global .gdbinit and a project .gdbinit"></a>建议二：Use a global .gdbinit and a project .gdbinit</h2><p><code>.gdbinit</code>是一个配置文件，在gdb启动的时候生效。在你的home目录(~/.gdbinit)可以有一个配置文件做全局设置，或者在当前项目目录 (./.gdbinit)下特定配置。</p>
+<p>正如你从下面的提示可以看到，项目中配置<code>.gdbinit</code>对gdb设定自定格式或者别名是非常有效的。</p>
+<p>提示：必须用<code>set auto-load local-gdbinit</code>让项目生成<code>.gdbinit</code>文件！</p>
+<h2 id="建议三：Use-custom-formatters"><a href="#建议三：Use-custom-formatters" class="headerlink" title="建议三：Use custom formatters"></a>建议三：Use custom formatters</h2><p>通常C/C++如果使用了联合体(unions),在调试器中很难检查的。</p>
+<p>为了让他们更加可读，你可以为你的数据类型设定自定义的格式。参见GDB的Pretty Prining(<a href="https://sourceware.org/gdb/onlinedocs/gdb/Pretty-Printing.html#Pretty-Printing" target="_blank" rel="external">https://sourceware.org/gdb/onlinedocs/gdb/Pretty-Printing.html#Pretty-Printing</a>)</p>
+<p>举个例子，在<a href="https://metricpanda.com/rival-fortress" target="_blank" rel="external">Rival Fortress</a>中有一个矩阵的数据类型(MPEMatrix4),那是许多匿名结构(<a href="https://gcc.gnu.org/onlinedocs/gcc/Unnamed-Fields.html`" target="_blank" rel="external">anonymous structs</a>)的一个联合体(union)。这样使用就是为了方便。</p>
+<p>使用了自定义打印格式，前后对比效果如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/gdb/gdb-pretty-printing.png" alt="前后对比"></p>
+<p>自定义的格式的源码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> MPEMatrixPrinter:</div><div class="line">  <span class="string">""</span><span class="string">"Print a 4x4 matrix."</span><span class="string">""</span></div><div class="line"></div><div class="line">  def __init__(self, val, size):</div><div class="line">    self.val = val</div><div class="line">    self.size = <span class="keyword">int</span>(size)</div><div class="line"></div><div class="line">  def to_string(self):</div><div class="line">    <span class="keyword">return</span> (<span class="string">"\n\t[ %3g %3g %3g %3g ]"</span></div><div class="line">            <span class="string">"\n\t[ %3g %3g %3g %3g ]"</span></div><div class="line">            <span class="string">"\n\t[ %3g %3g %3g %3g ]"</span></div><div class="line">            <span class="string">"\n\t[ %3g %3g %3g %3g ]"</span>) % \</div><div class="line">                (<span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">0</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">1</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">2</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">3</span>]),</div><div class="line">                <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">4</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">5</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">6</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">7</span>]),</div><div class="line">                <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">8</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">9</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">10</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">11</span>]),</div><div class="line">                <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">12</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">13</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">14</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">15</span>]))</div><div class="line"></div><div class="line">def project_type_lookups(val):</div><div class="line">  lookup_tag = val.type.tag</div><div class="line">  <span class="keyword">if</span> lookup_tag == None:</div><div class="line">    <span class="keyword">return</span> None</div><div class="line"></div><div class="line">  match = re.match(r<span class="string">"^MPEMatrix(\d)$"</span>, lookup_tag)</div><div class="line">  <span class="keyword">if</span> match:</div><div class="line">    <span class="keyword">return</span> MPEMatrixPrinter(val, match.group(<span class="number">1</span>))</div><div class="line"></div><div class="line">gdb.pretty_printers.append(project_type_lookups)</div></pre></td></tr></table></figure>
+<h2 id="建议四：Use-aliases"><a href="#建议四：Use-aliases" class="headerlink" title="建议四：Use aliases"></a>建议四：Use aliases</h2><p>别名能够非常有效地提高调试的效率，在<code>.gdbinit</code>文件这样设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alias -a w = dashboard expression watch</div></pre></td></tr></table></figure>
+<h2 id="建议五：Use-automatic-variables"><a href="#建议五：Use-automatic-variables" class="headerlink" title="建议五：Use automatic $ variables"></a>建议五：Use automatic <code>$</code> variables</h2><p>不管什么时候，使用<code>print</code>命令检查某些东西，gdb会像这样在一个变量里自动存储结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print Identity</div><div class="line">$1 = </div><div class="line">        [   1   0   0   0 ]</div><div class="line">        [   0   1   0   0 ]</div><div class="line">        [   0   0   1   0 ]</div><div class="line">        [   0   0   0   1 ]</div></pre></td></tr></table></figure>
+<p><code>$1</code>是自动生成的变量，在后面也可这样提取他：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print $1</div><div class="line">$2 = </div><div class="line">        [   1   0   0   0 ]</div><div class="line">        [   0   1   0   0 ]</div><div class="line">        [   0   0   1   0 ]</div><div class="line">        [   0   0   0   1 ]</div></pre></td></tr></table></figure>
+<h2 id="建议六：Inspect-array-pointers"><a href="#建议六：Inspect-array-pointers" class="headerlink" title="建议六：Inspect array pointers"></a>建议六：Inspect array pointers</h2><p>在一个数组里面使用C-style的指针，可以使用下面的命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print *Array@10</div></pre></td></tr></table></figure>
+<p>将会打印Array中的10个元素。</p>
+<h2 id="建议七：Enable-command-history"><a href="#建议七：Enable-command-history" class="headerlink" title="建议七：Enable command history"></a>建议七：Enable command history</h2><p>设置命令历史记录，在<code>.gdbinit</code>文件中设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set history save on</div></pre></td></tr></table></figure>
+<p>在当前目录下默认保存的历史文件(<code>.gdb_history</code>)，但是可以设定输出文件名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set history filename &lt;fname&gt;</div></pre></td></tr></table></figure>
+<h2 id="建议八：Detect-if-the-debugger-is-running"><a href="#建议八：Detect-if-the-debugger-is-running" class="headerlink" title="建议八：Detect if the debugger is running"></a>建议八：Detect if the debugger is running</h2><p>这个其实不是关于gdb调试，但是非常的有用。</p>
+<p>在windows系统里可以使用<code>IsDebuggerPresent</code>(<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms680345(v=vs.85).aspx)函数来判断debugger是否在运行。" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/windows/desktop/ms680345(v=vs.85).aspx)函数来判断debugger是否在运行。</a><br>在Unix系统也是可以这样使用的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _WIN32</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/ptrace.h&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">IsDebuggerPresent</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">static</span> <span class="keyword">int</span> Detected;</div><div class="line">  <span class="keyword">static</span> <span class="keyword">int</span> RunningUnderDebugger;</div><div class="line">  <span class="keyword">if</span> (!Detected)</div><div class="line">  &#123;</div><div class="line">    Detected = <span class="number">1</span>;</div><div class="line">    RunningUnderDebugger = ptrace(PTRACE_TRACEME, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>) == <span class="number">-1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> RunningUnderDebugger;</div><div class="line">&#125;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/19/tips-for-productive-debug-with-gdb/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -473,6 +529,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -484,13 +542,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/09/12/php-unint-test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -512,13 +580,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-12T16:05:52+08:00" content="2016-09-12">
-              2016-09-12
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-12T16:05:52+08:00">
+                2016-09-12
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -526,20 +602,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/09/12/php-unint-test/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/12/php-unint-test/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/12/php-unint-test/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -553,17 +635,35 @@
       
         
           
-          最近学习了一点PHP单元测试的东西，这里做一个简单的整理。
-什么是单元测试？单元测试将你的程序代码进行隔离并证明这个单个部件是正确的。通常情况下，单元测试是非常小、快并且简短的代码片段——比如一个方法。
-这样做有什么好处？可以保证代码的简洁，增强代码的可读性，同时还有利于编写更多有意义的代码，能减少
-          ...
+            <p>最近学习了一点PHP单元测试的东西，这里做一个简单的整理。</p>
+<h2 id="什么是单元测试？"><a href="#什么是单元测试？" class="headerlink" title="什么是单元测试？"></a>什么是单元测试？</h2><p>单元测试将你的程序代码进行隔离并证明这个单个部件是正确的。通常情况下，单元测试是非常小、快并且简短的代码片段——比如一个方法。</p>
+<h2 id="这样做有什么好处？"><a href="#这样做有什么好处？" class="headerlink" title="这样做有什么好处？"></a>这样做有什么好处？</h2><p>可以保证代码的简洁，增强代码的可读性，同时还有利于编写更多有意义的代码，能减少代码的bug数量等等好处。</p>
+<h4 id="从手动测试到单元测试"><a href="#从手动测试到单元测试" class="headerlink" title="从手动测试到单元测试:"></a>从手动测试到单元测试:</h4><p>之前测试(调试)代码的时候基本是这样的：编写代码——&gt;打开浏览器——&gt;给定不同的输入条件——&gt;看输出的结果是否符合预期的结果。对，这个就是手动测试，是对功能设计的测试，不是对我们的代码进行测试。</p>
+<p>现在我们想要做的是自动测试，不再像上面说的那样死板的东西。有两种主要的方法可以达到如此效果——TDD(test-driven development)测试驱动开发 和 BDD(behavior-driven development)行为驱动开发。</p>
+<blockquote>
+<p>TDD是非常简短的，在编写业务代码之前编写测试用例，这种方式依赖于单元测试。正如前面提到的，单元测试是简短的、容易编写的代码片段，也就是说你的业务代码要确保被单元测试的代码所覆盖。TDD的大概流程是针对于每个功能点抽象出接口代码——&gt;编写单元测试的代码——&gt;实现接口——&gt;运行单元测试代码，循环此过程，直到整个单元测试都通过。这样做的好处是：减少代码逻辑的错误，尽可能减少项目中的bug。当然不是所有的项目都适合TDD这个方式。那使用TDD都是在什么情景下呢？</p>
+<ul>
+<li>(1) 对项目的需求足够的了解 </li>
+<li>(2)项目本身的复杂度和依赖性，如果一个项目极其复杂，模块之间又是相互依赖，这种情况下，TDD反正会增大拆分接口和编写测试用例的工作量。</li>
+</ul>
+<p>BDD,另一种单元测试的方式，就必须要对某些行为要有具体的期望，这样测试才会有意义！</p>
+</blockquote>
+<h2 id="一些讨论"><a href="#一些讨论" class="headerlink" title="一些讨论"></a>一些讨论</h2><p>写到这里，对每样东西每个人的看法都是不一样，对单元测试也是这样。也有人反对单元测试，每个东西不会是十全十美，当然了我写这篇文章肯定要夸单元测试的好处。现在不妨来讨论讨论。</p>
+<h4 id="编写测试用例浪费很多时间？"><a href="#编写测试用例浪费很多时间？" class="headerlink" title="编写测试用例浪费很多时间？"></a>编写测试用例浪费很多时间？</h4><p>首先需要说明的是，编写测试用例代码(额外的代码)显而易见是需要花时间的。对的，这个不只是花费时间的唯一因素。当我们编写完一个项目的业务逻辑的代码，过了好几个月，回过头来去看我们自己的代码，就要花费很长时间去理解我当初为什么要这样编写而不那样编写。也有可能是花费时间去理解别人的代码。fix bug的时候也需要花费时间在自己的代码中穿行。如果我们使用第三方的一些库，库被修改，我们也需要花很多时间review我们的代码……这些时间加起来是不是要比编写测试用例的代码还要多得多。<br>甚至还有人抱怨说，“我编写了测试用例的代码，并没有找到bug，这不是浪费时间？是什么？”既然你编写了测试用例，当你修改了某个部分的代码时，就可以帮你检查出来。至少这样你不需要手动测试你哪些修改过的代码。</p>
+<h4 id="我的代码，我了解，我不需要测试？"><a href="#我的代码，我了解，我不需要测试？" class="headerlink" title="我的代码，我了解，我不需要测试？"></a>我的代码，我了解，我不需要测试？</h4><p>有的时候，我们第一次编写业务逻辑代码是非常清晰的，但过了一段时间我们总要花费一点时间来理解当初编写业务逻辑的代码。我们写的测试用例的方法通常有五六行代码组成，但这些方法可用于不同的服务器、不同版本的脚本语言环境。</p>
+<h4 id="不可能测试所有的差异？"><a href="#不可能测试所有的差异？" class="headerlink" title="不可能测试所有的差异？"></a>不可能测试所有的差异？</h4><p>这个答案是肯定的，不可能测试所有的差异。但一个单元能够帮你展示你所能覆盖测试的差异。如果你能够根据非单元测试覆盖测试出的差异来保证应用的正常运行，你可以扩展你的测试范围。举个栗子，当你用某个确定的整数作为输入条件成功跑通了程序，你可以扩展这个测试范围，用0、非整数或者其他作为输入条件进行测试。</p>
+<h4 id="编写测试用例难？"><a href="#编写测试用例难？" class="headerlink" title="编写测试用例难？"></a>编写测试用例难？</h4><p>编写测试用例很简单，编写nice的测试用例难。这需要一个实践的过程！</p>
+<p>总之，学习单元测试是需要花费时间的。即便你是第一次使用单元测试，但这个学习曲线很短而且是有回报的。何乐而不为呢？</p>
+<h3 id="补充几点："><a href="#补充几点：" class="headerlink" title="补充几点："></a>补充几点：</h3><h4 id="测试功能"><a href="#测试功能" class="headerlink" title="测试功能"></a>测试功能</h4><p>编写代码的时候，<code>print_r()</code>和<code>var_dump()</code>确实是一个非常友好的测试，但是没有真正达到测试的目的。手动测试也是比较花费时间、无聊的。当你因为某个功能要修改的旧代码、或因为某个bug要修改某块代码的时候，此时你需要一些东西来测试你的代码是否还有你想要的功能。手动测试前，通常要列出所有输入值（如：负数、0、字符串等等）如果某次测试你忘记了测试字符串的情况就将代码部署到生产环境了。单元测试，不会发生这种事情。</p>
+<h4 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h4><p>对变量、方法重命名以增强代码的可读性，此时要小心重命名会不会带来新的bug和冲突。有的时候，有些代码跟目标功能一点关联都没有，显然，可以删除这样的代码，但你需要检查剩余的代码还是能够正常工作的。</p>
+<h4 id="代码质量"><a href="#代码质量" class="headerlink" title="代码质量"></a>代码质量</h4><p>测试运行是隔离的。进行测试就是在证明当前代码片段不依赖其他代码块。</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/12/php-unint-test/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -581,6 +681,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -592,13 +694,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/09/01/hang-zhou-one-month/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -620,13 +732,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-01T22:34:43+08:00" content="2016-09-01">
-              2016-09-01
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-01T22:34:43+08:00">
+                2016-09-01
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -634,20 +754,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/09/01/hang-zhou-one-month/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/01/hang-zhou-one-month/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/01/hang-zhou-one-month/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -661,15 +787,21 @@
       
         
           
-          不知道不觉，来杭州一个月零两天，入职一个月了，上个月1号入职的，还是挺好记的。来杭州一个的时间，还感觉是在梦里一样。没想到我就来到杭州了，从毕业前到毕业后的半个多月里，我都没有想到过我会回到南方。可能是之前感觉一切都太顺利了，自己成功地避开了一些弯路。其实那样对自己的成长来说是不利的，最后自己还是走
-          ...
+            <p>不知道不觉，来杭州一个月零两天，入职一个月了，上个月1号入职的，还是挺好记的。来杭州一个的时间，还感觉是在梦里一样。没想到我就来到杭州了，从毕业前到毕业后的半个多月里，我都没有想到过我会回到南方。可能是之前感觉一切都太顺利了，自己成功地避开了一些弯路。其实那样对自己的成长来说是不利的，最后自己还是走上应该要走的路径，这可能就是来杭州的原因了。</p>
+<p>杭州对我来说，虽然离家很近，三个多小时的车程就能到家，但给我的感觉还是挺陌生的，在这个城市没有什么亲人，没有什么朋友，没有什么同学。说同学的话也就公司有一个初中同学，还是她帮我内推的简历呢。北京待久了，习惯了那里的一切，认识的朋友也都在那里，感觉那里就是很好的。其实这样认为是不对的，年轻人要敢于适应新的环境，至少我现在发现了杭州的水要北京的水好很多很多很多，还有他们说的很多漂亮妹子（虽然我没有见过）。</p>
+<p>还记得三月份的时候，去新浪面试。现在看来那个面试，那个时候的我真的是啥都不会，面试也很糟糕，记得当时胡波问郝明“你是不是把人家问怕了？”，后来胡波说了一句“年轻人这点儿就怕了？要敢于挑战”。在微博的三个月里，对自己的成长挺大的，给了一个机会，让我真正操练起PHP，还见识了靠谱的正超、士博、胡波、周老大……（太多了，不一一说了）还有那个张健，恭喜一下现在是超级奶爸。谢谢你们给了我很大的帮助，你们教的东西，现在好多用上了。嘿嘿</p>
+<h2 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h2><p>来杭州后，再也没有自己做过饭了，是因为自己变懒了吗？差不多也是，再这样下去，好像连熬粥都不会了，更别说烧什么红烧排骨，写到这儿都想吃排骨了😭早餐也不怎么吃了，过得挺没规律的，这个得批评一下自己。生活上其他也没什么了，基本没有什么大的变化，依然爱干净、有轻微洁癖。去超市也不怎么买零食，也就买水果和啤酒。</p>
+<h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><p>一个月时间，项目也熟悉得差不多了。对zend框架的学习还需要进一步深入（虽然我到现在都没有看文档就胡乱写起了，虽然不太喜欢这个框架，但还是有值得学习的东西）。对于业余时间，就写点前端的东西或者go语言的beego框架。总之，在技术上，要对自己要制定一个目标计划，不能尽瞎搞，什么都搞，什么都不精。工作上的其他就不说了。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>来杭州还狠心地买下了Dell的4K屏，虽然最近在吃土，写代码啥的真的很舒服，以至于我现在都后悔把显示器从公司搬回来，早知道就应该放在公司，我每天在公司用的显示器的时间比在家的时间多多了，工作日都要有一个很糟糕的切换——4K-&gt;1080P-&gt;4K。</p>
+<p>用的笔记本是去年暑假自己买的13寸的中配MacBook Pro，到现在使用了一年多了，体验还好。最近发现电池像是不经用啊，貌似是跟我两三个月没关机有关。这个东西，早买早体验。</p>
+<p>从北京到杭州托运行李，整理的行李的时候，发现之前的玩的硬件又好久没完了，这一个月里拿出来完了一次，有时间还是要多折腾，感觉这些东西还很有意思的。</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/01/hang-zhou-one-month/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -687,6 +819,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -698,13 +832,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/08/25/php-trait/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -726,13 +870,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-25T15:50:22+08:00" content="2016-08-25">
-              2016-08-25
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-25T15:50:22+08:00">
+                2016-08-25
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -740,20 +892,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/08/25/php-trait/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/25/php-trait/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/25/php-trait/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -767,16 +925,20 @@
       
         
           
-          有这样一天，我要去找工作了，虽然我是从三月份开始接触PHP，到现在也就四五个月的样子，面试的时候【才接触三个多月】只要不是那种傻叉的面试官，基本不回你过深的PHP知识，也就是围绕你学过的C/C++啥的问问。
-一共面了三家，三家都问了同样的一个问题：说说你理解中的C++中的封装、继承、多态。 这个问题
-          ...
+            <p>有这样一天，我要去找工作了，虽然我是从三月份开始接触PHP，到现在也就四五个月的样子，面试的时候【才接触三个多月】只要不是那种傻叉的面试官，基本不回你过深的PHP知识，也就是围绕你学过的C/C++啥的问问。</p>
+<p>一共面了三家，三家都问了同样的一个问题：<code>说说你理解中的C++中的封装、继承、多态。</code> 这个问题吧，你怎么答都行，毕竟是你自己理解的。第一次吱吱呜呜说了一些，最后感觉自己都不知道自己在说什么。后来就自己总结，看到网上有一个从生物学的角度解释了一番，感觉还可以至少通俗易懂。后来又继续深入总结，在继承这一块，发现PHP虽然是单继承的语言，但还有一个比较特殊的东西，就是trait。这个翻译成中文还有比较奇葩的翻译——性状。一般我们都叫特性，或者直接叫trait。</p>
+<p>可能好多人跟我一样有一个困惑：之前我接触PHP的时候，至少我在项目中没有发现使用过这个。后来也就是在毕设中，看到laravel的源码就使用了这个，那个时候也没有深入了解这个东西，看着像一个class。其实trait并不是一个很新的东西，在PHP5.4中加入的一种代码复用的语法，只是很少被关注而已。trait让PHP突破单继承的限制。</p>
+<p>下面就看看一个简单的例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">trait</span> Hello </div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getHello</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Hello"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">trait</span> World </div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getWorld</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"World"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">use</span> <span class="title">Hello</span>, <span class="title">World</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHelloWorld</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"!"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$hw = <span class="keyword">new</span> HelloWorld();</div><div class="line">$hw-&gt;getHello();</div><div class="line">$hw-&gt;getWorld();</div><div class="line">$hw-&gt;sayHelloWorld();</div></pre></td></tr></table></figure>
+<p>上面的例子可以看出，trait像一个class,可以在写各种属性和方法，然后通过use关键字声明列出trait。由于PHP是单继承的语言，如果你想要继承多个基类，这个时候就需要将这些基类组合，而且这种组合是层叠，最终的效果就是一个树状的结构，但有了trait，就可以随意组合，结构简单。是不是很方便？我们在编写自己的代码前，我们可以把一些属性进行合理的划分，放在一个trait，让代码片段复用，耦合性低，代码清晰可读。</p>
+<p>当然了还有一些需要注意的是，什么叫代码合理拆分，而不是将三两个相同的代码片段放到trait中，而是根据自己的需求来决定。</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/25/php-trait/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -794,6 +956,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -805,13 +969,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/08/21/php-components-development/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -833,13 +1007,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T12:10:43+08:00" content="2016-08-21">
-              2016-08-21
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-21T12:10:43+08:00">
+                2016-08-21
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -847,20 +1029,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/08/21/php-components-development/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/21/php-components-development/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/21/php-components-development/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -874,19 +1062,41 @@
       
         
           
-          曾经有这样一个故事：
+            <p>曾经有这样一个故事：</p>
+<blockquote>
+<p>小李：超哥啊，我想要写个脚本去注册域名，按照汉字组词拼音来注册域名，发现市面上的汉字词组转拼音的工具不好用啊，都TM是个什么烂鬼。<br>超哥：恩，我去看了一下，确实都不好用啊。放心吧，这下我又可以造轮子了。<br>……<br>几天后，超哥什么话也没有说，向小李抛了一个包，你拿去用吧。</p>
+</blockquote>
+<p>当我们开始一个新的项目，首先我们需要考虑如何进行开发？<br>通常情况下，可能的方式有：</p>
+<ul>
+<li>手动创建</li>
+<li>选择合适的框架(比如说Laravel)</li>
+<li>组件式开发（Components Development）?</li>
+</ul>
+<p>靠，what is component？<br>严格地说，PHP组件就是一系列相关的类、接口和特性(trait)来解决某个特定的问题。组件中的类、接口和特性通常是放在同一个命名空间中。</p>
+<p>可能你又会想，为什么我要使用PHP组件？这个问题问得不错！</p>
+<p>我们使用组件开发是为了不重新实现已经实现了的功能，这样就可以把时间花在未实现功能上的开发。使用组件开发，可能是因为时代不一样了，现代的PHP已经很少使用庞大的框架，而是使用具有相互操作性的组件制定解决方案。有的时候，框架不一定能满足我们的需求，这个时候我们通常去自己开发一个新的功能，框架也很难集成第三方的库或者自定义的库，因为他们之间没有使用相同的接口。现在我们可以不受限于框架的束缚，如果想快速完成一个应用的开发，不使用组件自己去重新发明轮子，是不是有点傻呢？</p>
+<p><strong>这里想说明的是框架和组件的一些对比。</strong></p>
+<p>前面也提到了，框架虽然很强大，给我们提供了很多工具，但总会出现框架解决不了我们现有的需求问题，这个时候我们通常的做法就是自己开发功能，我们自定义的库又很难集成到框架中。一个好框架需要花费大量的投入时间来维护，我们在选择一个框架的时候要着眼框架的未来。（这么说，PHP组件是不是要比框架好呢？其实也不能这样说，PHP组件也有可能会终止开发的可能，尤其是只有一个核心开发者，万一坚持不下去呢？）</p>
+<p>那是不是框架一无是处呢？其实框架并不是一无是处。像laravel这样的现代流行的PHP框架，代码很优雅。（虽然laravel没有使用PSR-2社区标准，但仍然是一个相当出色的框架）还有一些古老的框架也在向现代PHP转变，比如内容管理框架Drupal。之前的Drupal7还是使用过程式PHP代码编写，代码还在全局命名空间中，舍弃了现代PHP，支持陈旧的代码根基。但是到了Drupal8使用不同的PHP组件构建了一个现代化的内容管理平台，向现代PHP靠拢！这个对Drupal8点个赞（我入职第一周看Drupal7的项目，看了两天的代码，一脸的懵逼，后来放弃了！）。</p>
+<p>在菜市场买菜，菜有好的跟不好的区分，PHP组件也是这样的。所以说，我们不能认为只要是PHP组件的开发都是好的！下面还是说说好的PHP组件长得是什么样子：</p>
+<ul>
+<li>PHP组件的代码小巧玲珑，短小精悍，解决某个问题却使用很少的代码。一个PHP组件可以是一个类，也可以是多个类，分别放在不同子命名的空间里。组件中类没有限定数量，根据自己的解决问题的需求。</li>
+<li>PHP组件的功能单一。我们常说单一功能职责化，代码模块化。组件不是万能的，而是讲究术业有专攻，就是解决特定问题。</li>
+<li>PHP组件之间的相互协调性，一个组件解决一个问题，一个项目解决多个问题。所以PHP组件代码放在自己的命名空间，防止与其他组件冲突。</li>
+<li>PHP组件的测试良好，因为短小精悍，所以测试比较简单。最好本身提供测试，并且有充足的覆盖度。</li>
+<li>有完善的文档，有完善的文档，有完善的文档。组件要让使用者，易于安装，理解和使用。所以说写一个好的README文档真的很重要。要想提高的自己开发的组件的知名度，首先，组件确实好；其次，就是提供相当nice的README文档【这个要去学一下】。还有源码中也要有详细的注释，为组件中的类、属性和方法添加行内容文档块，说明参数、返回值和可能抛出的异常。</li>
+</ul>
+<p>关于最后的选择，究竟我是选择使用组件式开发还是框架开发？</p>
+<p>这个答案就是根据自己的需求来选择。其实现代的PHP框架就是在构建一些小型PHP组件上的一系列的约定。如果能通过一些PHP组件就能解决实际问题的项目就使用组件开发。组件开发能够让代码保持轻量级和灵活性，很容易将一个组件变成另外一个项目的组件。</p>
+<p>如果是大型的项目，能够从框架的一些约定、标准和结构中受益的话，那就使用框架。因为框架能帮我们决定好多事情。但框架的灵活性较低一点，框架提供了一些拿来就用的工具，这样看来，框架也是一个很好的选择。</p>
+<p>总之，根据自己的需求来选择适合自己的东西！</p>
 
-小李：超哥啊，我想要写个脚本去注册域名，按照汉字组词拼音来注册域名，发现市面上的汉字词组转拼音的工具不好用啊，都TM是个什么烂鬼。超哥：恩，我去看了一下，确实都不好用啊。放心吧，这下我又可以造轮子了。……几天后，超哥什么话也没有说，向小李抛了一个包，你拿去用吧。
-
-当我们开始
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/21/php-components-development/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -904,6 +1114,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -915,13 +1127,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/08/13/the-gdb-on-ubuntu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -943,13 +1165,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-13T23:37:58+08:00" content="2016-08-13">
-              2016-08-13
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-13T23:37:58+08:00">
+                2016-08-13
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -957,20 +1187,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/08/13/the-gdb-on-ubuntu/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/13/the-gdb-on-ubuntu/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/13/the-gdb-on-ubuntu/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -984,16 +1220,256 @@
       
         
           
-          
-关于GDB是什么，我就不多介绍了，这个不了解可以去谷歌一下。反正就是一个很强大的程序调试的工具。为什么要学习这个？之前学习C语言不是在Linux下编程，后来发现之前折腾的跟现实还是有点出入的，所以现在有的时候还是挺懵逼的，每次都为调试代码这件事而苦恼。还有就是学习Golang的都知道，go语言是支
-          ...
+            <blockquote>
+<p>关于GDB是什么，我就不多介绍了，这个不了解可以去谷歌一下。反正就是一个很强大的程序调试的工具。<br>为什么要学习这个？之前学习C语言不是在Linux下编程，后来发现之前折腾的跟现实还是有点出入的，所以现在有的时候还是挺懵逼的，每次都为调试代码这件事而苦恼。<br>还有就是学习Golang的都知道，go语言是支持GDB调试的。Go语言作为一门静态语言，当然可以通过Println之类的打印，但每次修改都需要重新编译。<br>这么看来，既然有这么一个强大的工具，有什么理由不掌握它呢？这里我从网上收集的，整理了一下，希望对你的学习也有帮助。</p>
+</blockquote>
+<p>GDB能做的事情如下几个方面：</p>
+<ul>
+<li>启动程序，根据自己的想法来运行程序</li>
+<li>让程序在指定的断点出停住，断点可以是条件表达式</li>
+<li>在断点处，查看上下文</li>
+<li>动态的改变程序的执行环境</li>
+</ul>
+<p>先说说安装吧，在ubuntu下安装也不是一件很难的事，这个自行谷歌。最好尝试编译安装，国内下载可能非常非常的慢。我这里给一个我之前下载好的，放在<a href="https://pan.baidu.com/s/1qYtOIio" target="_blank" rel="external">百度云盘</a>中, <strong>密码: 3drw</strong></p>
+<p>下面直接切入学习吧！</p>
+<p>我们来编写一个简单的C程序：example.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> a+b;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> sum[<span class="number">5</span>] = &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">int</span> array1[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</div><div class="line">    <span class="keyword">int</span> array2[<span class="number">5</span>] = &#123;<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>&#125;;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</div><div class="line">    &#123;</div><div class="line">        sum[i] = add(array1[i], array2[i]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编译：<code>gcc -g example.c -o example</code>,得到一个二进制文件example,执行<code>gdb example</code>命令进入调试状态。</p>
+<blockquote>
+<p>注意这里的编译命令，想想为什么要带上-g参数。如果没有-g参数，就看不到程序的函数名、变量名，所替代的全是运行时的内存地址。</p>
+</blockquote>
+<p>你将看到的是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">root@ityike:/vagrant/cproject/learngdb  # gdb example</div><div class="line">GNU gdb (GDB) 7.11.1</div><div class="line">Copyright (C) 2016 Free Software Foundation, Inc.</div><div class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</div><div class="line">This is free software: you are free to change and redistribute it.</div><div class="line">There is NO WARRANTY, to the extent permitted by law.  Type &quot;show copying&quot;</div><div class="line">and &quot;show warranty&quot; for details.</div><div class="line">This GDB was configured as &quot;x86_64-pc-linux-gnu&quot;.</div><div class="line">Type &quot;show configuration&quot; for configuration details.</div><div class="line">For bug reporting instructions, please see:</div><div class="line">&lt;http://www.gnu.org/software/gdb/bugs/&gt;.</div><div class="line">Find the GDB manual and other documentation resources online at:</div><div class="line">&lt;http://www.gnu.org/software/gdb/documentation/&gt;.</div><div class="line">For help, type &quot;help&quot;.</div><div class="line">Type &quot;apropos word&quot; to search for commands related to &quot;word&quot;...</div><div class="line">Reading symbols from example...done.</div><div class="line">(gdb)</div></pre></td></tr></table></figure>
+<p>启动GDB的方法有：</p>
+<ul>
+<li><code>gdb &lt;program&gt;</code>      | program也就是你的执行文件，一般在当前目录下。</li>
+<li><code>gdb &lt;program&gt; core</code>  | 用gdb同时调试一个运行程序和core文件，core是程序非法执行后core dump后产生的文件。</li>
+<li><code>gdb &lt;program&gt; &lt;PID&gt;</code>  | 可以指定这个服务程序运行时的进程ID，gdb会自动attach上去，并调试他。（一般用于调试已经在运行的程序）</li>
+</ul>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="1、list【缩写：l】"><a href="#1、list【缩写：l】" class="headerlink" title="1、list【缩写：l】"></a>1、list【缩写：l】</h3><p> list命令后面可以带的参数：</p>
+<ul>
+<li><code>&lt;linenum&gt;</code> 行号</li>
+<li><code>&lt;+offset&gt;</code> 当前行号的正偏移量</li>
+<li><code>&lt;-offset&gt;</code> 当前行号的负偏移量</li>
+<li><code>&lt;filename:linenum&gt;</code> 哪个文件的哪一行</li>
+<li><code>&lt;function&gt;</code> 函数名</li>
+<li><code>&lt;filename:function&gt;</code> 哪个文件的哪个函数</li>
+<li><code>&lt;*address&gt;</code> 程序运行时语句在内存中的地址</li>
+</ul>
+<ul>
+<li><code>list &lt;linenum&gt;</code>,显示第linenum行附近的源程序。</li>
+<li><code>list &lt;function&gt;</code>,显示函数名为function函数上下的源程序。</li>
+<li><code>list</code> ,显示当前行后面的源程序。</li>
+<li><code>list -</code>,显示当前行前面的源程序。<br>一般默认显示行数是10，也可以设置自己的行数。</li>
+<li><code>show listsize</code>,查看当前设置的list行数。</li>
+<li><code>set listsize &lt;count&gt;</code>,设置自己的一次显示的行数。<br>其他常用的list命令：</li>
+<li><code>list &lt;first&gt;,&lt;last&gt;</code>  显示从first到last行之间的代码。</li>
+<li><code>list ,&lt;last&gt;</code>  显示从当前行到last行之间的代码。</li>
+<li><code>list +</code>  往后显示源代码。</li>
+</ul>
+<p>看到这里，不难发现，list就是一个显示内容的命令，是不是没啥呢？其实GDB还提供了代码搜索的命令。</p>
+<ul>
+<li><code>forward-search &lt;regexp&gt;</code> | <code>search &lt;regexp&gt;</code> 向前搜索</li>
+<li><code>reverse-search &lt;regexp&gt;</code> 全部搜索<blockquote>
+<p><code>&lt;regexp&gt;</code>是正则表达式，你是不是跟我一样还要去学习正则表达式，没有啥怕的！</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="2、run【缩写-r】"><a href="#2、run【缩写-r】" class="headerlink" title="2、run【缩写:r】"></a>2、run【缩写:r】</h3><p> 程序的运行，你有可能需要设置下面四方面的事:</p>
+<ul>
+<li>程序运行参数<blockquote>
+<p><code>set args</code> 指定运行时的参数。（set args 1,2,3,4,5)<br><code>show args</code> 查看当前设置好的运行参数。</p>
+</blockquote>
+</li>
+<li>运行环境<blockquote>
+<p><code>show paths</code> 查看程序的运行路径。<br><code>path &lt;dir&gt;</code> 设定程序的运行路径。<br><code>set enviroment varname[=value]</code> 设置环境变量。（set env USER=ityike)<br><code>show enviroment [varname]</code> 查看环境变量。</p>
+</blockquote>
+</li>
+<li>工作目录<blockquote>
+<p><code>cd &lt;dir&gt;</code>相当于shell的cd命令。<br><code>pwd</code> 显示当前的所在目录。</p>
+</blockquote>
+</li>
+<li>程序的输入输出<blockquote>
+<p><code>info terminal</code> 显示你程序用到的终端的模式。<br>使用重定向控制程序输出。如：<code>run &gt; outfile</code><br>tty命令可以指写输入输出的终端设备。如：<code>tty /dev/ttyb</code></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3、break【缩写-b】"><a href="#3、break【缩写-b】" class="headerlink" title="3、break【缩写:b】"></a>3、break【缩写:b】</h3><ul>
+<li><code>break &lt;function&gt;</code> 进入指定函数时停住。在C++中使用class::function或者function(type,type)格式来指定函数名。</li>
+<li><code>break &lt;linenum&gt;</code> 在指定行停住。</li>
+<li><code>break +offset / break -offset</code>在当前行号的前面或后面的offset行停住。</li>
+<li><code>break filename:linenum</code>在filename文件的linenum行停住。</li>
+<li><code>break filename:function</code>在filename文件的function函数的入口处停住。</li>
+<li><code>break *address</code>在程序运行的内存地址处停住。</li>
+<li><code>break</code>不带参数表示在下一条指令处停住。</li>
+<li>在上面的带有参数的命令后面，还可以带有condition表示条件。<code>break ... if &lt;condition&gt;</code>，条件成立的时候停住。</li>
+<li>查看断点，可使用info命令，如<code>info breakpoints [n]</code>、<code>info break [n]</code>（n表示断点号）。</li>
+</ul>
+<h3 id="4、单步命令"><a href="#4、单步命令" class="headerlink" title="4、单步命令"></a>4、单步命令</h3><p>next命令可以用于单步执行，但是next不会进入函数的内部，那怎么办呢？还有一个命令step【缩写:s】会进入函数的内部。</p>
+<ul>
+<li><code>step &lt;count&gt;</code> step后面不加count表示一条条地执行，加表示执行后面的count条指令，然后再停住。</li>
+<li><code>next &lt;count&gt;</code>next后面不加count表示一条条地执行，加表示执行后面的count条指令，然后再停住。</li>
+<li><code>set step-mode</code> </li>
+</ul>
+<blockquote>
+<p>set step-mode on用于打开step-mode模式，这样，在进行单步跟踪时，程序不会因为没有debug信息而不停住，这个参数的设置可便于查看机器码。<br>set step-mod off用于关闭step-mode模式。</p>
+</blockquote>
+<ul>
+<li><code>finish</code> 运行程序，直到当前函数完成返回，并打印函数返回时的堆栈地址和返回值及参数值等信息。</li>
+<li><code>until</code>【缩写:u】一直在循环体内执行单步，退不出来是一件令人烦恼的事情，until命令可以运行程序直到退出循环体。</li>
+</ul>
+<h3 id="5、continue【缩写-c】"><a href="#5、continue【缩写-c】" class="headerlink" title="5、continue【缩写:c】"></a>5、continue【缩写:c】</h3><p>当程序被停住后，可以使用continue恢复程序的运行知道程序结束，或达到下一个端点。</p>
+<ul>
+<li><code>continue [ignore-count]</code>  ignore-count表示忽略其后多少次断点。</li>
+</ul>
+<h3 id="6、print-【缩写-p】"><a href="#6、print-【缩写-p】" class="headerlink" title="6、print 【缩写:p】"></a>6、print 【缩写:p】</h3><ul>
+<li><code>print &lt;expr&gt;</code>  <expr>是表达式，是被调试的程序中的表达式。</expr></li>
+<li><p><code>print /&lt;f&gt; &lt;expr&gt;</code>   <f>是输出的格式，如果要把表达式按16进制的格式输出，那么就是/x。</f></p>
+<blockquote>
+<p>“@”是一个和数组有关的操作符，“::”指定一个在文件或是函数中的变量，“{<type>} <addr>”表示一个指向内存地址<addr>的类型为type的一个对象。</addr></addr></type></p>
+<p>x 按十六进制格式显示变量。<br>d 按十进制格式显示变量。<br>u 按十六进制格式显示无符号整型。<br>o 按八进制格式显示变量。<br>t 按二进制格式显示变量。<br>a 按十六进制格式显示变量。<br>c 按字符格式显示变量。<br>f 按浮点数格式显示变量。</p>
+</blockquote>
+</li>
+</ul>
+<p>下面我们演示一下sum[]的数组变化过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">(gdb) b 14</div><div class="line">Breakpoint 1 at 0x400584: file example.c, line 14.</div><div class="line">(gdb) r</div><div class="line">Starting program: /vagrant/cproject/learngdb/example</div><div class="line"></div><div class="line">Breakpoint 1, main () at example.c:14</div><div class="line">14          sum[i] = add(array1[i], array2[i]);</div><div class="line">(gdb) p sum</div><div class="line">$1 = &#123;0, 0, 0, 0, 0&#125;</div><div class="line">(gdb) n</div><div class="line">12      for (i = 0; i &lt; 5; i++)</div><div class="line">(gdb) n</div><div class="line"></div><div class="line">Breakpoint 1, main () at example.c:14</div><div class="line">14          sum[i] = add(array1[i], array2[i]);</div><div class="line">(gdb) p sum</div><div class="line">$2 = &#123;3, 0, 0, 0, 0&#125;</div><div class="line">(gdb) n</div><div class="line">12      for (i = 0; i &lt; 5; i++)</div><div class="line">(gdb) p sum</div><div class="line">$3 = &#123;3, 6, 0, 0, 0&#125;</div><div class="line">(gdb) n</div><div class="line"></div><div class="line">Breakpoint 1, main () at example.c:14</div><div class="line">14          sum[i] = add(array1[i], array2[i]);</div><div class="line">(gdb) p sum</div><div class="line">$4 = &#123;3, 6, 0, 0, 0&#125;</div><div class="line">(gdb) n</div><div class="line">12      for (i = 0; i &lt; 5; i++)</div><div class="line">(gdb) p sum</div><div class="line">$5 = &#123;3, 6, 9, 0, 0&#125;</div></pre></td></tr></table></figure>
+<p>如果要修改变量，如x的值，可使用命令：<code>print x=4</code></p>
+<p>还有关于数组，有时需要查看一段连续内存空间的值，比如数组的一段，或者是动态分配的数据大小。可以使用“@”操作符。“@”左边是一个内存的地址的值，“@”右边是你查看内存的长度。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(gdb) p sum</div><div class="line">$7 = &#123;3, 6, 9, 12, 0&#125;</div><div class="line">(gdb) p *sum@5</div><div class="line">$8 = &#123;3, 6, 9, 12, 0&#125;</div><div class="line">(gdb) p *sum@2</div><div class="line">$9 = &#123;3, 6&#125;</div></pre></td></tr></table></figure>
+<h3 id="7、watch命令"><a href="#7、watch命令" class="headerlink" title="7、watch命令"></a>7、watch命令</h3><p>watch一般来观察某个表达式（变量也是一种表达式）的值是否有变化了，如果有变化，马上停住程序。</p>
+<ul>
+<li><code>watch &lt;expr&gt;</code>：为表达式（变量）expr设置一个观察点。</li>
+<li><code>rwatch &lt;expr&gt;</code>：当表达式（变量）expr被读时，停住程序。</li>
+<li><code>awatch &lt;expr&gt;</code>：当表达式（变量）的值被读或被写时，停住程序。</li>
+<li><code>info watchpoints</code>：列出当前所设置了的所有观察点。</li>
+</ul>
+<p>看看i在连续运行next时一旦发现i变化，i值就会显示出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">(gdb) watch i</div><div class="line">Hardware watchpoint 2: i</div><div class="line">(gdb) next</div><div class="line"></div><div class="line">Hardware watchpoint 2: i</div><div class="line"></div><div class="line">Old value = 2</div><div class="line">New value = 3</div><div class="line">0x00000000004005ae in main () at example.c:12</div><div class="line">12      for (i = 0; i &lt; 5; i++)</div><div class="line">(gdb) n</div><div class="line"></div><div class="line">Breakpoint 1, main () at example.c:14</div><div class="line">14          sum[i] = add(array1[i], array2[i]);</div><div class="line">(gdb) n</div><div class="line">12      for (i = 0; i &lt; 5; i++)</div><div class="line">(gdb) n</div><div class="line"></div><div class="line">Hardware watchpoint 2: i</div><div class="line"></div><div class="line">Old value = 3</div><div class="line">New value = 4</div><div class="line">0x00000000004005ae in main () at example.c:12</div><div class="line">12      for (i = 0; i &lt; 5; i++)</div><div class="line">(gdb) info watchpoints</div><div class="line">Num     Type           Disp Enb Address            What</div><div class="line">2       hw watchpoint  keep y                      i</div><div class="line">    breakpoint already hit 2 times</div></pre></td></tr></table></figure>
+<p><strong>下面这一部分结合上面的break命令</strong></p>
+<h4 id="设置捕捉点（CatchPoint）"><a href="#设置捕捉点（CatchPoint）" class="headerlink" title="设置捕捉点（CatchPoint）"></a>设置捕捉点（CatchPoint）</h4><p>你可设置捕捉点来捕捉程序运行时的一些事件。如：载入共享库（动态链接库）或是C++的异常。</p>
+<ul>
+<li><p>catch <event></event></p>
+<blockquote>
+<p>当event发生时，停住程序。event可以是下面的内容：<br>1、throw 一个C++抛出的异常。（throw为关键字）<br>2、catch 一个C++捕捉到的异常。（catch为关键字）<br>3、exec 调用系统调用exec时。（exec为关键字，目前此功能只在HP-UX下有用）<br>4、fork 调用系统调用fork时。（fork为关键字，目前此功能只在HP-UX下有用）<br>5、vfork 调用系统调用vfork时。（vfork为关键字，目前此功能只在HP-UX下有用）<br>6、load 或 load <libname> 载入共享库（动态链接库）时。（load为关键字，目前此功能只在HP-UX下有用）<br>unload 或 unload <libname> 卸载共享库（动态链接库）时。（unload为关键字，目前此功能只在HP-UX下有用）</libname></libname></p>
+</blockquote>
+</li>
+<li><p>tcatch <event><br>只设置一次捕捉点，当程序停住以后，该点被自动删除。</event></p>
+</li>
+</ul>
+<h4 id="维护停止点"><a href="#维护停止点" class="headerlink" title="维护停止点"></a>维护停止点</h4><p>GDB中的停止点也就是断点、观察点、捕捉点。如果你觉得停止点没有用了，可以使delete、clear、disable、enable来进行维护。</p>
+<ul>
+<li><code>clear</code>    清除所有的已定义的停止点。</li>
+<li><code>clear &lt;function&gt; /clear &lt;filename：function&gt;</code> 清除所有设置在函数上的停止点。</li>
+<li><code>clear &lt;linenum&gt; / clear &lt;filename：linenum&gt;</code>  清除所有设置在指定行上的停止点。</li>
+<li><code>delete [breakpoints] [range...]</code>   删除指定的断点，breakpoints为断点号。如果不指定断点号，则表示删除所有的断点。range 表示断点号的范围（如：3-7）。简写:d</li>
+</ul>
+<p>比删除更好的一种方法是disable停止点，disable了的停止点，GDB不会删除，当你还需要时，enable即可，就好像回收站一样。</p>
+<ul>
+<li><code>disable [breakpoints] [range...]</code> disable所指定的停止点，breakpoints为停止点号。如果什么都不指定，表示disable所有的停止点。简写:dis。</li>
+<li><code>enable [breakpoints] [range...]</code> enable所指定的停止点，breakpoints为停止点号。</li>
+<li><code>enable [breakpoints] once range...</code> enable所指定的停止点一次，当程序停止后，该停止点马上被GDB自动disable。</li>
+<li><code>enable [breakpoints] delete range...</code> enable所指定的停止点一次，当程序停止后，该停止点马上被GDB自动删除。</li>
+</ul>
+<h4 id="停止条件的维护"><a href="#停止条件的维护" class="headerlink" title="停止条件的维护"></a>停止条件的维护</h4><p>前面我们说到的设置断点时，可以设置一个条件，当条件成立时，程序会自动停止。这个的条件的相关维护命令，为断点设置一个条件，使用if关键字，后面加上断点条件。条件设置好，我们可以使用condition命令来修改断点的条件。（只有break和watch命令支持if，catch目前暂不支持if）</p>
+<ul>
+<li><code>condition &lt;bnum&gt; &lt;expression&gt;</code> 修改断点号为bnum的停止条件为expression。</li>
+<li><code>condition &lt;bnum&gt;</code> 清除断点号为bnum的停止条件。</li>
+</ul>
+<p>还有一个特殊的命令ignore</p>
+<ul>
+<li><code>ignore &lt;bnum&gt; &lt;count&gt;</code>  表示忽略断点号为bnum的停止条件count次。</li>
+</ul>
+<h4 id="为停止点设定运行的命令"><a href="#为停止点设定运行的命令" class="headerlink" title="为停止点设定运行的命令"></a>为停止点设定运行的命令</h4><p>为断点号bnum指写一个命令列表。当程序被该断点停住时，gdb会依次运行命令列表中的命令。格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">commands [bnum]</div><div class="line">... command-list ...</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">break add if sum&gt;0</div><div class="line">commands</div><div class="line">printf &quot;sum is %d\n&quot;,sum</div><div class="line">continue</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>断点设置在函数add中，断点条件为sum》0，一旦sum的值大于0，就会自动打印sum的值，并继续运行程序。<br>如果要清除断点上的命令序列，那么只要简单的执行一下commands命令，并直接再打个end就行了。</p>
+<h3 id="8、Signals"><a href="#8、Signals" class="headerlink" title="8、Signals"></a>8、Signals</h3><p>信号是一种软中断，是一种处理异步事件的方法。一般来说，操作系统都支持许多信号。UNIX定义了许多信号，比如SIGINT表示中断字符信号，也就是Ctrl+C的信号，SIGBUS表示硬件故障的信号；SIGCHLD表示子进程状态改变信号；SIGKILL表示终止程序运行的信号，等等。<br>GDB的handle命令可以完成这个调试，格式如下：<br><code>handle &lt;signal&gt; &lt;keywords...&gt;</code><br>信号<signal>可以以SIG开头或不以SIG开头，可以用定义一个要处理信号的范围（如：SIGIO- SIGKILL，表示处理从SIGIO信号到SIGKILL的信号，其中包括SIGIO，SIGIOT，SIGKILL三个信号），也可以使用关键字 all来标明要处理所有的信号。一旦被调试的程序接收到信号，运行程序马上会被GDB停住，以供调试。其<keywords>可以是以下几种关键字的一个或多个。</keywords></signal></p>
+<ul>
+<li><code>nostop</code> 当被调试的程序收到信号时，GDB不会停住程序的运行，但会打出消息告诉你收到这种信号。</li>
+<li><code>stop</code> 当被调试的程序收到信号时，GDB会停住你的程序。</li>
+<li><code>print</code> 当被调试的程序收到信号时，GDB会显示出一条信息。</li>
+<li><code>noprint</code> 当被调试的程序收到信号时，GDB不会告诉你收到信号的信息。</li>
+<li><code>pass | noignore</code> 当被调试的程序收到信号时，GDB不处理信号。这表示，GDB会把这个信号交给被调试程序处理。</li>
+<li><code>nopass | ignore</code>   当被调试的程序收到信号时，GDB不会让被调试程序来处理这个信号。</li>
+<li><code>info signals | info handle</code>  查看有哪些信号在被GDB检测中。</li>
+</ul>
+<h3 id="9、线程"><a href="#9、线程" class="headerlink" title="9、线程"></a>9、线程</h3><p>很多时间会涉及到多线程，那么断点是不是要打在所有的线程或者某个特定的线程上，GDB可以出色的完成这一项，这也是它强大的原因。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">break &lt;linespec&gt; thread &lt;threadno&gt;</div><div class="line">break &lt;linespec&gt; thread &lt;threadno&gt; if ...</div></pre></td></tr></table></figure>
+<p>linespec指定了断点设置在的源程序的行号。threadno指定了线程的ID</p>
+<blockquote>
+<p>这个ID是GDB分配的，你可以通过<code>info threads</code>命令来查看正在运行程序中的线程信息.</p>
+</blockquote>
+<p>如果你不指定thread <threadno>则表示你的断点设在所有线程上面。还可以为某线程指定断点的条件。当你的程序被GDB停住时，所有的运行线程都会被停住。这方便你查看运行程序的总体情况。而在你恢复程序运行时，所有的线程也会被恢复运行。哪怕是主进程在被单步调试时。</threadno></p>
+<h4 id="查看栈信息"><a href="#查看栈信息" class="headerlink" title="查看栈信息"></a>查看栈信息</h4><p>如果程序被停住了，此刻需要做的第一件事就是查看程序是在哪儿停住的。当你的程序调用了一个函数，函数的地址，参数，函数内部的局部变量都会被压入栈中。这时你又可以发现GDB的强大之处了。</p>
+<ul>
+<li><code>命令backtrace 【缩写:bt】</code>可以打印当前函数调用栈的所有信息。</li>
+<li><code>bt &lt;n&gt;</code> n是一个正整数，表示只打印栈顶上n层的栈信息。</li>
+<li><code>bt &lt;-n&gt;</code> -n表一个负整数，表示只打印栈底下n层的栈信息。<br>如果你要查看某一层的信息，你需要切换当前栈，一般来说，程序停止时，最顶层的栈就是当前栈，如果你需要查看栈下面层的详细信息，你需要做的就是切换当前栈。</li>
+<li><code>frame &lt;n&gt; | f &lt;n&gt;</code> n是一个从0开始的整数，是栈中的层编号。比如：frame 0，表示栈顶，frame 1，表示栈的第二层。</li>
+<li><code>up &lt;n&gt;</code>  表示向栈的上面移动n层，可以不打n，表示向上移动一层。</li>
+<li><code>down &lt;n&gt;</code>  表示向栈的下面移动n层，可以不打n，表示向下移动一层。<br>上面这三条命令都会打印栈层的信息，如果不想打印其信息，可以使用这三条命令：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select-frame &lt;n&gt; 对应于 frame 命令。</div><div class="line">up-silently &lt;n&gt; 对应于 up 命令。</div><div class="line">down-silently &lt;n&gt; 对应于 down 命令。</div></pre></td></tr></table></figure>
+<h3 id="10、info命令"><a href="#10、info命令" class="headerlink" title="10、info命令"></a>10、info命令</h3><p>info命令可以在调试时用来查看寄存器、断点、观察点和信号等信息。</p>
+<ul>
+<li><code>info registers</code> 查看除了浮点寄存器以外的寄存器</li>
+<li><code>info all-registers</code> 查看所有寄存器，包括浮点寄存器</li>
+<li><code>info registers &lt;regname ...&gt;</code>  查看所指定的寄存器</li>
+<li><code>info break</code>  列出当前所设置的所有观察点 </li>
+<li><code>info frame | info f</code> 打印出更为详细的当前栈层的信息，只不过，大多数都是运行时的内存地址。比如：函数地址，调用函数的地址，被调用函数的地址，目前的函数是由什么样的程序语言写成的、函数参数地址及值、局部变量的地址等等。</li>
+<li><code>info args</code>    打印出当前函数的参数名及其值。</li>
+<li><code>info locals</code>  打印出当前函数中所有局部变量及其值。</li>
+<li><code>info catch</code>   打印出当前的函数中的异常处理信息。 </li>
+<li><code>info source</code>  查看当前文件的程序语言。</li>
+</ul>
+<h3 id="11、jump命令"><a href="#11、jump命令" class="headerlink" title="11、jump命令"></a>11、jump命令</h3><p>一般情况程序都是顺序执行的，现在想要乱序执行怎么办呢？GDB也是可以修改程序的执行顺序，让程序随意跳转。</p>
+<ul>
+<li><code>jump &lt;linespec&gt;</code> 来指定下一条语句的运行点。<linespec>可以是文件的行号，可以是file:line格式，也可以是+num这种偏移量格式，表示下一条运行语句从哪里开始。</linespec></li>
+<li><code>jump &lt;address&gt;</code> 这里的<address>是代码行的内存地址。</address></li>
+</ul>
+<blockquote>
+<p>jump命令不会改变当前的程序栈中的内容，所以，如果使用jump从一个函数跳转到另一个函数，当跳转到的函数运行完返回，进行出栈操作时必然会发生错误，这可能导致意想不到的结果，所以最好只用jump在同一个函数中进行跳转。</p>
+</blockquote>
+<h3 id="12、强制函数返回-return"><a href="#12、强制函数返回-return" class="headerlink" title="12、强制函数返回 return"></a>12、强制函数返回 return</h3><p><code>return</code><br><code>return &lt;expression&gt;</code> 使用return命令取消当前函数的执行，并立即返回，如果指定了<expression>，那么该表达式的值会被认作函数的返回值。</expression></p>
+<h3 id="13、强制调用某函数-call"><a href="#13、强制调用某函数-call" class="headerlink" title="13、强制调用某函数 call"></a>13、强制调用某函数 call</h3><ul>
+<li><code>call &lt;expr&gt;</code> 表达式中可以一是函数，以此达到强制调用函数的目的，它会显示函数的返回值（如果函数返回值不是void）</li>
+</ul>
+<h3 id="14、set命令"><a href="#14、set命令" class="headerlink" title="14、set命令"></a>14、set命令</h3><ul>
+<li><code>set print address on/off</code>   打开/关闭地址输出，当程序显示函数信息时，GDB会显出函数的参数地址。</li>
+<li><code>set print array on/off</code>    打开/关闭 数组显示。</li>
+<li><code>set print elements &lt;number-of-elements&gt;</code>   设置数组的长度，，如果长度太长，超过了就不再往下显示了。</li>
+<li><code>set print null-stop &lt;on/off&gt;</code>  打开了这个选项，那么当显示字符串时，遇到结束符则停止显示。这个选项默认为off。</li>
+<li><code>set print pretty on</code>   GDB显示结构体时会比较漂亮。</li>
+<li><code>set print sevenbit-strings &lt;on/off&gt;</code>   设置字符显示，是否按“\nnn”的格式显示，如果打开，则字符串或字符数据按\nnn显示，如“\065”。</li>
+<li><code>set print union &lt;on/off&gt;</code>   设置显示结构体时，是否显式其内的联合体数据。</li>
+<li><code>set scheduler-locking off|on|step</code></li>
+</ul>
+<blockquote>
+<p>off 不锁定任何线程，也就是所有线程都执行，这是默认值。<br>on 只有当前被调试程序会执行。<br>step 在单步的时候，除了next过一个函数的情况以外，只有当前线程会执行。</p>
+</blockquote>
+<ul>
+<li>还有其他的。比如修改寄存器，修改内存</li>
+</ul>
+<h3 id="15、自动显示-display"><a href="#15、自动显示-display" class="headerlink" title="15、自动显示 display"></a>15、自动显示 display</h3><p>expr是一个表达式，fmt表示显示的格式，addr表示内存地址，当你用display设定好了一个或多个表达式后，只要你的程序被停下来，GDB会自动显示你所设置的这些表达式的值。</p>
+<ul>
+<li><code>display &lt;expr&gt;</code></li>
+<li><code>display/&lt;fmt&gt; &lt;expr&gt;</code></li>
+<li><code>display/&lt;fmt&gt; &lt;addr&gt;</code><br>格式i和s同样被display支持，一个非常有用的命令是：<code>display/i $pc</code><br>$pc是GDB的环境变量，表示着指令的地址，/i则表示输出格式为机器指令码，也就是汇编。于是当程序停下后，就会出现源代码和机器指令码相对应的情形，这是一个很有意思的功能。</li>
+</ul>
+<p>删除自动显示：</p>
+<ul>
+<li><code>disable display &lt;dnums...&gt;</code></li>
+<li><code>enable display &lt;dnums...&gt;</code></li>
+</ul>
+<p>———end—-有错误欢迎指定!———–</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/13/the-gdb-on-ubuntu/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1011,6 +1487,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -1022,13 +1500,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/07/31/mianshi-zongjie-fenxiang/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -1050,13 +1538,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-31T20:23:59+08:00" content="2016-07-31">
-              2016-07-31
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-31T20:23:59+08:00">
+                2016-07-31
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -1064,20 +1560,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/07/31/mianshi-zongjie-fenxiang/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/31/mianshi-zongjie-fenxiang/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/31/mianshi-zongjie-fenxiang/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -1091,16 +1593,93 @@
       
         
           
-          明天就要开始工作了，之前也没有什么面试的经验，我找工作也是通过社交性找的工作。在我找到PHP开发的这份工作之前我面过两三家，问过我的东西，当然了不会很全，但我每面一家都会做一个总结。希望这个能给找PHP开发的你带来些许帮助，或许一点卵用都没有。
-我先说一下我自己接触PHP的经历吧，听说有这门世界上最
-          ...
+            <p>明天就要开始工作了，之前也没有什么面试的经验，我找工作也是通过社交性找的工作。在我找到PHP开发的这份工作之前我面过两三家，问过我的东西，当然了不会很全，但我每面一家都会做一个总结。希望这个能给找PHP开发的你带来些许帮助，或许一点卵用都没有。</p>
+<p>我先说一下我自己接触PHP的经历吧，听说有这门世界上最好的语言是我在大二的时候，那个时候在网上找了一个教程把代码敲了一遍，做了一个简单的音乐盒子，能够播放管理音乐。后来正真接触PHP是我在今年三月份去渣浪微博实习的三个月里接触了这门语言，后来自己的毕设用Laravel框架做了一个在线学习的网站。总的来说，我真正接触这门语言时间也不算很长，很多东西还不是很深入，比如常用的函数啥我有的时候还需要查阅文档……下面还是来做总结吧：</p>
+<p>学习PHP也就是那一套嘛——LNPM。也就是说Linux、Nginx、PHP、MySQL。</p>
+<h2 id="Linux这一块"><a href="#Linux这一块" class="headerlink" title="Linux这一块"></a>Linux这一块</h2><p>我问的比较多的问题就是会不会写一些shell脚本，然后还有就是常用的命令，还有一些不常见的就是：</p>
+<ul>
+<li>读取文件的最后100行，并复制到的新的文件中 </li>
+</ul>
+<blockquote>
+<p>tail -n 100 &gt;&gt;bbb.txt<br>这个里面稍微引申一下就是参数【-c】就是统计字节数</p>
+</blockquote>
+<ul>
+<li>删除某个文件夹所有内容，要求删除后停止1秒</li>
+</ul>
+<blockquote>
+<p>rm -r -f ./ &amp;&amp;  sleep 1<br>像这个里面需要注意的是句点，想想这个可不可以少掉。</p>
+</blockquote>
+<ul>
+<li>find、grep的使用以及管道符“|”</li>
+<li>等等其他的，最好系统学习一下Linux的操作，像鸟哥的私房菜。</li>
+</ul>
+<h2 id="PHP这一块"><a href="#PHP这一块" class="headerlink" title="PHP这一块"></a>PHP这一块</h2><p>这一块内容比较多，面试的话，也是各个面试官有自己的问法风格，这个时候需要察言观色。我就记录点我遇到的问题吧：</p>
+<h4 id="问题1："><a href="#问题1：" class="headerlink" title="问题1："></a>问题1：</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$a = <span class="keyword">array</span>();</div><div class="line">$a[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">$a[<span class="number">1</span>] = <span class="number">2</span>;</div><div class="line">$a[<span class="number">3</span>] = <span class="number">3</span>;</div><div class="line">$a[<span class="number">4</span>] = <span class="number">4</span>;</div><div class="line">$a[<span class="number">2</span>] = <span class="number">5</span>;</div><div class="line"><span class="keyword">foreach</span>($a <span class="keyword">as</span> $v)&#123;</div><div class="line">    <span class="keyword">echo</span> $v;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>请问上面的遍历输出的值是什么？</p>
+<h4 id="问题2：（这个是简单的概括）"><a href="#问题2：（这个是简单的概括）" class="headerlink" title="问题2：（这个是简单的概括）"></a>问题2：（这个是简单的概括）</h4><ul>
+<li>PHP的字符串翻转，不用自带的函数。</li>
+<li>从一个数组中取出第一个元素有几种方式？分别是什么？</li>
+<li>PHP中的传引用、传值、传地址。</li>
+<li>单引号和双引号的区别。</li>
+<li>PHP时间相关的函数，时间格式。</li>
+<li>给定两个时间，计算相差的天数，diff</li>
+<li>你使用的PHP版本是什么？如果是PHP7，你要知道一些PHP7的新特性。</li>
+<li>PHP字符串截取含有中文的字符，且保证不乱码</li>
+<li>想起了就再补充……（我打算在一年的时间把PHP常用的函数熟练掌握）</li>
+</ul>
+<h4 id="问题3：curl请求处理方式"><a href="#问题3：curl请求处理方式" class="headerlink" title="问题3：curl请求处理方式"></a>问题3：curl请求处理方式</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">//cURL的具体实现方法</span></div><div class="line">$url = <span class="string">"http://www.php.net/"</span>;</div><div class="line"><span class="comment">//1初始化</span></div><div class="line">$ch = curl_init();</div><div class="line"><span class="comment">//2设置选项,包括URL</span></div><div class="line">curl_setopt($ch,CURLOPT_URL,$url);</div><div class="line">curl_setopt($ch,CURLOPT_RETURNTRANSFER,<span class="number">1</span>);   <span class="comment">//将curl_exec()获取的信息以文件流的形式返回</span></div><div class="line">                                              <span class="comment">//而不是输出</span></div><div class="line">                                              <span class="comment">//启用时将头文件的信息作为数据流输出</span></div><div class="line">curl_setopt($ch,CURLOPT_HEADER,<span class="number">1</span>);</div><div class="line"><span class="comment">//3执行并获取内容</span></div><div class="line">$output = curl_exec($ch);</div><div class="line"><span class="comment">//4释放cURL句柄</span></div><div class="line">curl_close($ch);</div><div class="line"><span class="keyword">echo</span> $output;</div></pre></td></tr></table></figure>
+<p>我自己引申：有的时候偷懒用 file_get_content()函数，知道其中的区别。</p>
+<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>刚入门PHP，最好要知道简单的配置，知道每个配置选项的意思，能折腾就尽量折腾吧，最好是自己编译安装nginx。这个我现在也没有想说的，自己也整得不是很明白。哈哈哈</p>
+<h2 id="MySQL方面"><a href="#MySQL方面" class="headerlink" title="MySQL方面"></a>MySQL方面</h2><p>这一块显然要问的，不问的话怎么叫面试呢？之前对这个挺害怕的，因为这一块是自己的弱项。总要去面对，害怕是没有用的。之前我被问过的。</p>
+<ul>
+<li>MySQL的架构是什么样的？也就是说三层架构，或者说两层，就看你怎么解释，我觉得这个问题就是想问一下你有没有深入了解过MySQL。</li>
+<li>MySQL常用的存储引擎，知道他们之间的区别，也就是问InnoDB和MyISAM的区别，都是问常用，其他的了解了解。</li>
+<li>关联表的查询join  on的用法 【注意哟：这儿有个坑，mysql不支持full join。这是我面试完后总结发现的】</li>
+<li>sql查询的优化的方法，你需要知道从哪些方面入手。</li>
+<li>MySQL使用的数据结构，其实就是在问B+/B- tree，深入了解MySQL还是需要的。</li>
+<li>问来问去也差不多就是这些了，还有的话我再补充。</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h4 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a>数据结构和算法</h4><ul>
+<li>PHP常用的四个排序算法，冒泡、选择、插入、快排，其实问的比较多的就是冒泡和快排【不是你只掌握这两个应付面试】，如果还有兴趣，归并排序。反正这几个我都自己撸了一遍，现在也常拿出来看看，毕竟不用的话就容易忘记。</li>
+<li>队列和栈的区别，怎么初始化他们，然后他们的操作要熟悉，常问的就是插入和删除操作。还有会问双向链表。</li>
+</ul>
+<blockquote>
+<p>双链表结点中有两个指针prior和next，分别指向其前驱结点和后继结点.</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> DNode &#123;  <span class="comment">//定义双链表结点类型</span></div><div class="line">    ElemType data;  <span class="comment">//数据域</span></div><div class="line">    <span class="keyword">struct</span> DNode *prior, *next;  <span class="comment">//前驱和后继指针</span></div><div class="line">&#125;DNode, *DLinklist;</div></pre></td></tr></table></figure>
+<ul>
+<li>还有数据结构的树那一块，没被问太多，估计是我这一块薄弱吧，面试官就合理避开。【这样的面试官才是好面试，至少他了解你的基础，也有傻×的面试官，明明你表现了不会，他还一个人自high问个不停】</li>
+</ul>
+<h4 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h4><ul>
+<li>线程和进程的区别</li>
+<li>还有忘了，以后想起了补充</li>
+</ul>
+<h4 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h4><ul>
+<li>各种状态码都要熟悉，常问的301、304和500</li>
+<li>tcp和udp的区别</li>
+<li>TCP/IP的协议还是要清楚</li>
+<li>三次握手，四次挥手的状态分析</li>
+<li>SESSION和COOKIE的区别，多台web服务器怎么共享SESSION？【经典问题，每家必问】</li>
+</ul>
+<h4 id="有事没事的时候还是要学好C语言"><a href="#有事没事的时候还是要学好C语言" class="headerlink" title="有事没事的时候还是要学好C语言"></a>有事没事的时候还是要学好C语言</h4><p>目前我被问到：</p>
+<ul>
+<li>文件读取</li>
+<li>字符串复制strcp是怎么实现的，用自己的方式实现字符串的复制。</li>
+<li>函数参数有两个以上的，参数入栈的顺序</li>
+<li>想起再补充。</li>
+</ul>
+<h4 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h4><p>面向对象编程的封装、继承和多态</p>
+<blockquote>
+<p>1、面向对象是一种基于结构分析的、以数据为中心的程序设计思想。面向过程语言是一种基于功能分析的、以算法为中心的程序设计方法。<br>2、封装就是隐藏对象实现的细节，在外界通过公共的方法来访问。比如，在C语言中，我们需要关注每一个细节、过程，在面向对象的程序语言中，我们就不用关注每个对象的细节，只要关注功能的实现就行，根据提供好的接口，然后面向接口编程。<br>3、继承就是子类能够继承父类的公共属性和方法，无法继承父类的私有属性和方法。在java|C#|PHP等面向对象语言中，是不允许多重继承的。【但php trait是个例外，可以多层继承】<br>4、多态，就是同一个接口，对不同的实例而执行不同的操作。同属一个基类的不同派生类也可以有自己不同于其他类的属性和方法。</p>
+</blockquote>
+<p>以上就是我面了三家的一些总结，有的很简单我就没有总结出来，有的总结出来对你来说也许很简单。最后我现在工作在杭州，欢迎面基！也希望大牛们求带！</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/31/mianshi-zongjie-fenxiang/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1118,6 +1697,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -1129,13 +1710,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/06/30/learn-dom-scripting-of-js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -1157,13 +1748,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-30T14:07:19+08:00" content="2016-06-30">
-              2016-06-30
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-30T14:07:19+08:00">
+                2016-06-30
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -1171,20 +1770,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/06/30/learn-dom-scripting-of-js/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/30/learn-dom-scripting-of-js/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/30/learn-dom-scripting-of-js/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -1198,17 +1803,45 @@
       
         
           
-          DOM是文档对象模型，用于操作XML和HTML文档的程序接口。DOM是JavaScript编码中一个重要的部分。
-DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代价更大，因为它会导致浏览器重新计算页面的几何变化。
-最快的情况就是在循环中修改或者访问元素，尤其对HTML元素结合循环操作
-          ...
+            <p>DOM是文档对象模型，用于操作XML和HTML文档的程序接口。DOM是JavaScript编码中一个重要的部分。</p>
+<h3 id="DOM的修改与访问"><a href="#DOM的修改与访问" class="headerlink" title="DOM的修改与访问"></a>DOM的修改与访问</h3><p>访问DOM元素是具有代价的，修改DOM元素的代价更大，因为它会导致浏览器重新计算页面的几何变化。</p>
+<p>最快的情况就是在循环中修改或者访问元素，尤其对HTML元素结合循环操作。先看一个简单的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">innerHTMLLoop</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> count = <span class="number">0</span>; count &lt; <span class="number">100</span> ; count++) &#123;</div><div class="line">        <span class="built_in">document</span>.getElementById(<span class="string">'here'</span>).innerHTML += <span class="string">'a'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个函数就是修改页面元素的内容，那性能问题出现在哪儿？每次循环迭代，该元素都会被访问两次：第一次是读取innerHTML的属性值，第二次就是重写它。</p>
+<p>那换一种局部变量的存储方式修改其中的内容，在循环体结束之后一次性写入，是不是效率要更高效呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">innerHTMLLoop2</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> content = <span class="string">''</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> count = <span class="number">0</span>; count &lt; <span class="number">100</span> ; count++) &#123;</div><div class="line">        content += <span class="string">'a'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'here'</span>).innerHTML += content;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>很明显修改后的代码运行速度更快了。访问DOM的次数越多，代码的运行速度越慢。因此，常用的经验法则：减少访问DOM的次数，把运行尽量留在ECMAScript处理。</p>
+<h3 id="innerHTML-对比-DOM方法"><a href="#innerHTML-对比-DOM方法" class="headerlink" title="innerHTML 对比 DOM方法"></a>innerHTML 对比 DOM方法</h3><p>首先带着一个问题：修改页面区域的最佳方案是用非标准但支持良好的innerHTML属性？还是只用类似document.createElement()的原声DOM方法？如果不考虑web标准，他们的性能都差不多，但是在出开最新版的webkit内核之外的浏览器中，innerHTML会更快一点。<br>这儿省略一个例子：两种方式创建一个1000行的表格。</p>
+<ul>
+<li>合并HTML字符，然后更新DOM的innerHTML属性。</li>
+<li>只用标准的DOM方法，比如document.createElement()和document.createTextNode().</li>
+</ul>
+<p>最终的结果怎么样？最终选择哪种方法取决你的用户使用的浏览器以及你的编码习惯。如果你的需求是在一个对性能有着苛刻的要求操作中更新一大段HTML，推荐使用innerHTML，在大部分的浏览器中，这个运行速度都要快！</p>
+<h3 id="节点克隆"><a href="#节点克隆" class="headerlink" title="节点克隆"></a>节点克隆</h3><p>使用DOM方法是更新页面的内容的另外一个途径就是克隆已有元素。就是使用element.cloneNode()(element表示已有节点)替代document.createElement().<br>看个例子吧：用element.cloneNode()生成表格。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">tableClonedDOM</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> i,table,thead,tbody,tr,th,td,a,ul,li,</div><div class="line">        oth = <span class="built_in">document</span>.createElement(<span class="string">'th'</span>),</div><div class="line">        otd = <span class="built_in">document</span>.createElement(<span class="string">'td'</span>),</div><div class="line">        otr = <span class="built_in">document</span>.createElement(<span class="string">'tr'</span>),</div><div class="line">        oa = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>),</div><div class="line">        oli = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>),</div><div class="line">        oul = <span class="built_in">document</span>.createElement(<span class="string">'ul'</span>);</div><div class="line">    tbody = <span class="built_in">document</span>.createElement(<span class="string">'tbody'</span>);</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= <span class="number">100</span>; i++)&#123;</div><div class="line">        tr = otr.cloneNode(<span class="literal">false</span>);</div><div class="line">        td = otd.cloneNode(<span class="literal">false</span>);</div><div class="line">        td.appendChild(<span class="built_in">document</span>.createTextNode((i % <span class="number">2</span>) ? <span class="string">'yes'</span> : <span class="string">'no'</span>));</div><div class="line">        tr.appendChild(td);</div><div class="line">        td = otd.cloneNode(<span class="literal">false</span>);</div><div class="line">        td.appendChild(<span class="built_in">document</span>.createTextNode(i));</div><div class="line">        tr.appendChile(td);</div><div class="line">        td = otd.cloneNode(<span class="literal">false</span>);</div><div class="line">        td.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">'my name is #'</span> + i));</div><div class="line">        tr.appendChild(td);</div><div class="line">        <span class="comment">// ....</span></div><div class="line">    &#125;</div><div class="line">    <span class="comment">// ....</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="HTML集合"><a href="#HTML集合" class="headerlink" title="HTML集合"></a>HTML集合</h3><p>html集合是包含了DOM节点引用的类数组对象。以下方法就是返回值就是一个集合：</p>
+<ul>
+<li>document.getElementsByName()</li>
+<li>document.getElementsByClassName()</li>
+<li>document.getElementsByTagName()<br>下面的属性同样是返回HTML集合：</li>
+<li>document.images 页面所有img元素</li>
+<li>document.links 页面所有a元素</li>
+<li>document.forms 页面所有表单元素</li>
+<li>document.forms[0].elements 页面中第一个表单所有的字段</li>
+</ul>
+<h4 id="访问集合元素使用局部变量"><a href="#访问集合元素使用局部变量" class="headerlink" title="访问集合元素使用局部变量"></a>访问集合元素使用局部变量</h4><p>对于任何类型的DOM访问，需要多次访问同一个DOM属性或者方法需要多次访问，最好使用一个局部变量缓存此成员，前面文章开头也谈到了原因了。遍历一个集合是，第一个优化原则是把集合存储到局部变量中，并把length存储在循环外部，然后使用局部变量替代这些需要多次读取的元素。<br>看例子是最好的学习方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//较慢</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">collectionGlobal</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> coll = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>),</div><div class="line">        len = coll.length,</div><div class="line">        name = <span class="string">''</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> count = <span class="number">0</span>; count &lt; len; count++)&#123;</div><div class="line">        name = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)[count].nodeName;</div><div class="line">        name = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)[count].nodeType;</div><div class="line">        name = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)[count].tagName;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> name;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//较快</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">collectionLocal</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> coll = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>),</div><div class="line">        len = coll.length,</div><div class="line">        name = <span class="string">''</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> count = <span class="number">0</span>; count&lt;len; count++)&#123;</div><div class="line">        name = coll[count].nodeName;</div><div class="line">        name = coll[count].nodeType;</div><div class="line">        name = coll[count].tagName;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> name;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//最快</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">collectionNodeLocal</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> coll = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>),</div><div class="line">        len = coll.length,</div><div class="line">        name = <span class="string">''</span>,</div><div class="line">        el = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> count = <span class="number">0</span>; count&lt;len; count++)&#123;</div><div class="line">        el = coll[count];</div><div class="line">        name = el.nodeName;</div><div class="line">        name = el.nodeType;</div><div class="line">        name = el.tagName;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> name;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="遍历DOM"><a href="#遍历DOM" class="headerlink" title="遍历DOM"></a>遍历DOM</h3><h4 id="获取DOM元素"><a href="#获取DOM元素" class="headerlink" title="获取DOM元素"></a>获取DOM元素</h4><p>有这样一个场景就是你需要从某一个DOM元素开始，操作周围的元素，或者递归查找所有子节点。可以使用childNodes得到元素集合，或者用nextSibling来获取每个相邻的元素。</p>
+<p>两个等价的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">testNextSibling</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'mydiv'</span>),</div><div class="line">        ch = el.firstChild,</div><div class="line">        name = <span class="string">''</span>;</div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">        name = ch.nodeName;</div><div class="line">    &#125;<span class="keyword">while</span>(ch = ch.nextSibling);</div><div class="line">    <span class="keyword">return</span> name;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">testChildNodes</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'mydiv'</span>),</div><div class="line">        ch = el.childNodes,</div><div class="line">        len = el.length,</div><div class="line">        name = <span class="string">''</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> count = <span class="number">0</span>; count&lt;len; count++)&#123;</div><div class="line">        name = ch[count].nodeName;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> name;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//需要注意的是childNodes是一个元素集合，在循环体中，缓存length属性以避免在每次迭代中更新。</span></div></pre></td></tr></table></figure>
+<h4 id="节点元素"><a href="#节点元素" class="headerlink" title="节点元素"></a>节点元素</h4><p>DOM元素属性诸如，childNodes,firstChild和nextSibling并不区分元素节点和其他类型节点，比如注释和文本节点。在某些情况下只需要访问元素节点，因此在循环中很可能需要检查返回节点类型并过滤掉非元素节点。</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/30/learn-dom-scripting-of-js/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1226,6 +1859,8 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -1237,13 +1872,23 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/06/29/learn-loading-and-execution-of-js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -1265,13 +1910,21 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-29T12:00:55+08:00" content="2016-06-29">
-              2016-06-29
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-29T12:00:55+08:00">
+                2016-06-29
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -1279,20 +1932,26 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/06/29/learn-loading-and-execution-of-js/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/29/learn-loading-and-execution-of-js/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/29/learn-loading-and-execution-of-js/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -1306,14 +1965,27 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
       
         
           
-          作为一个web开发者来说，在开发的过程需要考虑性能的问题。JavaScript在浏览器中的性能，可能就是可用性的问题，这个问题因JavaScript的阻塞特性变得复杂，说白了就是当浏览器在执行JavaScript的时候，浏览器不能同时做其他的事情。js的执行时间越长，浏览器的响应时间就会越长。&lt
-          ...
+            <p>作为一个web开发者来说，在开发的过程需要考虑性能的问题。JavaScript在浏览器中的性能，可能就是可用性的问题，这个问题因JavaScript的阻塞特性变得复杂，说白了就是当浏览器在执行JavaScript的时候，浏览器不能同时做其他的事情。js的执行时间越长，浏览器的响应时间就会越长。&lt;script&gt;标签出现的时候，就会让页面等待脚本的解析和执行，不管JavaScript的代码是内嵌还是包含的在外链的文件中，页面的下载和渲染都必须要停下来等待脚本的执行完毕。</p>
+<h3 id="脚本的位置"><a href="#脚本的位置" class="headerlink" title="脚本的位置"></a>脚本的位置</h3><p>在HTML4规范中指出&lt;script&gt;标签可以放在html文档中&lt;head&gt;或&lt;body&gt;的标签中。通常情况是这样的：&lt;script&gt;标签用来加载出现在&lt;head&gt;中外链的js文件，挨着&lt;link&gt;标签用来加载外部的css文件或其他页面元信息。</p>
+<p>先看下面的一段代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>js学习例子<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"file1.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"file2.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"file3.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"styles.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>你好，世界！<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>上面的代码需要注意的是：在浏览器解析到&lt;body&gt;标签之前，不会渲染页面的其他的内容。所以说把脚本放在页面的顶部会导致明显的延迟，表现出页面空白，没有内容信息。执行过程差不多就是这样的：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/jslearning/jslearning1.png" alt="js执行过程"></p>
+<p>从上图可以清晰的看到，第一个js文件下载的同时阻塞了页面其他文件的下载，以此类推！</p>
+<p>面对这样的原因，可以适当的调整js代码的位置是不是更合理呢？</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>js学习例子<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"styles.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>你好，世界！<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"file1.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"file2.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"file3.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>推荐是将所有的&lt;script&gt;标签尽可能的放在&lt;body&gt;标签的底部，尽量减少对整个页面的影响。记住：优化JavaScript代码的首要规范：将代码放在底部！</p>
+<p>上面谈到的原因也差不多明白，在组织脚本的时候，我们尽量减少&lt;script&gt;标签的个数，这不仅仅是针对外链，内嵌也是一样的。考虑HTTP请求会带来额外的性能开销，下载一个100kb的文件要比下载4个25kb的文件更快！这样我们就应该考虑文件的合并，可以通过离线打包工具等等，后面继续讲！</p>
+<p>下面说明两种脚本：</p>
+<ul>
+<li>无阻塞的脚本就是，在页面加载完成后才加载JavaScript代码，专业的就是说法就是在window对象的load事件触发后再下载脚本。</li>
+<li>延迟的脚本就是，在&lt;script&gt;标签中定义了一个扩展属性：defer。致命本元素所含的脚本不会修改DOM，这样代码就会安全的延迟执行。</li>
+</ul>
+<p>需要说明的是：目前主流的浏览器已经实现对defer属性的支持，W3C的html5规范，当且仅当src属性声明时生效。</p>
+<p>还有一种无阻塞加载脚本的方法是使用XMLHttpRequest(XHR)对象获取脚本并注入页面中。先创建一个XHR对象，然后用它去下载JavaScript文件，最后通过创建动态的&lt;script&gt;元素将代码注入到页面中。代码示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">xhr.open(<span class="string">"get"</span>,<span class="string">"file1.js"</span>,<span class="literal">true</span>);</div><div class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(xhr.readyState == <span class="number">1</span>)&#123;</div><div class="line">        <span class="keyword">if</span>(xhr.status &gt;=<span class="number">200</span> &amp;&amp; xhr.status &lt;<span class="number">300</span> || xhr.status == <span class="number">304</span>)&#123;</div><div class="line">            <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">            script.type = <span class="string">"text/javascript"</span>;</div><div class="line">            script.text = xhr.responseText;</div><div class="line">            <span class="built_in">document</span>.body.appendChild(script);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">xhr.send(<span class="literal">null</span>);</div></pre></td></tr></table></figure>
+<p>发送一个GET请求获取file1.js文件。事件处理函数onreadystatechange检查readyState的状态是否为1，同时还要校验http的状态码，如果满足条件，创建一个&lt;script&gt;元素。这样做的好处就是，可以先去下载一个JavaScript代码，但可以先不去执行。但也有局限性：JavaScript文件必须与请求的页面处与相同的域，也就是说不能从CDN上下载JavaScript文件，这种方法不用于大型web应用。</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/29/learn-loading-and-execution-of-js/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
@@ -1326,7 +1998,13 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
       
     </div>
 
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -1374,25 +2052,32 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/touxiang.jpg"
+               src="/images/avatar.gif"
                alt="ityike" />
           <p class="site-author-name" itemprop="name">ityike</p>
-          <p class="site-description motion-element" itemprop="description">php、swift、程序员、arduino、设计</p>
+           
+              <p class="site-description motion-element" itemprop="description">php、swift、程序员、arduino、设计</p>
+          
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">48</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
           
 
           
+
+          
+            
+            
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">31</span>
@@ -1418,6 +2103,8 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
               <span class="links-of-author-item">
                 <a href="https://github.com/dyike" target="_blank" title="github">
                   
+                    <i class="fa fa-fw fa-globe"></i>
+                  
                   github
                 </a>
               </span>
@@ -1425,12 +2112,16 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
               <span class="links-of-author-item">
                 <a href="http://weibo.com/734529030" target="_blank" title="weibo">
                   
+                    <i class="fa fa-fw fa-globe"></i>
+                  
                   weibo
                 </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="http://www.zhihu.com/people/feng92" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
                   
                   zhihu
                 </a>
@@ -1444,30 +2135,13 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
 
         
         
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.iamle.com/" title="流水理鱼wwek" target="_blank">流水理鱼wwek</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.chenjie.info/" title="陈捷的博客" target="_blank">陈捷的博客</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://qii404.me/" title="qii404" target="_blank">qii404</a>
-                </li>
-              
-            </ul>
-          </div>
+
         
 
+
       </section>
+
+      
 
       
 
@@ -1483,7 +2157,7 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2013 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -1491,16 +2165,18 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
   <span class="author" itemprop="copyrightHolder">ityike</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
+
 
         
 
@@ -1508,9 +2184,13 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
   
@@ -1533,35 +2213,40 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
 
 
 
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
   
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
   
 
   
@@ -1569,7 +2254,7 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -1594,6 +2279,26 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
 
   
     
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -1601,144 +2306,14 @@ DOM的修改与访问访问DOM元素是具有代价的，修改DOM元素的代�
 
 
   
-  
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';                
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
 
   
 
   
 
   
-<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
-</script>
 
+  
 
 </body>
 </html>

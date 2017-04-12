@@ -5,13 +5,12 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="baidu-site-verification" content="8NBkpThWUl" />
-<meta name="google-site-verification" content="Yb1SzwY5w5garHORFOIh7xq1lqEEmerfXIAthf7JyEY" />
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -28,9 +27,12 @@
 
 
 
+
+
+
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -64,12 +66,12 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="一刻笔记" />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,7 +82,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -99,19 +101,35 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
+
+
+
+  <link rel="canonical" href="http://www.dyike.com/"/>
+
+
+
+
 
   <title> 一刻笔记 </title>
 </head>
@@ -127,9 +145,7 @@
 
 
 
-  <div style="display: none;">
-    <script src="http://s6.cnzz.com/stat.php?id=1254977565&web_id=1254977565" type="text/javascript"></script>
-  </div>
+
 
 
 
@@ -140,31 +156,35 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">一刻笔记</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一刻笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">带着一颗变态的、积极的心走向未来</p>
+      
   </div>
-  <p class="site-subtitle">带着一颗变态的、积极的心走向未来</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -184,26 +204,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-learn">
-          <a href="/learn" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-fa fa-battery-full"></i> <br />
-            
-            充电
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-life">
-          <a href="/life" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-fa fa-coffee"></i> <br />
-            
-            生活
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -214,45 +214,24 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            关于
+            标签
           </a>
         </li>
       
 
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
       
     </ul>
   
 
   
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
-  
 </nav>
+
+
 
  </div>
     </header>
@@ -267,13 +246,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2017/04/11/inversion-of-control/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -295,13 +284,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-11T22:35:43+08:00" content="2017-04-11">
-              2017-04-11
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T22:35:43+08:00">
+                2017-04-11
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -309,20 +306,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2017/04/11/inversion-of-control/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/11/inversion-of-control/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/11/inversion-of-control/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -336,16 +339,31 @@
       
         
           
-          前言
-使用laravel也有一段时间了，现在应该向深入理解laravel去看看一些源码了。laravel之所以新颖，使用了大量PHP新语法，包含命名空间（组件化开发的条件），匿名函数，反射机制，还有后期静态绑定，trait等等。当你深入去挖掘源码的时候，laravel框架中使用的都是大家熟知的东西，
-          ...
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>使用laravel也有一段时间了，现在应该向深入理解laravel去看看一些源码了。laravel之所以新颖，使用了大量PHP新语法，包含命名空间（组件化开发的条件），匿名函数，反射机制，还有后期静态绑定，trait等等。<br>当你深入去挖掘源码的时候，laravel框架中使用的都是大家熟知的东西，并没有多么的高深。那就耐着性子一层一层地往下扒吧！</p>
+</blockquote>
+<h2 id="服务容器"><a href="#服务容器" class="headerlink" title="服务容器"></a>服务容器</h2><p>服务容器是laravel框架中相当核心的东西，提供了整个框架运行需要的服务。服务是什么呢？通俗地讲就是系统运行中需要的比如对象，配置信息之类的东西。服务容器就是承载这些东西的，在程序运行过程中动态的给系统提供服务（资源）。</p>
+<p>服务容器提供的东西比较多，在这些功能中，需要注意的问题就是解决依赖实现解耦。说到这里，我们可能都听说过控制反转（Inversion Of Control）——IOC容器。服务容器也可以是IOC容器。控制反转模式是解决系统组件之间的相互依赖关系的一种模式。那什么是依赖？怎么解决依赖？不妨看一个例子。</p>
+<p>我们就拿出去春游儿来谈吧，出去玩有很多方式，比如开车出去，乘坐火车出去。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Visit</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">go</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">Visit</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">go</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Drive car"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Train</span> <span class="keyword">implements</span> <span class="title">Visit</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">go</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Take train"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 实现该类需要依赖交通工具实例</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Traveller</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $trafficTool;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($trafficTool)</span></span></div><div class="line">    &#123;</div><div class="line">       <span class="comment">// 依赖产生</span></div><div class="line">        <span class="keyword">$this</span>-&gt;trafficTool = <span class="keyword">new</span> Car();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">visitOut</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;trafficTool-&gt;go();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">$traveller = <span class="keyword">new</span> Traveller();</div><div class="line">$traveller-&gt;visitOut();</div></pre></td></tr></table></figure>
+<p>不难看出上面的代码，两个组件之间就产生的依赖，<code>Traveller</code>的初始化依赖与<code>Car</code>，如果需求改动了，实例化的交通工具不是car是其他的，就需要不断改变实例化的对象，你说这样的代码怎样？我们不应该在<code>Traveller</code>中固定交通工具的初始化，而是交给外部去实现，将这种依赖关系通过动态注入的方式实现，这就是IOC模式的思想。</p>
+<p>于是乎，我们将交通工具的实例化提取出来外部管理，这样做，也体现出面向对象的设计的一个原则——将经常变化的部分提取出去，与固定不变的部分进行分离。这里我们使用工厂模式来实现。</p>
+<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrafficToolFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">createTrafficTool</span><span class="params">($name)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">switch</span> ($name) &#123;</div><div class="line">            <span class="keyword">case</span> <span class="string">'Car'</span> :</div><div class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Car();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'Train'</span>:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Train();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">exit</span>(<span class="string">"set traffic tool error"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Traveller</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $trafficTool;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($trafficTool)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">// 通过工厂生产依赖的交通工具实例</span></div><div class="line">        $factory = <span class="keyword">new</span> TrafficToolFactory();</div><div class="line">        <span class="keyword">$this</span>-&gt;trafficTool = $factory-&gt;createTrafficTool($trafficTool);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">visitOut</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;trafficTool-&gt;go();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">$traveller = <span class="keyword">new</span> Traveller(<span class="string">'Car'</span>);</div><div class="line">$traveller-&gt;visitOut();</div></pre></td></tr></table></figure>
+<p>现在看，<code>Traveller</code>跟<code>trafficTool</code>之间没有依赖关系了，但是却变成<code>Traveller</code>跟<code>TrafficToolFactory</code>之间的依赖了，如果我们再碰到需求，需要修改工厂模式，这样的代码还是不易于维护。</p>
+<h3 id="IOC模式"><a href="#IOC模式" class="headerlink" title="IOC模式"></a>IOC模式</h3><p>控制反转模式也叫做依赖注入模式，控制反转是将组件之间的依赖关系从程序内部提到外部的容器中，而依赖注入是将组建的依赖通过外部以参数或其他形式注入。两种说法一个意思。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Traveller</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $trafficTool;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(Visit $trafficTool)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;trafficTool = $trafficTool;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">visitOut</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;trafficTool-&gt;go();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 生成依赖的交通工具实例</span></div><div class="line">$trafficTool = <span class="keyword">new</span> Train();</div><div class="line"><span class="comment">// 依赖注入的方式解决依赖问题</span></div><div class="line">$traveller = <span class="keyword">new</span> Traveller($trafficTool);</div><div class="line">$traveller-&gt;visitOut();</div></pre></td></tr></table></figure>
+<p>这儿就是一个依赖注入的过程，<code>Traveller</code>类的构造函数依赖一个外部具有<code>Visit</code>接口的实例，在实例化<code>Traveller</code>时，传入一个<code>$trafficTool</code>实例，即通过依赖注入的方式解决依赖问题。</p>
+<p>但是还是有一个小问题，这儿是我们是通过手动的方式注入依赖，依赖注入需要通过接口来限制，而不能随便开放。你还有完没完？其实通过IOC容器就可以实现自动依赖注入。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Container</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// 用于提供实例的回调函数</span></div><div class="line">    <span class="keyword">protected</span> $bindings = [];</div><div class="line"></div><div class="line">    <span class="comment">// 绑定接口和生成相应实例的回调函数</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">bind</span><span class="params">($abstract, $concrete = null, $shared = false)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (! $concrete <span class="keyword">instanceof</span> Closure) &#123;</div><div class="line">                <span class="comment">// 如果提供的参数不是回调函数，则产生默认的回调函数</span></div><div class="line">            $concrete = <span class="keyword">$this</span>-&gt;getClosure($abstract, $concrete);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;bindings[$abstract] = compact(<span class="string">'concrete'</span>, <span class="string">'shared'</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 默认生成实例的回调函数</span></div><div class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">getClosure</span><span class="params">($abstract, $concrete)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">// 生成实例的回调函数，$container 一般为IOC容器对象，在调用回调生成实例时提供</span></div><div class="line">        <span class="comment">// 即 build函数中的 $concrete($this)</span></div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">($container, $parameters = [])</span> <span class="title">use</span> <span class="params">($abstract, $concrete)</span> </span>&#123;</div><div class="line">            $method = ($abstract == $concrete) ? <span class="string">'build'</span> : <span class="string">'make'</span>;</div><div class="line">                <span class="comment">// 调用的是容器的build或者make方法生成实例</span></div><div class="line">            <span class="keyword">return</span> $container-&gt;$method($concrete, $parameters);</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 生成实例对象，首先解决接口和要实例化类之间的依赖关系</span></div><div class="line">     <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">make</span><span class="params">($abstract)</span></span></div><div class="line">    &#123;</div><div class="line">        $concrete = <span class="keyword">$this</span>-&gt;getConcrete($abstract);</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;isBuildable($concrete, $abstract)) &#123;</div><div class="line">            $object = <span class="keyword">$this</span>-&gt;build($concrete);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            $object = <span class="keyword">$this</span>-&gt;make($concrete);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> $object;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">isBuildable</span><span class="params">($concrete, $abstract)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> $concrete === $abstract || $concrete <span class="keyword">instanceof</span> Closure;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 获取绑定的回调函数</span></div><div class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">getConcrete</span><span class="params">($abstract)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="keyword">$this</span>-&gt;bindings[$abstract])) &#123;</div><div class="line">            <span class="keyword">return</span> $abstract;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;bindings[$abstract][<span class="string">'concrete'</span>];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 实例化对象</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">build</span><span class="params">($concrete)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">// 服务能否被服务提供者注册为实例</span></div><div class="line">        <span class="keyword">if</span> ($concrete <span class="keyword">instanceof</span> Closure) &#123;</div><div class="line">            <span class="keyword">return</span> $concrete(<span class="keyword">$this</span>);</div><div class="line">        &#125;</div><div class="line">            <span class="comment">// $concrete就是类名</span></div><div class="line">        $reflector = <span class="keyword">new</span> ReflectionClass($concrete);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (! $reflector-&gt;isInstantiable()) &#123;</div><div class="line">            <span class="keyword">echo</span> $message = <span class="string">"Target [$concrete] is not instantiable."</span>;</div><div class="line">        &#125;</div><div class="line">            <span class="comment">// 获取构造信息</span></div><div class="line">        $constructor = $reflector-&gt;getConstructor();</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (is_null($constructor)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> $concrete;</div><div class="line">        &#125;</div><div class="line">            <span class="comment">// 获取构造函数依赖的输入参数</span></div><div class="line">        $dependencies = $constructor-&gt;getParameters();</div><div class="line"></div><div class="line"></div><div class="line">        $instances = <span class="keyword">$this</span>-&gt;resolveDependencies(</div><div class="line">            $dependencies</div><div class="line">        );</div><div class="line"></div><div class="line">        <span class="keyword">return</span> $reflector-&gt;newInstanceArgs($instances);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 解决通过反射机制实例化对象时的依赖</span></div><div class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">resolveDependencies</span><span class="params">(array $dependencies)</span></span></div><div class="line">    &#123;</div><div class="line">        $results = [];</div><div class="line"></div><div class="line">        <span class="keyword">foreach</span> ($dependencies <span class="keyword">as</span> $dependency) &#123;</div><div class="line">            </div><div class="line">            $results[] = is_null($class = $dependency-&gt;getClass())</div><div class="line">                            ? <span class="keyword">NULL</span></div><div class="line">                            : <span class="keyword">$this</span>-&gt;resolveClass($dependency);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> $results;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">resolveClass</span><span class="params">(ReflectionParameter $parameter)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;make($parameter-&gt;getClass()-&gt;name);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$app = <span class="keyword">new</span> Container();</div><div class="line"><span class="comment">// 容器的填充</span></div><div class="line">$app-&gt;bind(<span class="string">'Visit'</span>, <span class="string">"Car"</span>);</div><div class="line">$app-&gt;bind(<span class="string">"traveller"</span>, <span class="string">"Traveller"</span>);</div><div class="line"><span class="comment">// 通过容器实现依赖注入，完成类的实例化</span></div><div class="line">$tra = $app-&gt;make(<span class="string">"traveller"</span>);</div><div class="line">$tra-&gt;visitOut();</div></pre></td></tr></table></figure>
+<p>在这个实现过程中，没有用new关键字来实例化对象，不需要关注对象的依赖关系，只需要在容器填充的过程中理顺接口与实现类之间的关系以及实现类与依赖接口之间的关系。这里的实例化是通过反射的机制完成的。</p>
+<p>下篇继续以laravel的源码进行分析。</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/11/inversion-of-control/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -363,6 +381,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -374,13 +394,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2017/03/29/design-pattern-decorator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -402,13 +432,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-29T22:27:22+08:00" content="2017-03-29">
-              2017-03-29
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-29T22:27:22+08:00">
+                2017-03-29
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -416,20 +454,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2017/03/29/design-pattern-decorator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/29/design-pattern-decorator/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/29/design-pattern-decorator/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -443,16 +487,23 @@
       
         
           
-          前言在“装饰模式”中很好的提现了开放关闭原则，即类应该对扩展开放对修改关闭。装饰者模式可以让我们在不对原来代码的修改的情况下对类进行扩展。现在我们举一个例子，就好比给生产好的手机进行包装，我们在对手机进行包装的过程不会去对手机进行任何修改，只管用盒子将盒子包装好就行。
-装饰者模式，用另一种表达方式就
-          ...
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在“装饰模式”中很好的提现了开放关闭原则，即类应该对扩展开放对修改关闭。装饰者模式可以让我们在不对原来代码的修改的情况下对类进行扩展。现在我们举一个例子，就好比给生产好的手机进行包装，我们在对手机进行包装的过程不会去对手机进行任何修改，只管用盒子将盒子包装好就行。</p>
+<p>装饰者模式，用另一种表达方式就是“对原有的物体进行装饰，给原有的物体添加上新的装饰品”。这里的例子就是，手机是被装饰者，包装盒就是装饰品。这样的话，可以看出装饰者模式就是“动态地将责任附加到对象上。若要扩展功能，装饰着提供了比继承更有弹性的替代方案。”</p>
+<p>在“装饰者模式”中所使用的装饰就是变化的部分，也就是Decorator是变化的部分对应着我们的包装盒，因为对手机进行包装的过程就是包装盒变化的过程，也就是为手机装饰的过程。而手机就可以看做是组件。需要注意的是，所谓的装饰者不仅仅是给组件添加的新的装饰品。一个装饰者对象就是添加该装饰后的组件，也就是说装饰者=旧组件 + 新装饰品。</p>
+<h2 id="手机-包装盒的具体实现"><a href="#手机-包装盒的具体实现" class="headerlink" title="手机+包装盒的具体实现"></a>手机+包装盒的具体实现</h2><h3 id="实现一个手机的接口PhoneInterface-php"><a href="#实现一个手机的接口PhoneInterface-php" class="headerlink" title="实现一个手机的接口PhoneInterface.php"></a>实现一个手机的接口<code>PhoneInterface.php</code></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">decorator</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">PhoneInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// 生产手机</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">product</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="实现一个装饰器抽象的基类Decorator-php"><a href="#实现一个装饰器抽象的基类Decorator-php" class="headerlink" title="实现一个装饰器抽象的基类Decorator.php"></a>实现一个装饰器抽象的基类<code>Decorator.php</code></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">decorator</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 装饰器抽象类</div><div class="line"> */</div><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Decorator</span> <span class="keyword">implements</span> <span class="title">PhoneInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 产品生产线对象</div><div class="line">     * <span class="doctag">@var</span> Object</div><div class="line">     */</div><div class="line">    <span class="keyword">protected</span> $phone;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(PhoneInterface $phone)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;phone = $phone;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 生产</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">product</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;phone-&gt;product();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">decorate</span><span class="params">($value)</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="实现包装盒子的装饰器DecoratorPack-php"><a href="#实现包装盒子的装饰器DecoratorPack-php" class="headerlink" title="实现包装盒子的装饰器DecoratorPack.php"></a>实现包装盒子的装饰器<code>DecoratorPack.php</code></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">decorator</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 包装盒子装饰器</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DecoratorPack</span> <span class="keyword">extends</span> <span class="title">Decorator</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">private</span> $pack;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(PhoneInterface $phone)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;phone = $phone;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__set</span><span class="params">($name = <span class="string">''</span>, $value = <span class="string">''</span>)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;$name = $value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 生产</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">product</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;phone-&gt;product();</div><div class="line">        <span class="keyword">$this</span>-&gt;decorate(<span class="keyword">$this</span>-&gt;pack);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 进行包装</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">decorate</span><span class="params">($value = <span class="string">''</span>)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"使用&#123;$value&#125;进行了包装\n"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="实现各个装饰者-Decorator-这里是ApplePhone-php和SmartisanPhone-php"><a href="#实现各个装饰者-Decorator-这里是ApplePhone-php和SmartisanPhone-php" class="headerlink" title="实现各个装饰者(Decorator),这里是ApplePhone.php和SmartisanPhone.php"></a>实现各个装饰者(Decorator),这里是<code>ApplePhone.php</code>和<code>SmartisanPhone.php</code></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">decorator</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 苹果手机</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ApplePhone</span> <span class="keyword">implements</span> <span class="title">PhoneInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">product</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"生产了一部苹果手机\n"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">decorator</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 锤子手机</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SmartisanPhone</span> <span class="keyword">implements</span> <span class="title">PhoneInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">product</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"生产了一部锤子手机\n"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="大差不差了，最后测试-test-php"><a href="#大差不差了，最后测试-test-php" class="headerlink" title="大差不差了，最后测试 test.php"></a>大差不差了，最后测试 <code>test.php</code></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 结构型模式</div><div class="line"> * 装饰器模式</div><div class="line"> * 对现有的对象增加功能，动态的将责任附加到对象上。</div><div class="line"> * 和适配器的区别： 适配器是链接两个接口，装饰器是对现有的对象包装</div><div class="line"> */</div><div class="line"><span class="comment">// 注册自加载</span></div><div class="line">spl_autoload_register(<span class="string">'autoload'</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">autoload</span><span class="params">($class)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">require</span> dirname($_SERVER[<span class="string">'SCRIPT_FILENAME'</span>]) . <span class="string">'//..//'</span> . str_replace(<span class="string">'\\'</span>, <span class="string">'/'</span>, $class) . <span class="string">'.php'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">decorator</span>\<span class="title">DecoratorPack</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">decorator</span>\<span class="title">ApplePhone</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">decorator</span>\<span class="title">SmartisanPhone</span>;</div><div class="line"></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"为加装饰器之前： \n"</span>;</div><div class="line">    <span class="comment">// 生产苹果手机</span></div><div class="line">    $applePhone = <span class="keyword">new</span> ApplePhone();</div><div class="line">    $applePhone-&gt;product();</div><div class="line"></div><div class="line">    <span class="comment">// 生产锤子手机</span></div><div class="line">    $smartisanPhone = <span class="keyword">new</span> SmartisanPhone();</div><div class="line">    $smartisanPhone-&gt;product();</div><div class="line"></div><div class="line">    <span class="keyword">echo</span> <span class="string">"\n------------\n"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">echo</span> <span class="string">"进行包装装饰器: \n"</span>;</div><div class="line">    <span class="comment">// 初始化一个包装适配器</span></div><div class="line">    $decoratorPack1 = <span class="keyword">new</span> DecoratorPack(<span class="keyword">new</span> ApplePhone);</div><div class="line">    $decoratorPack1-&gt;pack = <span class="string">'白盒子'</span>;</div><div class="line">    $decoratorPack1-&gt;product();</div><div class="line"></div><div class="line">    $decoratorPack2 = <span class="keyword">new</span> DecoratorPack(<span class="keyword">new</span> SmartisanPhone);</div><div class="line">    $decoratorPack1-&gt;pack = <span class="string">'黑盒子'</span>;</div><div class="line">    $decoratorPack1-&gt;product();</div><div class="line"></div><div class="line">&#125; <span class="keyword">catch</span> (\<span class="keyword">Exception</span> $e) &#123;</div><div class="line">    <span class="keyword">echo</span> $e-&gt;getMessage();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="运行结果：通过结果更清晰这个过程了"><a href="#运行结果：通过结果更清晰这个过程了" class="headerlink" title="运行结果：通过结果更清晰这个过程了"></a>运行结果：通过结果更清晰这个过程了</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">为加装饰器之前：</div><div class="line">生产了一部苹果手机</div><div class="line">生产了一部锤子手机</div><div class="line"></div><div class="line">------------</div><div class="line">进行包装装饰器:</div><div class="line">生产了一部苹果手机</div><div class="line">使用白盒子进行了包装</div><div class="line">生产了一部苹果手机</div><div class="line">使用黑盒子进行了包装</div></pre></td></tr></table></figure>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/29/design-pattern-decorator/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -470,6 +521,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -481,13 +534,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2017/03/27/design-pattern-strategy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -509,13 +572,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-27T21:42:50+08:00" content="2017-03-27">
-              2017-03-27
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-27T21:42:50+08:00">
+                2017-03-27
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -523,20 +594,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2017/03/27/design-pattern-strategy/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/27/design-pattern-strategy/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/27/design-pattern-strategy/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -550,17 +627,40 @@
       
         
           
-          策略模式通俗地说就是将不同的策略（算法）进行封装，让他们之间可以相互替换，此模式让策略的变化独立于使用策略的用户。
-在设计模式中有不同的设计原则，其中一条就是”将可能会变化的代码独立出来，不要和不变得代码混在一起“。
-现在举个例子就是，我们周末出去游玩，我们出去可以乘坐多种交通工具，这个时候就可以选
-          ...
+            <p>策略模式通俗地说就是将不同的策略（算法）进行封装，让他们之间可以相互替换，此模式让策略的变化独立于使用策略的用户。</p>
+<p>在设计模式中有不同的设计原则，其中一条就是”将可能会变化的代码独立出来，不要和不变得代码混在一起“。</p>
+<p>现在举个例子就是，我们周末出去游玩，我们出去可以乘坐多种交通工具，这个时候就可以选择”策略模式“来实现。简单分析一下，这个场景中的乘坐的交通工具是多种多样的，可以骑自行车，可以坐地铁，可以自己开车。</p>
+<p>根据上面的设计思路，，我们可以对”乘坐交通工具“的策略进行提取。使用<code>StrategyInterface</code>接口来规定策略，使用不同的出行方式对外都有一个统一的接口。在此就是乘坐交通工具，不同的出行方式有不同的”乘坐交通工具“的策略。</p>
+<p>对于出行（outing）的定义就是不变的部分。这个类中定义了出行的方式，以及是否改变策略，其中依赖于乘坐交通工具的接口。</p>
+<h2 id="策略模式的具体实现"><a href="#策略模式的具体实现" class="headerlink" title="策略模式的具体实现:"></a><code>策略模式</code>的具体实现:</h2><h3 id="乘坐交通工具的策略接口StrategyInterface-php"><a href="#乘坐交通工具的策略接口StrategyInterface-php" class="headerlink" title="乘坐交通工具的策略接口StrategyInterface.php"></a>乘坐交通工具的策略接口<code>StrategyInterface.php</code></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">strategy</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">StrategyInterface</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">takeTraffic</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="紧接着我们实现出行-Outing-Outing-php"><a href="#紧接着我们实现出行-Outing-Outing-php" class="headerlink" title="紧接着我们实现出行(Outing)Outing.php"></a>紧接着我们实现出行(Outing)<code>Outing.php</code></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">strategy</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 实体类</div><div class="line"> * 依赖外部不同策略的实体类</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outing</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 策略实例</div><div class="line">     * <span class="doctag">@var</span> Object</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $traffic;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 是否改变策略</div><div class="line">     * <span class="doctag">@var</span> boolean</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $isChangeMind = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(StrategyInterface $traffic)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;traffic = $traffic;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 改变策略</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">change</span><span class="params">(StrategyInterface $traffic)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;traffic = $traffic;</div><div class="line">        <span class="keyword">$this</span>-&gt;isChangeMind = <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">outing</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;isChangeMind) &#123;</div><div class="line">            <span class="keyword">echo</span> <span class="string">"改变策略\n"</span>;</div><div class="line">            <span class="keyword">$this</span>-&gt;traffic-&gt;takeTraffic();</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">$this</span>-&gt;traffic-&gt;takeTraffic();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="然后-具体实现每一个策略OutingByCar-php和OutingBySubway-php"><a href="#然后-具体实现每一个策略OutingByCar-php和OutingBySubway-php" class="headerlink" title="然后,具体实现每一个策略OutingByCar.php和OutingBySubway.php"></a>然后,具体实现每一个策略<code>OutingByCar.php</code>和<code>OutingBySubway.php</code></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">strategy</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 观察者实体类示例</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">OutingByCar</span> <span class="keyword">implements</span> <span class="title">StrategyInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 行为</div><div class="line">     * <span class="doctag">@return</span> string</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">takeTraffic</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"选择自己开车出去玩 \n"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">strategy</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 观察者实体类示例</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">OutingBySubway</span> <span class="keyword">implements</span> <span class="title">StrategyInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 行为</div><div class="line">     * <span class="doctag">@return</span> string</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">takeTraffic</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"选择自己坐地铁出去玩 \n"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后，我们来测试一下</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 行为型模式</div><div class="line"> *</div><div class="line"> * 策略模式</div><div class="line"> * 策略依照使用而定</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="comment">// 注册自加载</span></div><div class="line">spl_autoload_register(<span class="string">'autoload'</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">autoload</span><span class="params">($class)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">require</span> dirname($_SERVER[<span class="string">'SCRIPT_FILENAME'</span>]) . <span class="string">'//..//'</span> . str_replace(<span class="string">'\\'</span>, <span class="string">'/'</span>, $class) . <span class="string">'.php'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">strategy</span>\<span class="title">Outing</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">strategy</span>\<span class="title">OutingByCar</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">strategy</span>\<span class="title">OutingBySubway</span>;</div><div class="line"></div><div class="line"><span class="comment">// 使用策略1</span></div><div class="line">$substance = <span class="keyword">new</span> Outing(<span class="keyword">new</span> OutingByCar);</div><div class="line">$substance-&gt;outing();</div><div class="line"><span class="comment">// 现在改变策略</span></div><div class="line">$substance-&gt;change(<span class="keyword">new</span> OutingBySubway);</div><div class="line"><span class="comment">// 使用策略2</span></div><div class="line">$substance-&gt;outing();</div></pre></td></tr></table></figure>
+<p>运行的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">选择自己开车出去玩</div><div class="line">改变策略</div><div class="line">选择自己坐地铁出去玩</div></pre></td></tr></table></figure>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><ul>
+<li>策略模式避免了多重条件的转移语句，消除一些if else条件语句。</li>
+<li>提供了可以替换继承关系的办法： 继承提供了另一种支持多种算法或行为的方法。</li>
+<li>策略模式提供相同行为的不同实现，这样就可以根据不同的时间空间条件进行不同策略的选择。</li>
+</ul>
+<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><ul>
+<li>客户端必须知道所有的策略类，并自行决定使用哪一个策略类。</li>
+<li>策略模式将造成产生很多策略类，可以通过使用享元模式在一定程度上减少对象的数量。</li>
+</ul>
+<h2 id="什么时候使用"><a href="#什么时候使用" class="headerlink" title="什么时候使用"></a>什么时候使用</h2><ul>
+<li>多个类只区别在表现行为不同，可以使用策略模式，在运行时动态选择具体要执行的行为。</li>
+<li>需要在不同情况下使用不同的策略(算法)，或者策略还可能在未来用其它方式来实现。</li>
+<li>对客户隐藏具体策略(算法)的实现细节，彼此完全独立。</li>
+</ul>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/27/design-pattern-strategy/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -578,6 +678,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -589,13 +691,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2017/03/05/read-go-package-bufio/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -617,13 +729,21 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-05T22:06:20+08:00" content="2017-03-05">
-              2017-03-05
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-05T22:06:20+08:00">
+                2017-03-05
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -631,20 +751,26 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2017/03/05/read-go-package-bufio/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/05/read-go-package-bufio/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/05/read-go-package-bufio/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -658,19 +784,41 @@
       
         
           
-          本文阅读golang的bufio包，常用的函数，结构体以及方法
-scan.gofunc NewScanner(r io.Reader) *Scanner
-返回一个新的Scanner从r读取。split函数默认为ScanLines。
-
-func ScanBytes(data []byte, atEOF
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/05/read-go-package-bufio/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+            <p>本文阅读golang的bufio包，常用的函数，结构体以及方法</p>
+<h2 id="scan-go"><a href="#scan-go" class="headerlink" title="scan.go"></a><em>scan.go</em></h2><h3 id="func-NewScanner-r-io-Reader-Scanner"><a href="#func-NewScanner-r-io-Reader-Scanner" class="headerlink" title="func NewScanner(r io.Reader) *Scanner"></a><code>func NewScanner(r io.Reader) *Scanner</code></h3><blockquote>
+<p>返回一个新的Scanner从r读取。split函数默认为ScanLines。</p>
+</blockquote>
+<h3 id="func-ScanBytes-data-byte-atEOF-bool-advance-int-token-byte-err-error"><a href="#func-ScanBytes-data-byte-atEOF-bool-advance-int-token-byte-err-error" class="headerlink" title="func ScanBytes(data []byte, atEOF bool) (advance int, token []byte, err error)"></a><code>func ScanBytes(data []byte, atEOF bool) (advance int, token []byte, err error)</code></h3><blockquote>
+<p>是scaner的一个分割函数，将每一个字节作为一个字符返回。</p>
+</blockquote>
+<h3 id="func-ScanLines-data-byte-atEOF-bool-advance-int-token-byte-err-error"><a href="#func-ScanLines-data-byte-atEOF-bool-advance-int-token-byte-err-error" class="headerlink" title="func ScanLines(data []byte, atEOF bool) (advance int, token []byte, err error)"></a><code>func ScanLines(data []byte, atEOF bool) (advance int, token []byte, err error)</code></h3><blockquote>
+<p>ScanLines是一个Scanner的拆分函数，它返回每行文本，删除任何尾随的行尾标记。<br>返回的行可能为空。行结束标记是一个可选的回车，后跟一个强制换行。在正则表达式符号中，它是<code>\ r？\ n</code>。<br>最后一个非空行的输入将被返回，即使它没有换行符。</p>
+</blockquote>
+<h3 id="func-ScanRunes-data-byte-atEOF-bool-advance-int-token-byte-err-error"><a href="#func-ScanRunes-data-byte-atEOF-bool-advance-int-token-byte-err-error" class="headerlink" title="func ScanRunes(data []byte, atEOF bool) (advance int, token []byte, err error)"></a><code>func ScanRunes(data []byte, atEOF bool) (advance int, token []byte, err error)</code></h3><h3 id="func-ScanWords-data-byte-atEOF-bool-advance-int-token-byte-err-error"><a href="#func-ScanWords-data-byte-atEOF-bool-advance-int-token-byte-err-error" class="headerlink" title="func ScanWords(data []byte, atEOF bool) (advance int, token []byte, err error)"></a><code>func ScanWords(data []byte, atEOF bool) (advance int, token []byte, err error)</code></h3><blockquote>
+<p>拆分函数，删除空格，返回空格分割的文字，永远不会返回一个空字符串。<br>空间定义由<code>unicode.IsSpace</code>设定。</p>
+</blockquote>
+<h3 id="func-s-Scanner-Err-error"><a href="#func-s-Scanner-Err-error" class="headerlink" title="func (s *Scanner) Err() error"></a><code>func (s *Scanner) Err() error</code></h3><h3 id="func-s-Scanner-Bytes-byte"><a href="#func-s-Scanner-Bytes-byte" class="headerlink" title="func (s *Scanner) Bytes() []byte"></a><code>func (s *Scanner) Bytes() []byte</code></h3><h3 id="func-s-Scanner-Text-string"><a href="#func-s-Scanner-Text-string" class="headerlink" title="func (s *Scanner) Text() string"></a><code>func (s *Scanner) Text() string</code></h3><h3 id="func-s-Scanner-Scan-bool"><a href="#func-s-Scanner-Scan-bool" class="headerlink" title="func (s *Scanner) Scan() bool"></a><code>func (s *Scanner) Scan() bool</code></h3><h3 id="func-s-Scanner-Buffer-buf-byte-max-int"><a href="#func-s-Scanner-Buffer-buf-byte-max-int" class="headerlink" title="func (s *Scanner) Buffer(buf []byte, max int)"></a><code>func (s *Scanner) Buffer(buf []byte, max int)</code></h3><h3 id="func-s-Scanner-Split-split-SplitFunc"><a href="#func-s-Scanner-Split-split-SplitFunc" class="headerlink" title="func (s *Scanner) Split(split SplitFunc)"></a><code>func (s *Scanner) Split(split SplitFunc)</code></h3><blockquote>
+<p>SplitFunc 有四个：ScanBytes、ScanLines、ScanRunes、ScanWords。</p>
+</blockquote>
+<h2 id="bufio-go"><a href="#bufio-go" class="headerlink" title="bufio.go"></a><em>bufio.go</em></h2><h2 id="Reader"><a href="#Reader" class="headerlink" title="Reader"></a>Reader</h2><h3 id="func-NewReader-rd-io-Reader-Reader"><a href="#func-NewReader-rd-io-Reader-Reader" class="headerlink" title="func NewReader(rd io.Reader) *Reader"></a><code>func NewReader(rd io.Reader) *Reader</code></h3><blockquote>
+<p>创建一个reader，其中buffer的Size是默认大小。<br>其实就是调用<code>func NewReaderSize(rd io.Reader, size int) *Reader</code></p>
+</blockquote>
+<h3 id="func-b-Reader-Reset-r-io-Reader"><a href="#func-b-Reader-Reset-r-io-Reader" class="headerlink" title="func (b *Reader) Reset(r io.Reader)"></a><code>func (b *Reader) Reset(r io.Reader)</code></h3><blockquote>
+<p>Reset放弃所有缓冲数据，重置所有状态和切换从r读取的缓冲读取器。</p>
+</blockquote>
+<h3 id="func-b-Reader-Peek-n-int-byte-error"><a href="#func-b-Reader-Peek-n-int-byte-error" class="headerlink" title="func (b *Reader) Peek(n int) ([]byte, error)"></a><code>func (b *Reader) Peek(n int) ([]byte, error)</code></h3><blockquote>
+<p>Peek返回下一个n字节，而不推进读取器。<br>如果Peek返回少于n个字节，它也返回一个错误，解释为什么读取短。<br>如果n大于b的缓冲区大小,错误是ErrBufferFull。</p>
+</blockquote>
+<h3 id="func-b-Reader-Discard-n-int-discarded-int-err-error"><a href="#func-b-Reader-Discard-n-int-discarded-int-err-error" class="headerlink" title="func (b *Reader) Discard(n int) (discarded int, err error)"></a><code>func (b *Reader) Discard(n int) (discarded int, err error)</code></h3><blockquote>
+<p>Discard跳过接下来的n个字节，返回丢弃的字节数。<br>如果Discard跳过少于n个字节，它也返回一个错误。<br>如果0 &lt;= n &lt;= b.Buffered()，Discarding能够从底层的io.Reader读取。</p>
+</blockquote>
+<h3 id="func-b-Reader-Read-p-byte-n-int-err-error"><a href="#func-b-Reader-Read-p-byte-n-int-err-error" class="headerlink" title="func (b *Reader) Read(p []byte) (n int, err error)"></a><code>func (b *Reader) Read(p []byte) (n int, err error)</code></h3><h3 id="func-b-Reader-ReadByte-byte-error"><a href="#func-b-Reader-ReadByte-byte-error" class="headerlink" title="func (b *Reader) ReadByte() (byte, error)"></a><code>func (b *Reader) ReadByte() (byte, error)</code></h3><h3 id="func-b-Reader-UnreadByte-error"><a href="#func-b-Reader-UnreadByte-error" class="headerlink" title="func (b *Reader) UnreadByte() error"></a><code>func (b *Reader) UnreadByte() error</code></h3><h3 id="func-b-Reader-ReadRune-r-rune-size-int-err-error"><a href="#func-b-Reader-ReadRune-r-rune-size-int-err-error" class="headerlink" title="func (b *Reader) ReadRune() (r rune, size int, err error)"></a><code>func (b *Reader) ReadRune() (r rune, size int, err error)</code></h3><h3 id="func-b-Reader-UnreadRune-error"><a href="#func-b-Reader-UnreadRune-error" class="headerlink" title="func (b *Reader) UnreadRune() error"></a><code>func (b *Reader) UnreadRune() error</code></h3><h3 id="func-b-Reader-Buffered-int"><a href="#func-b-Reader-Buffered-int" class="headerlink" title="func (b *Reader) Buffered() int"></a><code>func (b *Reader) Buffered() int</code></h3><h3 id="func-b-Reader-ReadSlice-delim-byte-line-byte-err-error"><a href="#func-b-Reader-ReadSlice-delim-byte-line-byte-err-error" class="headerlink" title="func (b *Reader) ReadSlice(delim byte) (line []byte, err error)"></a><code>func (b *Reader) ReadSlice(delim byte) (line []byte, err error)</code></h3><h3 id="func-b-Reader-ReadLine-line-byte-isPrefix-bool-err-error"><a href="#func-b-Reader-ReadLine-line-byte-isPrefix-bool-err-error" class="headerlink" title="func (b *Reader) ReadLine() (line []byte, isPrefix bool, err error)"></a><code>func (b *Reader) ReadLine() (line []byte, isPrefix bool, err error)</code></h3><h3 id="func-b-Reader-ReadBytes-delim-byte-byte-error"><a href="#func-b-Reader-ReadBytes-delim-byte-byte-error" class="headerlink" title="func (b *Reader) ReadBytes(delim byte) ([]byte, error)"></a><code>func (b *Reader) ReadBytes(delim byte) ([]byte, error)</code></h3><h3 id="func-b-Reader-ReadString-delim-byte-string-error"><a href="#func-b-Reader-ReadString-delim-byte-string-error" class="headerlink" title="func (b *Reader) ReadString(delim byte) (string, error)"></a><code>func (b *Reader) ReadString(delim byte) (string, error)</code></h3><h3 id="func-b-Reader-WriteTo-w-io-Writer-n-int64-err-error"><a href="#func-b-Reader-WriteTo-w-io-Writer-n-int64-err-error" class="headerlink" title="func (b *Reader) WriteTo(w io.Writer) (n int64, err error)"></a><code>func (b *Reader) WriteTo(w io.Writer) (n int64, err error)</code></h3><h2 id="Writer"><a href="#Writer" class="headerlink" title="Writer"></a>Writer</h2><h3 id="func-NewWriterSize-w-io-Writer-size-int-Writer"><a href="#func-NewWriterSize-w-io-Writer-size-int-Writer" class="headerlink" title="func NewWriterSize(w io.Writer, size int) *Writer"></a><code>func NewWriterSize(w io.Writer, size int) *Writer</code></h3><h3 id="func-NewWriter-w-io-Writer-Writer"><a href="#func-NewWriter-w-io-Writer-Writer" class="headerlink" title="func NewWriter(w io.Writer) *Writer"></a><code>func NewWriter(w io.Writer) *Writer</code></h3><h3 id="func-b-Writer-Reset-w-io-Writer"><a href="#func-b-Writer-Reset-w-io-Writer" class="headerlink" title="func (b *Writer) Reset(w io.Writer)"></a><code>func (b *Writer) Reset(w io.Writer)</code></h3><h3 id="func-b-Writer-Flush-error"><a href="#func-b-Writer-Flush-error" class="headerlink" title="func (b *Writer) Flush() error"></a><code>func (b *Writer) Flush() error</code></h3><h3 id="func-b-Writer-Available-int"><a href="#func-b-Writer-Available-int" class="headerlink" title="func (b *Writer) Available() int"></a><code>func (b *Writer) Available() int</code></h3><h3 id="func-b-Writer-Buffered-int"><a href="#func-b-Writer-Buffered-int" class="headerlink" title="func (b *Writer) Buffered() int"></a><code>func (b *Writer) Buffered() int</code></h3><h3 id="func-b-Writer-Write-p-byte-nn-int-err-error"><a href="#func-b-Writer-Write-p-byte-nn-int-err-error" class="headerlink" title="func (b *Writer) Write(p []byte) (nn int, err error)"></a><code>func (b *Writer) Write(p []byte) (nn int, err error)</code></h3><h3 id="func-b-Writer-WriteByte-c-byte-error"><a href="#func-b-Writer-WriteByte-c-byte-error" class="headerlink" title="func (b *Writer) WriteByte(c byte) error"></a><code>func (b *Writer) WriteByte(c byte) error</code></h3><h3 id="func-b-Writer-WriteRune-r-rune-size-int-err-error"><a href="#func-b-Writer-WriteRune-r-rune-size-int-err-error" class="headerlink" title="func (b *Writer) WriteRune(r rune) (size int, err error)"></a><code>func (b *Writer) WriteRune(r rune) (size int, err error)</code></h3><h3 id="func-b-Writer-WriteString-s-string-int-error"><a href="#func-b-Writer-WriteString-s-string-int-error" class="headerlink" title="func (b *Writer) WriteString(s string) (int, error)"></a><code>func (b *Writer) WriteString(s string) (int, error)</code></h3><h3 id="func-b-Writer-ReadFrom-r-io-Reader-n-int64-err-error"><a href="#func-b-Writer-ReadFrom-r-io-Reader-n-int64-err-error" class="headerlink" title="func (b *Writer) ReadFrom(r io.Reader) (n int64, err error)"></a><code>func (b *Writer) ReadFrom(r io.Reader) (n int64, err error)</code></h3>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -688,6 +836,8 @@ func ScanBytes(data []byte, atEOF
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -699,13 +849,23 @@ func ScanBytes(data []byte, atEOF
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2017/02/26/how-make-an-effective-plan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -727,13 +887,21 @@ func ScanBytes(data []byte, atEOF
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-26T19:51:22+08:00" content="2017-02-26">
-              2017-02-26
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-26T19:51:22+08:00">
+                2017-02-26
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -741,20 +909,26 @@ func ScanBytes(data []byte, atEOF
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2017/02/26/how-make-an-effective-plan/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/26/how-make-an-effective-plan/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/26/how-make-an-effective-plan/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -768,15 +942,27 @@ func ScanBytes(data []byte, atEOF
       
         
           
-          这篇应该是今年的第一篇吧，好久没有写文章了，这个周末修整了两天。前些日子做了一个模块，都谈不上一个独立的项目，真的搞得筋疲力尽的。从过完年就开始搞这个，年前还做了两天的准备。按理说两个周的时间是足够的，但是最终做了快一个月。因为换到新框架上，使用laravel来搞我并没有娴熟地用好这个框架，这中间还
-          ...
+            <p>这篇应该是今年的第一篇吧，好久没有写文章了，这个周末修整了两天。前些日子做了一个模块，都谈不上一个独立的项目，真的搞得筋疲力尽的。从过完年就开始搞这个，年前还做了两天的准备。按理说两个周的时间是足够的，但是最终做了快一个月。因为换到新框架上，使用laravel来搞我并没有娴熟地用好这个框架，这中间还踩了一些坑，有那么三两天时间感觉进度就是上不去。还有我觉得最主要的原因，是我做的都是假需求，这个真的让我很心累。不管怎样，事情就是这样发生，从自身找原因吧，现在开始要好好给自己的工作做一个打算规划，以及学习的目标和进度。</p>
+<p><em>宏观上讲：</em><br>今年要完成的就是</p>
+<ul>
+<li>要深入理解PHP(需要看源码了)，学习扩展开发，这样做也是为了拾起一些基础知识和底层的，面试常常会问到这些问题。</li>
+<li>golang也要继续深入了，不能只能停留在会使用框架的基础上，看看能不能在项目中尝试使用golang做API项目。</li>
+<li>看一些书，做到一定量的阅读，今年的阅读除了技术相关的，会着重偏产品这一块。</li>
+<li>这个是最重要的，学习一门强类型的语言——Java。为什么要学它，杭州基本都是Java系，交到朋友至少能聊到一块去，对以后的求职也是增加计划。</li>
+<li>注意身体，坚持锻炼身体。</li>
+<li>还有时间就做自己喜欢的事，折腾硬件、写swift</li>
+</ul>
+<p>要想完成这些，需要的合理地、高效地使用时间，其实每天有很多时间是浪费的，边缘时间充分利用的话还是可以做很多的事，为什么之前没能使用起一些边缘时间，还不是因为没有一个明确的计划。比如我要在一周里面看完一本书。</p>
+<p><em>微观上谈：</em><br>每天我7点就起床了，其实公司上班是弹性的，朝九晚六朝十晚七，就目前看，也真的没必要每天八点半就往公司赶，十五分钟就走到公司了。为了充分利用时间我每天应该9点出门去公司，这样每天早上就有至少一个半小时的时间看书，中午休息的一个小时，如果不休息的话，我觉得这一个小时还是可以看书的。下班回来也有三四个小时，这段时间可以用来写一些代码，逛逛社区，玩玩游戏，撩撩妹子，总之可以细化一些任务出来。下班回来前可以锻个练。</p>
+<p>周末的话，天儿好的时候，一定要出门溜溜了，去年来杭州半年达成的成就就是——周末全宅家里了。春天来了，应该出去走走。充分考虑到杭州好像是每周都是要下雨的，如果碰巧赶上下雨，就在家看书？也不啊，小区后面不是电影院也可以看看有没有好看的电影，总之周末至少有一天时间是玩的。如果真的是高效的话，劳逸结合真是相当必要的。</p>
+<p>写了这么多，至少现在清晰了一些计划和思路，不写了去学习算法去了，一周时间搞定那本算法的书。</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/26/how-make-an-effective-plan/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -794,6 +980,8 @@ func ScanBytes(data []byte, atEOF
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -805,13 +993,23 @@ func ScanBytes(data []byte, atEOF
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/12/25/2016-in-all/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -833,13 +1031,21 @@ func ScanBytes(data []byte, atEOF
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-25T14:09:21+08:00" content="2016-12-25">
-              2016-12-25
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-25T14:09:21+08:00">
+                2016-12-25
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -847,20 +1053,26 @@ func ScanBytes(data []byte, atEOF
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/12/25/2016-in-all/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/25/2016-in-all/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/25/2016-in-all/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -874,16 +1086,32 @@ func ScanBytes(data []byte, atEOF
       
         
           
-          时间过得真快，又一年过去了，不知道从什么时候开始喜欢写年度总结的，最开始好像是在51空间上写，那个时候还是高中的时候，后来就在QQ空间上写，再后来到读大学，在自己的blog上写。去年的总结是我在考研结束的那天晚上开始写的，写了两天。这真巧，今天正好也是今年考研的第二天，趁着圣诞的气息，该交作业了。
+            <p>时间过得真快，又一年过去了，不知道从什么时候开始喜欢写年度总结的，最开始好像是在51空间上写，那个时候还是高中的时候，后来就在QQ空间上写，再后来到读大学，在自己的blog上写。去年的总结是我在考研结束的那天晚上开始写的，写了两天。这真巧，今天正好也是今年考研的第二天，趁着圣诞的气息，该交作业了。</p>
+<p>先祝大家圣诞快乐，其次就是向大家拜个早年，鸡年大吉。</p>
+<p>2016年，元旦的时候，在学校的跨年晚会上，感叹，就这么进入本命年了。这一年，好多不太顺利。往好处想想，这些都是好事，有些事情经历了总是好的。最大的感触，就是自己跟身边的人还是有很大的差距的。</p>
+<h3 id="说几件事吧："><a href="#说几件事吧：" class="headerlink" title="说几件事吧："></a>说几件事吧：</h3><h4 id="第一：考研"><a href="#第一：考研" class="headerlink" title="第一：考研"></a>第一：考研</h4><p>我不知道去年我是怎么决定考研的，做这个决定后悔吗？后悔，也不后悔。一分为二地看，现在看来，这已经不是很重要了。后来也算明白了一个道理，考研考上了跟没有考上，对你的未来未必有多大的联系，所以不要在意结果，注重过程，自己能开心就好。</p>
+<h4 id="第二：实习"><a href="#第二：实习" class="headerlink" title="第二：实习"></a>第二：实习</h4><p>考研结束了，就寻思着要实习，毕竟大四了，应该找一份正规一点的实习工作，不想总像之前的那样折腾打杂的，那样也学不到太多的东西。这个时候就找胡波大大求一份实习，坦率的讲，面试感觉很不好，胡波也给我一些鼓励。后来差不多三月份去渣浪实习了，开始接触PHP了，实习的三个月里，学了一些自己之前不知道的东西，这三个多月也是吊儿郎当的，其实不应该这样。由于之前考研，也没有参加什么校招之类的，在三四月份的时候，在关注春招，还面腾讯的测试岗，问啥啥不会，就是那种感觉。后来又面360的游戏平台的开发，那次面试还是学到了不少。不管面试的结果怎么样，我面完了都会总结。面多了就有感觉了，大家问的题目都是类似的。最喜欢在渣浪的日子，抛出问题总能找到能一起讨论的人。还有就是大家都喜欢自黑，往死黑的那种，那种感觉很爽，我不知道这算不算一种团队文化。后来的故事就不多说了，总之还认识许多渣浪的朋友，大家有缘江湖再见呗。</p>
+<h4 id="第三：毕业-来杭州"><a href="#第三：毕业-来杭州" class="headerlink" title="第三：毕业+来杭州"></a>第三：毕业+来杭州</h4><p>啊，大学四年就这么结束了，还记得当初从家拖着两个箱子去学校报道的时候。冬去春来，年复一年又一年，四年都过得这么快，更别说这一年过得这么快了。毕业前给自己定的规划就是：毕业后，在北京呆一两年，然后回南方。就这个事，跟我爸不知道在电话里唠叨了多少次了。别的同学其实也是这样，有的留在北京有的选择回家有的选择继续学习读研出国，总之大家都有一个自己的目标，大家都在为自己的目标奋斗。只有到毕业的时候，才觉得在学校的日子是多么的珍贵，幸好没有哭得稀里哗啦的。</p>
+<p>毕业本来是留在北京的，房子都找好了，后来在入职上有点拖拉，而且还不是很保险，不能一直吊在一棵树上嘛。毕业后半个月开始寻找新的工作，朋友帮我找了好几家，去面的也只有两家。后来想了想要么就回到南方吧，反正早晚要回去的，还不如现在就回去。果断退掉了房子（虽然被扣了不少钱，呆北京我也没有多少钱可以交房租了），然后跟朋友挤了一晚上，然后就去杭州面试了，新的生活新的环境还是算可以。没有想到这么快就来到了南方了，而且也没有太大的准备。现在在花厂上班，好好对待第一份工作。</p>
+<h3 id="学习技术"><a href="#学习技术" class="headerlink" title="学习技术"></a>学习技术</h3><p>从去年考研的时候，就决定要搞技术，毕竟技术是硬实力，到哪儿都会有碗饭吃。差不多那个时候开始七七八八就开始写PHP了。回首这一年自己折腾的东西挺多的。坑挖得比较多，但挖得都不深。有的时候选择不一，所以刨的坑比较多。既然刨了那么多坑还是写出来吧。</p>
+<ul>
+<li>年初的时候，参加Swift大会，认识了一些人，再加之去年玩arduino的时候接触了一点swift做iOS App，自然而然入门了swift3，总得来说，这个还是值得学习的一门语言，毕竟我之前没有怎么接触强类型的语言。最近写用swift写一个App，才完成了三分之一，我不知道啥时候可以写出来。</li>
+<li>看了一本golang的书《go语言圣经》，会写的那种，谈不上深入，挺喜欢谢大搞的社区(gocn.io)。</li>
+<li>七拽八歪地接触了Rust，一门注重高效、安全、并行的系统程序语言，写起来跟go一样爽，比go还好的是支持泛型。希望有一天能用到实际项目中。</li>
+<li>还有就是吵得比较火热的前端，我也接触一点Vue.js。前端让我写CSS简直是折磨我，大概就是没有在这一块找到我的兴趣点。</li>
+</ul>
+<h3 id="看的书"><a href="#看的书" class="headerlink" title="看的书"></a>看的书</h3><p>今年买的书，技术方面的书比较多，自从工作了之后，发现自身暴露出的问题还是挺多的，在买书上面也不再那么吝啬了，相信付出总是有回报的。</p>
+<h3 id="做的饭"><a href="#做的饭" class="headerlink" title="做的饭"></a>做的饭</h3><p>周末常常自己做饭，尝试了一些新花样，好多失败了。反正自己能做的也有两道拿手的菜，还有自己做的饭不至于那么的难吃，哈哈哈！</p>
+<h3 id="其他的"><a href="#其他的" class="headerlink" title="其他的"></a>其他的</h3><p>年初制定的一些目标，实现了一部分，也有一些没有实现越来越远。总之，本命年过得不太顺，自己得到了一些成长。</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>2016，即便不好，不还是过过来了嘛，2017年会更好，技术有进步，去实现自己的小想法。</p>
+<p>2017年，不挖坑，深挖坑！写好每一段代码，看好每一本书，做好每一道菜。</p>
 
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/25/2016-in-all/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -901,6 +1129,8 @@ func ScanBytes(data []byte, atEOF
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -912,13 +1142,23 @@ func ScanBytes(data []byte, atEOF
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/11/28/ios-learn-note-view-bounds-transform/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -940,13 +1180,21 @@ func ScanBytes(data []byte, atEOF
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-28T22:22:07+08:00" content="2016-11-28">
-              2016-11-28
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-28T22:22:07+08:00">
+                2016-11-28
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -954,20 +1202,26 @@ func ScanBytes(data []byte, atEOF
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/11/28/ios-learn-note-view-bounds-transform/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/28/ios-learn-note-view-bounds-transform/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/28/ios-learn-note-view-bounds-transform/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -981,18 +1235,111 @@ func ScanBytes(data []byte, atEOF
       
         
           
-          
-首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。
-这个笔记谈不上翻译，当然目前很大一部分是借鉴http://wdxtub.com/ 这个blog里的笔记【这个blog文章我常看】，我只是在上面作了一些修改。
-为什么这么说呢？因为我操作的
-          ...
+            <blockquote>
+<p>首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。</p>
+<p>这个笔记谈不上翻译，当然目前很大一部分是借鉴<a href="http://wdxtub.com/" target="_blank" rel="external">http://wdxtub.com/</a> 这个blog里的笔记【这个blog文章我常看】，我只是在上面作了一些修改。</p>
+<p>为什么这么说呢？因为我操作的环境是在swift3+Xcode8+iOS10。</p>
+<p>我只是业余的、业余的、业余的学习iOS开发，如果里面什么错误，欢迎指正！欢迎iOS大牛带我飞。</p>
+</blockquote>
+<h2 id="首先补充一些知识点（关于CGRect、“NS”和UserDefaults的变化）："><a href="#首先补充一些知识点（关于CGRect、“NS”和UserDefaults的变化）：" class="headerlink" title="首先补充一些知识点（关于CGRect、“NS”和UserDefaults的变化）："></a>首先补充一些知识点（关于CGRect、“NS”和UserDefaults的变化）：</h2><blockquote>
+<p>CGRect：<br>Swift 2:<br>let frame = CGRectMake(0, 0, 20, 20)<br>Swift 3:<br>let frame = CGRect(x: 0, y: 0, width: 20, height: 20)</p>
+<p>CGPoint<br>Swift 2:<br>let point = CGPointMake(0, 0)<br>Swift 3:<br>let point = CGPoint(x: 0, y: 0)</p>
+<p>CGSize<br>Swift 2:<br>let size = CGSizeMake(20, 20)<br>Swift 3:<br>let size = CGSize(width: 20, height: 20)</p>
+<p>UIColor<br>Swift 2:<br>let color = UIColor.redColor()<br>Swift 3:<br>let color = UIColor.red</p>
+<p>“NS”<br>Swift 2:<br>NSTimer<br>NSData<br>NSError<br>Swift 3:<br>Timer<br>Data<br>Error</p>
+<p>UserDefaults<br>Swift 2:<br>NSUserDefaults.standardUserDefaults().//something<br>Swift 3:<br>UserDefaults.standard.//something</p>
+</blockquote>
+<h3 id="Bounds-and-Center"><a href="#Bounds-and-Center" class="headerlink" title="Bounds and Center"></a>Bounds and Center</h3><p>假设有一个Superview和一个subview，subview是被嵌入了10个points。如图所示：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/bounds1.png" alt="view-demo"><br>实现上图的代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">113</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</div><div class="line">        v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: v1.bounds.insetBy(dx: <span class="number">10</span>, dy: <span class="number">10</span>))</div><div class="line">        v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</div><div class="line">        mainview?.addSubview(v1)</div><div class="line">        v1.addSubview(v2)</div></pre></td></tr></table></figure></p>
+<p>关于bounds的属性是一个view在自己的坐标系中的矩形尺寸（frame是在superview的坐标系的）。<br>效果图如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/bounds2.png" alt="view-demo"></p>
+<p>我们通常都是如此使用bounds的用法。当你需要往一个view里面放东西的时候，无论是手动绘制们还是放一个subview，通常都要使用view的bounds。</p>
+<p>当你改变一个view的bounds，他的frame也会对应改变，frame的改变是基于其中心点的（中心点不会变）。</p>
+<p>在上面的代码增加两行：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">113</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</div><div class="line">v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: v1.bounds.insetBy(dx: <span class="number">10</span>, dy: <span class="number">10</span>))</div><div class="line">v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</div><div class="line">mainview?.addSubview(v1)</div><div class="line">v1.addSubview(v2)</div><div class="line">v2.bounds.size.height += <span class="number">20</span></div><div class="line">v2.bounds.size.width += <span class="number">20</span></div></pre></td></tr></table></figure></p>
+<p>效果图如下：就是v2基于中心点不变，height和width属性值都增加了20个points，结果就是完全覆盖了紫色的view。<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/bounds3.png" alt="view-demo"></p>
+<p>还可以变着花样来：</p>
+<p>再增加两行代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">v1.bounds.origin.x += <span class="number">10</span></div><div class="line">v1.bounds.origin.y += <span class="number">10</span></div></pre></td></tr></table></figure></p>
+<p>效果图如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/bounds4.png" alt="view-demo"></p>
+<p>不难看出view向原点移动方向的反方向进行了移动，这个因为一个view 的原点是与其frame的左上角一致。</p>
+<p>其实我们可以发现：改变view的bounds size是会影响frame的Size，反之亦然，唯一不变的是view的center，。这个属性，跟frame的属性一样，这表示一个subview的位置是在其Superview的坐标系中的位置。通过下面的代码是可以获取的：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="built_in">c</span> = <span class="type">CGPoint</span>(theView.bounds.midX, theView.bounds.midY)</div></pre></td></tr></table></figure></p>
+<p>改变 view 的 bounds 不会影响其 center，改变一个 view 的 center 不会影响其 bounds。所以其实一个 view 的 bounds 和 center 就可以确定其在 superview 中的位置，frame 可以看作是一个由 bounds 和 center 组成的表达式的简便写法而已。注意有些情况下 frame 会没有什么意义，但是 bounds 和 center 总是有效的，所以建议多用 bounds 和 center 的组合，也比较容易理解。</p>
+<ul>
+<li>bounds: 一个 view 自己的坐标系统</li>
+<li>center: 一个 view 的坐标系统和其 superview 的坐标系统的关系</li>
+</ul>
+<p>以下方法是可以进行不同view之间的坐标转换：</p>
+<ul>
+<li>convert(point: CGPoint, from: UIView?), convert(point: CGPoint, to: UIView?)</li>
+<li>convert(rect: CGRect, from: UIView?), convert(rect: CGRect, to: UIView?)</li>
+</ul>
+<p>如果第二参数为nil，那么就取window的值。比如：如果v2是v1的subview，那么要把v2放到v1的中心，就用：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">v2.center  = v1.convert(v1.center, from: v1.superview)</div></pre></td></tr></table></figure></p>
+<p>注意，通过改变 center 来设置 view 的位置时，如果高或宽不是偶数，那么可能会导致 misaligned。可以通过打开模拟器的 Debug -&gt; Color Misaligned Images 来进行检测。一个简单的方法是调整好位置之后调用 makeIntegralInPlace 来设置 view 的 frame。</p>
+<h3 id="Window-Coordinates-和-Screen-Coordinates"><a href="#Window-Coordinates-和-Screen-Coordinates" class="headerlink" title="Window Coordinates 和 Screen Coordinates"></a>Window Coordinates 和 Screen Coordinates</h3><p>设备屏幕是没有 frame 的，但是有 bounds。Main window 也没有 superview，不过其 frame 被设置为屏幕的 bounds，如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> w = <span class="type">UIWindow</span>(frame: <span class="type">UIScreen</span>.main.bounds)</div></pre></td></tr></table></figure>
+<p>在绝大数的情况下，window 坐标系就是 screen 坐标系。现在的iOS中坐标系和手机是否选择是有关的，有如下两个属性：</p>
+<ul>
+<li><p>UIScreen 的 coordinateSpace 属性</p>
+<blockquote>
+<p>这个坐标空间会旋转，就是高和宽在设备旋转时会呼唤，（0.0， 0.0）是这个app本身的左上方 。</p>
+</blockquote>
+</li>
+<li><p>UIScreen的fixedCoordinateSpace 属性</p>
+<blockquote>
+<p>这个坐标空间不会变化，就是物理上的左上角，从用户来看，这里的 (0.0, 0.0) 可能是 app 本身的任何一个角。</p>
+</blockquote>
+</li>
+</ul>
+<p>可以用下面的方法来对不同坐标空间进行转换：</p>
+<ul>
+<li>convert(point: CGPoint, from: UICoordinateSpace), convert(point: CGPoint, to: UICoordinateSpace),</li>
+<li>convert(rect: CGRect, from: UICoordinateSpace), convert(rect: CGRect, to: UICoordinateSpace)</li>
+</ul>
+<p>假设界面中有一个 UIView v，我们想知道它的实际设备坐标，可以用下面的代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> r = v.superview!.convert(v.frame, to: <span class="type">UIScreen</span>.main.fixedCoordinateSpace)</div></pre></td></tr></table></figure>
+<h3 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h3><p>一个 view 的 transform 属性改变这个 view 是如何被绘制的，实际上就是一个 CGAffineTransform类的 3x3 矩阵。所有的变换都是以这个view的center做基准的，下面的具体实例：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">113</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</div><div class="line">v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</div><div class="line"><span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: v1.bounds.insetBy(dx: <span class="number">10</span>, dy: <span class="number">10</span>))</div><div class="line">v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</div><div class="line">mainview?.addSubview(v1)</div><div class="line">v1.addSubview(v2)</div><div class="line">v1.transform = <span class="type">CGAffineTransform</span>(rotationAngle: <span class="number">45</span> * <span class="type">CGFloat</span>(<span class="type">M_PI</span>)/<span class="number">180.0</span>)</div></pre></td></tr></table></figure></p>
+<p>效果图入下：旋转了45度<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform1.png" alt="view-demo"></p>
+<p>注意，这里的view的center和bounds都没有变，但是frame的数值已经没有意义，因为现在它的尺寸是能够覆盖当前view的最小矩形，并不会随着view的旋转而旋转。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">113</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</div><div class="line">v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</div><div class="line"><span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: v1.bounds.insetBy(dx: <span class="number">10</span>, dy: <span class="number">10</span>))</div><div class="line">v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</div><div class="line">mainview?.addSubview(v1)</div><div class="line">v1.addSubview(v2)</div><div class="line">v1.transform = <span class="type">CGAffineTransform</span>(scaleX: <span class="number">1.8</span>, y: <span class="number">1</span>)</div></pre></td></tr></table></figure>
+<p>效果如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform2.png" alt="view-demo"></p>
+<p>view的bounds仍然不收影响，因为subview仍然绘制在相对于Superview的位置。也就是说这个两个view在水平方向一起拉伸。</p>
+<p>代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">20</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</div><div class="line">v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</div><div class="line"><span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: v1.bounds)</div><div class="line">v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</div><div class="line">mainview?.addSubview(v1)</div><div class="line">v1.addSubview(v2)</div><div class="line">v2.transform = <span class="type">CGAffineTransform</span>(translationX: <span class="number">100</span>, y: <span class="number">0</span>)</div><div class="line">v2.transform = v2.transform.rotated(by: <span class="number">45</span> * <span class="type">CGFloat</span>(<span class="type">M_PI</span>)/<span class="number">180.0</span>)</div></pre></td></tr></table></figure></p>
+<p>效果图如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform3.png" alt="view-demo"></p>
+<p>再变，代码只需要改动如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">v2.transform = <span class="type">CGAffineTransform</span>(rotationAngle: <span class="number">45</span> * <span class="type">CGFloat</span>(<span class="type">M_PI</span>)/<span class="number">180.0</span>)</div><div class="line">v2.transform = v2.transform.translatedBy(x: <span class="number">100</span>, y: <span class="number">0</span>)</div></pre></td></tr></table></figure></p>
+<p>效果图如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform4.png" alt="view-demo"></p>
+<p>还有一种方法能实现上图的效果：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> r = <span class="type">CGAffineTransform</span>(rotationAngle: <span class="number">45</span> * <span class="type">CGFloat</span>(<span class="type">M_PI</span>)/<span class="number">180.0</span>)</div><div class="line"><span class="keyword">let</span> t = <span class="type">CGAffineTransform</span>(translationX: <span class="number">100</span>, y: <span class="number">0</span>)</div><div class="line">v2.transform = t.concatenating(r)</div></pre></td></tr></table></figure></p>
+<p>继续增加下面的代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">v2.transform = r.inverted().concatenating(v2.transform)</div></pre></td></tr></table></figure></p>
+<p>效果图如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform5.png" alt="view-demo"></p>
+<p>再来一个变换：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">113</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</div><div class="line">v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</div><div class="line"><span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: v1.bounds.insetBy(dx: <span class="number">10</span>, dy: <span class="number">10</span>))</div><div class="line">v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</div><div class="line">mainview?.addSubview(v1)</div><div class="line">v1.addSubview(v2)</div><div class="line">v1.transform = <span class="type">CGAffineTransform</span>(a: <span class="number">1</span>, b: <span class="number">0</span>, <span class="built_in">c</span>: -<span class="number">0.2</span>, d: <span class="number">1</span>, tx: <span class="number">0</span>, ty: <span class="number">0</span>)</div></pre></td></tr></table></figure></p>
+<p>效果图如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/transform6.png" alt="view-demo"></p>
+<h3 id="Trait-Collections-and-Size-Classes"><a href="#Trait-Collections-and-Size-Classes" class="headerlink" title="Trait Collections and Size Classes"></a>Trait Collections and Size Classes</h3><p>界面上的每个 view 都有一个 traitCollection 属性，值是一个 UITraitCollection，包含下面四个属性：</p>
+<ul>
+<li>displayScale，由当前屏幕决定的缩放尺寸，1(single resolution) 2(double resolution) 3(iPhone 6/6s/7 Plus)</li>
+<li>userInterfaceIdiom，一个 UserIterfaceIdiom 值，可能是 .Phone 或 .Pad，来标志不同的设备，默认来说和 UIDevice 的 userInterfaceIdiom 属性一致.</li>
+<li>horizontalSizeClass, verticalSizeClass，是 UIUserInterfaceSizeClass 值，可能是 .Regular 或 .Compact<blockquote>
+<p>水平和竖直都是 .Regular -&gt; iPad</p>
+<p>水平是 .Compact 竖直是 .Regular -&gt; iPhone 在垂直方向，或者 iPad 的分屏应用</p>
+<p>水平和竖直都是 .Compact -&gt; iPhone 在水平方向(iPhone 6/6s/7 plus除外)</p>
+<p>水平是 .Regular 竖直是 .Compact -&gt; iPhone 6/6s/7 Plus 在水平方向</p>
+</blockquote>
+</li>
+</ul>
+<p>当应用运行时如果 trait collection 发生改变，会调用 traitCollectionDidChange 方法。</p>
+<h3 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h3><p>假设superview的bounds变化，其subview的bounds和center是不会变的，实际应用中，我们可能更需要subview根据Superview的变化而变化，这就是Layout。</p>
+<p>Layout的主要执行方式：</p>
+<ul>
+<li><p>Manual layout（手动layout）<br>superview在被更改尺寸会发送layoutSubview消息，如果你新建自己的子类，并且重写layoutSuperview就可以手动更改，这个很麻烦，但是可以做任何你想做的事。</p>
+</li>
+<li><p>Autoresizing<br>Autoresizing是iOS6之前的方式，主要通过自己的autoresizingMask属性来变化。</p>
+</li>
+<li><p>Authlayout<br>iOS6中引入的，取决于view的constraints（NSLayoutConstraint的实例）。Autolayout是在layoutSubview的幕后实现，不需要代码也能实现复杂的layoutSubview功能。</p>
+</li>
+</ul>
+<p>通常不会用到手动 layout，autoresizing 基本也是自动的，autolayout 主要在 xCode 的编辑器中进行设定。在代码中创建的 view 默认使用 autoresizing 而不是 autolayout。</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/28/ios-learn-note-view-bounds-transform/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1010,6 +1357,8 @@ func ScanBytes(data []byte, atEOF
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -1021,13 +1370,23 @@ func ScanBytes(data []byte, atEOF
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/11/27/ios-learn-note-view-experment/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -1049,13 +1408,21 @@ func ScanBytes(data []byte, atEOF
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-27T21:11:30+08:00" content="2016-11-27">
-              2016-11-27
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-27T21:11:30+08:00">
+                2016-11-27
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -1063,20 +1430,26 @@ func ScanBytes(data []byte, atEOF
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/11/27/ios-learn-note-view-experment/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/27/ios-learn-note-view-experment/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/27/ios-learn-note-view-experment/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -1090,16 +1463,65 @@ func ScanBytes(data []byte, atEOF
       
         
           
-          
-首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前两个版本来说好很多，改动相当的大，所以说swift
-          ...
+            <blockquote>
+<p>首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前两个版本来说好很多，改动相当的大，所以说swift的每一个版本都可以算一个新语言。我最近把swift3的文档过了一遍（之前只看过swift1的，swift2没怎么看过）现在又拿出这个本书出来学习。</p>
+<p>这个笔记谈不上翻译，当然目前很大一部分是借鉴<a href="http://wdxtub.com/" target="_blank" rel="external">http://wdxtub.com/</a> 这个blog里的笔记【这个blog文章我常看】，我只是在上面作了一些修改。</p>
+<p>为什么这么说呢？因为我操作的环境是在swift3+Xcode8+iOS10。</p>
+<p>我只是业余的、业余的、业余的学习iOS开发，如果里面什么错误，欢迎指正！欢迎iOS大牛带我飞。</p>
+</blockquote>
+<h3 id="View的实验"><a href="#View的实验" class="headerlink" title="View的实验"></a>View的实验</h3><p>这里做几个简单的介绍和实验操作：</p>
+<h4 id="single-View-Application-："><a href="#single-View-Application-：" class="headerlink" title="single View Application ："></a>single View Application ：</h4><p>一个single view application项目创建后，你将会看到一个包含一个页面的main storyboard 以及一个包含一个main view的view controller的实例。app运行起来，view controller将会成为app的main window的rootViewController，它的main view将会变成window的root view。</p>
+<p>在ViewController.swift文件中修改viewDidLoaded()：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">super</span>.viewDidLoad()</div><div class="line">    <span class="keyword">let</span> mainview = <span class="keyword">self</span>.view</div><div class="line">    <span class="keyword">let</span> v = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">100</span>, y: <span class="number">200</span>, width: <span class="number">50</span>, height: <span class="number">50</span>))</div><div class="line">    v.backgroundColor = <span class="type">UIColor</span>.blue   <span class="comment">// small blue square</span></div><div class="line">    mainview?.addSubview(v)    <span class="comment">// add it to main view</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="App-without-a-main-storyboard（-这个例子我就省略了）"><a href="#App-without-a-main-storyboard（-这个例子我就省略了）" class="headerlink" title="App without a main storyboard（ 这个例子我就省略了）"></a>App without a main storyboard（ 这个例子我就省略了）</h4><h3 id="Subview-和-Superview"><a href="#Subview-和-Superview" class="headerlink" title="Subview 和 Superview"></a>Subview 和 Superview</h3><p>在iOS中，一个的subview的一部分或者全部，可以出现在superview之外。一个view可以与另外一个view重叠，也可以在一个view前面绘制部分或全部。<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/view-demo.png" alt="view-demo"></p>
+<p>上图三个view都有一个背景颜色，每一个view都相当于是一个带有颜色的矩形。光看上面的图是没法区别这个三个view之间的关系，其实，中间的view（水平方向）是左边view的sibling view。右边的view是中view的一个subview。</p>
+<p> view hierarchy的一些特点：</p>
+<ul>
+<li>一个view被移出，或者引入他的superview，它的subview也会被引入。</li>
+<li>一个view的透明度会被其subview继承。</li>
+<li>一个view可以限制subview的显示范围。比如不让subview超出view本身的范围，这个叫做clipping，被设置在view的clipsToBounds属性中。</li>
+<li>一个superview拥有它的subview。</li>
+<li>如果改变一个view的大小，那么它的subview也会被自动设置尺寸。</li>
+</ul>
+<p>一个UIView有一个superview的属性（一个UIView）和一个subviews属性（一个UIView对象的数组，back-to-front的顺序），在代码中可以判断view hierarchy。有一个方法isDescendantOfView：用来检查一个view是否是另一个view的subview。View还有一个tag属性，有一个方法viewWithTag进行引用。</p>
+<blockquote>
+<p>注意：这里的这两个func 在swift3中跟swift2有点不一样：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">isDescendantOfView</span><span class="params">(view: UIView)</span></span> -&gt; <span class="type">Bool</span>  </div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">viewWithTag</span><span class="params">(tag: Int)</span></span> -&gt; <span class="type">UIView</span>?</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>在代码中操作view hierarchy是非常简单的！</p>
+<blockquote>
+<p>addSubview方法添加一个subview。比如：view.addSubview(button)。<br>removeFromSuperview方法移除一个subview。比如：xxxView.removeFromSuperview();</p>
+</blockquote>
+<p>注意从superview中移除subview同时也会释放它。如果以后需要重用的话，最好先确定能够把它保存在内存中，通常的方法是把这个view保存在一个属性中。</p>
+<p>在进行这些操作时系统也会给出通知，重写下列方法就可以根据需要在不同的情况下进行不同的操作：</p>
+<ul>
+<li>didAddSubview, willRemoveSubview</li>
+<li>didMoveToSuperview, willMoveToSuperview</li>
+<li>didMoveToWindow, willMoveToWindow</li>
+</ul>
+<p>当调用了addSubview，这个view也会被放到其superview的subview数组中的最后一个，也就是说这个view会被最后一个渲染出来。如果view的subviews是被索引的，从0开始（rearmost），这样就可以把view插入到指定位置，已经放到前面/后面，或两个view进行交互。</p>
+<ul>
+<li>swift3：// Insert subview at specific position<br>insertSubview(_:at:)<br>比如:<br>let f1 = someView.insertSubview(view: at:)</li>
+<li>swift3：// Insert subview above/below a specific subview<br>insertSubview(<em>:aboveSubview:)<br>insertSubview(</em>:belowSubview:)<br>比如：<br>let f2 = someView.insertSubview(view: aboveSubview:)<br>let f3 = someView.insertSubview(view: belowSubview:)</li>
+<li>swift3: // Exchange two subview’s position<br>exchangeSubview(at:withSubviewAt:)</li>
+<li>swift3：// Bring the subview to the front or back of its sibling<br>bringSubview(toFront:)<br>sendSubview(toBack:)</li>
+</ul>
+<p>看到这里，你可能会感觉有点奇怪，没有一个方法可以直接移除一个superview的所有subview。然后，因为一个superview的subivew数组是一个不可变的数组，遍历subiviews数组，然后依次执行removeFromSuperview()就大差不差了！比如：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rootView.subviews.forEach &#123; $<span class="number">0</span>.removeFromSuperview() &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Visibility-and-Opacity-可见度和不透明"><a href="#Visibility-and-Opacity-可见度和不透明" class="headerlink" title="Visibility and Opacity(可见度和不透明)"></a>Visibility and Opacity(可见度和不透明)</h3><p>一个view的可见度是可以通过hidden属性来设置的。隐藏一个view（包括subview）只是从界面上隐藏，而不需要从view hierarchy结构中删除。一个隐藏的view不能接受触摸的事件。（用户看不到而已，其实是存在的）</p>
+<p>backgroundColor属性可以设置view的背景颜色，颜色是属于UIColor类，颜色背景为nil的view，默认是具有透明背景的。</p>
+<p>可以通过设置 view 的 alpha 属性来修改透明程度，1.0 是完全不透明，0.0 是透明。假设一个 view 的 alpha 是 0.5，那么它的 subview 的 alpha 都是以 0.5 为基准的，不可能高于 0.5。而 UIColor 也有 alpha 这个属性，所以即使一个 view 的 alpha 是 1.0，它仍旧可能是透明的，因为其 backgroundColor 可以是透明的。一个 alpha 为 0.0 的 view 是完全透明的所以是不可见的，通常来说也不可能被点击。</p>
+<p>View 的 alpha 属性不仅影响背景颜色，也会影响其内容的透明度。</p>
+<p>view的opaque属性的修改不会影响view的样子，更多的是对于系统绘制的提示。如果一个view的opaque设置true，因为不用考虑透明的绘制，所以效率高一点。并且再设置透明的背景颜色或者 alpha 属性都无效。可能会让人吃惊，它的默认值是 true。</p>
+<h3 id="Frame"><a href="#Frame" class="headerlink" title="Frame"></a>Frame</h3><p>view的frame属性（CGRect类）是他本身的长方形在superview中位置，注意是在superview的坐标系中国的位置。默认来说，superview的坐标系圆点在坐上，向右x增加，向下y增加。</p>
+<p>给view的frame设置不同的CGRect属性值，能够改变view的view的位置或者改变尺寸大小（同时改变也可以）。</p>
+<p>现在我们画上图大差不差的图：我们在AppDelegate.swift中func application()增加下面几行代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//here we can add subviews</span></div><div class="line"><span class="keyword">let</span> mainview = <span class="keyword">self</span>.window!.rootViewController!.view</div><div class="line"></div><div class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">113</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</div><div class="line">v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">41</span>, y: <span class="number">56</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</div><div class="line">v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> v3 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">43</span>, y: <span class="number">197</span>, width: <span class="number">160</span>, height: <span class="number">230</span>))</div><div class="line">v3.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</div><div class="line"></div><div class="line">mainview?.addSubview(v1)</div><div class="line">v1.addSubview(v2)</div><div class="line">mainview?.addSubview(v3)</div></pre></td></tr></table></figure></p>
+<p>效果图如下：（v2是添加在v1上）</p>
+<p><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/view-ios10-1.png" alt="view-ios"></p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/27/ios-learn-note-view-experment/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1117,6 +1539,8 @@ func ScanBytes(data []byte, atEOF
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -1128,13 +1552,23 @@ func ScanBytes(data []byte, atEOF
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/11/26/ios-learn-note-view/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -1156,13 +1590,21 @@ func ScanBytes(data []byte, atEOF
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-26T22:08:34+08:00" content="2016-11-26">
-              2016-11-26
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-26T22:08:34+08:00">
+                2016-11-26
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -1170,20 +1612,26 @@ func ScanBytes(data []byte, atEOF
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/11/26/ios-learn-note-view/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/26/ios-learn-note-view/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/26/ios-learn-note-view/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -1197,16 +1645,69 @@ func ScanBytes(data []byte, atEOF
       
         
           
-          
-  首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前两个版本来说好很多，改动相当的大，所以说swi
-          ...
+            <blockquote>
+<p>  首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前两个版本来说好很多，改动相当的大，所以说swift的每一个版本都可以算一个新语言。我最近把swift3的文档过了一遍（之前只看过swift1的，swift2没怎么看过）现在又拿出这个本书出来学习。</p>
+<p>  这个笔记谈不上翻译，当然目前很大一部分是借鉴<a href="http://wdxtub.com/" target="_blank" rel="external">http://wdxtub.com/</a> 这个blog里的笔记【这个blog文章我常看】，我只是在上面作了一些修改。</p>
+<p>为什么这么说呢？因为我操作的环境是在swift3+Xcode8+iOS10。</p>
+<p>我只是业余的、业余的、业余的学习iOS开发，如果里面什么错误，欢迎指正！欢迎iOS大牛带我飞。</p>
+</blockquote>
+<h1 id="第一章Views"><a href="#第一章Views" class="headerlink" title="第一章Views"></a>第一章Views</h1><h3 id="几个概念："><a href="#几个概念：" class="headerlink" title="几个概念："></a>几个概念：</h3><ul>
+<li>一个view是UIView类或UIView的子类的对象，知道怎么在界面的矩形区域绘制自己。</li>
+<li>一个view也是一个responder(UIView是UIResponder的子类)。是与用户交互的（触摸、点击）。</li>
+<li>一个view可以有子view（subview），一个subview只能有一个superview。这就形成了一个view的树状结构。如果从界面上去除（隐藏/移动）一个view，它的subview也将去除（隐藏/移动）。</li>
+<li>一个view可以从nib生成，也可以通过代码生成。</li>
+</ul>
+<h2 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h2><p>view hierarchy的顶层是app的window，是UIWindow的一个实例，或者UIView子类的实例。在应用中应该只有一个main window。在启动的时候创建，不会被销毁或者代替。想象一个平时我们使用的app，这是一个什么东西？就是一个应用的背景，并且是superview，其他的view都是他的subview。</p>
+<p>app的window需要填充设备的屏幕：window初始化时候，frame设置成UIScreen.main.bounds。如果使用main storyboard, UIApplicationMain 函数会自动完成。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> w = <span class="type">UIWindow</span>(frame: <span class="type">UIScreen</span>.main.bounds)</div><div class="line"><span class="comment">//在iOS10 中可以不传入frame参数，默认设置成screen的bounds</span></div><div class="line"><span class="keyword">let</span> w = <span class="type">UIWindow</span>()</div></pre></td></tr></table></figure>
+<p>为了保证window在app的生命周期中存在，app delegate类会用一个strong retain policy来维持一个window属性。这个过程是：启动app，UIApplicationMain方法会初始化app delegate类并一直保持这个实例。然后window实例就会被赋值到app delegate实例的window属性上，所以app的整个生命周期都一直保持。如果使用main storyboard，这些都是自动初始化的。</p>
+<p>当一个view控制器成为main window的rootViewController， 它的view将会变为main window的有且仅有的一个直接subview，也就是main window上的root view，之后所有的view都是这个root view上的subview。因此，root view是view hierarchy的最顶层的对象，用户是可以看到的。但有时候，用户可能会看到root view之后的window，基于这个原因，可以在给main view 设置好backgroundColor。</p>
+<p>app的界面应该是不可见的，知道你window被设置为key window。这个可以通过调用UIWindow实例的makeKeyVisible方法来完成。</p>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ul>
+<li>使用main storyboard</li>
+</ul>
+<blockquote>
+<ol>
+<li>storyboard文件在Info.plist的键为 Main storyboard file base name中指定（UIMainStoryboardFile）</li>
+<li>UIApplicationMain实例化UIWindow，设置好frame。把设置好的UIWindow实例指定给app delegate的window属性</li>
+<li>storyboard初始化的view controller，指定到 window 的 rootViewController 属性</li>
+<li>这些都是发生在app delegate的 application: didFinishLaunchingWithOptions 被调用之前</li>
+</ol>
+</blockquote>
+<ul>
+<li>不使用main storyboard</li>
+</ul>
+<blockquote>
+<ol>
+<li>在General pane,选择”Main”，并删除</li>
+<li>删除Main.storyboard和ViewController.swift</li>
+<li>删除AppDelegate.swift的所有内容</li>
+</ol>
+</blockquote>
+<p>例子：An App Delegate class with no storyboard</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"><span class="meta">@UIApplicationMain</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppDelegate</span> : <span class="title">UIResponder</span>, <span class="title">UIApplicationDelegate</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> window : <span class="type">UIWindow</span>?</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(application: UIApplication,</span></span></div><div class="line">        didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)</div><div class="line">        -&gt; <span class="type">Bool</span> &#123;</div><div class="line">            <span class="keyword">self</span>.window = <span class="type">UIWindow</span>()</div><div class="line">            <span class="keyword">self</span>.window!.rootViewController = <span class="type">UIViewController</span>()</div><div class="line">            <span class="keyword">self</span>.window!.backgroundColor = <span class="type">UIColor</span>.whiteColor()</div><div class="line">            <span class="keyword">self</span>.window!.makeKeyAndVisible()</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>app一旦运行起来之后，将会有多中方式来引用window：</p>
+<ul>
+<li>界面中的UIView，会自动创建一个window属性（通过对window的引用创建）。</li>
+</ul>
+<p>可以使用UIView的window属性来检查这个view是否被嵌入到了window中。如果不是，window属性为nil。一个window的属性为nil的UIView对用户是不可见的。</p>
+<ul>
+<li>app的delegate实例会保持这个window的引用（window属性）。通过使用shared application的delegate 属性来获取这个引用：<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> w = <span class="type">UIApplication</span>.shared.delegate!.window!!</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果不那样使用的话，可以显式转换成app delegate类<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> w = (<span class="type">UIApplication</span>.shared.delegate <span class="keyword">as</span>! <span class="type">AppDelegate</span>).window!</div></pre></td></tr></table></figure></p>
+<ul>
+<li>shared application 会通过它的keyWindow属性来维护一个执行window的引用。<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> w = <span class="type">UIApplication</span>.shared.keyWindow!</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>但是，这个引用不是很稳定。原因：系统会创建临时的window来当做key window。</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/26/ios-learn-note-view/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1224,6 +1725,8 @@ func ScanBytes(data []byte, atEOF
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -1235,13 +1738,23 @@ func ScanBytes(data []byte, atEOF
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.dyike.com/2016/11/02/long-time-no-writing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ityike">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一刻笔记">
+    </span>
 
     
       <header class="post-header">
@@ -1263,13 +1776,21 @@ func ScanBytes(data []byte, atEOF
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-02T21:56:11+08:00" content="2016-11-02">
-              2016-11-02
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-02T21:56:11+08:00">
+                2016-11-02
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -1277,20 +1798,26 @@ func ScanBytes(data []byte, atEOF
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/11/02/long-time-no-writing/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/02/long-time-no-writing/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/02/long-time-no-writing/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -1304,15 +1831,13 @@ func ScanBytes(data []byte, atEOF
       
         
           
-          上一次写东西还是九月份呢，整个十月份没有写东西，今天晚上突然就想写点东西，十一月份了，来杭州三个月了，工作也基本走上了正轨，也转正了。不过最近也不是很忙，说实话，前段时间确实很闲，偏偏闲的时候没有写点东西，现在回过头来想想，我是不是把那段时间给浪费了。
-前段时间，首先接触了一点前端的东西，自己比较喜
-          ...
+            <p>上一次写东西还是九月份呢，整个十月份没有写东西，今天晚上突然就想写点东西，十一月份了，来杭州三个月了，工作也基本走上了正轨，也转正了。不过最近也不是很忙，说实话，前段时间确实很闲，偏偏闲的时候没有写点东西，现在回过头来想想，我是不是把那段时间给浪费了。</p>
+<p>前段时间，首先接触了一点前端的东西，自己比较喜欢Vue框架，就用Vue2.0写了一两个demo，过了一遍文档。坦率地讲，对于前端的东西，自己还存在很多弱点，要是有兴趣，也许当年就可能是选前端了。哈哈哈哈，这都是开玩笑，其实前端还是很好玩的，现在的前端的门槛还是挺高的。慢慢来吧，有时间就去写点demo啥的，学！</p>
+<p>后来听朋友讲，rust，看了一下文档，有点被这个当出来的语言给迷住了一会儿，基本都是那种学习的套路，看文档，撸实例代码，好玩，也有些让我头疼的东西比如，泛型，可变性，所有权这些知识点上，还是很含糊的，估计还是要过几遍文档。rust也有很多不错的地方，比如traits。</p>
+<p>其他生活方面呢，没有啥特殊变化，目前，周末自己做做饭。真是那句话“吃饭五分钟，做饭两小时”😂，确实有点麻烦，但可以自己想吃啥就吃啥，还能省钱。到目前为止，还没有出现自己做得饭不能吃的情况。生活作息时间也按照日程来了，每天晚上11点开始睡觉，然后早上6点起床！坚持了两个多周了，现在杭州开始越来越冷，早上起床确实需要勇气了。坚持吧！</p>
+<p>对了，现在写这个的时候，我旁边的手机还在放董路老师的直播，他老司机每天发车，我不保证每天上车，有时间就看看，至少还能听到不少意思的关于足球的东西。他直播播放的歌曲也挺好听的，能放松一下一天的疲惫！</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/02/long-time-no-writing/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
@@ -1325,7 +1850,13 @@ func ScanBytes(data []byte, atEOF
       
     </div>
 
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -1373,25 +1904,32 @@ func ScanBytes(data []byte, atEOF
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/touxiang.jpg"
+               src="/images/avatar.gif"
                alt="ityike" />
           <p class="site-author-name" itemprop="name">ityike</p>
-          <p class="site-description motion-element" itemprop="description">php、swift、程序员、arduino、设计</p>
+           
+              <p class="site-description motion-element" itemprop="description">php、swift、程序员、arduino、设计</p>
+          
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">48</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
           
 
           
+
+          
+            
+            
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">31</span>
@@ -1417,6 +1955,8 @@ func ScanBytes(data []byte, atEOF
               <span class="links-of-author-item">
                 <a href="https://github.com/dyike" target="_blank" title="github">
                   
+                    <i class="fa fa-fw fa-globe"></i>
+                  
                   github
                 </a>
               </span>
@@ -1424,12 +1964,16 @@ func ScanBytes(data []byte, atEOF
               <span class="links-of-author-item">
                 <a href="http://weibo.com/734529030" target="_blank" title="weibo">
                   
+                    <i class="fa fa-fw fa-globe"></i>
+                  
                   weibo
                 </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="http://www.zhihu.com/people/feng92" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
                   
                   zhihu
                 </a>
@@ -1443,30 +1987,13 @@ func ScanBytes(data []byte, atEOF
 
         
         
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.iamle.com/" title="流水理鱼wwek" target="_blank">流水理鱼wwek</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.chenjie.info/" title="陈捷的博客" target="_blank">陈捷的博客</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://qii404.me/" title="qii404" target="_blank">qii404</a>
-                </li>
-              
-            </ul>
-          </div>
+
         
 
+
       </section>
+
+      
 
       
 
@@ -1482,7 +2009,7 @@ func ScanBytes(data []byte, atEOF
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2013 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -1490,16 +2017,18 @@ func ScanBytes(data []byte, atEOF
   <span class="author" itemprop="copyrightHolder">ityike</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
+
 
         
 
@@ -1507,9 +2036,13 @@ func ScanBytes(data []byte, atEOF
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
   
@@ -1532,35 +2065,40 @@ func ScanBytes(data []byte, atEOF
 
 
 
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
   
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
   
 
   
@@ -1568,7 +2106,7 @@ func ScanBytes(data []byte, atEOF
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -1593,6 +2131,26 @@ func ScanBytes(data []byte, atEOF
 
   
     
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -1600,144 +2158,14 @@ func ScanBytes(data []byte, atEOF
 
 
   
-  
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';                
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
 
   
 
   
 
   
-<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
-</script>
 
+  
 
 </body>
 </html>
