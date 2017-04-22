@@ -4,6 +4,57 @@
   
     
     <entry>
+      <title><![CDATA[laravel-request-life-cycle]]></title>
+      <url>http://www.dyike.com/2017/04/22/laravel-request-life-cycle/</url>
+      <content type="html"><![CDATA[<p>要想了解Laravel的整个运行流程，那么就需要从入口文件下手，再一步步的往下探索，剥开神秘的面纱。在Laravel框架中入口文件就是public文件夹下的index.php文件。Laravel的生命周期也就是从这里开始的，从这里结束。如此优雅的代码却清晰的展示请求到相应的整个生命周期。不妨先看看index.php的源码吧：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">// 第一块</span></div><div class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">'/../bootstrap/autoload.php'</span>;</div><div class="line"><span class="comment">// 第二块</span></div><div class="line">$app = <span class="keyword">require_once</span> <span class="keyword">__DIR__</span>.<span class="string">'/../bootstrap/app.php'</span>;</div><div class="line">$kernel = $app-&gt;make(Illuminate\Contracts\Http\Kernel::class);</div><div class="line"><span class="comment">// 第三块</span></div><div class="line">$response = $kernel-&gt;handle(</div><div class="line">    $request = Illuminate\Http\Request::capture()</div><div class="line">);</div><div class="line">$response-&gt;send();</div><div class="line"><span class="comment">// 第四块</span></div><div class="line">$kernel-&gt;terminate($request, $response);</div></pre></td></tr></table></figure>
+<p>为了分析上面的代码，将代码分为四块：</p>
+<ul>
+<li><p>第一块</p>
+<blockquote>
+<p>主要用来实现类的自动加载，注册加载composer自动生成的class loader。</p>
+</blockquote>
+</li>
+<li><p>第二块</p>
+<blockquote>
+<p>主要来实例化服务容器，Laravel的一些基本服务的注册，核心组件注册等等，当然了也包括容器本身的注册。在注册的过程中服务容器会在对应的属性中记录注册的内容，方便于在程序运行期间提供对应的服务。这部分内容可以称为程序启动准备阶段。</p>
+</blockquote>
+</li>
+<li><p>第三块</p>
+<blockquote>
+<p>处理请求，用户发送的请求入口文件是index.php，从生成<code>Illuminate\Http\Request</code>实例，交给handle()进行处理。将该$request实例绑定到第二步生成的$app容器上。并发送相应</p>
+</blockquote>
+</li>
+<li><p>第四块</p>
+<blockquote>
+<p>请求的后期清理处理工作，请求结束并进行回调。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="服务容器的实例化（详谈第二块代码）"><a href="#服务容器的实例化（详谈第二块代码）" class="headerlink" title="服务容器的实例化（详谈第二块代码）"></a>服务容器的实例化（详谈第二块代码）</h3><p>先看看<code>bootstrap\app.php</code>源码：里面有注释</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">// 服务容器实例化的过程</span></div><div class="line">$app = <span class="keyword">new</span> Illuminate\Foundation\Application(</div><div class="line">    realpath(<span class="keyword">__DIR__</span>.<span class="string">'/../'</span>)</div><div class="line">);</div><div class="line"><span class="comment">// 向容器绑定了三个核心类服务</span></div><div class="line">$app-&gt;singleton(</div><div class="line">    Illuminate\Contracts\Http\Kernel::class,</div><div class="line">    App\Http\Kernel::class</div><div class="line">);</div><div class="line">$app-&gt;singleton(</div><div class="line">    Illuminate\Contracts\Console\Kernel::class,</div><div class="line">    App\Console\Kernel::class</div><div class="line">);</div><div class="line">$app-&gt;singleton(</div><div class="line">    Illuminate\Contracts\Debug\ExceptionHandler::class,</div><div class="line">    App\Exceptions\Handler::class</div><div class="line">);</div><div class="line"><span class="comment">// 返回服务容器实例</span></div><div class="line"><span class="keyword">return</span> $app;</div></pre></td></tr></table></figure>
+<p>关于<code>Illuminate\Foundation\Application.php</code>文件查看源码</p>
+<h4 id="应用的基础路径setBasePath"><a href="#应用的基础路径setBasePath" class="headerlink" title="应用的基础路径setBasePath()"></a>应用的基础路径<code>setBasePath()</code></h4><p>设置注册应用的基础路径，并在容器中绑定这些基础基础路径。</p>
+<h4 id="注册基础绑定registerBaseBindings"><a href="#注册基础绑定registerBaseBindings" class="headerlink" title="注册基础绑定registerBaseBindings()"></a>注册基础绑定<code>registerBaseBindings()</code></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 向容器注册基础绑定</span></div><div class="line"> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">registerBaseBindings</span><span class="params">()</span></span></div><div class="line"> &#123;</div><div class="line">     <span class="keyword">static</span>::setInstance(<span class="keyword">$this</span>);</div><div class="line">     <span class="comment">// 向服务共享实例数组中注册量单例服务，</span></div><div class="line">     <span class="comment">// 服务名称分别为`app`和`Illuminate\Container\Container`</span></div><div class="line">     <span class="comment">// 对应的实例对象即为服务容器本身</span></div><div class="line">     <span class="keyword">$this</span>-&gt;instance(<span class="string">'app'</span>, <span class="keyword">$this</span>);</div><div class="line">     <span class="keyword">$this</span>-&gt;instance(Container::class, <span class="keyword">$this</span>);</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>主要绑定容器实例本身，服务容器中设置了一个静态变量<code>$instance</code>，该变量是在<code>Illuminate\Container\Container.php</code>中定义,<code>Application</code>类继承了<code>Container</code>类，在<code>Container</code>类中可以通过<code>public static function getInstance()</code>获取服务容器实例。服务容器实例还绑定不同的服务容器别名，记录在<code>$instances</code>共享实例数组（在<code>Container</code>类中）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在容器中注册一个已经存在的实例作为共享实例</span></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">instance</span><span class="params">($abstract, $instance)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">$this</span>-&gt;removeAbstractAlias($abstract);</div><div class="line"></div><div class="line">    <span class="keyword">unset</span>(<span class="keyword">$this</span>-&gt;aliases[$abstract]);</div><div class="line">    <span class="comment">// 检查该类有没有本绑定</span></div><div class="line">    <span class="comment">// 如果已经绑定，将触发向容器注册的反弹回调</span></div><div class="line">    <span class="keyword">$this</span>-&gt;instances[$abstract] = $instance;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;bound($abstract)) &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;rebound($abstract);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="注册基础服务提供者registerBaseServiceProviders"><a href="#注册基础服务提供者registerBaseServiceProviders" class="headerlink" title="注册基础服务提供者registerBaseServiceProviders()"></a>注册基础服务提供者<code>registerBaseServiceProviders()</code></h4><p>服务提供者的注册是非常重要的，因为它给服务容器添加各种服务。这里只是注册了最基本的三个服务：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">registerBaseServiceProviders</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">$this</span>-&gt;register(<span class="keyword">new</span> EventServiceProvider(<span class="keyword">$this</span>));</div><div class="line">    <span class="keyword">$this</span>-&gt;register(<span class="keyword">new</span> LogServiceProvider(<span class="keyword">$this</span>));</div><div class="line">    <span class="keyword">$this</span>-&gt;register(<span class="keyword">new</span> RoutingServiceProvider(<span class="keyword">$this</span>));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在容器里注册一个服务提供者的方法：<br><code>public function register($provider, $options = [], $force = false)</code></p>
+<p>源码阅读分析：</p>
+<ul>
+<li>首先<code>getProvider($provider)</code>进行判断，如果服务提供者存在则获取这个实例对象。</li>
+<li>第二，如果给定$provider是一个string，则通过类名<code>resolveProvider($provider)</code>进行实例对象。</li>
+<li>然后，对实例化完成的$provider进行标记为已经注册，<code>markAsRegistered($provider)</code>。</li>
+<li>最后，启动规定的服务提供者<code>bootProvider($provider)</code>。</li>
+</ul>
+<h4 id="注册核心类别名registerCoreContainerAliases"><a href="#注册核心类别名registerCoreContainerAliases" class="headerlink" title="注册核心类别名registerCoreContainerAliases()"></a>注册核心类别名<code>registerCoreContainerAliases()</code></h4><p><code>$aliases</code>数组变量中定义了整个框架的核心服务别名，在解析的过程中需要根据实例化的类或者接口名查找服务别名，然后通过服务别名获取具体的服务。</p>
+<h3 id="核心类实例化-Kernel类"><a href="#核心类实例化-Kernel类" class="headerlink" title="核心类实例化(Kernel类)"></a>核心类实例化(Kernel类)</h3><p>为什么要服务容器？服务容器实例化后，就可以通过服务容器自动实例化对象了，可以参考上一篇的<a href="https://www.dyike.com/2017/04/11/inversion-of-control/">服务容器</a>。<br><code>index.php</code>中Kernel类就是通过服务容器自动创建完成的。</p>
+<p>在<code>bootstrap\app.php</code>文件中就注册了三个服务，其中包括了这个核心类接口，在注册服务时，服务名一般是接口。注册的服务是具体的类名，这一般是通过反射基础来实例化的，并通过反射机制解决构造函数的依赖关系，参考上篇的服务容器有讲解。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Laravel源码阅读笔记——服务容器]]></title>
       <url>http://www.dyike.com/2017/04/11/inversion-of-control/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
