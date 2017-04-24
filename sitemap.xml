@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.dyike.com/2017/04/11/inversion-of-control/</loc>
+    
+    <lastmod>2017-04-24T00:30:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.dyike.com/2017/04/22/laravel-request-life-cycle/</loc>
     
     <lastmod>2017-04-23T14:58:30.000Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://www.dyike.com/learn/index.html</loc>
     
     <lastmod>2017-04-13T00:32:48.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.dyike.com/2017/04/11/inversion-of-control/</loc>
-    
-    <lastmod>2017-04-11T14:38:45.000Z</lastmod>
     
   </url>
   

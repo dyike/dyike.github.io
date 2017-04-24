@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://www.dyike.com/2017/04/11/inversion-of-control/</loc>
+    <lastmod>2017-04-24T00:30:38.000Z</lastmod>
+    <data>
+        <display>
+        <title>Laravel源码阅读笔记——服务容器</title>
+        <pubTime>2017-04-11T14:35:43.000Z</pubTime>
+        
+        <tag>Laravel</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dyike.com/2017/04/22/laravel-request-life-cycle/</loc>
     <lastmod>2017-04-23T14:58:30.000Z</lastmod>
     <data>
@@ -21,23 +38,6 @@
 
     
     
-    
-  <url>
-    <loc>http://www.dyike.com/2017/04/11/inversion-of-control/</loc>
-    <lastmod>2017-04-11T14:38:45.000Z</lastmod>
-    <data>
-        <display>
-        <title>Laravel源码阅读笔记——服务容器</title>
-        <pubTime>2017-04-11T14:35:43.000Z</pubTime>
-        
-        <tag>Laravel, PHP</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://www.dyike.com/2017/03/29/design-pattern-decorator/</loc>
