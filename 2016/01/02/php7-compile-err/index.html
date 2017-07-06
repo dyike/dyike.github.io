@@ -2,7 +2,7 @@
 <p>开始时的解决方法是先将很多的进程关闭，比如httpd、ftpd、sendmail等等，释放出了一部分内存后，再进行编译，仍然得到同样的编译错误。后来百度谷歌了很久才找到解决问题的方法，而且是在php.net上找到的解决方法，原文链接是：https:  //bugs.php.net/bug.php?id=48809</p>
 <p>根据这个文章的方法将php安装配置文件中加了引号中的配置（不包括引号）“- -disable-fileinfo”后终于编译通过。</p>
 </div></article></div></main><footer><div class="paginator"><a href="/2016/03/08/solve-ssh-broken-connection/" class="prev">上一篇</a><a href="/2015/12/30/think-about-2015/" class="next">下一篇</a></div><script type="text/javascript">(function(){
-    var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&brandline=y&appkey=2308493083&dpc=1";
+    var url = "//widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&brandline=y&appkey=2308493083&dpc=1";
     url = url.replace("url=auto", "url=" + encodeURIComponent(document.URL));
     document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
 })();</script><script src="//tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script><script type="text/javascript">window.WBComment.init({
