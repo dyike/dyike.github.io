@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2017-09-11T14:48:12.000Z</updated>
+  <updated>2017-09-12T15:12:14.000Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式之“工厂方法模式”——计算器实例</title>
+    <link href="http://www.dyike.com/2017/09/12/design-pattern-factory-method/"/>
+    <id>http://www.dyike.com/2017/09/12/design-pattern-factory-method/</id>
+    <published>2017-09-12T14:44:06.000Z</published>
+    <updated>2017-09-12T15:12:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="什么是工厂模式？"><a href="#什么是工厂模式？" class="headerlink" title="什么是工厂模式？"></a>什么是工厂模式？</h3><p>就是定义一个创建对象的接口，让子类是实例化具体的类，工厂方法就是让类的实例化，延迟到子类中。这是属于创建类模式。</p>
+<h3 id="怎么实现？"><a href="#怎么实现？" class="headerlink" title="怎么实现？"></a>怎么实现？</h3><p>用模板方法的方式创建对象来解决，父类定义所有标准通用行为，然后将创建细节放在子类中实现并输出给客户端。工厂方法模式主要四个要素：</p>
+<ul>
+<li>工厂接口。工厂接口是工厂方法模式的核心，与调用者直接交互用来提供产品。</li>
+<li>工厂实现。工厂实现决定如何实例化产品，是实现扩展的途径，需要多少种产品，就需要多少具体工厂实现。</li>
+<li>产品接口。产品接口的主要目的是定义产品的规范，所有的产品实现都必须遵循产品接口定义的规范。</li>
+<li>产品实现。实现产品接口的具体类，决定了产品在客户端中的具体行为。</li>
+</ul>
+<h3 id="使用场景："><a href="#使用场景：" class="headerlink" title="使用场景："></a>使用场景：</h3><p>工厂模式是一种典型的解耦模式，当需要系统有比较好的扩展性时，可以考虑工厂模式，不同的产品用不同的实现工厂来组装。</p>
+<h3 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="comment">// 协议</span></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Operator</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> num: (<span class="type">Double</span>, <span class="type">Double</span>) &#123;</div><div class="line">        <span class="keyword">get</span></div><div class="line">        <span class="keyword">set</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">getResult</span><span class="params">()</span></span> -&gt; <span class="type">Double</span>?</div><div class="line">    <span class="comment">// 工厂</span></div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">createOperation</span><span class="params">()</span></span> -&gt; <span class="type">Operator</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 遵守协议</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Addition</span>: <span class="title">Operator</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> num = (<span class="number">0.0</span>, <span class="number">0.0</span>)</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">getResult</span><span class="params">()</span></span> -&gt; <span class="type">Double</span>? &#123;</div><div class="line">        <span class="keyword">return</span> num.<span class="number">0</span> + num.<span class="number">1</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">createOperation</span><span class="params">()</span></span> -&gt; <span class="type">Operator</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="type">Addition</span>()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Subtraction</span>: <span class="title">Operator</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> num = (<span class="number">0.0</span>, <span class="number">0.0</span>)</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">getResult</span><span class="params">()</span></span> -&gt; <span class="type">Double</span>? &#123;</div><div class="line">        <span class="keyword">return</span> num.<span class="number">0</span> - num.<span class="number">1</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">createOperation</span><span class="params">()</span></span> -&gt; <span class="type">Operator</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="type">Subtraction</span>()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Multiplication</span>: <span class="title">Operator</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> num = (<span class="number">0.0</span>, <span class="number">0.0</span>)</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">getResult</span><span class="params">()</span></span> -&gt; <span class="type">Double</span>? &#123;</div><div class="line">        <span class="keyword">return</span> num.<span class="number">0</span> * num.<span class="number">1</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">createOperation</span><span class="params">()</span></span> -&gt; <span class="type">Operator</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="type">Multiplication</span>()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Division</span>: <span class="title">Operator</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> num = (<span class="number">0.0</span>, <span class="number">0.0</span>)</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">getResult</span><span class="params">()</span></span> -&gt; <span class="type">Double</span>? &#123;</div><div class="line">        <span class="keyword">var</span> result: <span class="type">Double</span>?</div><div class="line">        <span class="keyword">if</span> num.<span class="number">1</span> != <span class="number">0</span> &#123;</div><div class="line">            result = num.<span class="number">0</span> / num.<span class="number">1</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">createOperation</span><span class="params">()</span></span> -&gt; <span class="type">Operator</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="type">Division</span>()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> testSubtraction = <span class="type">Subtraction</span>.createOperation()</div><div class="line">testSubtraction.num = (<span class="number">5</span>, <span class="number">2</span>)</div><div class="line"><span class="built_in">print</span>(testSubtraction.getResult())</div><div class="line"></div><div class="line"><span class="keyword">var</span> testMultiplication = <span class="type">Multiplication</span>.createOperation()</div><div class="line">testMultiplication.num = (<span class="number">2</span>, <span class="number">3</span>)</div><div class="line"><span class="built_in">print</span>(testMultiplication.getResult())</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;什么是工厂模式？&quot;&gt;&lt;a href=&quot;#什么是工厂模式？&quot; class=&quot;headerlink&quot; title=&quot;什么是工厂模式？&quot;&gt;&lt;/a&gt;什么是工厂模式？&lt;/h3&gt;&lt;p&gt;就是定义一个创建对象的接口，让子类是实例化具体的类，工厂方法就是让类的实例化，延迟到子类中。
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://www.dyike.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>设计模式之”简单工厂模式“——计算器示例</title>
@@ -1177,107 +1207,6 @@
     
     
       <category term="GDB,C,Golang" scheme="http://www.dyike.com/tags/GDB-C-Golang/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>面试总结分享</title>
-    <link href="http://www.dyike.com/2016/07/31/mianshi-zongjie-fenxiang/"/>
-    <id>http://www.dyike.com/2016/07/31/mianshi-zongjie-fenxiang/</id>
-    <published>2016-07-31T12:23:59.000Z</published>
-    <updated>2016-07-31T13:05:34.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>明天就要开始工作了，之前也没有什么面试的经验，我找工作也是通过社交性找的工作。在我找到PHP开发的这份工作之前我面过两三家，问过我的东西，当然了不会很全，但我每面一家都会做一个总结。希望这个能给找PHP开发的你带来些许帮助，或许一点卵用都没有。</p>
-<p>我先说一下我自己接触PHP的经历吧，听说有这门世界上最好的语言是我在大二的时候，那个时候在网上找了一个教程把代码敲了一遍，做了一个简单的音乐盒子，能够播放管理音乐。后来正真接触PHP是我在今年三月份去渣浪微博实习的三个月里接触了这门语言，后来自己的毕设用Laravel框架做了一个在线学习的网站。总的来说，我真正接触这门语言时间也不算很长，很多东西还不是很深入，比如常用的函数啥我有的时候还需要查阅文档……下面还是来做总结吧：</p>
-<p>学习PHP也就是那一套嘛——LNPM。也就是说Linux、Nginx、PHP、MySQL。</p>
-<h2 id="Linux这一块"><a href="#Linux这一块" class="headerlink" title="Linux这一块"></a>Linux这一块</h2><p>我问的比较多的问题就是会不会写一些shell脚本，然后还有就是常用的命令，还有一些不常见的就是：</p>
-<ul>
-<li>读取文件的最后100行，并复制到的新的文件中 </li>
-</ul>
-<blockquote>
-<p>tail -n 100 &gt;&gt;bbb.txt<br>这个里面稍微引申一下就是参数【-c】就是统计字节数</p>
-</blockquote>
-<ul>
-<li>删除某个文件夹所有内容，要求删除后停止1秒</li>
-</ul>
-<blockquote>
-<p>rm -r -f ./ &amp;&amp;  sleep 1<br>像这个里面需要注意的是句点，想想这个可不可以少掉。</p>
-</blockquote>
-<ul>
-<li>find、grep的使用以及管道符“|”</li>
-<li>等等其他的，最好系统学习一下Linux的操作，像鸟哥的私房菜。</li>
-</ul>
-<h2 id="PHP这一块"><a href="#PHP这一块" class="headerlink" title="PHP这一块"></a>PHP这一块</h2><p>这一块内容比较多，面试的话，也是各个面试官有自己的问法风格，这个时候需要察言观色。我就记录点我遇到的问题吧：</p>
-<h4 id="问题1："><a href="#问题1：" class="headerlink" title="问题1："></a>问题1：</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$a = <span class="keyword">array</span>();</div><div class="line">$a[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">$a[<span class="number">1</span>] = <span class="number">2</span>;</div><div class="line">$a[<span class="number">3</span>] = <span class="number">3</span>;</div><div class="line">$a[<span class="number">4</span>] = <span class="number">4</span>;</div><div class="line">$a[<span class="number">2</span>] = <span class="number">5</span>;</div><div class="line"><span class="keyword">foreach</span>($a <span class="keyword">as</span> $v)&#123;</div><div class="line">    <span class="keyword">echo</span> $v;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>请问上面的遍历输出的值是什么？</p>
-<h4 id="问题2：（这个是简单的概括）"><a href="#问题2：（这个是简单的概括）" class="headerlink" title="问题2：（这个是简单的概括）"></a>问题2：（这个是简单的概括）</h4><ul>
-<li>PHP的字符串翻转，不用自带的函数。</li>
-<li>从一个数组中取出第一个元素有几种方式？分别是什么？</li>
-<li>PHP中的传引用、传值、传地址。</li>
-<li>单引号和双引号的区别。</li>
-<li>PHP时间相关的函数，时间格式。</li>
-<li>给定两个时间，计算相差的天数，diff</li>
-<li>你使用的PHP版本是什么？如果是PHP7，你要知道一些PHP7的新特性。</li>
-<li>PHP字符串截取含有中文的字符，且保证不乱码</li>
-<li>想起了就再补充……（我打算在一年的时间把PHP常用的函数熟练掌握）</li>
-</ul>
-<h4 id="问题3：curl请求处理方式"><a href="#问题3：curl请求处理方式" class="headerlink" title="问题3：curl请求处理方式"></a>问题3：curl请求处理方式</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">//cURL的具体实现方法</span></div><div class="line">$url = <span class="string">"http://www.php.net/"</span>;</div><div class="line"><span class="comment">//1初始化</span></div><div class="line">$ch = curl_init();</div><div class="line"><span class="comment">//2设置选项,包括URL</span></div><div class="line">curl_setopt($ch,CURLOPT_URL,$url);</div><div class="line">curl_setopt($ch,CURLOPT_RETURNTRANSFER,<span class="number">1</span>);   <span class="comment">//将curl_exec()获取的信息以文件流的形式返回</span></div><div class="line">                                              <span class="comment">//而不是输出</span></div><div class="line">                                              <span class="comment">//启用时将头文件的信息作为数据流输出</span></div><div class="line">curl_setopt($ch,CURLOPT_HEADER,<span class="number">1</span>);</div><div class="line"><span class="comment">//3执行并获取内容</span></div><div class="line">$output = curl_exec($ch);</div><div class="line"><span class="comment">//4释放cURL句柄</span></div><div class="line">curl_close($ch);</div><div class="line"><span class="keyword">echo</span> $output;</div></pre></td></tr></table></figure>
-<p>我自己引申：有的时候偷懒用 file_get_content()函数，知道其中的区别。</p>
-<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>刚入门PHP，最好要知道简单的配置，知道每个配置选项的意思，能折腾就尽量折腾吧，最好是自己编译安装nginx。这个我现在也没有想说的，自己也整得不是很明白。哈哈哈</p>
-<h2 id="MySQL方面"><a href="#MySQL方面" class="headerlink" title="MySQL方面"></a>MySQL方面</h2><p>这一块显然要问的，不问的话怎么叫面试呢？之前对这个挺害怕的，因为这一块是自己的弱项。总要去面对，害怕是没有用的。之前我被问过的。</p>
-<ul>
-<li>MySQL的架构是什么样的？也就是说三层架构，或者说两层，就看你怎么解释，我觉得这个问题就是想问一下你有没有深入了解过MySQL。</li>
-<li>MySQL常用的存储引擎，知道他们之间的区别，也就是问InnoDB和MyISAM的区别，都是问常用，其他的了解了解。</li>
-<li>关联表的查询join  on的用法 【注意哟：这儿有个坑，mysql不支持full join。这是我面试完后总结发现的】</li>
-<li>sql查询的优化的方法，你需要知道从哪些方面入手。</li>
-<li>MySQL使用的数据结构，其实就是在问B+/B- tree，深入了解MySQL还是需要的。</li>
-<li>问来问去也差不多就是这些了，还有的话我再补充。</li>
-</ul>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h4 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a>数据结构和算法</h4><ul>
-<li>PHP常用的四个排序算法，冒泡、选择、插入、快排，其实问的比较多的就是冒泡和快排【不是你只掌握这两个应付面试】，如果还有兴趣，归并排序。反正这几个我都自己撸了一遍，现在也常拿出来看看，毕竟不用的话就容易忘记。</li>
-<li>队列和栈的区别，怎么初始化他们，然后他们的操作要熟悉，常问的就是插入和删除操作。还有会问双向链表。</li>
-</ul>
-<blockquote>
-<p>双链表结点中有两个指针prior和next，分别指向其前驱结点和后继结点.</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> DNode &#123;  <span class="comment">//定义双链表结点类型</span></div><div class="line">    ElemType data;  <span class="comment">//数据域</span></div><div class="line">    <span class="keyword">struct</span> DNode *prior, *next;  <span class="comment">//前驱和后继指针</span></div><div class="line">&#125;DNode, *DLinklist;</div></pre></td></tr></table></figure>
-<ul>
-<li>还有数据结构的树那一块，没被问太多，估计是我这一块薄弱吧，面试官就合理避开。【这样的面试官才是好面试，至少他了解你的基础，也有傻×的面试官，明明你表现了不会，他还一个人自high问个不停】</li>
-</ul>
-<h4 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h4><ul>
-<li>线程和进程的区别</li>
-<li>还有忘了，以后想起了补充</li>
-</ul>
-<h4 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h4><ul>
-<li>各种状态码都要熟悉，常问的301、304和500</li>
-<li>tcp和udp的区别</li>
-<li>TCP/IP的协议还是要清楚</li>
-<li>三次握手，四次挥手的状态分析</li>
-<li>SESSION和COOKIE的区别，多台web服务器怎么共享SESSION？【经典问题，每家必问】</li>
-</ul>
-<h4 id="有事没事的时候还是要学好C语言"><a href="#有事没事的时候还是要学好C语言" class="headerlink" title="有事没事的时候还是要学好C语言"></a>有事没事的时候还是要学好C语言</h4><p>目前我被问到：</p>
-<ul>
-<li>文件读取</li>
-<li>字符串复制strcp是怎么实现的，用自己的方式实现字符串的复制。</li>
-<li>函数参数有两个以上的，参数入栈的顺序</li>
-<li>想起再补充。</li>
-</ul>
-<h4 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h4><p>面向对象编程的封装、继承和多态</p>
-<blockquote>
-<p>1、面向对象是一种基于结构分析的、以数据为中心的程序设计思想。面向过程语言是一种基于功能分析的、以算法为中心的程序设计方法。<br>2、封装就是隐藏对象实现的细节，在外界通过公共的方法来访问。比如，在C语言中，我们需要关注每一个细节、过程，在面向对象的程序语言中，我们就不用关注每个对象的细节，只要关注功能的实现就行，根据提供好的接口，然后面向接口编程。<br>3、继承就是子类能够继承父类的公共属性和方法，无法继承父类的私有属性和方法。在java|C#|PHP等面向对象语言中，是不允许多重继承的。【但php trait是个例外，可以多层继承】<br>4、多态，就是同一个接口，对不同的实例而执行不同的操作。同属一个基类的不同派生类也可以有自己不同于其他类的属性和方法。</p>
-</blockquote>
-<p>以上就是我面了三家的一些总结，有的很简单我就没有总结出来，有的总结出来对你来说也许很简单。最后我现在工作在杭州，欢迎面基！也希望大牛们求带！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;明天就要开始工作了，之前也没有什么面试的经验，我找工作也是通过社交性找的工作。在我找到PHP开发的这份工作之前我面过两三家，问过我的东西，当然了不会很全，但我每面一家都会做一个总结。希望这个能给找PHP开发的你带来些许帮助，或许一点卵用都没有。&lt;/p&gt;
-&lt;p&gt;我先说一下我自
-    
-    </summary>
-    
-    
-      <category term="面试，PHP" scheme="http://www.dyike.com/tags/%E9%9D%A2%E8%AF%95%EF%BC%8CPHP/"/>
     
   </entry>
   
