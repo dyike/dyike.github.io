@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title><![CDATA[设计模式之“抽象工厂模式”——]]></title>
+      <url>http://www.dyike.com/2017/09/13/abstract-factory-pattern/</url>
+      <content type="html"><![CDATA[<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>抽象工厂模式：提供一个创建一系列相关或相互依赖对象的接口，无须指定他们具体的类。属于对象创建型模式。</p>
+<h3 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h3><ul>
+<li>抽象工厂</li>
+<li>具体工厂</li>
+<li>抽象产品</li>
+<li>具体产品</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[设计模式之“工厂方法模式”——计算器实例]]></title>
       <url>http://www.dyike.com/2017/09/12/design-pattern-factory-method/</url>
       <content type="html"><![CDATA[<h3 id="什么是工厂模式？"><a href="#什么是工厂模式？" class="headerlink" title="什么是工厂模式？"></a>什么是工厂模式？</h3><p>就是定义一个创建对象的接口，让子类是实例化具体的类，工厂方法就是让类的实例化，延迟到子类中。这是属于创建类模式。</p>

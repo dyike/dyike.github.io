@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.dyike.com/about/index.html</loc>
+    
+    <lastmod>2017-09-17T15:11:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.dyike.com/2017/09/13/abstract-factory-pattern/</loc>
+    
+    <lastmod>2017-09-13T09:57:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.dyike.com/2017/09/12/design-pattern-factory-method/</loc>
     
     <lastmod>2017-09-12T15:12:14.000Z</lastmod>
@@ -26,13 +40,6 @@
     <loc>http://www.dyike.com/2017/04/22/laravel-request-life-cycle/</loc>
     
     <lastmod>2017-04-23T14:58:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.dyike.com/about/index.html</loc>
-    
-    <lastmod>2017-04-16T14:02:53.000Z</lastmod>
     
   </url>
   
