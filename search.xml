@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[发送带有图片的邮件]]></title>
+      <title><![CDATA[生成Charts图片，并发送Charts图片邮件]]></title>
       <url>http://www.dyike.com/2017/10/16/charts-and-text-email-tutorial/</url>
       <content type="html"><![CDATA[<p>CTEmail(Charts and Text Eamil)是一个发送带有图片的邮件的小工具，这个图片是邮件内容中显示，不是添加在附件中，这个脚本实现的比较简单粗暴，不管长相丑陋，只能能解决实际问题就行。</p>
 <h2 id="为什么有CTEmail"><a href="#为什么有CTEmail" class="headerlink" title="为什么有CTEmail?"></a>为什么有CTEmail?</h2><ul>
@@ -55,19 +55,6 @@
 </li>
 </ul>
 <h3 id="4th-Enjoy-it"><a href="#4th-Enjoy-it" class="headerlink" title="4th Enjoy it!!!"></a>4th Enjoy it!!!</h3><p>放在最后的不是不重要，解决实际问题才是更重要，欢迎来<a href="https://github.com/dyike/CTEmail" target="_blank" rel="external">CTEmail</a>Star！！！</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[设计模式之“抽象工厂模式”——]]></title>
-      <url>http://www.dyike.com/2017/09/13/abstract-factory-pattern/</url>
-      <content type="html"><![CDATA[<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>抽象工厂模式：提供一个创建一系列相关或相互依赖对象的接口，无须指定他们具体的类。属于对象创建型模式。</p>
-<h3 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h3><ul>
-<li>抽象工厂</li>
-<li>具体工厂</li>
-<li>抽象产品</li>
-<li>具体产品</li>
-</ul>
 ]]></content>
     </entry>
     

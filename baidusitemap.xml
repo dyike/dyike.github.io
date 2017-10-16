@@ -5,10 +5,10 @@
     
   <url>
     <loc>http://www.dyike.com/2017/10/16/charts-and-text-email-tutorial/</loc>
-    <lastmod>2017-10-16T15:51:06.725Z</lastmod>
+    <lastmod>2017-10-16T16:06:27.822Z</lastmod>
     <data>
         <display>
-        <title>发送带有图片的邮件</title>
+        <title>生成Charts图片，并发送Charts图片邮件</title>
         <pubTime>2017-10-16T14:33:37.000Z</pubTime>
         
         <tag>Python</tag>
@@ -20,23 +20,6 @@
     </url>
 
     
-    
-  <url>
-    <loc>http://www.dyike.com/2017/09/13/abstract-factory-pattern/</loc>
-    <lastmod>2017-09-13T09:57:50.000Z</lastmod>
-    <data>
-        <display>
-        <title>设计模式之“抽象工厂模式”——</title>
-        <pubTime>2017-09-13T09:53:18.000Z</pubTime>
-        
-        <tag>设计模式</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://www.dyike.com/2017/09/12/design-pattern-factory-method/</loc>
