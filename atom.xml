@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2017-10-16T15:47:11.164Z</updated>
+  <updated>2017-10-16T15:51:06.725Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.dyike.com/2017/10/16/charts-and-text-email-tutorial/"/>
     <id>http://www.dyike.com/2017/10/16/charts-and-text-email-tutorial/</id>
     <published>2017-10-16T14:33:37.000Z</published>
-    <updated>2017-10-16T15:47:11.164Z</updated>
+    <updated>2017-10-16T15:51:06.725Z</updated>
     
     <content type="html"><![CDATA[<p>CTEmail(Charts and Text Eamil)是一个发送带有图片的邮件的小工具，这个图片是邮件内容中显示，不是添加在附件中，这个脚本实现的比较简单粗暴，不管长相丑陋，只能能解决实际问题就行。</p>
 <h2 id="为什么有CTEmail"><a href="#为什么有CTEmail" class="headerlink" title="为什么有CTEmail?"></a>为什么有CTEmail?</h2><ul>
@@ -70,7 +70,7 @@
 <li><p>其他图表的生成也可以参考官方文档的介绍。</p>
 </li>
 </ul>
-<h3 id="4th-Enjoy-it"><a href="#4th-Enjoy-it" class="headerlink" title="4th Enjoy it!!!"></a>4th Enjoy it!!!</h3><p>放在最后的不是不重要，解决实际问题才是更重要，欢迎来<a href="https://github.com/dyike/CTEmail" target="_blank" rel="external">CTEmail</a>来Star！！！</p>
+<h3 id="4th-Enjoy-it"><a href="#4th-Enjoy-it" class="headerlink" title="4th Enjoy it!!!"></a>4th Enjoy it!!!</h3><p>放在最后的不是不重要，解决实际问题才是更重要，欢迎来<a href="https://github.com/dyike/CTEmail" target="_blank" rel="external">CTEmail</a>Star！！！</p>
 ]]></content>
     
     <summary type="html">
