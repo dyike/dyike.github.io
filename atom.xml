@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2017-09-13T09:57:50.000Z</updated>
+  <updated>2017-10-16T15:42:44.776Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -14,6 +14,74 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>发送带有图片的邮件</title>
+    <link href="http://www.dyike.com/2017/10/16/charts-and-text-email-tutorial/"/>
+    <id>http://www.dyike.com/2017/10/16/charts-and-text-email-tutorial/</id>
+    <published>2017-10-16T14:33:37.000Z</published>
+    <updated>2017-10-16T15:42:44.776Z</updated>
+    
+    <content type="html"><![CDATA[<p>CTEmail(Charts and Text Eamil)是一个发送带有图片的邮件的小工具，这个图片是邮件内容中显示，不是添加在附件中，这个脚本实现的比较简单粗暴，不管长相丑陋，只能能解决实际问题就行。</p>
+<h2 id="为什么有CTEmail"><a href="#为什么有CTEmail" class="headerlink" title="为什么有CTEmail?"></a>为什么有CTEmail?</h2><ul>
+<li>没有一个不懒的程序员，做啥都想着写个脚本跑一下，跑个脚本抢月饼，跑个脚本…能用脚本的干嘛不用脚本。每天的数据报表需要一个邮件脚本发送。</li>
+<li>对接了各大厂商，每天每周每月都会往来邮件。报表用图表的形式更简单直观的反馈数据，为什么我们不在邮件中使用图表。</li>
+<li>各大厂商的邮件中图表都是小姐姐手动制作，手动发出%&gt;_&lt;%，为什么不跑一个脚本。</li>
+<li>如果解决上面的问题，是不是解放了小手。1) 用数据生成图表，2) 将图表拼接到邮件中发出。</li>
+</ul>
+<p>这个小工具的初衷，解决实际问题还是很重要的。</p>
+<h2 id="哪些人需要这个工具？"><a href="#哪些人需要这个工具？" class="headerlink" title="哪些人需要这个工具？"></a>哪些人需要这个工具？</h2><ul>
+<li>产品同学，图表是展示数据的最佳实践！</li>
+<li>运营同学，图表是展示报表的最佳实践！</li>
+<li>技术同学，为了继续懒下去！</li>
+<li>…零编程基础的同学都能使用【只要会科学上网就能解决一切】</li>
+</ul>
+<p>说这些都是没用，那就跟来做一下吧。<br>项目托管在github上，地址：<a href="https://github.com/dyike/CTEmail" target="_blank" rel="external">dyike/CTEmail</a>。记得来star哟！！！</p>
+<h2 id="怎么使用？"><a href="#怎么使用？" class="headerlink" title="怎么使用？"></a>怎么使用？</h2><p>首先，稍微知道怎么操作Python，像我这种不会写代码都能操作，你一定也可以。其次是到<a href="https://plot.ly/python/getting-started/" target="_blank" rel="external">Plotly</a>——这是一个可视化数据的工具有点类似于HighCharts，不过支持多种语言，很强大了。先熟悉一下， 然后注册一个账号，后面会用到。本文着重数据生成图表图片。邮件服务配置查看<code>README</code></p>
+<h3 id="1st-Step："><a href="#1st-Step：" class="headerlink" title="1st Step："></a>1st Step：</h3><p>将项目clone下来，熟悉项目的结构，里面不到两百行代码，简单粗暴。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> git@github.com:dyike/CTEmail.git</div></pre></td></tr></table></figure>
+<p>在<code>send.py</code>文件中配置自己的邮箱账号，密码，邮件标题，邮件模板路径和发送到的邮箱。</p>
+<p>邮件模板的默认路径是<code>./content/</code>，会自动读取该路径下的html文件。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> ctemail <span class="keyword">import</span> CTEmail</div><div class="line">e = CTEmail(<span class="string">'Your email acount'</span>, <span class="string">'Your password'</span>)</div><div class="line"><span class="comment"># " ./content/ 邮件文件的路径 "</span></div><div class="line">e.send_email(<span class="string">'Test Email Title'</span>, <span class="string">'./content/'</span>, [<span class="string">'i@ityike.com'</span>])</div></pre></td></tr></table></figure>
+<p>默认是配置QQ的STMP发送服务（stmp.qq.com）,端口是25。你也可以配置163.gmail等等，在初始化CTEmail()配置相应的配置即可。</p>
+<h3 id="2nd-Step"><a href="#2nd-Step" class="headerlink" title="2nd Step:"></a>2nd Step:</h3><p>项目中提供了一个默认的模板，你可以根据你的实际需求定制的模板，<code>content</code>文件夹下面还有图片资源，我们生成的图表的图片资源也是在该文件夹下面。</p>
+<p>需要注意的是，html文件中，将img标签用<email_img>给包了一层，这样只是为了能够方便Python解析，替换。【ps：这里可以了解一下Python发送图片邮件的实现，将图片cid替换进来】<a href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386832745198026a685614e7462fb57dbf733cc9f3ad000" target="_blank" rel="external">参考廖雪峰老师的教程</a> 这里你可以不Care这些事。</email_img></p>
+<p>模板中需要注意的一点：也是非常重要的一点就是：html中多个<email_img>标签需要换行。不换行就无法正确解析。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;a&gt;&lt;EMAIL_IMG&gt;&lt;img src=&quot;image1.png&quot;&gt;&lt;/EMAIL_IMG&gt;&lt;/a&gt;</div><div class="line">&lt;a&gt;&lt;EMAIL_IMG&gt;&lt;img src=&quot;image2.png&quot;&gt;&lt;/EMAIL_IMG&gt;&lt;/a&gt;</div></pre></td></tr></table></figure></email_img></p>
+<h3 id="3th-Step"><a href="#3th-Step" class="headerlink" title="3th Step:"></a>3th Step:</h3><p>快要结束了，本文的却重点来了，不要慌，也很简单。就是使用Plotly，关于使用离线（本地）模式还是在线模式，看自己实际需求。我这里说在线的。因为我用的是定时脚本，我只能调用在线的API生成图片保存到本地<code>content</code>文件夹下面。</p>
+<ul>
+<li><p>安装Plotly</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install plotly</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>get_img.py</code>文件,文件名可以重命名，里面需要的配置你的认证信息credentials，信息在<code>https://plot.ly/settings/api</code>中查看。有两种方式：第一种如下<br>设置username和api_key。</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> plotly </div><div class="line">plotly.tools.set_credentials_file(username=<span class="string">'DemoAccount'</span>, api_key=<span class="string">'lr1c37zw81'</span>)</div></pre></td></tr></table></figure>
+<p>或者在安装完成后，在<code>~/.plotly/.credentials</code>文件中配置你的账号信息。<br>看到的信息大致如下：修改对应的即可。<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"username"</span>: <span class="string">"DemoAccount"</span>,</div><div class="line">    <span class="attr">"stream_ids"</span>: [<span class="string">"ylosqsyet5"</span>, <span class="string">"h2ct8btk1s"</span>, <span class="string">"oxz4fm883b"</span>],</div><div class="line">    <span class="attr">"api_key"</span>: <span class="string">"lr1c37zw81"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>继续<code>get_img.py</code>文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> plotly.plotly <span class="keyword">as</span> py</div><div class="line"><span class="keyword">import</span> plotly.graph_objs <span class="keyword">as</span> go</div><div class="line"></div><div class="line">py.sign_in(<span class="string">'Your account'</span>, <span class="string">'API Token'</span>) <span class="comment"># 注意：这里是plotly网站的用户名和密码</span></div><div class="line"></div><div class="line">trace = go.Bar(x=[<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>], y= [<span class="number">10</span>, <span class="number">12</span>, <span class="number">15</span>])</div><div class="line">data = [trace]</div><div class="line">layout = go.Layout(title=<span class="string">'A Simple Plot'</span>, width=<span class="number">800</span>, height=<span class="number">640</span>)</div><div class="line">fig = go.Figure(data=data, layout=layout)</div><div class="line"><span class="comment"># 保存图片文件的路径</span></div><div class="line">py.image.save_as(fig, filename=<span class="string">'./content/image1.png'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 拼接模板文件</span></div><div class="line">template = <span class="string">'&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;/head&gt;&lt;body&gt;'</span> + <span class="string">"\n"</span> + <span class="string">'&lt;a&gt;&lt;EMAIL_IMG&gt;&lt;img src="image1.png"&gt;&lt;/EMAIL_IMG&gt;&lt;/a&gt;'</span> + <span class="string">"\n"</span> + <span class="string">'&lt;a&gt;&lt;EMAIL_IMG&gt;&lt;img src="image2.png"&gt;&lt;/EMAIL_IMG&gt;&lt;/a&gt;'</span> + <span class="string">"\n"</span> + <span class="string">'&lt;/body&gt;&lt;/html&gt;'</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> template</div></pre></td></tr></table></figure>
+</li>
+<li><p>执行上面的脚本文件<code>python get_img.py &gt; ./content/index.html</code> 这样就可以将模板文件写入到<code>content</code>目录下的<code>index.html</code></p>
+</li>
+<li><p>执行<code>python send.py</code>邮件就可以发送邮件，将上面的几个命令写入到shell脚本中,更新方便快捷。</p>
+</li>
+<li><p>其他图表的生成也可以参考官方文档的介绍。</p>
+</li>
+</ul>
+<h3 id="4th-Enjoy-it"><a href="#4th-Enjoy-it" class="headerlink" title="4th Enjoy it!!!"></a>4th Enjoy it!!!</h3><p>放在最后的不是不重要，解决实际问题才是更重要，欢迎来<a href="https://github.com/dyike/CTEmail" target="_blank" rel="external">CTEmail</a>来Star！！！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;CTEmail(Charts and Text Eamil)是一个发送带有图片的邮件的小工具，这个图片是邮件内容中显示，不是添加在附件中，这个脚本实现的比较简单粗暴，不管长相丑陋，只能能解决实际问题就行。&lt;/p&gt;
+&lt;h2 id=&quot;为什么有CTEmail&quot;&gt;&lt;a href=&quot;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.dyike.com/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>设计模式之“抽象工厂模式”——</title>
@@ -921,56 +989,6 @@
     
     
       <category term="PHP" scheme="http://www.dyike.com/tags/PHP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>聊聊PHP中的组件开发</title>
-    <link href="http://www.dyike.com/2016/08/21/php-components-development/"/>
-    <id>http://www.dyike.com/2016/08/21/php-components-development/</id>
-    <published>2016-08-21T04:10:43.000Z</published>
-    <updated>2016-08-21T08:44:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>曾经有这样一个故事：</p>
-<blockquote>
-<p>小李：超哥啊，我想要写个脚本去注册域名，按照汉字组词拼音来注册域名，发现市面上的汉字词组转拼音的工具不好用啊，都TM是个什么烂鬼。<br>超哥：恩，我去看了一下，确实都不好用啊。放心吧，这下我又可以造轮子了。<br>……<br>几天后，超哥什么话也没有说，向小李抛了一个包，你拿去用吧。</p>
-</blockquote>
-<p>当我们开始一个新的项目，首先我们需要考虑如何进行开发？<br>通常情况下，可能的方式有：</p>
-<ul>
-<li>手动创建</li>
-<li>选择合适的框架(比如说Laravel)</li>
-<li>组件式开发（Components Development）?</li>
-</ul>
-<p>靠，what is component？<br>严格地说，PHP组件就是一系列相关的类、接口和特性(trait)来解决某个特定的问题。组件中的类、接口和特性通常是放在同一个命名空间中。</p>
-<p>可能你又会想，为什么我要使用PHP组件？这个问题问得不错！</p>
-<p>我们使用组件开发是为了不重新实现已经实现了的功能，这样就可以把时间花在未实现功能上的开发。使用组件开发，可能是因为时代不一样了，现代的PHP已经很少使用庞大的框架，而是使用具有相互操作性的组件制定解决方案。有的时候，框架不一定能满足我们的需求，这个时候我们通常去自己开发一个新的功能，框架也很难集成第三方的库或者自定义的库，因为他们之间没有使用相同的接口。现在我们可以不受限于框架的束缚，如果想快速完成一个应用的开发，不使用组件自己去重新发明轮子，是不是有点傻呢？</p>
-<p><strong>这里想说明的是框架和组件的一些对比。</strong></p>
-<p>前面也提到了，框架虽然很强大，给我们提供了很多工具，但总会出现框架解决不了我们现有的需求问题，这个时候我们通常的做法就是自己开发功能，我们自定义的库又很难集成到框架中。一个好框架需要花费大量的投入时间来维护，我们在选择一个框架的时候要着眼框架的未来。（这么说，PHP组件是不是要比框架好呢？其实也不能这样说，PHP组件也有可能会终止开发的可能，尤其是只有一个核心开发者，万一坚持不下去呢？）</p>
-<p>那是不是框架一无是处呢？其实框架并不是一无是处。像laravel这样的现代流行的PHP框架，代码很优雅。（虽然laravel没有使用PSR-2社区标准，但仍然是一个相当出色的框架）还有一些古老的框架也在向现代PHP转变，比如内容管理框架Drupal。之前的Drupal7还是使用过程式PHP代码编写，代码还在全局命名空间中，舍弃了现代PHP，支持陈旧的代码根基。但是到了Drupal8使用不同的PHP组件构建了一个现代化的内容管理平台，向现代PHP靠拢！这个对Drupal8点个赞（我入职第一周看Drupal7的项目，看了两天的代码，一脸的懵逼，后来放弃了！）。</p>
-<p>在菜市场买菜，菜有好的跟不好的区分，PHP组件也是这样的。所以说，我们不能认为只要是PHP组件的开发都是好的！下面还是说说好的PHP组件长得是什么样子：</p>
-<ul>
-<li>PHP组件的代码小巧玲珑，短小精悍，解决某个问题却使用很少的代码。一个PHP组件可以是一个类，也可以是多个类，分别放在不同子命名的空间里。组件中类没有限定数量，根据自己的解决问题的需求。</li>
-<li>PHP组件的功能单一。我们常说单一功能职责化，代码模块化。组件不是万能的，而是讲究术业有专攻，就是解决特定问题。</li>
-<li>PHP组件之间的相互协调性，一个组件解决一个问题，一个项目解决多个问题。所以PHP组件代码放在自己的命名空间，防止与其他组件冲突。</li>
-<li>PHP组件的测试良好，因为短小精悍，所以测试比较简单。最好本身提供测试，并且有充足的覆盖度。</li>
-<li>有完善的文档，有完善的文档，有完善的文档。组件要让使用者，易于安装，理解和使用。所以说写一个好的README文档真的很重要。要想提高的自己开发的组件的知名度，首先，组件确实好；其次，就是提供相当nice的README文档【这个要去学一下】。还有源码中也要有详细的注释，为组件中的类、属性和方法添加行内容文档块，说明参数、返回值和可能抛出的异常。</li>
-</ul>
-<p>关于最后的选择，究竟我是选择使用组件式开发还是框架开发？</p>
-<p>这个答案就是根据自己的需求来选择。其实现代的PHP框架就是在构建一些小型PHP组件上的一系列的约定。如果能通过一些PHP组件就能解决实际问题的项目就使用组件开发。组件开发能够让代码保持轻量级和灵活性，很容易将一个组件变成另外一个项目的组件。</p>
-<p>如果是大型的项目，能够从框架的一些约定、标准和结构中受益的话，那就使用框架。因为框架能帮我们决定好多事情。但框架的灵活性较低一点，框架提供了一些拿来就用的工具，这样看来，框架也是一个很好的选择。</p>
-<p>总之，根据自己的需求来选择适合自己的东西！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;曾经有这样一个故事：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;小李：超哥啊，我想要写个脚本去注册域名，按照汉字组词拼音来注册域名，发现市面上的汉字词组转拼音的工具不好用啊，都TM是个什么烂鬼。&lt;br&gt;超哥：恩，我去看了一下，确实都不好用啊。放心吧，这下我又可以造轮子了。&lt;b
-    
-    </summary>
-    
-    
-      <category term="PHP组件" scheme="http://www.dyike.com/tags/PHP%E7%BB%84%E4%BB%B6/"/>
     
   </entry>
   
