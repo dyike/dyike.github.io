@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[生成Charts图片，并发送Charts图片邮件]]></title>
       <url>http://www.dyike.com/2017/10/16/charts-and-text-email-tutorial/</url>
-      <content type="html"><![CDATA[<p>CTEmail(Charts and Text Eamil)是一个发送带有图片的邮件的小工具，这个图片是邮件内容中显示，不是添加在附件中，这个脚本实现的比较简单粗暴，不管长相丑陋，只能能解决实际问题就行。</p>
+      <content type="html"><![CDATA[<p>CTEmail(Charts and Text Eamil)是一个发送带有图片的邮件的小工具，这个图片是邮件内容中显示，不是添加在附件中，这个脚本实现的比较简单粗暴，不管长相丑陋，只要能解决实际问题就行。</p>
 <h2 id="为什么有CTEmail"><a href="#为什么有CTEmail" class="headerlink" title="为什么有CTEmail?"></a>为什么有CTEmail?</h2><ul>
 <li>没有一个不懒的程序员，做啥都想着写个脚本跑一下，跑个脚本抢月饼，跑个脚本…能用脚本的干嘛不用脚本。每天的数据报表需要一个邮件脚本发送。</li>
 <li>对接了各大厂商，每天每周每月都会往来邮件。报表用图表的形式更简单直观的反馈数据，为什么我们不在邮件中使用图表。</li>
