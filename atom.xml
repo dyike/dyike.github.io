@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2018-01-02T14:37:37.394Z</updated>
+  <updated>2018-01-03T15:20:34.845Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WebPack配置vue多页面</title>
+    <link href="http://www.dyike.com/2018/01/03/vue-webpack-mutiple-pages/"/>
+    <id>http://www.dyike.com/2018/01/03/vue-webpack-mutiple-pages/</id>
+    <published>2018-01-03T14:53:57.000Z</published>
+    <updated>2018-01-03T15:20:34.845Z</updated>
+    
+    <content type="html"><![CDATA[<p>WebPack虐我千百遍，我带她如初恋。一个项目前台页面写差不多了，webpack几乎零配置，也算work起来了。现在需要编写后台管理界面，另起一个单独的项目，那是不存在的。于是网上了搜了大把大把的文章，很多都是修改了项目的结构，讨厌，vue-cli搞的那一套，干嘛要修改来修改去的。像我这种前端小萌新，webpack的配置改着就把前台部分run不起来了。。。</p>
+<p>于是就有了这个笔记：</p>
+<p>先看看项目的结构：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">├── build</div><div class="line">├── config</div><div class="line">├── src</div><div class="line">│   ├── api</div><div class="line">│   ├── assets</div><div class="line">│   ├── components</div><div class="line">│   ├── pages</div><div class="line">│   ├── router</div><div class="line">│   ├── utils</div><div class="line">│   ├── vuex</div><div class="line">│   ├── App.vue</div><div class="line">│   ├── main.js</div><div class="line">│   ├── admin.js</div><div class="line">│   └── Admin.vue</div><div class="line">├── static</div><div class="line">│   └── images</div><div class="line">├── README.md</div><div class="line">├── admin.html</div><div class="line">├── index.html</div><div class="line">├── package.json</div><div class="line">└── yarn.lock</div></pre></td></tr></table></figure>
+<p>我相信这样的结构大家一定很熟悉，除了<code>admin.html</code>和src文件夹下面的<code>Admin.vue</code>、<code>admin.js</code>，还有一些api，pages，vuex等文件夹，就是最常见的一个vue-cli初始化的项目结构。</p>
+<p>我想要就是新增一个后台管理界面的入口admin.html，其他能够共用的还是共用，进入正题：</p>
+<h2 id="修改webpack的配置文件"><a href="#修改webpack的配置文件" class="headerlink" title="修改webpack的配置文件"></a>修改webpack的配置文件</h2><h3 id="修改-webpack-base-conf-js"><a href="#修改-webpack-base-conf-js" class="headerlink" title="修改 webpack.base.conf.js"></a>修改 webpack.base.conf.js</h3><p>打开 <code>~\build\webpack.base.conf.js</code> ，找到entry，添加多入口:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">entry: &#123;</div><div class="line">  <span class="attr">app</span>: <span class="string">'./src/main.js'</span>,</div><div class="line">  <span class="attr">admin</span>: <span class="string">'./src/admin.js'</span>   <span class="comment">//新增</span></div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<p>这样运行编译的时候，每一个入口都会对应一个chunk。</p>
+<h2 id="run-dev配置的修改"><a href="#run-dev配置的修改" class="headerlink" title="run dev配置的修改"></a>run dev配置的修改</h2><p>打开 ·~\build\webpack.dev.conf.js· ，在plugins下找到<code>HtmlWebpackPlugin</code>，在其后面添加对应的多页，并为每个页面添加Chunk配置如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> HtmlWebpackPlugin(&#123;</div><div class="line">  <span class="attr">filename</span>: <span class="string">'index.html'</span>, <span class="comment">//生成的html</span></div><div class="line">  template: <span class="string">'index.html'</span>, <span class="comment">//来源html</span></div><div class="line">  inject: <span class="literal">true</span>,   </div><div class="line">  <span class="attr">chunks</span>: [<span class="string">'app'</span>]<span class="comment">//需要引入的Chunk，不配置就会引入所有页面的资源</span></div><div class="line">&#125;),</div><div class="line"><span class="keyword">new</span> HtmlWebpackPlugin(&#123;</div><div class="line">  <span class="attr">filename</span>: <span class="string">'admin.html'</span>,</div><div class="line">  <span class="attr">template</span>: <span class="string">'admin.html'</span>,</div><div class="line">  <span class="attr">inject</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">chunks</span>: [<span class="string">'admin'</span>]</div><div class="line">&#125;),</div></pre></td></tr></table></figure>
+<h2 id="run-build配置的修改"><a href="#run-build配置的修改" class="headerlink" title="run build配置的修改"></a>run build配置的修改</h2><h3 id="修改config-index-js"><a href="#修改config-index-js" class="headerlink" title="修改config/index.js"></a>修改config/index.js</h3><p>打开<code>~\config\index.js</code>，找到build下的<code>index: path.resolve(__dirname, &#39;../dist/index.html&#39;)</code>，在其后添加多页:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">admin: path.resolve(__dirname, <span class="string">'../dist/admin.html'</span>),</div></pre></td></tr></table></figure>
+<h3 id="修改webpack-prod-conf-js"><a href="#修改webpack-prod-conf-js" class="headerlink" title="修改webpack.prod.conf.js"></a>修改<code>webpack.prod.conf.js</code></h3><p>打开<code>~\build\webpack.prod.conf.js</code>，在plugins下找到<code>HtmlWebpackPlugin</code>，在其后面添加对应的多页，并为每个页面添加Chunk配置:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> HtmlWebpackPlugin(&#123;</div><div class="line">  <span class="attr">filename</span>: config.build.index,</div><div class="line">  <span class="attr">template</span>: <span class="string">'index.html'</span>,</div><div class="line">  <span class="attr">inject</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">minify</span>: &#123;</div><div class="line">    <span class="attr">removeComments</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">collapseWhitespace</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">removeAttributeQuotes</span>: <span class="literal">true</span></div><div class="line">    <span class="comment">// more options:</span></div><div class="line">    <span class="comment">// https://github.com/kangax/html-minifier#options-quick-reference</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// necessary to consistently work with multiple chunks via CommonsChunkPlugin</span></div><div class="line">  chunksSortMode: <span class="string">'dependency'</span>,</div><div class="line">  <span class="attr">chunks</span>: [<span class="string">'manifest'</span>, <span class="string">'vendor'</span>, <span class="string">'app'</span>]</div><div class="line">&#125;),</div><div class="line"></div><div class="line"><span class="keyword">new</span> HtmlWebpackPlugin(&#123;</div><div class="line">  <span class="attr">filename</span>: config.build.admin,</div><div class="line">  <span class="attr">template</span>: <span class="string">'admin.html'</span>,</div><div class="line">  <span class="attr">inject</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">minify</span>: &#123;</div><div class="line">    <span class="attr">removeComments</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">collapseWhitespace</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">removeAttributeQuotes</span>: <span class="literal">true</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">chunksSortMode</span>: <span class="string">'dependency'</span>,</div><div class="line">  <span class="attr">chunks</span>: [<span class="string">'manifest'</span>, <span class="string">'vendor'</span>, <span class="string">'admin'</span>]</div><div class="line">&#125;),</div></pre></td></tr></table></figure>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>恩，没有了，就不修改什么项目结构了，过程越复杂越容易出错。上面webpack的配置简单能看懂。Enjoy~~~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;WebPack虐我千百遍，我带她如初恋。一个项目前台页面写差不多了，webpack几乎零配置，也算work起来了。现在需要编写后台管理界面，另起一个单独的项目，那是不存在的。于是网上了搜了大把大把的文章，很多都是修改了项目的结构，讨厌，vue-cli搞的那一套，干嘛要修改来
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="http://www.dyike.com/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>继往开来</title>
@@ -959,34 +994,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>我是这样理解PHP中trait</title>
-    <link href="http://www.dyike.com/2016/08/25/php-trait/"/>
-    <id>http://www.dyike.com/2016/08/25/php-trait/</id>
-    <published>2016-08-25T07:50:22.000Z</published>
-    <updated>2016-08-25T09:01:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>有这样一天，我要去找工作了，虽然我是从三月份开始接触PHP，到现在也就四五个月的样子，面试的时候【才接触三个多月】只要不是那种傻叉的面试官，基本不回你过深的PHP知识，也就是围绕你学过的C/C++啥的问问。</p>
-<p>一共面了三家，三家都问了同样的一个问题：<code>说说你理解中的C++中的封装、继承、多态。</code> 这个问题吧，你怎么答都行，毕竟是你自己理解的。第一次吱吱呜呜说了一些，最后感觉自己都不知道自己在说什么。后来就自己总结，看到网上有一个从生物学的角度解释了一番，感觉还可以至少通俗易懂。后来又继续深入总结，在继承这一块，发现PHP虽然是单继承的语言，但还有一个比较特殊的东西，就是trait。这个翻译成中文还有比较奇葩的翻译——性状。一般我们都叫特性，或者直接叫trait。</p>
-<p>可能好多人跟我一样有一个困惑：之前我接触PHP的时候，至少我在项目中没有发现使用过这个。后来也就是在毕设中，看到laravel的源码就使用了这个，那个时候也没有深入了解这个东西，看着像一个class。其实trait并不是一个很新的东西，在PHP5.4中加入的一种代码复用的语法，只是很少被关注而已。trait让PHP突破单继承的限制。</p>
-<p>下面就看看一个简单的例子：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">trait</span> Hello </div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getHello</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Hello"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">trait</span> World </div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getWorld</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"World"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">use</span> <span class="title">Hello</span>, <span class="title">World</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHelloWorld</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"!"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$hw = <span class="keyword">new</span> HelloWorld();</div><div class="line">$hw-&gt;getHello();</div><div class="line">$hw-&gt;getWorld();</div><div class="line">$hw-&gt;sayHelloWorld();</div></pre></td></tr></table></figure>
-<p>上面的例子可以看出，trait像一个class,可以在写各种属性和方法，然后通过use关键字声明列出trait。由于PHP是单继承的语言，如果你想要继承多个基类，这个时候就需要将这些基类组合，而且这种组合是层叠，最终的效果就是一个树状的结构，但有了trait，就可以随意组合，结构简单。是不是很方便？我们在编写自己的代码前，我们可以把一些属性进行合理的划分，放在一个trait，让代码片段复用，耦合性低，代码清晰可读。</p>
-<p>当然了还有一些需要注意的是，什么叫代码合理拆分，而不是将三两个相同的代码片段放到trait中，而是根据自己的需求来决定。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;有这样一天，我要去找工作了，虽然我是从三月份开始接触PHP，到现在也就四五个月的样子，面试的时候【才接触三个多月】只要不是那种傻叉的面试官，基本不回你过深的PHP知识，也就是围绕你学过的C/C++啥的问问。&lt;/p&gt;
-&lt;p&gt;一共面了三家，三家都问了同样的一个问题：&lt;code&gt;
-    
-    </summary>
-    
-    
-      <category term="PHP" scheme="http://www.dyike.com/tags/PHP/"/>
     
   </entry>
   
