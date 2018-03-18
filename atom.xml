@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2018-01-03T15:20:34.845Z</updated>
+  <updated>2018-03-18T09:26:03.888Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>区块链学习笔记——链、哈希、比特币、挖矿</title>
+    <link href="http://www.dyike.com/2018/03/18/blockchain-note-001/"/>
+    <id>http://www.dyike.com/2018/03/18/blockchain-note-001/</id>
+    <published>2018-03-18T07:28:14.000Z</published>
+    <updated>2018-03-18T09:26:03.888Z</updated>
+    
+    <content type="html"><![CDATA[<p>当前火热的区块链技术，让好多人都为之疯狂。单纯地研究技术的话，还是可以花一点时间。所以这儿就记录一点自己的学习笔记。</p>
+<h2 id="链"><a href="#链" class="headerlink" title="链"></a>链</h2><p>区块链的英文名字叫BlockChain，从字面上理解是不是可以拆成Block和Chain。从Wikipedia上的解释是一些记录的列表打包在一起，称为区块，这些区块通过密码学的知识将他们连接在一起。</p>
+<p>学计算机的同学可能都知道什么是链表，链表其实是一个数据结构，是一种线性表，并不会按线性的顺序存储数据，而是在每一个节点里存下一个节点的指针。</p>
+<p>区块链的底层就是使用了链表数据结构，这个数据块是有顺序的，当前的数据块总能找到上一个数据块。</p>
+<p>链表中有头(首)节点，区块链中的首块称为创世区块。在区块链中，每一个区块(链表中数据块)有两个基本结构：Head和Body。以比特币分析</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">|-----HEAD  - 6 attributes  --- 80B(字节)</div><div class="line">|      |--- VERSION   --- 4B    区块版本号，验证规则</div><div class="line">|      |--- CURRENT   --- 32B   当前区块Hash</div><div class="line">|      |--- PREVIOUS  --- 32B   前一个区块的Hash，SHA256(SHA256(父区块头))</div><div class="line">|      |--- TARGET    --- 4B    该区块工作量证明算法的难度目标</div><div class="line">|      |--- TIME      --- 4B    时间戳</div><div class="line">|      |--- NONCE     --- 4B</div><div class="line">|</div><div class="line">|-----Body - 1 or more TRANSACTIONS(交易记录)      </div><div class="line">|      |--- TRANSACTIONS</div><div class="line">|               |--- INPUT</div><div class="line">|               |--- OUTPUT</div></pre></td></tr></table></figure>
+<p>其中头部的CURRENT和PREVIOUS就是一串哈希值。NONCE和TARGET跟POW共识机制挖矿有关。<br>比特币目前的版本VERISON是0x20000000，相当于block的第五个版本。用一个位数表示一个独立的功能，以区分未来的软分叉。</p>
+<h2 id="Hash哈希"><a href="#Hash哈希" class="headerlink" title="Hash哈希"></a>Hash哈希</h2><p>写代码的人都知道哈希是一种算法，输入一个东西(字符串，图片，视频等等)，最后变成一个有固定长度的哈希值，这个值是唯一的，输入的内容稍微改了一点，哈希值都会改变。从这个哈希也很难推导出原始数据。在比特币中用的哈希算法是SHA256。</p>
+<p>比如说PHP中</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">php &gt; <span class="keyword">echo</span> hash(<span class="string">'sha256'</span>, <span class="string">'ityike'</span>);</div><div class="line">fc4b100a38b5c9894cfff0dab6c258bcbcfd34a79c7c4b54f440b30846aa581b</div><div class="line">php &gt; <span class="keyword">echo</span> hash(<span class="string">'sha256'</span>, <span class="string">'iiyike'</span>);</div><div class="line">dd81a0135044ea78686dd97503757eca984f8047c965db75dde5ce53b2202100</div></pre></td></tr></table></figure>
+<p>不难看出，稍微改了一个字符，输出的哈希值就是完全不一样，完全没有规律。</p>
+<h2 id="区块头和ID、挖矿"><a href="#区块头和ID、挖矿" class="headerlink" title="区块头和ID、挖矿"></a>区块头和ID、挖矿</h2><p>在上面提到了区块头部的CURRENT和PREVIOUS就是一串哈希值。每个区块的ID从他的区块头80个字节数据两次SHA256哈希得到。在比特币中，对于这个ID有要求，符合条件的ID才是合法的。区块头的哈希值必须小于一个数。每一个新的区块的长达64字节的id前面都用零补全，一个合法的区块id是长这样子的：<code>0000000000000000003c19cdbebe2df5c7f82558e2c80a0c7341e25072b732a2</code></p>
+<p>数据区块的产生就是要计算出新的区块Id，其实就是挖矿的过程。挖矿的机器，只要找到一个幸运数字填到Nonce的位置，使得区块头的数据两次哈希后的值以18个以上0位开头，就表明区块生成，符合条件。不断的尝试幸运数据，知道符合条件。</p>
+<p>此外，比特币还会动态的调整调整难度，这样做主要为了保证大约每10分钟产生一个区块。然而全网算力是变化的，如果想要新区块的产生保持都基本这个速率，难度值必须根据全网算力的变化进行调整。难度的调整是在每个完整节点中独立自动发生的。每2016个区块，所有节点都会按统一的公式自动调整难度，也就是说，如果区块产生的速率比10分钟快则增加难度，比10分钟慢则降低难度。这个公式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">新难度值 = 旧难度值 * ( 过去2016个区块花费时长 / 20160 分钟 )</div></pre></td></tr></table></figure></p>
+<p>比特币POW的目标值(target)计算公式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">目标值 = 最大目标值 / 难度值</div></pre></td></tr></table></figure></p>
+<p>目标值的最大值为一个恒定值：<code>0x00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</code></p>
+<p>难度系数越调越高（目标值越来越小），导致了采矿越来越难。</p>
+<p>当计算出符合条件的区块ID后，就开始向全网广播这个新区块，从而获得奖励，目前的奖励是12.5个比特币，每4年减半。这个12.5个比特币是比特网络上唯一没有发款人只有收款人的交易，新比特币就这样凭空诞生了。</p>
+<h2 id="区块链的分叉"><a href="#区块链的分叉" class="headerlink" title="区块链的分叉"></a>区块链的分叉</h2><p>如果两个人同时向区块写入数据，也就是说有两个区块加入，因为他们的前一个区块是同一个，这就形成了分叉。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">          []</div><div class="line">         /</div><div class="line">[]&lt;=[]&lt;=</div><div class="line">         \</div><div class="line">          []</div></pre></td></tr></table></figure>
+<p>目前的规则是，新节点总是采用最长的那条区块链。如果区块链有分叉，将看哪个分支在分叉点后面，先达到6个新区块（称为”六次确认”）。按照10分钟一个区块计算，一小时就可以确认。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">          []</div><div class="line">         /</div><div class="line">[]&lt;=[]&lt;=</div><div class="line">         \</div><div class="line">          []&lt;=[]&lt;=[]&lt;=[]&lt;=[]&lt;=[]</div></pre></td></tr></table></figure></p>
+<p>其实添加新的区块是需要算理的，最终拥有最大算力的一方获胜。如果有人掌握了51%以上的算力就能控制区块链。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>区块链是分布式的数据库，对于数据，哪怕修改了很小的一部分，数据的哈希就变了，区块头就变了。在目前来看，还是安全的，可行的。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当前火热的区块链技术，让好多人都为之疯狂。单纯地研究技术的话，还是可以花一点时间。所以这儿就记录一点自己的学习笔记。&lt;/p&gt;
+&lt;h2 id=&quot;链&quot;&gt;&lt;a href=&quot;#链&quot; class=&quot;headerlink&quot; title=&quot;链&quot;&gt;&lt;/a&gt;链&lt;/h2&gt;&lt;p&gt;区块链的英文名字
+    
+    </summary>
+    
+    
+      <category term="BlockChain" scheme="http://www.dyike.com/tags/BlockChain/"/>
+    
+  </entry>
   
   <entry>
     <title>WebPack配置vue多页面</title>
@@ -968,32 +1012,6 @@
     
     
       <category term="php" scheme="http://www.dyike.com/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>来杭州入职一个月了，记录点啥呢？</title>
-    <link href="http://www.dyike.com/2016/09/01/hang-zhou-one-month/"/>
-    <id>http://www.dyike.com/2016/09/01/hang-zhou-one-month/</id>
-    <published>2016-09-01T14:34:43.000Z</published>
-    <updated>2016-09-01T15:33:36.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>不知道不觉，来杭州一个月零两天，入职一个月了，上个月1号入职的，还是挺好记的。来杭州一个的时间，还感觉是在梦里一样。没想到我就来到杭州了，从毕业前到毕业后的半个多月里，我都没有想到过我会回到南方。可能是之前感觉一切都太顺利了，自己成功地避开了一些弯路。其实那样对自己的成长来说是不利的，最后自己还是走上应该要走的路径，这可能就是来杭州的原因了。</p>
-<p>杭州对我来说，虽然离家很近，三个多小时的车程就能到家，但给我的感觉还是挺陌生的，在这个城市没有什么亲人，没有什么朋友，没有什么同学。说同学的话也就公司有一个初中同学，还是她帮我内推的简历呢。北京待久了，习惯了那里的一切，认识的朋友也都在那里，感觉那里就是很好的。其实这样认为是不对的，年轻人要敢于适应新的环境，至少我现在发现了杭州的水要北京的水好很多很多很多，还有他们说的很多漂亮妹子（虽然我没有见过）。</p>
-<p>还记得三月份的时候，去新浪面试。现在看来那个面试，那个时候的我真的是啥都不会，面试也很糟糕，记得当时胡波问郝明“你是不是把人家问怕了？”，后来胡波说了一句“年轻人这点儿就怕了？要敢于挑战”。在微博的三个月里，对自己的成长挺大的，给了一个机会，让我真正操练起PHP，还见识了靠谱的正超、士博、胡波、周老大……（太多了，不一一说了）还有那个张健，恭喜一下现在是超级奶爸。谢谢你们给了我很大的帮助，你们教的东西，现在好多用上了。嘿嘿</p>
-<h2 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h2><p>来杭州后，再也没有自己做过饭了，是因为自己变懒了吗？差不多也是，再这样下去，好像连熬粥都不会了，更别说烧什么红烧排骨，写到这儿都想吃排骨了😭早餐也不怎么吃了，过得挺没规律的，这个得批评一下自己。生活上其他也没什么了，基本没有什么大的变化，依然爱干净、有轻微洁癖。去超市也不怎么买零食，也就买水果和啤酒。</p>
-<h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><p>一个月时间，项目也熟悉得差不多了。对zend框架的学习还需要进一步深入（虽然我到现在都没有看文档就胡乱写起了，虽然不太喜欢这个框架，但还是有值得学习的东西）。对于业余时间，就写点前端的东西或者go语言的beego框架。总之，在技术上，要对自己要制定一个目标计划，不能尽瞎搞，什么都搞，什么都不精。工作上的其他就不说了。</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>来杭州还狠心地买下了Dell的4K屏，虽然最近在吃土，写代码啥的真的很舒服，以至于我现在都后悔把显示器从公司搬回来，早知道就应该放在公司，我每天在公司用的显示器的时间比在家的时间多多了，工作日都要有一个很糟糕的切换——4K-&gt;1080P-&gt;4K。</p>
-<p>用的笔记本是去年暑假自己买的13寸的中配MacBook Pro，到现在使用了一年多了，体验还好。最近发现电池像是不经用啊，貌似是跟我两三个月没关机有关。这个东西，早买早体验。</p>
-<p>从北京到杭州托运行李，整理的行李的时候，发现之前的玩的硬件又好久没完了，这一个月里拿出来完了一次，有时间还是要多折腾，感觉这些东西还很有意思的。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;不知道不觉，来杭州一个月零两天，入职一个月了，上个月1号入职的，还是挺好记的。来杭州一个的时间，还感觉是在梦里一样。没想到我就来到杭州了，从毕业前到毕业后的半个多月里，我都没有想到过我会回到南方。可能是之前感觉一切都太顺利了，自己成功地避开了一些弯路。其实那样对自己的成长来
-    
-    </summary>
-    
     
   </entry>
   
