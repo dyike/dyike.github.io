@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2018-03-18T09:32:05.400Z</updated>
+  <updated>2018-03-18T09:34:38.432Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -20,14 +20,14 @@
     <link href="http://www.dyike.com/2018/03/18/blockchain-note-001/"/>
     <id>http://www.dyike.com/2018/03/18/blockchain-note-001/</id>
     <published>2018-03-18T07:28:14.000Z</published>
-    <updated>2018-03-18T09:32:05.400Z</updated>
+    <updated>2018-03-18T09:34:38.432Z</updated>
     
     <content type="html"><![CDATA[<p>当前火热的区块链技术，让好多人都为之疯狂。单纯地研究技术的话，还是可以花一点时间。所以这儿就记录一点自己的学习笔记。</p>
 <h2 id="链"><a href="#链" class="headerlink" title="链"></a>链</h2><p>区块链的英文名字叫BlockChain，从字面上理解是不是可以拆成Block和Chain。从Wikipedia上的解释是一些记录的列表打包在一起，称为区块，这些区块通过密码学的知识将他们连接在一起。</p>
 <p>学计算机的同学可能都知道什么是链表，链表其实是一个数据结构，是一种线性表，并不会按线性的顺序存储数据，而是在每一个节点里存下一个节点的指针。</p>
 <p>区块链的底层就是使用了链表数据结构，这个数据块是有顺序的，当前的数据块总能找到上一个数据块。</p>
 <p>链表中有头(首)节点，区块链中的首块称为创世区块。在区块链中，每一个区块(链表中数据块)有两个基本结构：Head和Body。</p>
-<p>先看区块的结构图：<br><img src="" alt="区块的结构图"><br>以比特币分析：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">|-----HEAD  - 6 attributes  --- 80B(字节)</div><div class="line">|      |--- VERSION   --- 4B    区块版本号，验证规则</div><div class="line">|      |--- CURRENT   --- 32B   当前区块Hash</div><div class="line">|      |--- PREVIOUS  --- 32B   前一个区块的Hash，SHA256(SHA256(父区块头))</div><div class="line">|      |--- TARGET    --- 4B    该区块工作量证明算法的难度目标</div><div class="line">|      |--- TIME      --- 4B    时间戳</div><div class="line">|      |--- NONCE     --- 4B</div><div class="line">|</div><div class="line">|-----Body - 1 or more TRANSACTIONS(交易记录)      </div><div class="line">|      |--- TRANSACTIONS</div><div class="line">|               |--- INPUT</div><div class="line">|               |--- OUTPUT</div></pre></td></tr></table></figure></p>
+<p>先看区块的结构图：<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/blockchain/block.jpg" alt="区块的结构图"><br>以比特币分析：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">|-----HEAD  - 6 attributes  --- 80B(字节)</div><div class="line">|      |--- VERSION   --- 4B    区块版本号，验证规则</div><div class="line">|      |--- CURRENT   --- 32B   当前区块Hash</div><div class="line">|      |--- PREVIOUS  --- 32B   前一个区块的Hash，SHA256(SHA256(父区块头))</div><div class="line">|      |--- TARGET    --- 4B    该区块工作量证明算法的难度目标</div><div class="line">|      |--- TIME      --- 4B    时间戳</div><div class="line">|      |--- NONCE     --- 4B</div><div class="line">|</div><div class="line">|-----Body - 1 or more TRANSACTIONS(交易记录)      </div><div class="line">|      |--- TRANSACTIONS</div><div class="line">|               |--- INPUT</div><div class="line">|               |--- OUTPUT</div></pre></td></tr></table></figure></p>
 <p>其中头部的CURRENT和PREVIOUS就是一串哈希值。NONCE和TARGET跟POW共识机制挖矿有关。<br>比特币目前的版本VERISON是0x20000000，相当于block的第五个版本。用一个位数表示一个独立的功能，以区分未来的软分叉。</p>
 <h2 id="Hash哈希"><a href="#Hash哈希" class="headerlink" title="Hash哈希"></a>Hash哈希</h2><p>写代码的人都知道哈希是一种算法，输入一个东西(字符串，图片，视频等等)，最后变成一个有固定长度的哈希值，这个值是唯一的，输入的内容稍微改了一点，哈希值都会改变。从这个哈希也很难推导出原始数据。在比特币中用的哈希算法是SHA256。</p>
 <p>比如说PHP中</p>
