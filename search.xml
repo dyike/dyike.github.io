@@ -20,7 +20,10 @@
 <p>钱包根据不同的维度还分为多种。<br>根据访问钱包数据类型，钱包分类如下：</p>
 <ul>
 <li>CS 型 (Server-Client)：服务端-客户端模式，大部分数据存储在服务端</li>
-<li>BS 型：所有数据均通过浏览器在线使用<br>根据同步数据类型，钱包分类如下：</li>
+<li>BS 型：所有数据均通过浏览器在线使用</li>
+</ul>
+<p>根据同步数据类型，钱包分类如下：</p>
+<ul>
 <li>完全节点型 (Full Node)：含有 BlockChain 所有完整数据</li>
 <li>简易节点型 (SPV Node)：Header-Only Clients，仅有 Block 头部信息，无需交易数据</li>
 </ul>
