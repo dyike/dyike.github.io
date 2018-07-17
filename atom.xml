@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2018-03-19T14:36:35.506Z</updated>
+  <updated>2018-07-17T16:06:40.421Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记入职你站一周年</title>
+    <link href="http://www.dyike.com/2018/07/17/anniversary-in-bilibili/"/>
+    <id>http://www.dyike.com/2018/07/17/anniversary-in-bilibili/</id>
+    <published>2018-07-17T15:07:35.000Z</published>
+    <updated>2018-07-17T16:06:40.421Z</updated>
+    
+    <content type="html"><![CDATA[<p>从16年7月份毕业，到现在工作也算有两个年头了。上一份工作在杭州，可惜没有呆满一年，最后离开了，上个周末回了一趟杭州，跟前同事一起吃了饭，聊了聊，在西湖边走一走喔鸣喔。内心还是很喜欢杭州这座城市，要不是再换一个城市成本太高了，我肯定还会回去。转眼间，在你站入职就这样一年了。</p>
+<h2 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h2><p>刚到上海，顶着火辣辣的太阳，跟DIY同学一起找房子，开始两个月离公司很远，每天上班还要坐地铁，我还是挺适应坐地铁1小时上班，让我想起了北京的日子，每天坐一个小时的地铁去中关村。后来公司搬家了，从航运搬到了杨浦国正，离公司更近了。每天上下班习惯了踩单车，在复旦邯郸路等红绿灯还被送外卖的小哥干翻了两次，大家的生活都不容易，我屁股摔得很疼，也不去计较。</p>
+<p>平时周末也就宅在家里，爱去菜市场买点菜，做几道菜，自己吃着合口味就行。我也发现一个奇怪的现象，每每炒两个菜的时候，一个菜会很淡一个菜会很咸。后来，总结出要是自己不会炒的菜，就尽量偏咸一点，这样吃起来不难么难吃(꒦<em>꒦) </em>)</p>
+<p>没有规律地跑步，最长的坚持是连续坚持了46天，那些日子，感觉自己的颈椎不是那么疼了。跑步一定程度上能缓解我的颈椎。</p>
+<h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><p>一年前，我顶多算是一个代码的搬运工，ctr+c和ctr+v比较多，自己在写代码上面没有太多的追求，可能自己当初的追求就是实现功能，缺少了一些多实现功能的思考。来了你站后，跟着json工作了半年多，虽然我跟他在工作上交流相处是有一些问题，我不喜欢他强势的方式，但是他对我的帮助也很大，学到的路子是野了一点，渐渐地追求代码的质量，逼迫自己在vim下编程，遇到问题怎么定位问题，解决问题发现困难怎么绕开困难等等。</p>
+<p>接触写一些静态强类型的语言，这是一个对自己思维的考验，从一开始的不适应到后来的适应。想更多地接触底层的东西，自己也买了一些书籍【有的还没有看完】。接触一些关于架构设计的东西，一个系统为什么要这样设计，这样设计的业务场景，能不能做优化。如果在面试中，回答出为什么也是加分项！</p>
+<p>年前的定的计划，技术相关的继续落实中….(刷题的感觉)</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>入职你站，无疑看到很多小姐姐，晚上无意间跟小姐姐聊了一下。想起了，公司的那啥活动，记得她是旁边小组的成员，对她的印象就是气质。后来群里下发了活动照片，那是最没有怂的一次——截图发群里求联系，简单粗暴，总之感谢大佬帮助！！！后面啥的。。。(我不编了)</p>
+<p>最后，也是最重要的，就是感谢父母亲戚朋友，对自己的要求就是做好本职工作提升实力，多领点工钱！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从16年7月份毕业，到现在工作也算有两个年头了。上一份工作在杭州，可惜没有呆满一年，最后离开了，上个周末回了一趟杭州，跟前同事一起吃了饭，聊了聊，在西湖边走一走喔鸣喔。内心还是很喜欢杭州这座城市，要不是再换一个城市成本太高了，我肯定还会回去。转眼间，在你站入职就这样一年了。
+    
+    </summary>
+    
+    
+      <category term="年记" scheme="http://www.dyike.com/tags/%E5%B9%B4%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>区块链学习笔记——钱包、地址、公钥、私钥</title>
@@ -982,56 +1011,6 @@
     
     
       <category term="php" scheme="http://www.dyike.com/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GDB高效调试的一些小tips</title>
-    <link href="http://www.dyike.com/2016/09/19/tips-for-productive-debug-with-gdb/"/>
-    <id>http://www.dyike.com/2016/09/19/tips-for-productive-debug-with-gdb/</id>
-    <published>2016-09-19T14:23:49.000Z</published>
-    <updated>2016-09-19T15:51:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天来翻译一篇文章，是关于高效使用GDB调试的。</p>
-<h2 id="建议一：Try-GDB-Dashboard"><a href="#建议一：Try-GDB-Dashboard" class="headerlink" title="建议一：Try GDB Dashboard"></a>建议一：Try GDB Dashboard</h2><p>这可能不是你喜欢的“菜”，但像我这样的，喜欢在每一个断点处获得更多的程序信息，所以就尝试GDB仪表板。</p>
-<p>它是一款非常棒的组合式的界面，看起来是这样的：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/gdb/gdb-dashboard.png" alt="界面"></p>
-<p>从Github仓库(<a href="https://github.com/cyrus-and/gdb-dashboard)，能够获取该项目的更多信息,根据你的需求定制你自己的样式。" target="_blank" rel="external">https://github.com/cyrus-and/gdb-dashboard)，能够获取该项目的更多信息,根据你的需求定制你自己的样式。</a></p>
-<h2 id="建议二：Use-a-global-gdbinit-and-a-project-gdbinit"><a href="#建议二：Use-a-global-gdbinit-and-a-project-gdbinit" class="headerlink" title="建议二：Use a global .gdbinit and a project .gdbinit"></a>建议二：Use a global .gdbinit and a project .gdbinit</h2><p><code>.gdbinit</code>是一个配置文件，在gdb启动的时候生效。在你的home目录(~/.gdbinit)可以有一个配置文件做全局设置，或者在当前项目目录 (./.gdbinit)下特定配置。</p>
-<p>正如你从下面的提示可以看到，项目中配置<code>.gdbinit</code>对gdb设定自定格式或者别名是非常有效的。</p>
-<p>提示：必须用<code>set auto-load local-gdbinit</code>让项目生成<code>.gdbinit</code>文件！</p>
-<h2 id="建议三：Use-custom-formatters"><a href="#建议三：Use-custom-formatters" class="headerlink" title="建议三：Use custom formatters"></a>建议三：Use custom formatters</h2><p>通常C/C++如果使用了联合体(unions),在调试器中很难检查的。</p>
-<p>为了让他们更加可读，你可以为你的数据类型设定自定义的格式。参见GDB的Pretty Prining(<a href="https://sourceware.org/gdb/onlinedocs/gdb/Pretty-Printing.html#Pretty-Printing" target="_blank" rel="external">https://sourceware.org/gdb/onlinedocs/gdb/Pretty-Printing.html#Pretty-Printing</a>)</p>
-<p>举个例子，在<a href="https://metricpanda.com/rival-fortress" target="_blank" rel="external">Rival Fortress</a>中有一个矩阵的数据类型(MPEMatrix4),那是许多匿名结构(<a href="https://gcc.gnu.org/onlinedocs/gcc/Unnamed-Fields.html`" target="_blank" rel="external">anonymous structs</a>)的一个联合体(union)。这样使用就是为了方便。</p>
-<p>使用了自定义打印格式，前后对比效果如下：<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/gdb/gdb-pretty-printing.png" alt="前后对比"></p>
-<p>自定义的格式的源码如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> MPEMatrixPrinter:</div><div class="line">  <span class="string">""</span><span class="string">"Print a 4x4 matrix."</span><span class="string">""</span></div><div class="line"></div><div class="line">  def __init__(self, val, size):</div><div class="line">    self.val = val</div><div class="line">    self.size = <span class="keyword">int</span>(size)</div><div class="line"></div><div class="line">  def to_string(self):</div><div class="line">    <span class="keyword">return</span> (<span class="string">"\n\t[ %3g %3g %3g %3g ]"</span></div><div class="line">            <span class="string">"\n\t[ %3g %3g %3g %3g ]"</span></div><div class="line">            <span class="string">"\n\t[ %3g %3g %3g %3g ]"</span></div><div class="line">            <span class="string">"\n\t[ %3g %3g %3g %3g ]"</span>) % \</div><div class="line">                (<span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">0</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">1</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">2</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">3</span>]),</div><div class="line">                <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">4</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">5</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">6</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">7</span>]),</div><div class="line">                <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">8</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">9</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">10</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">11</span>]),</div><div class="line">                <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">12</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">13</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">14</span>]), <span class="keyword">float</span>(self.val[<span class="string">"flat"</span>][<span class="number">15</span>]))</div><div class="line"></div><div class="line">def project_type_lookups(val):</div><div class="line">  lookup_tag = val.type.tag</div><div class="line">  <span class="keyword">if</span> lookup_tag == None:</div><div class="line">    <span class="keyword">return</span> None</div><div class="line"></div><div class="line">  match = re.match(r<span class="string">"^MPEMatrix(\d)$"</span>, lookup_tag)</div><div class="line">  <span class="keyword">if</span> match:</div><div class="line">    <span class="keyword">return</span> MPEMatrixPrinter(val, match.group(<span class="number">1</span>))</div><div class="line"></div><div class="line">gdb.pretty_printers.append(project_type_lookups)</div></pre></td></tr></table></figure>
-<h2 id="建议四：Use-aliases"><a href="#建议四：Use-aliases" class="headerlink" title="建议四：Use aliases"></a>建议四：Use aliases</h2><p>别名能够非常有效地提高调试的效率，在<code>.gdbinit</code>文件这样设置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alias -a w = dashboard expression watch</div></pre></td></tr></table></figure>
-<h2 id="建议五：Use-automatic-variables"><a href="#建议五：Use-automatic-variables" class="headerlink" title="建议五：Use automatic $ variables"></a>建议五：Use automatic <code>$</code> variables</h2><p>不管什么时候，使用<code>print</code>命令检查某些东西，gdb会像这样在一个变量里自动存储结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print Identity</div><div class="line">$1 = </div><div class="line">        [   1   0   0   0 ]</div><div class="line">        [   0   1   0   0 ]</div><div class="line">        [   0   0   1   0 ]</div><div class="line">        [   0   0   0   1 ]</div></pre></td></tr></table></figure>
-<p><code>$1</code>是自动生成的变量，在后面也可这样提取他：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print $1</div><div class="line">$2 = </div><div class="line">        [   1   0   0   0 ]</div><div class="line">        [   0   1   0   0 ]</div><div class="line">        [   0   0   1   0 ]</div><div class="line">        [   0   0   0   1 ]</div></pre></td></tr></table></figure>
-<h2 id="建议六：Inspect-array-pointers"><a href="#建议六：Inspect-array-pointers" class="headerlink" title="建议六：Inspect array pointers"></a>建议六：Inspect array pointers</h2><p>在一个数组里面使用C-style的指针，可以使用下面的命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print *Array@10</div></pre></td></tr></table></figure>
-<p>将会打印Array中的10个元素。</p>
-<h2 id="建议七：Enable-command-history"><a href="#建议七：Enable-command-history" class="headerlink" title="建议七：Enable command history"></a>建议七：Enable command history</h2><p>设置命令历史记录，在<code>.gdbinit</code>文件中设置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set history save on</div></pre></td></tr></table></figure>
-<p>在当前目录下默认保存的历史文件(<code>.gdb_history</code>)，但是可以设定输出文件名：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set history filename &lt;fname&gt;</div></pre></td></tr></table></figure>
-<h2 id="建议八：Detect-if-the-debugger-is-running"><a href="#建议八：Detect-if-the-debugger-is-running" class="headerlink" title="建议八：Detect if the debugger is running"></a>建议八：Detect if the debugger is running</h2><p>这个其实不是关于gdb调试，但是非常的有用。</p>
-<p>在windows系统里可以使用<code>IsDebuggerPresent</code>(<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms680345(v=vs.85).aspx)函数来判断debugger是否在运行。" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/windows/desktop/ms680345(v=vs.85).aspx)函数来判断debugger是否在运行。</a><br>在Unix系统也是可以这样使用的：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _WIN32</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/ptrace.h&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">IsDebuggerPresent</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">static</span> <span class="keyword">int</span> Detected;</div><div class="line">  <span class="keyword">static</span> <span class="keyword">int</span> RunningUnderDebugger;</div><div class="line">  <span class="keyword">if</span> (!Detected)</div><div class="line">  &#123;</div><div class="line">    Detected = <span class="number">1</span>;</div><div class="line">    RunningUnderDebugger = ptrace(PTRACE_TRACEME, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>) == <span class="number">-1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> RunningUnderDebugger;</div><div class="line">&#125;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天来翻译一篇文章，是关于高效使用GDB调试的。&lt;/p&gt;
-&lt;h2 id=&quot;建议一：Try-GDB-Dashboard&quot;&gt;&lt;a href=&quot;#建议一：Try-GDB-Dashboard&quot; class=&quot;headerlink&quot; title=&quot;建议一：Try GDB Dashbo
-    
-    </summary>
-    
-    
-      <category term="GDB" scheme="http://www.dyike.com/tags/GDB/"/>
     
   </entry>
   
