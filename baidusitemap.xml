@@ -4,6 +4,40 @@
 
     
   <url>
+    <loc>http://www.dyike.com/2018/09/22/rust-string-vs-str/</loc>
+    <lastmod>2018-09-24T06:40:45.491Z</lastmod>
+    <data>
+        <display>
+        <title>Rust中的String VS str</title>
+        <pubTime>2018-09-22T06:34:14.000Z</pubTime>
+        
+        <tag>Rust</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dyike.com/2018/09/24/why-are-recursive-struct-types-illegal-in-rust/</loc>
+    <lastmod>2018-09-24T06:40:30.198Z</lastmod>
+    <data>
+        <display>
+        <title>为什么Rust中的递归struct是非法的？</title>
+        <pubTime>2018-09-24T06:34:31.000Z</pubTime>
+        
+        <tag>Rust</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dyike.com/2018/07/17/anniversary-in-bilibili/</loc>
     <lastmod>2018-07-17T16:11:19.568Z</lastmod>
     <data>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2018-07-17T16:11:19.568Z</updated>
+  <updated>2018-09-24T06:40:30.198Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -14,6 +14,82 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为什么Rust中的递归struct是非法的？</title>
+    <link href="http://www.dyike.com/2018/09/24/why-are-recursive-struct-types-illegal-in-rust/"/>
+    <id>http://www.dyike.com/2018/09/24/why-are-recursive-struct-types-illegal-in-rust/</id>
+    <published>2018-09-24T06:34:31.000Z</published>
+    <updated>2018-09-24T06:40:30.198Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>原文链接：<a href="https://stackoverflow.com/questions/25296195/why-are-recursive-struct-types-illegal-in-rust" target="_blank" rel="external">https://stackoverflow.com/questions/25296195/why-are-recursive-struct-types-illegal-in-rust</a></p>
+</blockquote>
+<p>我们来看一个例子吧：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span></span> &#123;</div><div class="line">    mother: <span class="built_in">Option</span>&lt;Person&gt;,</div><div class="line">    father: <span class="built_in">Option</span>&lt;Person&gt;,</div><div class="line">    partner: <span class="built_in">Option</span>&lt;Person&gt;,</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</div><div class="line">    <span class="keyword">let</span> susan = Person &#123;</div><div class="line">        mother: <span class="literal">None</span>,</div><div class="line">        father: <span class="literal">None</span>,</div><div class="line">        partner: <span class="literal">None</span>,</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">let</span> john = Person &#123;</div><div class="line">        mother: <span class="literal">None</span>,</div><div class="line">        father: <span class="literal">None</span>,</div><div class="line">        partner: <span class="literal">Some</span>(susan),</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编译会出错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">error[E0072]: recursive type `Person` has infinite size</div><div class="line"> --&gt; recursive.rs:1:1</div><div class="line">  |</div><div class="line">1 | struct Person &#123;</div><div class="line">  | ^^^^^^^^^^^^^ recursive type has infinite size</div><div class="line">2 |     mother: Option&lt;Person&gt;,</div><div class="line">  |     ---------------------- recursive without indirection</div><div class="line">3 |     father: Option&lt;Person&gt;,</div><div class="line">  |     ---------------------- recursive without indirection</div><div class="line">4 |     partner: Option&lt;Person&gt;,</div><div class="line">  |     ----------------------- recursive without indirection</div><div class="line">  |</div><div class="line">  = help: insert indirection (e.g., a `Box`, `Rc`, or `&amp;`) at some point to make `Person` representable</div></pre></td></tr></table></figure></p>
+<p>出错的意思：Person是无限大小的。</p>
+<p>在Rust中该怎么修复呢？上面也提示了使用<code>Box</code>, <code>Rc</code>, <code>&amp;</code>。 将<code>Person</code>放进一个<code>Box</code>,然后就正常work了。<br><figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span></span> &#123;</div><div class="line">    mother: <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;Person&gt;&gt;,</div><div class="line">    father: <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;Person&gt;&gt;,</div><div class="line">    partner: <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;Person&gt;&gt;,</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</div><div class="line">    <span class="keyword">let</span> susan = Person &#123;</div><div class="line">        mother: <span class="literal">None</span>,</div><div class="line">        father: <span class="literal">None</span>,</div><div class="line">        partner: <span class="literal">None</span>,</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">let</span> john = Person &#123;</div><div class="line">        mother: <span class="literal">None</span>,</div><div class="line">        father: <span class="literal">None</span>,</div><div class="line">        partner: <span class="literal">Some</span>(<span class="built_in">Box</span>::new(susan)),</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这背后究竟是为什么呢？</p>
+<p>我们都知道Rust在编译的时候就需要知道一个类型究竟该分配多少内存。如果一个类型的内存不知道是多少的话，比如说上面的recursive就是其中一种，需要无限的空隙间，Rust就会在编译阶段直接报错。<br>但是<code>Box</code>是知道空间大小的，上面的例子中就在一个递归中插入一个box。Susan有一个mother，father和partner，他们每一个都有一个mother，father，partner……而Box使用一个指针，这个指针是固定大小动态内存分配的。</p>
+<p>在<code>structs</code>,<code>enums</code>（tuples）中的数据是直接内联存储在struct值的内存中的。给定一个struct：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Recursive</span></span> &#123;</div><div class="line">    x: <span class="keyword">u8</span>,</div><div class="line">    y: <span class="built_in">Option</span>&lt;Recursive&gt;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在我们来计算该大小：size_of::<recursive>()。很明显，x字段需要1byte， Option也需要1byte作为判别，然后就是struct中包含的Recursive的size_of::<recursive>()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">size_of::&lt;Recursive&gt;() = 2 + size_of::&lt;Recursive&gt;()</div></pre></td></tr></table></figure></recursive></recursive></p>
+<p>这个size将会变得无限的大：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Recursive ==</div><div class="line">(u8, Option&lt;Recursive&gt;) ==</div><div class="line">(u8, Option&lt;(u8, Option&lt;Recursive&gt;)&gt;) ==</div><div class="line">(u8, Option&lt;(u8, Option&lt;(u8, Option&lt;Recursive&gt;)&gt;)&gt;) ==</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>而<code>Box&lt;T&gt;</code>是一个指针，有固定的大小的，所以(u8, Option<box<recursive>&gt;)的大小就是 1 + 8 bytes，此时Rust编译就知道该分配多少内存。</box<recursive></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;原文链接：&lt;a href=&quot;https://stackoverflow.com/questions/25296195/why-are-recursive-struct-types-illegal-in-rust&quot; target=&quot;_blank&quot; r
+    
+    </summary>
+    
+    
+      <category term="Rust" scheme="http://www.dyike.com/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rust中的String VS str</title>
+    <link href="http://www.dyike.com/2018/09/22/rust-string-vs-str/"/>
+    <id>http://www.dyike.com/2018/09/22/rust-string-vs-str/</id>
+    <published>2018-09-22T06:34:14.000Z</published>
+    <updated>2018-09-24T06:40:45.491Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在写C++，业余时间在学习Rust，这好像是我第二次学了，第一次学习对有的概念还是很懵逼的，最近写了C++之后，好多东西理解起来不是那么吃力了，里面的概念超级多，好记性不如烂笔头，还是记录一下吧。</p>
+<p>在Rust的官方文档References and Borrowing [<a href="https://doc.rust-lang.org/book/second-edition/ch04-02-references-and-borrowing.html" target="_blank" rel="external">https://doc.rust-lang.org/book/second-edition/ch04-02-references-and-borrowing.html</a>] 用到了三种不同类型的string变量：String，&amp;String 和 &amp;str</p>
+<p>首先看一下str 和 String之间的区别：String是一个可变的、堆上分配的UTF-8的字节缓冲区。而str是一个不可变的固定长度的字符串，如果是从String解引用而来的，则指向堆上，如果是字面值，则指向静态内存。</p>
+<h3 id="举例说明-String-和-amp-str"><a href="#举例说明-String-和-amp-str" class="headerlink" title="举例说明 String 和 &amp;str"></a>举例说明 String 和 &amp;str</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="string">"hello world"</span>;</div><div class="line"><span class="keyword">let</span> b = <span class="string">"OK"</span>;</div><div class="line"><span class="keyword">let</span> <span class="keyword">mut</span> s = <span class="built_in">String</span>::from(<span class="string">"Hello Rust"</span>);</div><div class="line"><span class="built_in">println!</span>(<span class="string">"&#123;&#125;"</span>, s.capacity());    <span class="comment">// prints 12</span></div><div class="line">s.push_str(<span class="string">"Here I come!"</span>);</div><div class="line"><span class="built_in">println!</span>(<span class="string">"&#123;&#125;"</span>, s.len()); <span class="comment">// prints 24</span></div><div class="line"><span class="keyword">let</span> s = <span class="string">"Hello, Rust!"</span>;</div><div class="line"><span class="built_in">println!</span>(<span class="string">"&#123;&#125;"</span>, s.capacity()); <span class="comment">// compile error: no method named `capacity` found for type `&amp;str`</span></div><div class="line"><span class="built_in">println!</span>(<span class="string">"&#123;&#125;"</span>, s.len()); <span class="comment">// prints 12</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>上面的a, b 是&amp;str，不是String，&amp;str更像一个固定的数组，String像一个可变的数组。</p>
+</li>
+<li><p>String保留了一个len()和capacity()，但str只有一个len()。</p>
+</li>
+<li><p>&amp;str 是 str的一个的borrowed 类型，可以称为一个字符串切片，一个不可变的string。</p>
+</li>
+</ul>
+<h3 id="关于-amp-String"><a href="#关于-amp-String" class="headerlink" title="关于&amp;String"></a>关于&amp;String</h3><p>&amp;String 是String的borrowed类型，这只不过是一个指针类型，可以传递而不放弃ownership。事实上，一个&amp;String可以当做是&amp;str。<br><figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</div><div class="line">    <span class="keyword">let</span> s = <span class="built_in">String</span>::from(<span class="string">"Hello, Rust!"</span>);</div><div class="line">    foo(&amp;s);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fn</span> <span class="title">foo</span></span>(s: &amp;<span class="keyword">str</span>) &#123;</div><div class="line">    <span class="built_in">println!</span>(<span class="string">"&#123;&#125;"</span>, s);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>foo()可以使用string slice或者borrowed String类型。</p>
+<p>如果我们想修改字符串的内容，只需要传递一个可变引用就行了。<br><figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</div><div class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> s = <span class="built_in">String</span>::from(<span class="string">"Hello, Rust!"</span>);</div><div class="line">    foo(&amp;<span class="keyword">mut</span> s);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fn</span> <span class="title">foo</span></span>(s: &amp;<span class="keyword">mut</span> <span class="built_in">String</span>) &#123;</div><div class="line">    s.push_str(<span class="string">"appending foo.."</span>);</div><div class="line">    <span class="built_in">println!</span>(<span class="string">"&#123;&#125;"</span>, s);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="相互转换"><a href="#相互转换" class="headerlink" title="相互转换"></a>相互转换</h3><h4 id="amp-str-gt-String"><a href="#amp-str-gt-String" class="headerlink" title="&amp;str =&gt; String"></a>&amp;str =&gt; String</h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> c = a.to_string();</div><div class="line"><span class="keyword">let</span> d = <span class="built_in">String</span>::from(b);</div><div class="line"><span class="keyword">let</span> d = a.to_owned();</div></pre></td></tr></table></figure>
+<h4 id="String-gt-amp-str"><a href="#String-gt-amp-str" class="headerlink" title="String =&gt; &amp;str"></a>String =&gt; &amp;str</h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> e = &amp;<span class="built_in">String</span>::from(<span class="string">"Hello Rust"</span>);</div><div class="line"><span class="comment">// 或使用as_str()</span></div><div class="line"><span class="keyword">let</span> e_tmp = <span class="built_in">String</span>::from(<span class="string">"Hello Rust"</span>);</div><div class="line"><span class="keyword">let</span> e = e_tmp.as_str();</div><div class="line"><span class="comment">// 不能直接这样使用 </span></div><div class="line"><span class="comment">// let e = String::from("Hello Rust").as_str();</span></div></pre></td></tr></table></figure>
+<h4 id="String-amp-str-gt-String"><a href="#String-amp-str-gt-String" class="headerlink" title="String + &amp;str =&gt; String"></a>String + &amp;str =&gt; String</h4><p>String后面接上N个&amp;str<br><figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="keyword">mut</span> strs = <span class="string">"Hello"</span>.to_string();</div><div class="line"><span class="comment">// let mut strs = String::from("Hello");</span></div><div class="line">strs.push_str(<span class="string">" Rust"</span>);</div><div class="line"><span class="built_in">println!</span>(<span class="string">"&#123;&#125;"</span>, strs);</div></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>如果只想要一个字符串的只读视图，或者&amp;str作为一个函数的参数，那就首选&amp;str。如果想拥有所有权，想修改字符串那就用String吧。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在写C++，业余时间在学习Rust，这好像是我第二次学了，第一次学习对有的概念还是很懵逼的，最近写了C++之后，好多东西理解起来不是那么吃力了，里面的概念超级多，好记性不如烂笔头，还是记录一下吧。&lt;/p&gt;
+&lt;p&gt;在Rust的官方文档References and Borr
+    
+    </summary>
+    
+    
+      <category term="Rust" scheme="http://www.dyike.com/tags/Rust/"/>
+    
+  </entry>
   
   <entry>
     <title>记入职你站一周年</title>
@@ -958,59 +1034,6 @@
     
     
       <category term="swift, iOS" scheme="http://www.dyike.com/tags/swift-iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>好久没有写东西了</title>
-    <link href="http://www.dyike.com/2016/11/02/long-time-no-writing/"/>
-    <id>http://www.dyike.com/2016/11/02/long-time-no-writing/</id>
-    <published>2016-11-02T13:56:11.000Z</published>
-    <updated>2016-11-02T14:13:24.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>上一次写东西还是九月份呢，整个十月份没有写东西，今天晚上突然就想写点东西，十一月份了，来杭州三个月了，工作也基本走上了正轨，也转正了。不过最近也不是很忙，说实话，前段时间确实很闲，偏偏闲的时候没有写点东西，现在回过头来想想，我是不是把那段时间给浪费了。</p>
-<p>前段时间，首先接触了一点前端的东西，自己比较喜欢Vue框架，就用Vue2.0写了一两个demo，过了一遍文档。坦率地讲，对于前端的东西，自己还存在很多弱点，要是有兴趣，也许当年就可能是选前端了。哈哈哈哈，这都是开玩笑，其实前端还是很好玩的，现在的前端的门槛还是挺高的。慢慢来吧，有时间就去写点demo啥的，学！</p>
-<p>后来听朋友讲，rust，看了一下文档，有点被这个当出来的语言给迷住了一会儿，基本都是那种学习的套路，看文档，撸实例代码，好玩，也有些让我头疼的东西比如，泛型，可变性，所有权这些知识点上，还是很含糊的，估计还是要过几遍文档。rust也有很多不错的地方，比如traits。</p>
-<p>其他生活方面呢，没有啥特殊变化，目前，周末自己做做饭。真是那句话“吃饭五分钟，做饭两小时”😂，确实有点麻烦，但可以自己想吃啥就吃啥，还能省钱。到目前为止，还没有出现自己做得饭不能吃的情况。生活作息时间也按照日程来了，每天晚上11点开始睡觉，然后早上6点起床！坚持了两个多周了，现在杭州开始越来越冷，早上起床确实需要勇气了。坚持吧！</p>
-<p>对了，现在写这个的时候，我旁边的手机还在放董路老师的直播，他老司机每天发车，我不保证每天上车，有时间就看看，至少还能听到不少意思的关于足球的东西。他直播播放的歌曲也挺好听的，能放松一下一天的疲惫！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;上一次写东西还是九月份呢，整个十月份没有写东西，今天晚上突然就想写点东西，十一月份了，来杭州三个月了，工作也基本走上了正轨，也转正了。不过最近也不是很忙，说实话，前段时间确实很闲，偏偏闲的时候没有写点东西，现在回过头来想想，我是不是把那段时间给浪费了。&lt;/p&gt;
-&lt;p&gt;前段时
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>php二维数组去重</title>
-    <link href="http://www.dyike.com/2016/10/18/php-array-unique/"/>
-    <id>http://www.dyike.com/2016/10/18/php-array-unique/</id>
-    <published>2016-10-18T13:55:04.000Z</published>
-    <updated>2016-10-18T14:08:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>没有啥，就是随便写点关于php数组的处理，数组一直是我的弱项，现在还是做一点记录吧。</p>
-<p>对于二维数组咱们分两种情况讨论，一种是因为某一键名的值不能重复，删除重复项；另一种因为内部的一维数组不能完全相同，而删除重复项，下面举例说明：</p>
-<h2 id="某一键名的值不能重复，删除重复项"><a href="#某一键名的值不能重复，删除重复项" class="headerlink" title="某一键名的值不能重复，删除重复项"></a>某一键名的值不能重复，删除重复项</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">arrayUnique</span><span class="params">($arr, $key)</span> </span>&#123;</div><div class="line">    $tmp = [];</div><div class="line">    <span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $k =&gt; $v) &#123;</div><div class="line">        <span class="comment">//搜索$v[$key]是否在$tmp_arr数组中存在，若存在返回true</span></div><div class="line">        <span class="keyword">if</span> (in_array($v[$key], $tmp)) &#123;</div><div class="line">            <span class="keyword">unset</span>($arr[$k]);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            $tmp[] = $v[$key];</div><div class="line">        &#125;</div><div class="line">    &#125; </div><div class="line">    sort($arr); <span class="comment">//sort函数对数组进行排序</span></div><div class="line">    <span class="keyword">return</span> $arr;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$test = [</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">123</span>, <span class="string">'name'</span> =&gt; <span class="string">'张三'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">123</span>, <span class="string">'name'</span> =&gt; <span class="string">'李四'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">124</span>, <span class="string">'name'</span> =&gt; <span class="string">'王五'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">125</span>, <span class="string">'name'</span> =&gt; <span class="string">'赵六'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">126</span>, <span class="string">'name'</span> =&gt; <span class="string">'赵六'</span>],</div><div class="line">];</div><div class="line">$key = <span class="string">'id'</span>;</div><div class="line">arrayUnique(&amp;$test, $key);</div><div class="line">print_r($test);</div></pre></td></tr></table></figure>
-<p>显示结果就知道了。。。</p>
-<h4 id="内部的一维数组不能完全相同，而删除重复项"><a href="#内部的一维数组不能完全相同，而删除重复项" class="headerlink" title="内部的一维数组不能完全相同，而删除重复项"></a>内部的一维数组不能完全相同，而删除重复项</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">arrayUnique</span><span class="params">($array)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">foreach</span> ($array <span class="keyword">as</span> $v)&#123;</div><div class="line">        $v = join(<span class="string">","</span>, $v); <span class="comment">//降维,也可以用implode,将一维数组转换为用逗号连接的字符串</span></div><div class="line">        $temp[] = $v;</div><div class="line">    &#125;</div><div class="line">    $temp = array_unique($temp);    <span class="comment">//去掉重复的字符串,也就是重复的一维数组</span></div><div class="line">                </div><div class="line">    <span class="keyword">foreach</span> ($temp <span class="keyword">as</span> $k =&gt; $v)&#123;</div><div class="line">        $temp[$k] = explode(<span class="string">","</span>, $v);   <span class="comment">//再将拆开的数组重新组装</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> $temp;</div><div class="line">&#125;</div><div class="line">$test = [</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">123</span>, <span class="string">'name'</span> =&gt; <span class="string">'张三'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">123</span>, <span class="string">'name'</span> =&gt; <span class="string">'李四'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">124</span>, <span class="string">'name'</span> =&gt; <span class="string">'王五'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">125</span>, <span class="string">'name'</span> =&gt; <span class="string">'赵六'</span>],</div><div class="line">    [<span class="string">'id'</span> =&gt; <span class="number">126</span>, <span class="string">'name'</span> =&gt; <span class="string">'赵六'</span>],</div><div class="line">];</div><div class="line">$data = arrayUnique($test);</div><div class="line">print_r($data);</div></pre></td></tr></table></figure>
-<p>结果显示就知道了。。。。</p>
-<p>就这样简单粗暴一点吧！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;没有啥，就是随便写点关于php数组的处理，数组一直是我的弱项，现在还是做一点记录吧。&lt;/p&gt;
-&lt;p&gt;对于二维数组咱们分两种情况讨论，一种是因为某一键名的值不能重复，删除重复项；另一种因为内部的一维数组不能完全相同，而删除重复项，下面举例说明：&lt;/p&gt;
-&lt;h2 id=&quot;某一键
-    
-    </summary>
-    
-    
-      <category term="php" scheme="http://www.dyike.com/tags/php/"/>
     
   </entry>
   
