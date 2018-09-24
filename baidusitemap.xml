@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://www.dyike.com/2018/09/22/rust-string-vs-str/</loc>
-    <lastmod>2018-09-24T06:40:45.491Z</lastmod>
+    <loc>http://www.dyike.com/2018/09/24/why-are-recursive-struct-types-illegal-in-rust/</loc>
+    <lastmod>2018-09-24T06:44:09.903Z</lastmod>
     <data>
         <display>
-        <title>Rust中的String VS str</title>
-        <pubTime>2018-09-22T06:34:14.000Z</pubTime>
+        <title>Rust中的递归struct的注意点</title>
+        <pubTime>2018-09-24T06:34:31.000Z</pubTime>
         
         <tag>Rust</tag>
          
@@ -21,12 +21,12 @@
 
     
   <url>
-    <loc>http://www.dyike.com/2018/09/24/why-are-recursive-struct-types-illegal-in-rust/</loc>
-    <lastmod>2018-09-24T06:40:30.198Z</lastmod>
+    <loc>http://www.dyike.com/2018/09/22/rust-string-vs-str/</loc>
+    <lastmod>2018-09-24T06:40:45.491Z</lastmod>
     <data>
         <display>
-        <title>为什么Rust中的递归struct是非法的？</title>
-        <pubTime>2018-09-24T06:34:31.000Z</pubTime>
+        <title>Rust中的String VS str</title>
+        <pubTime>2018-09-22T06:34:14.000Z</pubTime>
         
         <tag>Rust</tag>
          
