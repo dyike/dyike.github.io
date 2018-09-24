@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2018-09-24T06:44:09.903Z</updated>
+  <updated>2018-09-24T10:06:52.930Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -16,11 +16,60 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Rust智能指针——Box</title>
+    <link href="http://www.dyike.com/2018/09/24/rust-box-tree/"/>
+    <id>http://www.dyike.com/2018/09/24/rust-box-tree/</id>
+    <published>2018-09-24T10:05:15.000Z</published>
+    <updated>2018-09-24T10:06:52.930Z</updated>
+    
+    <content type="html"><![CDATA[<p>在C++11中也有智能指针shared_ptr，unique_ptr，shared_ptr，在Rust中也有叫智能指针的东西，今天我们来讨论一下Box。现在我们要构建一个二叉树。在Python中实现是比较简单的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tree</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, root_val, left = None, right = None)</span>:</span></div><div class="line">        self.root = root_val</div><div class="line">        self.left = left</div><div class="line">        self.right = right</div><div class="line">        </div><div class="line">        </div><div class="line">t = Tree(<span class="number">12</span>,</div><div class="line">        Tree(<span class="number">10</span>, <span class="keyword">None</span>, Tree(<span class="number">14</span>)),</div><div class="line">        Tree(<span class="number">16</span>, Tree(<span class="number">15</span>), Tree(<span class="number">22</span>))))</div></pre></td></tr></table></figure>
+<p>最终的树形结构：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    12 </div><div class="line">  /    \</div><div class="line">10      16                                    </div><div class="line"> \      / \</div><div class="line">  14  15   22</div></pre></td></tr></table></figure>
+<p>现在用Rust来实现一个？</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Tree</span></span> &#123;</div><div class="line">    root: <span class="keyword">i64</span>,</div><div class="line">    left: Tree,</div><div class="line">    right: Tree,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在上一篇我们已经提到了，上面的代码Rust肯定不会让我们编译通过。已经提示我们使用<code>&amp;</code>、<code>Box</code>、<code>Rc</code>。他们都是指针类型，都是指向内存上某一个位置。</p>
+<ul>
+<li><code>&amp;</code> 在Rust里面称作borrow类型。只是引用内存上某个位置的值，并不拥有所指的值。如果我们想使用<code>&amp;</code>来修复这个问题，我们需要注意一个问题就是生命周期，borrow类型生命周期取决owner的生命周期。</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Tree</span></span>&lt;<span class="symbol">'a</span>&gt; &#123;</div><div class="line">    root: <span class="keyword">i64</span>,</div><div class="line">    left: &amp;<span class="symbol">'a</span> Tree&lt;<span class="symbol">'a</span>&gt;,</div><div class="line">    right: &amp;<span class="symbol">'a</span> Tree&lt;<span class="symbol">'a</span>&gt;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>Box</code>是一种智能指针，零运行时开销。拥有它所指向的数据。我们为什么称做智能的，是因为当执行过边界，它将drop掉它所指向的数据然后drop本身。不需要手动管理内存！！！</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Tree</span></span> &#123;</div><div class="line">  root: <span class="keyword">i64</span>,</div><div class="line">  left: <span class="built_in">Box</span>&lt;Tree&gt;,</div><div class="line">  right: <span class="built_in">Box</span>&lt;Tree&gt;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>Rc</code>是另外一种智能指针，是<code>reference count</code>的简称。用于记录数据结构被引用的次数。当引用的数字减小到0时，就自行清理。如果在一个线程，对于同一个数据有多个owner的时候，我们选用<code>Rc</code>。对于多线程，我们有<code>Arc</code>（atomic reference count)</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Tree</span></span> &#123;</div><div class="line">  root: <span class="keyword">i64</span>,</div><div class="line">  left: Rc&lt;Tree&gt;,</div><div class="line">  right: Rc&lt;Tree&gt;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的三个方法都可以解决之前的问题，那我们该怎么选择呢，这取决于自己的使用场景。</p>
+<h3 id="Make-subtrees-optional"><a href="#Make-subtrees-optional" class="headerlink" title="Make subtrees optional"></a>Make subtrees optional</h3><p>紧接着我们又面临的问题就是无法实例化之前定义的tree结构。为什么呢？现有的数据结构，left和right子树都是Box<tree>的类型，但是我们定义的tree节点有一些是空子树。在Python代码中，我们使用了<code>None</code>,但在Rust中有<code>Option</code>：</tree></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Tree</span></span> &#123;</div><div class="line">  root: <span class="keyword">i64</span>,</div><div class="line">  left: <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;Tree&gt;&gt;,</div><div class="line">  right: <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;Tree&gt;&gt;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在我们就可以创建我们第一个tree：<br><figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Tree &#123;</div><div class="line">    root: <span class="number">12</span>,</div><div class="line">    left: <span class="literal">Some</span>(<span class="built_in">Box</span>::new(Tree &#123;</div><div class="line">            root: <span class="number">10</span>,</div><div class="line">            left: <span class="literal">None</span>,</div><div class="line">            right: <span class="literal">Some</span>(<span class="built_in">Box</span>::new(Tree &#123;</div><div class="line">                    root: <span class="number">14</span>,</div><div class="line">                    left: <span class="literal">None</span>,</div><div class="line">                    right: <span class="literal">None</span>,</div><div class="line">            &#125;)),</div><div class="line">    &#125;)),</div><div class="line">    right: <span class="literal">Some</span>(<span class="built_in">Box</span>::new(Tree &#123;</div><div class="line">            root: <span class="number">16</span>,</div><div class="line">            left: <span class="literal">Some</span>(<span class="built_in">Box</span>::new(Tree &#123;</div><div class="line">                    root: <span class="number">15</span>,</div><div class="line">                    left: <span class="literal">None</span>,</div><div class="line">                    right: <span class="literal">None</span>,</div><div class="line">            &#125;)),</div><div class="line">            right: <span class="literal">Some</span>(<span class="built_in">Box</span>::new(Tree &#123;</div><div class="line">                    root: <span class="number">22</span>,</div><div class="line">                    left: <span class="literal">None</span>,</div><div class="line">                    right: <span class="literal">None</span>,</div><div class="line">            &#125;)),</div><div class="line">    &#125;)),</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>现在将代码做一些优化：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#[derive(Default)]</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Tree</span></span> &#123;</div><div class="line">  root: <span class="keyword">i64</span>,</div><div class="line">  left: <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;Tree&gt;&gt;,</div><div class="line">  right: <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;Tree&gt;&gt;,</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">impl</span> Tree &#123;</div><div class="line">  <span class="function"><span class="keyword">fn</span> <span class="title">new</span></span>(root: <span class="keyword">i64</span>) -&gt; Tree &#123;</div><div class="line">    Tree &#123;</div><div class="line">      root: root,</div><div class="line">      ..<span class="built_in">Default</span>::<span class="keyword">default</span>()</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">fn</span> <span class="title">left</span></span>(<span class="keyword">mut</span> <span class="keyword">self</span>, leaf: Tree) -&gt; <span class="keyword">Self</span> &#123;</div><div class="line">    <span class="keyword">self</span>.left = <span class="literal">Some</span>(<span class="built_in">Box</span>::new(leaf));</div><div class="line">    <span class="keyword">self</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">fn</span> <span class="title">right</span></span>(<span class="keyword">mut</span> <span class="keyword">self</span>, leaf: Tree) -&gt; <span class="keyword">Self</span> &#123;</div><div class="line">    <span class="keyword">self</span>.right = <span class="literal">Some</span>(<span class="built_in">Box</span>::new(leaf));</div><div class="line">    <span class="keyword">self</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Tree::new(<span class="number">12</span>)</div><div class="line">  .left(</div><div class="line">    Tree::new(<span class="number">10</span>)</div><div class="line">      .right(Tree::new(<span class="number">14</span>))</div><div class="line">  )</div><div class="line">  .right(</div><div class="line">    Tree::new(<span class="number">16</span>)</div><div class="line">      .left(Tree::new(<span class="number">15</span>))</div><div class="line">      .right(Tree::new(<span class="number">22</span>))</div><div class="line">  );</div></pre></td></tr></table></figure>
+<p>那为什么在Python就能完美运行呢？Python在运行的时候为树对象动态分配内存，将所有内容包装在PyObject中，类似Rc。</p>
+<p>遇到类似的情况我们该怎么处理和选择呢？我们需要了解所有可能的解决方案，如果可以，我们就远离使用智能指针，坚持简单借用。如果不能，我们就选择侵入性更小的一个。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在C++11中也有智能指针shared_ptr，unique_ptr，shared_ptr，在Rust中也有叫智能指针的东西，今天我们来讨论一下Box。现在我们要构建一个二叉树。在Python中实现是比较简单的：&lt;/p&gt;
+&lt;figure class=&quot;highlight p
+    
+    </summary>
+    
+    
+      <category term="Rust" scheme="http://www.dyike.com/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Rust中的递归struct的注意点</title>
     <link href="http://www.dyike.com/2018/09/24/why-are-recursive-struct-types-illegal-in-rust/"/>
     <id>http://www.dyike.com/2018/09/24/why-are-recursive-struct-types-illegal-in-rust/</id>
     <published>2018-09-24T06:34:31.000Z</published>
-    <updated>2018-09-24T06:44:09.903Z</updated>
+    <updated>2018-09-24T10:04:59.788Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>原文链接：<a href="https://stackoverflow.com/questions/25296195/why-are-recursive-struct-types-illegal-in-rust" target="_blank" rel="external">https://stackoverflow.com/questions/25296195/why-are-recursive-struct-types-illegal-in-rust</a></p>
@@ -31,7 +80,8 @@
 <p>出错的意思：Person是无限大小的。</p>
 <p>在Rust中该怎么修复呢？上面也提示了使用<code>Box</code>, <code>Rc</code>, <code>&amp;</code>。 将<code>Person</code>放进一个<code>Box</code>,然后就正常work了。<br><figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span></span> &#123;</div><div class="line">    mother: <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;Person&gt;&gt;,</div><div class="line">    father: <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;Person&gt;&gt;,</div><div class="line">    partner: <span class="built_in">Option</span>&lt;<span class="built_in">Box</span>&lt;Person&gt;&gt;,</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</div><div class="line">    <span class="keyword">let</span> susan = Person &#123;</div><div class="line">        mother: <span class="literal">None</span>,</div><div class="line">        father: <span class="literal">None</span>,</div><div class="line">        partner: <span class="literal">None</span>,</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">let</span> john = Person &#123;</div><div class="line">        mother: <span class="literal">None</span>,</div><div class="line">        father: <span class="literal">None</span>,</div><div class="line">        partner: <span class="literal">Some</span>(<span class="built_in">Box</span>::new(susan)),</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>这背后究竟是为什么呢？</p>
-<p>我们都知道Rust在编译的时候就需要知道一个类型究竟该分配多少内存。如果一个类型的内存不知道是多少的话，比如说上面的recursive就是其中一种，需要无限的空隙间，Rust就会在编译阶段直接报错。<br>但是<code>Box</code>是知道空间大小的，上面的例子中就在一个递归中插入一个box。Susan有一个mother，father和partner，他们每一个都有一个mother，father，partner……而Box使用一个指针，这个指针是固定大小动态内存分配的。</p>
+<p>我们都知道Rust在编译的时候就需要知道一个类型究竟该分配多少内存。如果一个类型的内存不知道是多少的话，比如说上面的recursive就是其中一种，需要无限的空隙间，Rust就会在编译阶段直接报错。</p>
+<p>但是<code>Box</code>是知道空间大小的，上面的例子中就在一个递归中插入一个box。Susan有一个mother，father和partner，他们每一个都有一个mother，father，partner……而Box使用一个指针，这个指针是固定大小动态内存分配的。</p>
 <p>在<code>structs</code>,<code>enums</code>（tuples）中的数据是直接内联存储在struct值的内存中的。给定一个struct：</p>
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Recursive</span></span> &#123;</div><div class="line">    x: <span class="keyword">u8</span>,</div><div class="line">    y: <span class="built_in">Option</span>&lt;Recursive&gt;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>现在我们来计算该大小：size_of::<recursive>()。很明显，x字段需要1byte， Option也需要1byte作为判别，然后就是struct中包含的Recursive的size_of::<recursive>()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">size_of::&lt;Recursive&gt;() = 2 + size_of::&lt;Recursive&gt;()</div></pre></td></tr></table></figure></recursive></recursive></p>
@@ -957,83 +1007,6 @@
     
     
       <category term="ios，swift" scheme="http://www.dyike.com/tags/ios%EF%BC%8Cswift/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Programming iOS 9 学习笔记-view章节</title>
-    <link href="http://www.dyike.com/2016/11/26/ios-learn-note-view/"/>
-    <id>http://www.dyike.com/2016/11/26/ios-learn-note-view/</id>
-    <published>2016-11-26T14:08:34.000Z</published>
-    <updated>2016-11-26T14:24:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>  首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前两个版本来说好很多，改动相当的大，所以说swift的每一个版本都可以算一个新语言。我最近把swift3的文档过了一遍（之前只看过swift1的，swift2没怎么看过）现在又拿出这个本书出来学习。</p>
-<p>  这个笔记谈不上翻译，当然目前很大一部分是借鉴<a href="http://wdxtub.com/" target="_blank" rel="external">http://wdxtub.com/</a> 这个blog里的笔记【这个blog文章我常看】，我只是在上面作了一些修改。</p>
-<p>为什么这么说呢？因为我操作的环境是在swift3+Xcode8+iOS10。</p>
-<p>我只是业余的、业余的、业余的学习iOS开发，如果里面什么错误，欢迎指正！欢迎iOS大牛带我飞。</p>
-</blockquote>
-<h1 id="第一章Views"><a href="#第一章Views" class="headerlink" title="第一章Views"></a>第一章Views</h1><h3 id="几个概念："><a href="#几个概念：" class="headerlink" title="几个概念："></a>几个概念：</h3><ul>
-<li>一个view是UIView类或UIView的子类的对象，知道怎么在界面的矩形区域绘制自己。</li>
-<li>一个view也是一个responder(UIView是UIResponder的子类)。是与用户交互的（触摸、点击）。</li>
-<li>一个view可以有子view（subview），一个subview只能有一个superview。这就形成了一个view的树状结构。如果从界面上去除（隐藏/移动）一个view，它的subview也将去除（隐藏/移动）。</li>
-<li>一个view可以从nib生成，也可以通过代码生成。</li>
-</ul>
-<h2 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h2><p>view hierarchy的顶层是app的window，是UIWindow的一个实例，或者UIView子类的实例。在应用中应该只有一个main window。在启动的时候创建，不会被销毁或者代替。想象一个平时我们使用的app，这是一个什么东西？就是一个应用的背景，并且是superview，其他的view都是他的subview。</p>
-<p>app的window需要填充设备的屏幕：window初始化时候，frame设置成UIScreen.main.bounds。如果使用main storyboard, UIApplicationMain 函数会自动完成。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> w = <span class="type">UIWindow</span>(frame: <span class="type">UIScreen</span>.main.bounds)</div><div class="line"><span class="comment">//在iOS10 中可以不传入frame参数，默认设置成screen的bounds</span></div><div class="line"><span class="keyword">let</span> w = <span class="type">UIWindow</span>()</div></pre></td></tr></table></figure>
-<p>为了保证window在app的生命周期中存在，app delegate类会用一个strong retain policy来维持一个window属性。这个过程是：启动app，UIApplicationMain方法会初始化app delegate类并一直保持这个实例。然后window实例就会被赋值到app delegate实例的window属性上，所以app的整个生命周期都一直保持。如果使用main storyboard，这些都是自动初始化的。</p>
-<p>当一个view控制器成为main window的rootViewController， 它的view将会变为main window的有且仅有的一个直接subview，也就是main window上的root view，之后所有的view都是这个root view上的subview。因此，root view是view hierarchy的最顶层的对象，用户是可以看到的。但有时候，用户可能会看到root view之后的window，基于这个原因，可以在给main view 设置好backgroundColor。</p>
-<p>app的界面应该是不可见的，知道你window被设置为key window。这个可以通过调用UIWindow实例的makeKeyVisible方法来完成。</p>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ul>
-<li>使用main storyboard</li>
-</ul>
-<blockquote>
-<ol>
-<li>storyboard文件在Info.plist的键为 Main storyboard file base name中指定（UIMainStoryboardFile）</li>
-<li>UIApplicationMain实例化UIWindow，设置好frame。把设置好的UIWindow实例指定给app delegate的window属性</li>
-<li>storyboard初始化的view controller，指定到 window 的 rootViewController 属性</li>
-<li>这些都是发生在app delegate的 application: didFinishLaunchingWithOptions 被调用之前</li>
-</ol>
-</blockquote>
-<ul>
-<li>不使用main storyboard</li>
-</ul>
-<blockquote>
-<ol>
-<li>在General pane,选择”Main”，并删除</li>
-<li>删除Main.storyboard和ViewController.swift</li>
-<li>删除AppDelegate.swift的所有内容</li>
-</ol>
-</blockquote>
-<p>例子：An App Delegate class with no storyboard</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"><span class="meta">@UIApplicationMain</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppDelegate</span> : <span class="title">UIResponder</span>, <span class="title">UIApplicationDelegate</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> window : <span class="type">UIWindow</span>?</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(application: UIApplication,</span></span></div><div class="line">        didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)</div><div class="line">        -&gt; <span class="type">Bool</span> &#123;</div><div class="line">            <span class="keyword">self</span>.window = <span class="type">UIWindow</span>()</div><div class="line">            <span class="keyword">self</span>.window!.rootViewController = <span class="type">UIViewController</span>()</div><div class="line">            <span class="keyword">self</span>.window!.backgroundColor = <span class="type">UIColor</span>.whiteColor()</div><div class="line">            <span class="keyword">self</span>.window!.makeKeyAndVisible()</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>app一旦运行起来之后，将会有多中方式来引用window：</p>
-<ul>
-<li>界面中的UIView，会自动创建一个window属性（通过对window的引用创建）。</li>
-</ul>
-<p>可以使用UIView的window属性来检查这个view是否被嵌入到了window中。如果不是，window属性为nil。一个window的属性为nil的UIView对用户是不可见的。</p>
-<ul>
-<li>app的delegate实例会保持这个window的引用（window属性）。通过使用shared application的delegate 属性来获取这个引用：<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> w = <span class="type">UIApplication</span>.shared.delegate!.window!!</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>如果不那样使用的话，可以显式转换成app delegate类<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> w = (<span class="type">UIApplication</span>.shared.delegate <span class="keyword">as</span>! <span class="type">AppDelegate</span>).window!</div></pre></td></tr></table></figure></p>
-<ul>
-<li>shared application 会通过它的keyWindow属性来维护一个执行window的引用。<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> w = <span class="type">UIApplication</span>.shared.keyWindow!</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>但是，这个引用不是很稳定。原因：系统会创建临时的window来当做key window。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;  首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相
-    
-    </summary>
-    
-    
-      <category term="swift, iOS" scheme="http://www.dyike.com/tags/swift-iOS/"/>
     
   </entry>
   

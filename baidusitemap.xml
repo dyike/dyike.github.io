@@ -4,8 +4,25 @@
 
     
   <url>
+    <loc>http://www.dyike.com/2018/09/24/rust-box-tree/</loc>
+    <lastmod>2018-09-24T10:06:52.930Z</lastmod>
+    <data>
+        <display>
+        <title>Rust智能指针——Box</title>
+        <pubTime>2018-09-24T10:05:15.000Z</pubTime>
+        
+        <tag>Rust</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dyike.com/2018/09/24/why-are-recursive-struct-types-illegal-in-rust/</loc>
-    <lastmod>2018-09-24T06:44:09.903Z</lastmod>
+    <lastmod>2018-09-24T10:04:59.788Z</lastmod>
     <data>
         <display>
         <title>Rust中的递归struct的注意点</title>
