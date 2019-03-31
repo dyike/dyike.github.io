@@ -33,52 +33,67 @@
 <li>微PE工具箱</li>
 <li>Mac系统安装Windows虚拟机(这里不多介绍)</li>
 </ul>
-<p>打包下载：(百度网盘)[<a href="https://pan.baidu.com/s/1-8g1d9MbX34itX75rwV69g];提取码" target="_blank" rel="external">https://pan.baidu.com/s/1-8g1d9MbX34itX75rwV69g];提取码</a>: bvpf</p>
-<h2 id="制作PE盘"><a href="#制作PE盘" class="headerlink" title="制作PE盘"></a>制作PE盘</h2><ul>
-<li><ol>
-<li>将U盘插入电脑，运行PE盘制作工具，右下角选择“安装PE到U盘”；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/PE-1.jpeg" alt="安装PE到U盘"></li>
-</ol>
+<p>打包下载：<a href="https://pan.baidu.com/s/1-8g1d9MbX34itX75rwV69g" target="_blank" rel="external">百度网盘</a>; 提取码: bvpf</p>
+<h2 id="制作PE盘"><a href="#制作PE盘" class="headerlink" title="制作PE盘"></a>制作PE盘</h2><ol>
+<li><p>将U盘插入电脑，运行PE盘制作工具，右下角选择“安装PE到U盘”；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/PE-1.jpeg" alt="安装PE到U盘"></p>
 </li>
-<li><ol>
-<li>如图设置，点击“立即安装进U盘”；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/PE-2.png" alt="安装PE到U盘"></li>
-</ol>
+<li><p>如图设置，点击“立即安装进U盘”；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/PE-2.png" alt="安装PE到U盘"></p>
 </li>
-<li><ol>
-<li>PE盘制作工具生成了两个分区，EFI为PE引导分区，“微PE工具箱”为文件区，将黑群晖引导镜像（img）、DiskImg、DiskGenius（PE版）放入U盘内。<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/PE-3.png" alt="PE分区"></li>
-</ol>
+<li><p>PE盘制作工具生成了两个分区，EFI为PE引导分区，“微PE工具箱”为文件区，将黑群晖引导镜像（img）、DiskImg、DiskGenius（PE版）放入U盘内。<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/PE-3.png" alt="PE分区"></p>
 </li>
-</ul>
+</ol>
 <h2 id="黑裙洗白"><a href="#黑裙洗白" class="headerlink" title="黑裙洗白"></a>黑裙洗白</h2><p>这里介绍一种洗白方案，需要花钱，淘宝自行购买。不想洗白的可以跳过！！！</p>
 <p>在windows下操作:</p>
 <ol>
-<li>安装OSFMount，完成后运行OSFMount (下载途径)[<a href="https://pan.baidu.com/s/1Mo_lXEGI1qo-8tUHDgGqDg" target="_blank" rel="external">https://pan.baidu.com/s/1Mo_lXEGI1qo-8tUHDgGqDg</a>] 提取码:6eyz；</li>
-<li>点击左下角-Mount new，选择下载的img镜像(img镜像目录必须是英文或着数字，不能是中文)；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount1.png" alt="选择镜像"></li>
-<li>选择Partition 0，点击OK；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount2.png" alt="选项"></li>
-<li>再把下面Read-only drive的选项去勾后点击OK；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount3.png" alt="选项"></li>
-<li>在OSFMount软件里双击镜像后打开grub目录，编辑grub.cfg文件，建议使用Notepad++编辑grub.cfg文件<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount4.png" alt="查看grub.cfg文件"></li>
-<li>根据自己的要求填写正版的SN码和Mac地址，就可以全洗白了<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount6.jpeg" alt="填写SN码和MAC地址"></li>
-<li>修改完成后点击Dismount all &amp; Exit<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount5.png" alt="退出"></li>
+<li><p>安装OSFMount，完成后运行OSFMount (下载途径)[<a href="https://pan.baidu.com/s/1Mo_lXEGI1qo-8tUHDgGqDg" target="_blank" rel="external">https://pan.baidu.com/s/1Mo_lXEGI1qo-8tUHDgGqDg</a>] 提取码:6eyz；</p>
+</li>
+<li><p>点击左下角-Mount new，选择下载的img镜像(img镜像目录必须是英文或着数字，不能是中文)；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount1.png" alt="选择镜像"></p>
+</li>
+<li><p>选择Partition 0，点击OK；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount2.png" alt="选项"></p>
+</li>
+<li><p>再把下面Read-only drive的选项去勾后点击OK；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount3.png" alt="选项"></p>
+</li>
+<li><p>在OSFMount软件里双击镜像后打开grub目录，编辑grub.cfg文件，建议使用Notepad++编辑grub.cfg文件<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount4.png" alt="查看grub.cfg文件"></p>
+</li>
+<li><p>根据自己的要求填写正版的SN码和Mac地址，就可以全洗白了<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount6.jpeg" alt="填写SN码和MAC地址"></p>
+</li>
+<li><p>修改完成后点击Dismount all &amp; Exit<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount5.png" alt="退出"></p>
+</li>
 </ol>
 <h2 id="引导文件写入NAS机SSD"><a href="#引导文件写入NAS机SSD" class="headerlink" title="引导文件写入NAS机SSD"></a>引导文件写入NAS机SSD</h2><ol>
-<li>将制作好的PE U盘插入蜗牛星际背部的USB接口，通电开机，有键盘的话，可以按下F7选择PE U盘启动(没有键盘也能操作的);</li>
-<li>使用DiskGenius，将自带16G SSD内所有分区删除并保存;</li>
-<li>启动 DiskImg，驱动器选择机器内置SSD，浏览选择镜像写入(路径、文件名不能有任何中文字符);<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/SSD-3.png" alt="启动 DiskImg"></li>
-<li>写入完成后，使用DiskGenius(PE自带版本太旧了，一定要用复制进去的DiskGenius)，浏览系统内置SSD引导分区文件(ESP)，将grub.cfg文件复制到U盘(之后洗白要用)；</li>
-<li>设备关机，拔出U盘。</li>
+<li><p>将制作好的PE U盘插入蜗牛星际背部的USB接口，通电开机，有键盘的话，可以按下F7选择PE U盘启动(没有键盘也能操作的);</p>
+</li>
+<li><p>使用DiskGenius，将自带16G SSD内所有分区删除并保存;</p>
+</li>
+<li><p>启动 DiskImg，驱动器选择机器内置SSD，浏览选择镜像写入(路径、文件名不能有任何中文字符);<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/SSD-3.png" alt="启动 DiskImg"></p>
+</li>
+<li><p>写入完成后，使用DiskGenius(PE自带版本太旧了，一定要用复制进去的DiskGenius)，浏览系统内置SSD引导分区文件(ESP)，将grub.cfg文件复制到U盘(之后洗白要用)；</p>
+</li>
+<li><p>设备关机，拔出U盘。</p>
+</li>
 </ol>
 <h2 id="安装DSM到NAS机"><a href="#安装DSM到NAS机" class="headerlink" title="安装DSM到NAS机"></a>安装DSM到NAS机</h2><ol>
-<li>NAS主机连接网线并启动(此时显示器上显示Happy Hacking)；</li>
-<li>Mac上安装Synology Assistant(群晖助手)，保持在同一局域网并搜索，搜出结果后，最后选择联机；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/DSM-2.png" alt="群晖助手"></li>
-<li>选中NAS主机安装DSM系统，浏览找到pat格式，依照提示安装即可；</li>
-<li>这里不要把自动更新打开，也不要开启任何反馈计划；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/DSM-4.png" alt="安装DSM选项"></li>
-<li>初始化DSM完成，进入桌面后，关机。</li>
+<li><p>NAS主机连接网线并启动(此时显示器上显示Happy Hacking)；</p>
+</li>
+<li><p>Mac上安装Synology Assistant(群晖助手)，保持在同一局域网并搜索，搜出结果后，最后选择联机；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/DSM-2.png" alt="群晖助手"></p>
+</li>
+<li><p>选中NAS主机安装DSM系统，浏览找到pat格式，依照提示安装即可；</p>
+</li>
+<li><p>这里不要把自动更新打开，也不要开启任何反馈计划；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/DSM-4.png" alt="安装DSM选项"></p>
+</li>
+<li><p>初始化DSM完成，进入桌面后，关机。</p>
+</li>
 </ol>
 <h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>如果上面的步骤，你有全洗白的话，到此应该是安装黑裙成功，并洗白了。开机体验，最大的缺点就是噪音挺大的。</p>
 <ol>
-<li>NAS主机(249元) + 河南-&gt;上海顺丰运费(46元)</li>
-<li>一块西部数据2T红盘(330元，咸鱼收)</li>
-<li>黑裙洗白(30元)</li>
-<li>更换了电源风扇(12元)</li>
+<li><p>NAS主机(249元) + 河南-&gt;上海顺丰运费(46元)</p>
+</li>
+<li><p>一块西部数据2T红盘(330元，咸鱼收)</p>
+</li>
+<li><p>黑裙洗白(30元)</p>
+</li>
+<li><p>更换了电源风扇(12元)</p>
+</li>
 </ol>
 ]]></content>
     </entry>
