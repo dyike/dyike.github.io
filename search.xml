@@ -8,11 +8,13 @@
       <url>http://www.dyike.com/2019/03/31/nas-machine/</url>
       <content type="html"><![CDATA[<p>感谢3月份的“矿难”，就上了蜗牛星际的车，在咸鱼上收了一台。</p>
 <blockquote>
-<p>基本配置<br>4盘位 + J1900处理器 + 4G RAM + 16G MSATA SSD + 200w电源 + 单口网卡</p>
+<p>基本配置</p>
 </blockquote>
+<p>4盘位 + J1900处理器 + 4G RAM + 16G MSATA SSD + 200w电源 + 单口网卡</p>
 <p>这是蜗牛星际的C款(单口)，也有双口，就是贵了一点，有条件的可以直接上C双。拿到手就是用U盘做引导安装黑群晖。</p>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><blockquote>
 <p>硬件准备</p>
+</blockquote>
 <ul>
 <li>U盘 X 1(我使用的是8G，能装下PE和引导文件);</li>
 <li>显示器 X 1 和 HDML连接线 X 1</li>
@@ -20,7 +22,9 @@
 <li>键盘 X 1(安装的时候，家里没有也能搞)</li>
 <li>电源线(买的主机没有电源线，一般来说家里的电饭煲的电源线就行，可以线下五金店购买)</li>
 </ul>
+<blockquote>
 <p>软件准备</p>
+</blockquote>
 <ul>
 <li>黑群晖工具获取器 V1.0(下载引导文件与对应版本系统)</li>
 <li>DiskImg(将引导文件镜像写入内置SSD)</li>
@@ -29,15 +33,23 @@
 <li>微PE工具箱</li>
 <li>Mac系统安装Windows虚拟机(这里不多介绍)</li>
 </ul>
-</blockquote>
 <p>打包下载：(百度网盘)[<a href="https://pan.baidu.com/s/1-8g1d9MbX34itX75rwV69g];提取码" target="_blank" rel="external">https://pan.baidu.com/s/1-8g1d9MbX34itX75rwV69g];提取码</a>: bvpf</p>
-<h2 id="制作PE盘"><a href="#制作PE盘" class="headerlink" title="制作PE盘"></a>制作PE盘</h2><ol>
+<h2 id="制作PE盘"><a href="#制作PE盘" class="headerlink" title="制作PE盘"></a>制作PE盘</h2><ul>
+<li><ol>
 <li>将U盘插入电脑，运行PE盘制作工具，右下角选择“安装PE到U盘”；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/PE-1.jpeg" alt="安装PE到U盘"></li>
+</ol>
+</li>
+<li><ol>
 <li>如图设置，点击“立即安装进U盘”；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/PE-2.png" alt="安装PE到U盘"></li>
+</ol>
+</li>
+<li><ol>
 <li>PE盘制作工具生成了两个分区，EFI为PE引导分区，“微PE工具箱”为文件区，将黑群晖引导镜像（img）、DiskImg、DiskGenius（PE版）放入U盘内。<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/PE-3.png" alt="PE分区"></li>
 </ol>
+</li>
+</ul>
 <h2 id="黑裙洗白"><a href="#黑裙洗白" class="headerlink" title="黑裙洗白"></a>黑裙洗白</h2><p>这里介绍一种洗白方案，需要花钱，淘宝自行购买。不想洗白的可以跳过！！！</p>
-<p>在windows下操作</p>
+<p>在windows下操作:</p>
 <ol>
 <li>安装OSFMount，完成后运行OSFMount (下载途径)[<a href="https://pan.baidu.com/s/1Mo_lXEGI1qo-8tUHDgGqDg" target="_blank" rel="external">https://pan.baidu.com/s/1Mo_lXEGI1qo-8tUHDgGqDg</a>] 提取码:6eyz；</li>
 <li>点击左下角-Mount new，选择下载的img镜像(img镜像目录必须是英文或着数字，不能是中文)；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount1.png" alt="选择镜像"></li>
