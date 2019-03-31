@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2019-03-31T09:18:19.336Z</updated>
+  <updated>2019-03-31T09:21:33.717Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.dyike.com/2019/03/31/nas-machine/"/>
     <id>http://www.dyike.com/2019/03/31/nas-machine/</id>
     <published>2019-03-31T08:04:53.000Z</published>
-    <updated>2019-03-31T09:18:19.336Z</updated>
+    <updated>2019-03-31T09:21:33.717Z</updated>
     
     <content type="html"><![CDATA[<p>感谢3月份的“矿难”，就上了蜗牛星际的车，在咸鱼上收了一台。</p>
 <blockquote>
@@ -95,7 +95,7 @@
 </li>
 <li><p>选中NAS主机安装DSM系统，浏览找到pat格式，依照提示安装即可；</p>
 </li>
-<li><p>这里不要把自动更新打开，也不要开启任何反馈计划；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/DSM-4.png" alt="安装DSM选项"></p>
+<li><p>这里不要把自动更新打开，也不要开启任何反馈计划；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/DSM-4.jpeg" alt="安装DSM选项"></p>
 </li>
 <li><p>初始化DSM完成，进入桌面后，关机。</p>
 </li>
