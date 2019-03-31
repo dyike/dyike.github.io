@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dyike.com/"/>
-  <updated>2018-09-24T10:06:52.930Z</updated>
+  <updated>2019-03-31T09:11:06.262Z</updated>
   <id>http://www.dyike.com/</id>
   
   <author>
@@ -16,13 +16,99 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>蜗牛星际NAS安装黑裙+洗白</title>
+    <link href="http://www.dyike.com/2019/03/31/nas-machine/"/>
+    <id>http://www.dyike.com/2019/03/31/nas-machine/</id>
+    <published>2019-03-31T08:04:53.000Z</published>
+    <updated>2019-03-31T09:11:06.262Z</updated>
+    
+    <content type="html"><![CDATA[<p>感谢3月份的“矿难”，就上了蜗牛星际的车，在咸鱼上收了一台。</p>
+<blockquote>
+<p>基本配置<br>4盘位 + J1900处理器 + 4G RAM + 16G MSATA SSD + 200w电源 + 单口网卡</p>
+</blockquote>
+<p>这是蜗牛星际的C款(单口)，也有双口，就是贵了一点，有条件的可以直接上C双。拿到手就是用U盘做引导安装黑群晖。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><blockquote>
+<p>硬件准备</p>
+<ul>
+<li>U盘 X 1(我使用的是8G，能装下PE和引导文件);</li>
+<li>显示器 X 1 和 HDML连接线 X 1</li>
+<li>鼠标 X 1</li>
+<li>键盘 X 1(安装的时候，家里没有也能搞)</li>
+<li>电源线(买的主机没有电源线，一般来说家里的电饭煲的电源线就行，可以线下五金店购买)</li>
+</ul>
+<p>软件准备</p>
+<ul>
+<li>黑群晖工具获取器 V1.0(下载引导文件与对应版本系统)</li>
+<li>DiskImg(将引导文件镜像写入内置SSD)</li>
+<li>DiskGenius(分区管理工具，PE版)</li>
+<li>Notepad++(文本编辑器)</li>
+<li>微PE工具箱</li>
+<li>Mac系统安装Windows虚拟机(这里不多介绍)</li>
+</ul>
+</blockquote>
+<p>打包下载：(百度网盘)[<a href="https://pan.baidu.com/s/1-8g1d9MbX34itX75rwV69g];提取码" target="_blank" rel="external">https://pan.baidu.com/s/1-8g1d9MbX34itX75rwV69g];提取码</a>: bvpf</p>
+<h2 id="制作PE盘"><a href="#制作PE盘" class="headerlink" title="制作PE盘"></a>制作PE盘</h2><ol>
+<li>将U盘插入电脑，运行PE盘制作工具，右下角选择“安装PE到U盘”；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/PE-1.jpeg" alt="安装PE到U盘"></li>
+<li>如图设置，点击“立即安装进U盘”；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/PE-2.png" alt="安装PE到U盘"></li>
+<li>PE盘制作工具生成了两个分区，EFI为PE引导分区，“微PE工具箱”为文件区，将黑群晖引导镜像（img）、DiskImg、DiskGenius（PE版）放入U盘内。<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/PE-3.png" alt="PE分区"></li>
+</ol>
+<h2 id="黑裙洗白"><a href="#黑裙洗白" class="headerlink" title="黑裙洗白"></a>黑裙洗白</h2><p>这里介绍一种洗白方案，需要花钱，淘宝自行购买。不想洗白的可以跳过！！！</p>
+<p>在windows下操作</p>
+<ol>
+<li>安装OSFMount，完成后运行OSFMount (下载途径)[<a href="https://pan.baidu.com/s/1Mo_lXEGI1qo-8tUHDgGqDg" target="_blank" rel="external">https://pan.baidu.com/s/1Mo_lXEGI1qo-8tUHDgGqDg</a>] 提取码:6eyz；</li>
+<li>点击左下角-Mount new，选择下载的img镜像(img镜像目录必须是英文或着数字，不能是中文)；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount1.png" alt="选择镜像"></li>
+<li>选择Partition 0，点击OK；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount2.png" alt="选项"></li>
+<li>再把下面Read-only drive的选项去勾后点击OK；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount3.png" alt="选项"></li>
+<li>在OSFMount软件里双击镜像后打开grub目录，编辑grub.cfg文件，建议使用Notepad++编辑grub.cfg文件<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount4.png" alt="查看grub.cfg文件"></li>
+<li>根据自己的要求填写正版的SN码和Mac地址，就可以全洗白了<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount6.jpeg" alt="填写SN码和MAC地址"></li>
+<li>修改完成后点击Dismount all &amp; Exit<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/OSFMount5.png" alt="退出"></li>
+</ol>
+<h2 id="引导文件写入NAS机SSD"><a href="#引导文件写入NAS机SSD" class="headerlink" title="引导文件写入NAS机SSD"></a>引导文件写入NAS机SSD</h2><ol>
+<li>将制作好的PE U盘插入蜗牛星际背部的USB接口，通电开机，有键盘的话，可以按下F7选择PE U盘启动(没有键盘也能操作的);</li>
+<li>使用DiskGenius，将自带16G SSD内所有分区删除并保存;</li>
+<li>启动 DiskImg，驱动器选择机器内置SSD，浏览选择镜像写入(路径、文件名不能有任何中文字符);<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/SSD-3.png" alt="启动 DiskImg"></li>
+<li>写入完成后，使用DiskGenius(PE自带版本太旧了，一定要用复制进去的DiskGenius)，浏览系统内置SSD引导分区文件(ESP)，将grub.cfg文件复制到U盘(之后洗白要用)；</li>
+<li>设备关机，拔出U盘。</li>
+</ol>
+<h2 id="安装DSM到NAS机"><a href="#安装DSM到NAS机" class="headerlink" title="安装DSM到NAS机"></a>安装DSM到NAS机</h2><ol>
+<li>NAS主机连接网线并启动(此时显示器上显示Happy Hacking)；</li>
+<li>Mac上安装Synology Assistant(群晖助手)，保持在同一局域网并搜索，搜出结果后，最后选择联机；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/DSM-2.png" alt="群晖助手"></li>
+<li>选中NAS主机安装DSM系统，浏览找到pat格式，依照提示安装即可；</li>
+<li>这里不要把自动更新打开，也不要开启任何反馈计划；<br><img src="https://raw.githubusercontent.com/dyike/dyike.github.io/master/images/nas/DSM-4.png" alt="安装DSM选项"></li>
+<li>初始化DSM完成，进入桌面后，关机。</li>
+</ol>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>如果上面的步骤，你有全洗白的话，到此应该是安装黑裙成功，并洗白了。开机体验，最大的缺点就是噪音挺大的。</p>
+<ol>
+<li>NAS主机(249元) + 河南-&gt;上海顺丰运费(46元)</li>
+<li>一块西部数据2T红盘(330元，咸鱼收)</li>
+<li>黑裙洗白(30元)</li>
+<li>更换了电源风扇(12元)</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;感谢3月份的“矿难”，就上了蜗牛星际的车，在咸鱼上收了一台。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;基本配置&lt;br&gt;4盘位 + J1900处理器 + 4G RAM + 16G MSATA SSD + 200w电源 + 单口网卡&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这
+    
+    </summary>
+    
+    
+      <category term="黑裙、蜗牛星际" scheme="http://www.dyike.com/tags/%E9%BB%91%E8%A3%99%E3%80%81%E8%9C%97%E7%89%9B%E6%98%9F%E9%99%85/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Rust智能指针——Box</title>
     <link href="http://www.dyike.com/2018/09/24/rust-box-tree/"/>
     <id>http://www.dyike.com/2018/09/24/rust-box-tree/</id>
     <published>2018-09-24T10:05:15.000Z</published>
-    <updated>2018-09-24T10:06:52.930Z</updated>
+    <updated>2018-09-24T14:08:37.137Z</updated>
     
-    <content type="html"><![CDATA[<p>在C++11中也有智能指针shared_ptr，unique_ptr，shared_ptr，在Rust中也有叫智能指针的东西，今天我们来讨论一下Box。现在我们要构建一个二叉树。在Python中实现是比较简单的：</p>
+    <content type="html"><![CDATA[<p>在C++11中也有智能指针shared_ptr，unique_ptr，weak_ptr，在Rust中也有叫智能指针的东西，今天我们来讨论一下Box。现在我们要构建一个二叉树。在Python中实现是比较简单的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tree</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, root_val, left = None, right = None)</span>:</span></div><div class="line">        self.root = root_val</div><div class="line">        self.left = left</div><div class="line">        self.right = right</div><div class="line">        </div><div class="line">        </div><div class="line">t = Tree(<span class="number">12</span>,</div><div class="line">        Tree(<span class="number">10</span>, <span class="keyword">None</span>, Tree(<span class="number">14</span>)),</div><div class="line">        Tree(<span class="number">16</span>, Tree(<span class="number">15</span>), Tree(<span class="number">22</span>))))</div></pre></td></tr></table></figure>
 <p>最终的树形结构：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    12 </div><div class="line">  /    \</div><div class="line">10      16                                    </div><div class="line"> \      / \</div><div class="line">  14  15   22</div></pre></td></tr></table></figure>
@@ -54,8 +140,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;在C++11中也有智能指针shared_ptr，unique_ptr，shared_ptr，在Rust中也有叫智能指针的东西，今天我们来讨论一下Box。现在我们要构建一个二叉树。在Python中实现是比较简单的：&lt;/p&gt;
-&lt;figure class=&quot;highlight p
+      &lt;p&gt;在C++11中也有智能指针shared_ptr，unique_ptr，weak_ptr，在Rust中也有叫智能指针的东西，今天我们来讨论一下Box。现在我们要构建一个二叉树。在Python中实现是比较简单的：&lt;/p&gt;
+&lt;figure class=&quot;highlight pyt
     
     </summary>
     
@@ -934,79 +1020,6 @@
     
     
       <category term="iOS，swift" scheme="http://www.dyike.com/tags/iOS%EF%BC%8Cswift/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Programming iOS 9 学习笔记-view实验</title>
-    <link href="http://www.dyike.com/2016/11/27/ios-learn-note-view-experment/"/>
-    <id>http://www.dyike.com/2016/11/27/ios-learn-note-view-experment/</id>
-    <published>2016-11-27T13:11:30.000Z</published>
-    <updated>2016-11-30T00:03:07.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前两个版本来说好很多，改动相当的大，所以说swift的每一个版本都可以算一个新语言。我最近把swift3的文档过了一遍（之前只看过swift1的，swift2没怎么看过）现在又拿出这个本书出来学习。</p>
-<p>这个笔记谈不上翻译，当然目前很大一部分是借鉴<a href="http://wdxtub.com/" target="_blank" rel="external">http://wdxtub.com/</a> 这个blog里的笔记【这个blog文章我常看】，我只是在上面作了一些修改。</p>
-<p>为什么这么说呢？因为我操作的环境是在swift3+Xcode8+iOS10。</p>
-<p>我只是业余的、业余的、业余的学习iOS开发，如果里面什么错误，欢迎指正！欢迎iOS大牛带我飞。</p>
-</blockquote>
-<h3 id="View的实验"><a href="#View的实验" class="headerlink" title="View的实验"></a>View的实验</h3><p>这里做几个简单的介绍和实验操作：</p>
-<h4 id="single-View-Application-："><a href="#single-View-Application-：" class="headerlink" title="single View Application ："></a>single View Application ：</h4><p>一个single view application项目创建后，你将会看到一个包含一个页面的main storyboard 以及一个包含一个main view的view controller的实例。app运行起来，view controller将会成为app的main window的rootViewController，它的main view将会变成window的root view。</p>
-<p>在ViewController.swift文件中修改viewDidLoaded()：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">super</span>.viewDidLoad()</div><div class="line">    <span class="keyword">let</span> mainview = <span class="keyword">self</span>.view</div><div class="line">    <span class="keyword">let</span> v = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">100</span>, y: <span class="number">200</span>, width: <span class="number">50</span>, height: <span class="number">50</span>))</div><div class="line">    v.backgroundColor = <span class="type">UIColor</span>.blue   <span class="comment">// small blue square</span></div><div class="line">    mainview?.addSubview(v)    <span class="comment">// add it to main view</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="App-without-a-main-storyboard（-这个例子我就省略了）"><a href="#App-without-a-main-storyboard（-这个例子我就省略了）" class="headerlink" title="App without a main storyboard（ 这个例子我就省略了）"></a>App without a main storyboard（ 这个例子我就省略了）</h4><h3 id="Subview-和-Superview"><a href="#Subview-和-Superview" class="headerlink" title="Subview 和 Superview"></a>Subview 和 Superview</h3><p>在iOS中，一个的subview的一部分或者全部，可以出现在superview之外。一个view可以与另外一个view重叠，也可以在一个view前面绘制部分或全部。<br><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/view-demo.png" alt="view-demo"></p>
-<p>上图三个view都有一个背景颜色，每一个view都相当于是一个带有颜色的矩形。光看上面的图是没法区别这个三个view之间的关系，其实，中间的view（水平方向）是左边view的sibling view。右边的view是中view的一个subview。</p>
-<p> view hierarchy的一些特点：</p>
-<ul>
-<li>一个view被移出，或者引入他的superview，它的subview也会被引入。</li>
-<li>一个view的透明度会被其subview继承。</li>
-<li>一个view可以限制subview的显示范围。比如不让subview超出view本身的范围，这个叫做clipping，被设置在view的clipsToBounds属性中。</li>
-<li>一个superview拥有它的subview。</li>
-<li>如果改变一个view的大小，那么它的subview也会被自动设置尺寸。</li>
-</ul>
-<p>一个UIView有一个superview的属性（一个UIView）和一个subviews属性（一个UIView对象的数组，back-to-front的顺序），在代码中可以判断view hierarchy。有一个方法isDescendantOfView：用来检查一个view是否是另一个view的subview。View还有一个tag属性，有一个方法viewWithTag进行引用。</p>
-<blockquote>
-<p>注意：这里的这两个func 在swift3中跟swift2有点不一样：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">isDescendantOfView</span><span class="params">(view: UIView)</span></span> -&gt; <span class="type">Bool</span>  </div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">viewWithTag</span><span class="params">(tag: Int)</span></span> -&gt; <span class="type">UIView</span>?</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>在代码中操作view hierarchy是非常简单的！</p>
-<blockquote>
-<p>addSubview方法添加一个subview。比如：view.addSubview(button)。<br>removeFromSuperview方法移除一个subview。比如：xxxView.removeFromSuperview();</p>
-</blockquote>
-<p>注意从superview中移除subview同时也会释放它。如果以后需要重用的话，最好先确定能够把它保存在内存中，通常的方法是把这个view保存在一个属性中。</p>
-<p>在进行这些操作时系统也会给出通知，重写下列方法就可以根据需要在不同的情况下进行不同的操作：</p>
-<ul>
-<li>didAddSubview, willRemoveSubview</li>
-<li>didMoveToSuperview, willMoveToSuperview</li>
-<li>didMoveToWindow, willMoveToWindow</li>
-</ul>
-<p>当调用了addSubview，这个view也会被放到其superview的subview数组中的最后一个，也就是说这个view会被最后一个渲染出来。如果view的subviews是被索引的，从0开始（rearmost），这样就可以把view插入到指定位置，已经放到前面/后面，或两个view进行交互。</p>
-<ul>
-<li>swift3：// Insert subview at specific position<br>insertSubview(_:at:)<br>比如:<br>let f1 = someView.insertSubview(view: at:)</li>
-<li>swift3：// Insert subview above/below a specific subview<br>insertSubview(<em>:aboveSubview:)<br>insertSubview(</em>:belowSubview:)<br>比如：<br>let f2 = someView.insertSubview(view: aboveSubview:)<br>let f3 = someView.insertSubview(view: belowSubview:)</li>
-<li>swift3: // Exchange two subview’s position<br>exchangeSubview(at:withSubviewAt:)</li>
-<li>swift3：// Bring the subview to the front or back of its sibling<br>bringSubview(toFront:)<br>sendSubview(toBack:)</li>
-</ul>
-<p>看到这里，你可能会感觉有点奇怪，没有一个方法可以直接移除一个superview的所有subview。然后，因为一个superview的subivew数组是一个不可变的数组，遍历subiviews数组，然后依次执行removeFromSuperview()就大差不差了！比如：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rootView.subviews.forEach &#123; $<span class="number">0</span>.removeFromSuperview() &#125;</div></pre></td></tr></table></figure></p>
-<h3 id="Visibility-and-Opacity-可见度和不透明"><a href="#Visibility-and-Opacity-可见度和不透明" class="headerlink" title="Visibility and Opacity(可见度和不透明)"></a>Visibility and Opacity(可见度和不透明)</h3><p>一个view的可见度是可以通过hidden属性来设置的。隐藏一个view（包括subview）只是从界面上隐藏，而不需要从view hierarchy结构中删除。一个隐藏的view不能接受触摸的事件。（用户看不到而已，其实是存在的）</p>
-<p>backgroundColor属性可以设置view的背景颜色，颜色是属于UIColor类，颜色背景为nil的view，默认是具有透明背景的。</p>
-<p>可以通过设置 view 的 alpha 属性来修改透明程度，1.0 是完全不透明，0.0 是透明。假设一个 view 的 alpha 是 0.5，那么它的 subview 的 alpha 都是以 0.5 为基准的，不可能高于 0.5。而 UIColor 也有 alpha 这个属性，所以即使一个 view 的 alpha 是 1.0，它仍旧可能是透明的，因为其 backgroundColor 可以是透明的。一个 alpha 为 0.0 的 view 是完全透明的所以是不可见的，通常来说也不可能被点击。</p>
-<p>View 的 alpha 属性不仅影响背景颜色，也会影响其内容的透明度。</p>
-<p>view的opaque属性的修改不会影响view的样子，更多的是对于系统绘制的提示。如果一个view的opaque设置true，因为不用考虑透明的绘制，所以效率高一点。并且再设置透明的背景颜色或者 alpha 属性都无效。可能会让人吃惊，它的默认值是 true。</p>
-<h3 id="Frame"><a href="#Frame" class="headerlink" title="Frame"></a>Frame</h3><p>view的frame属性（CGRect类）是他本身的长方形在superview中位置，注意是在superview的坐标系中国的位置。默认来说，superview的坐标系圆点在坐上，向右x增加，向下y增加。</p>
-<p>给view的frame设置不同的CGRect属性值，能够改变view的view的位置或者改变尺寸大小（同时改变也可以）。</p>
-<p>现在我们画上图大差不差的图：我们在AppDelegate.swift中func application()增加下面几行代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//here we can add subviews</span></div><div class="line"><span class="keyword">let</span> mainview = <span class="keyword">self</span>.window!.rootViewController!.view</div><div class="line"></div><div class="line"><span class="keyword">let</span> v1 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">113</span>, y: <span class="number">111</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</div><div class="line">v1.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0.4</span>, blue: <span class="number">1</span>, alpha: <span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> v2 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">41</span>, y: <span class="number">56</span>, width: <span class="number">132</span>, height: <span class="number">194</span>))</div><div class="line">v2.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">1</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> v3 = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">43</span>, y: <span class="number">197</span>, width: <span class="number">160</span>, height: <span class="number">230</span>))</div><div class="line">v3.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">0</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</div><div class="line"></div><div class="line">mainview?.addSubview(v1)</div><div class="line">v1.addSubview(v2)</div><div class="line">mainview?.addSubview(v3)</div></pre></td></tr></table></figure></p>
-<p>效果图如下：（v2是添加在v1上）</p>
-<p><img src="https://raw.githubusercontent.com/yf92/yf92.github.io/master/images/ios/view-ios10-1.png" alt="view-ios"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;首先有几点需要说明的是：Programming iOS 9是一本很不错的书，纸质书很厚，看完真的是需要毅力的。我看过几次了，每次看的都是从第一个章节开始，过不了两张就不看了。汗死了，现在都是iOS10了，swift3都发布很久了，swift3相对前
-    
-    </summary>
-    
-    
-      <category term="ios，swift" scheme="http://www.dyike.com/tags/ios%EF%BC%8Cswift/"/>
     
   </entry>
   
